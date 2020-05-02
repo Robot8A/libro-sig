@@ -2,13 +2,13 @@
 \chapter{Bases de datos}
 \label{Bases_datos}
 
- 
-
 \bigskip
 
 \begin{intro}
 Los sistemas gestores de bases de datos son la herramienta más adecuada para almacenar los datos en un sistema de información debido a sus características de seguridad, recuperación ante fallos, gestión centralizada, estandarización del lenguaje de consulta y funcionalidad avanzada. En este capítulo analizaremos algunas ideas acerca de estos importantes componentes de los SIG en la actualidad y veremos las principales alternativas existentes, al tiempo que estudiaremos los fundamentos de bases de datos necesarios para comprender la forma en que los datos espaciales se almacenan en las bases de datos actuales.  Asimismo, y para entender la situación presente y conocer las ventajas e inconvenientes de los distintos métodos de almacenar la información en los SIG, veremos la evolución de estos respecto a la arquitectura de almacenamiento de información.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -84,12 +84,12 @@ En función de la estructura utilizada para construir una base de datos, existen 
 
 La figura \ref{Fig:Comparacion_BBDD} muestra una comparación esquemática de los anteriores modelos de bases de datos.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.99\textwidth]{Bases_datos/ComparacionModelos.pdf}
 \caption{\small Comparación entre algunos modelos de base de datos más frecuentes (adaptado de \cite{USDT2001}).}
 \label{Fig:Comparacion_BBDD} 
-\end{figure}
+\end{figure*}
 
 \subsection{Bases de datos relacionales}
 
@@ -101,11 +101,7 @@ Además de las denominaciones habituales de \emph{tabla}, \emph{fila} y \emph{col
 
 El \emph{esquema de la relación} está formado por los nombres de los atributos y un \emph{dominio} asociado a estos, que delimita el rango de valores posibles para cada atributo. El dominio especifica el tipo de dato a contener en cada columna. Por ejemplo, si se recoge un nombre el atributo será de tipo alfanumérico, mientras que si el atributo es un conteo deberá ser de tipo entero. Además de los tipos habituales (fechas, cadenas de texto, valores reales\footnote{Entiéndase el adjetivo \emph{real} aquí en su sentido matemático, es decir, un número $n$ tal que $n \in \mathbb{R}$. Puede emplearse también la denominación menos formal de \emph{número decimal} o bien \emph{valor de coma flotante}, esta última más común en el ámbito informático y referida a la forma de almacenamiento de este tipo de valores.}, valores enteros, etc.) pueden emplearse en ciertas bases de datos valores más complejos. Esto es de especial interés en el caso de los SIG, ya que permite utilizar geometrías como un tipo de datos más, con la utilidad que esto tiene a la hora de almacenar datos espaciales. El esquema de la relación se recoge en la primera fila de la tabla, conocida como \emph{cabecera}. El número de filas de la tabla sin contar la cabecera (es decir, el número de tuplas) se conoce como \emph{cardinalidad}.\index{Cabecera}\index{Cardinalidad}
 
-Las relaciones son, por tanto, un conjunto de tuplas asociadas a un esquema. En una relación, tanto el orden de las filas como el de las columnas son irrelevantes (exceptuando la cabecera, que no es un tupla como tal, sino que define el esquema como hemos visto), pero es importante que cada atributo sea del tipo correspondiente a la columna a la que pertenece. Es decir, que sea coherente con el esquema.
-
-El cuadro \ref{Tabla:TerminologiaModeloRelacional} muestra un resumen de algunas de las equivalencias entre la terminología habitual y la específica del modelo relacional. En la figura \ref{Fig:ElementosModeloRelacional} puede verse un esquema de los elementos fundamentales del modelo relacional.
-
-\begin{table}[!hbt]
+\begin{table*}
 \centering 
 \begin{tabular}{cc} \toprule
 \textbf{Terminología habitual} & \textbf{Modelo relacional}  \\ \midrule
@@ -118,14 +114,18 @@ Identificador único & Clave primaria \\ \bottomrule
 \end{tabular}
 \caption{\small Terminología del modelo relacional (Adaptado de \cite{Date1986BBDD}).}
 \label{Tabla:TerminologiaModeloRelacional}
-\end{table}
+\end{table*}
 
-\begin{figure}[!hbt]   
+\begin{figure*}
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/ElementosModeloRelacional.pdf}
 \caption{\small Elementos del modelo relacional.}
 \label{Fig:ElementosModeloRelacional} 
-\end{figure}
+\end{figure*}
+
+Las relaciones son, por tanto, un conjunto de tuplas asociadas a un esquema. En una relación, tanto el orden de las filas como el de las columnas son irrelevantes (exceptuando la cabecera, que no es un tupla como tal, sino que define el esquema como hemos visto), pero es importante que cada atributo sea del tipo correspondiente a la columna a la que pertenece. Es decir, que sea coherente con el esquema.
+
+El cuadro \ref{Tabla:TerminologiaModeloRelacional} muestra un resumen de algunas de las equivalencias entre la terminología habitual y la específica del modelo relacional. En la figura \ref{Fig:ElementosModeloRelacional} puede verse un esquema de los elementos fundamentales del modelo relacional.
 
 Una forma abreviada de definir las relaciones que forman parte de una base de datos es mediante su nombre y su esquema expresado como una lista de los atributos que lo constituyen. Por ejemplo, podemos definir una relación denominada \texttt{PERSONAS} como
 
@@ -221,15 +221,15 @@ Para ser de verdadera utilidad y responder a todas las necesidades que pueden pl
 	Se denomina \emph{transaccional} al SGBD capaz de garantizar la integridad de los datos, no permitiendo que las transacciones puedan quedar en un estado intermedio. Esto implica la capacidad de poder volver a un estado anterior en caso de que por cualquier causa (error en el sistema, fallo eléctrico, etc) no haya podido completarse la transacción.
 \end{itemize}\index{Sistema Gestor de Bases de Datos (SGBD)!Transaccional}
 
-La figura \ref{Fig:SGBD} esquematiza el papel que el SGBD juega en el manejo y empleo de los datos. Tanto los distintos usuarios (en el caso de nuestro supuesto de gestión forestal pueden ser desde el gestor forestal al cartógrafo encargado de actualizar los limites de las unidades inventariables) como el administrador de la base de datos acceden a esta a través del SGBD. No existe acceso directo a la base de datos.
-
-
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/SGBD.pdf}
 \caption{\small Representación esquemática del papel de un Sistema Gestor de Base de Datos.}
 \label{Fig:SGBD} 
-\end{figure}
+\end{figure*}
+
+La figura \ref{Fig:SGBD} esquematiza el papel que el SGBD juega en el manejo y empleo de los datos. Tanto los distintos usuarios (en el caso de nuestro supuesto de gestión forestal pueden ser desde el gestor forestal al cartógrafo encargado de actualizar los limites de las unidades inventariables) como el administrador de la base de datos acceden a esta a través del SGBD. No existe acceso directo a la base de datos.
+
 
 El SGBD tendrá unas u otras características en función del modelo de base de datos subyacente, ya que debe adaptarse a las características de este para ofrecer las funcionalidades correspondientes en el nivel de usuario.
 
@@ -269,29 +269,30 @@ Para desarrollar el diseño conceptual de una base de datos siguiendo el modelo E
    \item Se analizan las frases y determina la cardinalidad de las relaciones y otros detalles.
 \end{itemize}
 
-El modelo así creado se expresa mediante un diagrama en el que las entidades se representan como cajas rectangulares, las relaciones mediante rombos y los atributos en círculos o elipses, todos ellos con sus correspondientes nombres en el interior. Cuando un atributo es un identificador, se representa con su nombre subrayado, del mismo modo que en la definición de esquemas que ya vimos anteriormente (Figura \ref{Fig:SimbolosER}). Si el número de atributos es elevado o el diagrama es complejo por existir gran cantidad de tablas e interrelaciones, pueden omitirse los atributos para una mayor legibilidad, describiéndose en un documento adicional.
-
-\begin{figure}[!hbt]   
+\begin{figure}[H]   
 \centering
 \includegraphics[width=.5\textwidth]{Bases_datos/SimbolosER.pdf}
 \caption{\small Simbología empleada en el modelo entidad--relación.}
 \label{Fig:SimbolosER} 
 \end{figure}
 
-Como ejemplo de lo anterior, la información sobre personas y ciudades que venimos manejando, así como la relación <<nacido en>> existente entre ambas, se expresarían según el modelo entidad-relación con un diagrama tal como el mostrado en la figura \ref{Fig:EjemploDiagramaER}.
+El modelo así creado se expresa mediante un diagrama en el que las entidades se representan como cajas rectangulares, las relaciones mediante rombos y los atributos en círculos o elipses, todos ellos con sus correspondientes nombres en el interior. Cuando un atributo es un identificador, se representa con su nombre subrayado, del mismo modo que en la definición de esquemas que ya vimos anteriormente (Figura \ref{Fig:SimbolosER}). Si el número de atributos es elevado o el diagrama es complejo por existir gran cantidad de tablas e interrelaciones, pueden omitirse los atributos para una mayor legibilidad, describiéndose en un documento adicional.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/EjemploDiagramaER.pdf}
 \caption{\small Ejemplo de diagrama E-R.}
 \label{Fig:EjemploDiagramaER} 
-\end{figure}
+\end{figure*}
+
+Como ejemplo de lo anterior, la información sobre personas y ciudades que venimos manejando, así como la relación <<nacido en>> existente entre ambas, se expresarían según el modelo entidad-relación con un diagrama tal como el mostrado en la figura \ref{Fig:EjemploDiagramaER}.
 
 El modelo E--R presenta algunas limitaciones semánticas, y no es suficiente para expresar con detalle la estructura de algunos tipos de información. Por esta razón, surge el conocido como \emph{modelo E--R extendido}, que amplía el modelo E-R añadiendo nuevos elementos. Con su mayor potencia, el modelo E--R extendido acerca el diseño conceptual a los conceptos de la programación orientada a objetos, incorporando por ejemplo mecanismos de herencia. No obstante, el enfoque orientado a objetos recoge no solo la estructura del sistema de información, sino también su comportamiento dinámico.
 
 
 \begin{table*}[!hbt]
-\resizebox{\textwidth}{!}{
+\centering
+\resizebox{.8\textwidth}{!}{
 \begin{tabular}{ccccccc}\toprule
 DNI & Nombre & Altura & Edad & Ciudad & Población & Superficie \\ \midrule
 50234561 & Juan Gómez & 1,85 & 35 & Madrid & 6386932 & 607\\
@@ -349,12 +350,12 @@ La componente espacial, por su parte, es gestionada por el propio SIG, en el que
 
 Existen, por tanto, dos subsistemas encargados de la gestión de los datos, cada uno de los cuales se encarga de un tipo de información (Figura \ref{Fig:ArquitecturaDual}). Esta arquitectura en la que datos espaciales y datos no espaciales se encuentran separados tiene ciertas ventajas, puesto que permite reutilizar información ya existente de uno u otro tipo. Por ejemplo, ficheros procedentes de aplicaciones CAD pueden incorporarse en el SIG aunque carezcan de una componente temática, aprovechando, no obstante la información espacial. Pese a carecer de muchas de las funcionalidades de un SIG, las aplicaciones CAD\index{CAD} se han utilizado tradicionalmente en arquitectura y para la elaboración de cartografía, como ya vimos en el capítulo \ref{Historia}. El resultado de este uso es en su mayoría de tipo gráfico, pero un SIG que presente una arquitectura dual puede trabajar con él y gestionarlo gracias al subsistema encargado de la información espacial, suponiendo ya una mejora respecto al enfoque de los SIG de primera generación.
 
-\begin{figure}[!hbt]   
+\begin{figure*}
 \centering
 \includegraphics[width=.65\textwidth]{Bases_datos/ArquitecturaDual.pdf}
 \caption{\small Arquitectura dual con subsistemas distintos para el manejo de datos espaciales y no espaciales.}
 \label{Fig:ArquitecturaDual} 
-\end{figure}
+\end{figure*}
 
 
 La división entre datos espaciales y no espaciales conlleva, no obstante, una serie de inconvenientes. Por un lado, resulta difícil integrar operaciones en las que se empleen ambas componentes de los datos, que requerirán sendas llamadas a ambos subsistemas y la posterior combinación de la respuesta de estos. Toda esta labor debe implementarse en el SIG, siendo este un proceso costoso que complica el desarrollo. Si todo el manejo de datos recayera sobre la base de datos, estas operaciones se realizarían de forma transparente, ya que bastaría ejecutar la operación en el SGBD y este se encargaría de realizar las tareas pertinentes y devolver después al SIG la respuesta. Se evitaría asimismo la redundancia en el propio software, ya que al emplear dos subsistemas han de duplicarse una buena parte de funcionalidades, una de ellas en el SGBD externo y otra en el propio SIG.
@@ -399,4 +400,5 @@ El diseño de la base de datos es de gran importancia, y conlleva el diseño de un
 
 En lo que a los SIG respecta, las bases de datos se han ido incorporando paulatinamente a la gestión de los datos espaciales. Partiendo de una situación inicial en la que no se empleaban sistemas gestores de bases de datos, estos han ido integrándose en los SIG de diversas formas. En la actualidad, se emplean bases de datos relacionales, que son adaptadas para poder almacenar datos espaciales y poder realizar operaciones sobre ellos. Los SGBD extensibles representan la ultima tendencia, y en ellos puede integrarse plenamente la información geográfica de forma óptima.
 
+\end{multicols}
 \pagestyle{empty}

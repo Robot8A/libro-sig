@@ -75,12 +75,12 @@ Puede ser interesante también analizar el centro mediano como una linea en lugar
 
 En la figura \ref{Fig:Centro_mediano} puede verse una representación de lo anterior.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Estadistica_espacial/Centro_mediano.png}
 \caption{\small Centro mediano y lineas de división pasando por este, las cuales dividen el conjunto de puntos en dos partes iguales a Este y Oeste, y Norte y Sur, respectivamente.}
 \label{Fig:Centro_mediano} 
-\end{figure}
+\end{figure*}
 
 El inconveniente del centro mediano es que depende de los ejes escogidos y no es por tanto invariante ante rotaciones. Para solucionar esto suele emplearse como definición alternativa la de aquel punto del espacio que hace mínima la suma de distancias a todos los puntos de datos\cite{King1962Prentice}. El cálculo de este punto requiere de un proceso iterativo \cite{Rogerson2001Sage} en el cual se tiene que 
 
@@ -109,12 +109,12 @@ Es interesante comentar que la distancia a la media en el concepto habitual de d
 
 Una forma de representar esta distancia típica es mediante un circulo de radio dicha distancia centrado en el centro medio (Figura \ref{Fig:Centro_medio_y_desviacion})
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Estadistica_espacial/Centro_medio_y_desviacion.png}
 \caption{\small Circulo de radio igual a la distancia típica centrado en el centro medio del conjunto.}
 \label{Fig:Centro_medio_y_desviacion} 
-\end{figure}
+\end{figure*}
 
 La distancia típica puede, igualmente, calcularse ponderando los distintos puntos, quedando su expresión como
 
@@ -158,12 +158,12 @@ En caso de que esta zona sea cuadrada y de área $A$ , se tiene que
 
 En la figura \ref{Fig:Distancia_relativa} puede verse cómo distribuciones espaciales iguales (con la misma distancia típica) representan dispersiones relativas distintas en relación a la zona de estudio.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Distancia_relativa.pdf}
 \caption{\small Aunque ambas distribuciones tienen la misma distancia típica, la dispersión en relación al área analizada es distinta, con lo que los valores de distancia relativa serán distintos.}
 \label{Fig:Distancia_relativa} 
-\end{figure}
+\end{figure*}
 
 \section{Estadísticas sobre líneas. Variables circulares}
 \label{Estadisticas_lineas}
@@ -201,12 +201,12 @@ Es decir, se tiene un vector cuya orientación viene definida por un ángulo $\ove
 
 El módulo $\overline{R}$ se conoce también como \emph{concentración angular} y es una medida inversa de la dispersión angular. No obstante, hay que tener en cuenta que valores próximos a cero, los cuales indicarían gran dispersión, puede proceder de dos agrupaciones de ángulos similares (es decir, con poca dispersión) si estas agrupaciones se diferencian entre sí 180\degree.\index{Concentración angular}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Media_vectorial.pdf}
 \caption{\small Media vectorial (en rojo) de una serie de segmentos.}
 \label{Fig:Media_vectorial} 
-\end{figure}
+\end{figure*}
 
 
 Cuando se trabaja con direcciones en lugar de orientaciones, es frecuente multiplicar por dos los valores angulares y posteriormente simplificar el ángulo aplicando módulo 360\degree. Es decir, aplicar la transformación $\alpha' = 2\alpha \mod 360\degree$.
@@ -262,12 +262,12 @@ Como se puede observar en la figura \ref{Fig:Patrones_puntos}, existen tres tipo
 \end{itemize}
 
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_espacial/Patrones_puntos.png}
 \caption{\small De izquierda a derecha, patrones de puntos agregado, aleatorio y regular.}
 \label{Fig:Patrones_puntos} 
-\end{figure}
+\end{figure*}
 
 El análisis de patrones de puntos se fundamenta básicamente en la comparación entre las propiedades de una distribución teórica aleatoria (distribución de Poisson) y las de la distribución observada. Esta distribución teórica aleatoria cumple que se da \emph{aleatoriedad espacial completa} (CSR, \emph{Complete Spatial Randomness}, en inglés). De este modo, se puede decidir si esta última es también aleatoria en caso de existir similitud, o bien es de alguno de los dos tipos restantes, según sea la discrepancia existente.\index{Aleatoriedad espacial completa}\index{Complete Spatial Randomness (CSR)}\index{Poisson, distribución}
 
@@ -298,12 +298,12 @@ El análisis de cuadrantes no es en realidad una medida del patrón, sino de la di
 
 Otra debilidad de este método es que no es capaz de diferenciar entre distribuciones tales como las de la figura \ref{Fig:Debilidad_cuadrantes}, claramente distintas pero que arrojan un resultado idéntico al aplicar esta metodología con los cuadrantes mostrados.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Debilidad_cuadrantes.pdf}
 \caption{\small Dos disposiciones de puntos distintas que darían un mismo resultado al analizarse por el método de cuadrantes.}
 \label{Fig:Debilidad_cuadrantes} 
-\end{figure}
+\end{figure*}
 
 No obstante, la aplicación de este método en campos como la biología es muy habitual, y se han desarrollado numerosas extensiones del mismo tales como el \emph{índice de David--Moore} \cite{David1954AnnalsBotany}, el \emph{índice de frecuencia de agregados} \cite{Douglas1975Sankhya}, o el índice $I_{\delta}$ de \cite{Morisita1959Kyushu}, entre otros muchos.\index{Indice@Índice!de frecuencia de agregados}\index{Indice@Índice!de David--Moore}
 
@@ -418,12 +418,12 @@ En este estimador no se consideran los efectos de borde, y aquellos puntos situa
 
 El valor $w_ij$ pondera los distintos puntos en función de su distancia al borde de la zona de estudio. Para calcularlo se traza una circunferencia por el punto $i$ con radio $d_{ij}$ (es decir, una circunferencia con centro en el punto $i$ y que pasa por el punto $j$), siendo $w_{ij}$ la fracción de dicha circunferencia que queda dentro de la zona de estudio (Figura \ref{Fig:Correcion_Ripley}).
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.35\mycolumnwidth]{Estadistica_espacial/Correccion_Ripley.pdf}
 \caption{\small Corrección del estimador $\hat{K}(h)$ en función de los efectos de borde. El parámetro de corrección es el cociente entre la longitud interior (en trazo continuo) y la total de la circunferencia }
 \label{Fig:Correcion_Ripley} 
-\end{figure}
+\end{figure*}
 
 Hay que tener en cuenta que en ocasiones no es conveniente aplicar el efecto de borde, por ejemplo en el caso en que el proceso puntual subyacente no tenga lugar fuera de la zona de estudio.
 
@@ -552,12 +552,12 @@ El cuadrado de las varianzas se multiplica por $\frac12$ debido a que  $\gamma(x
 
 Puesto que puede calcularse la distancia entre dichos puntos, pueden representarse los valores de $\gamma$ frente a las distancias $h$. Se obtiene una nube de puntos (nube del variograma) como la mostrada en la figura \ref{Fig:Nube_variograma}.\index{Variograma!nube del}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.85\mycolumnwidth]{Estadistica_espacial/Nube_variograma.png}
 \caption{\small Representación de valores de semivarianza frente a distancia, formando la nube del variograma.}
 \label{Fig:Nube_variograma} 
-\end{figure}
+\end{figure*}
 
 Esta nube aporta en principio poca información, pero puede resumirse agrupando los pares de puntos por intervalos de distancia, y calculando la media de todas las semivarianzas en cada intervalo. De esta forma se tiene una función que relaciona la semivarianza y la distancia entre puntos, según
 
@@ -573,12 +573,12 @@ La función $\gamma(h)$ es lo que se conoce como \emph{variograma experimental}\f
 
 La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variograma de la figura \ref{Fig:Variograma}.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.99\mycolumnwidth]{Estadistica_espacial/Variograma.png}
 \caption{\small Resumen de la nube del variograma en un variograma experimental con sus elementos definitorios.}
 \label{Fig:Variograma} 
-\end{figure}
+\end{figure*}
 
 La elección de un tamaño óptimo para los intervalos es importante para obtener un variograma fiable. Si en el variograma aparecen ondulaciones, esto puede ser señal de que existe un comportamiento cíclico de la variable, pero más probablemente de que la distancia del intervalo no ha sido bien escogida.
 
@@ -649,12 +649,12 @@ El empleo de uno u otro modelo dependerá del conocimiento que tengamos acerca de
 
 La figura \ref{Fig:Variogramas} muestra las gráficas de los tipos de variogramas anteriores.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.85\mycolumnwidth]{Estadistica_espacial/Variogramas.png}
 \caption{\small Distintos modelos de variograma teórico con los mismos parámetros de forma.}
 \label{Fig:Variogramas} 
-\end{figure}
+\end{figure*}
 
 Llevar a cabo el ajuste del variograma teórico no es en absoluto un proceso trivial. Lo más sencillo es tratar de minimizar el error cuadrático. No obstante, deben tenerse en cuenta algunas consideraciones adicionales como las siguientes:
 
@@ -693,12 +693,12 @@ S_{ij} =  (x_i - \overline{x}) (x_j - \overline{y})
 
 El conjunto de valores de covarianza y distancias entre puntos da lugar a una nube de valores que, al igual que ocurría con las semivarianzas, puede emplearse para crear una curva experimental y a partir de esta una curva teórica. Con dicha curva teórica se tiene conocimiento de la covarianza a cualquier distancia, y recibe el nombre de \emph{correlograma}.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
 \caption{\small Relación entre correlograma (a) y variograma (b)}
 \label{Fig:Variograma_correlograma} 
-\end{figure}
+\end{figure*}
 
 Existe una relación directa entre el variograma y el correlagrama, como puede verse en la figura \ref{Fig:Variograma_correlograma}. Con la notación de la figura, se tiene para el caso del variograma que
 

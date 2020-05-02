@@ -16,6 +16,8 @@ Las consultas son un elemento habitual de las bases de datos, por lo que resulta
 
 \end{intro}
 
+\begin{multicols}{2}
+
 \section{Introducción}
 \pagestyle{fancy}
 
@@ -43,12 +45,12 @@ El resultado de una consulta en un SIG generalmente es lo que conocemos como \em
 
 Como veremos más en detalle en las siguientes secciones, las consultas pueden hacerse solo sobre la componente temática de los datos, sobre la espacial, o sobre ambas. En cualquier caso, sabemos ya que estas en un SIG se hayan vinculadas, con lo que el resultado de la consulta afecta a ambas. La selección se hace patente sobre ambas componentes, con independencia de cuál de ellas haya sido la encargada de aplicar el criterio de selección. En el entorno habitual de un SIG, con su interfaz gráfica, tanto la tabla de atributos como la representación visual de la componente espacial se ven afectadas por la realización de una consulta. La figura \ref{Fig:Seleccion} muestra gráficamente este hecho.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Consultas/Seleccion.pdf}
 \caption{\small El resultado de una consulta temática en un SIG es una selección de entidades, que implica tanto a la componente temática como a la espacial de cada una de ellas. En ambos casos, el color amarillo indica los elementos seleccionados.}
 \label{Fig:Seleccion} 
-\end{figure}
+\end{figure*}
 
 Esta presencia gráfica es importante dentro del entorno de los SIG, tanto para mostrar el resultado de las consultas como para ayudar en la formulación de estas. En contraste con el carácter textual de una base de datos, el empleo de dichas bases de datos y la realización de consultas en un SIG incorpora una representación gráfica que resulta esencial \cite{Guting1994VLDB}
 
@@ -122,12 +124,12 @@ Otros operadores lógicos que podemos emplear son el operador disyuntivo \emph{o}
 
 Más adelante volveremos a encontrar esquemas similares a estos, en particular al estudiar las operaciones de solape entre capas vectoriales, en el capítulo \ref{Operaciones_geometricas}.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.6\textwidth]{Consultas/Venn.pdf}
 \caption{\small Diagramas de Venn.}
 \label{Fig:Venn} 
-\end{figure}
+\end{figure*}
 
 Una operación muy habitual en el ámbito de las bases de datos es la \emph{unión} de tablas. Si la componente temática en el modelo vectorial se almacena en una tabla de atributos, es posible, mediante esta operación, almacenar dicha componente en un conjunto de ellas interrelacionadas, lo cual en términos generales conlleva una mejor estructuración, como ya vimos en el capítulo dedicado a las bases de datos. En otras palabras, resulta conveniente no poner toda la información en una tabla, sino dividirla en un conjunto adecuadamente estructurado de tablas, que después pueden combinarse y utilizarse de la manera que resulte más apropiada.
 
@@ -227,7 +229,8 @@ Sin animo de resultar un repaso exhaustivo a todos los elementos del lenguaje (e
 \begin{verbatim}
 SELECT *
 FROM Paises
-WHERE Moneda = 'Euro' AND Poblacion_actual > 40000000 
+WHERE Moneda = 'Euro' 
+AND Poblacion_actual > 40000000 
 \end{verbatim}
 
 Esta consulta recupera todos aquellos registros en los que la población actual supera los 40 millones y la moneda es el euro. El asterisco indica que, para cada uno de estos registros, deben recuperarse todos los campos existentes. Se podría formar una nueva tabla solo con los nombres de los países que cumplen la condición establecida, mediante la siguiente sentencia:
@@ -235,7 +238,8 @@ Esta consulta recupera todos aquellos registros en los que la población actual s
 \begin{verbatim}
 SELECT Nombre
 FROM Paises
-WHERE Moneda = 'Euro' AND Poblacion_actual > 40000000 
+WHERE Moneda = 'Euro' 
+AND Poblacion_actual > 40000000 
 \end{verbatim}
 
 Las consultas pueden ser mucho más complejas, y las sentencias \texttt{SELECT} pueden usarse como parámetros dentro de un predicado lógico. Por ejemplo, supongamos que disponemos de una tabla denominada \texttt{Capitales} con datos de todas las capitales del mundo, y que cuenta con los siguientes campos:
@@ -270,7 +274,8 @@ Como se dijo, las uniones no se limitan un tipo particular de unión como el que 
 Además de lo anterior, pueden emplearse operadores para que la tabla que constituye la respuesta a la consulta contenga campos adicionales calculados en función de los existentes en la tabla origen. Por ejemplo:
 
 \begin{verbatim}
-SELECT Nombre, Poblacion / Area AS Densidad
+SELECT Nombre, Poblacion / Area 
+AS Densidad
 FROM Paises
 WHERE Moneda = 'Euro'
 \end{verbatim}
@@ -314,12 +319,12 @@ La consulta sobre capas no vectoriales es, sin embargo, menos interesante, pues 
 
 La consulta sobre un punto concreto que hemos descrito la incorporan la gran mayoría de los SIG y es una herramienta de primer orden, sumamente sencilla, que nos permite hacer un uso simple aunque muy práctico de los datos geográficos. No obstante, una consulta espacial de este tipo puede ser más compleja e incorporar en el criterio algo más que un único punto. Por ejemplo, podemos seleccionar todas las entidades dentro de un área rectangular, o bien dentro de un polígono cualquiera que podríamos definir directamente sobre la propia representación en pantalla (Figura \ref{Fig:Seleccion_rectangulo}).
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\textwidth]{Consultas/Seleccion_rectangulo.png}
 \caption{\small Consulta mediante rectángulo. Los países que intersecan con los limites definidos por dicho rectángulo quedan seleccionados.}
 \label{Fig:Seleccion_rectangulo} 
-\end{figure}
+\end{figure*}
 
 Las relaciones que utilizamos en este caso ya no son entre punto y polígono, sino entre polígonos. La selección puede incluir tanto los países que se encuentran por completo contenidos dentro del polígono, como aquellos que intersecan con este. Es decir, que podemos aplicar varias de las relaciones que en su momento estudiamos entre dos polígonos.
 
@@ -409,6 +414,13 @@ Puede entenderse igualmente la idea de un índice espacial mediante un sencillo e
 
 La solución más inmediata es medir la distancia entre España y todos los países restantes, y después tomar aquellos que hayan arrojado un resultado de distancia menor a 3000. La operación daría el resultado esperado, pero implicaría un gran número de mediciones, y no sería una forma óptima de operar. De hecho, es probable que a nadie se le ocurriese operar de esta forma en ningún caso. Por ejemplo, lo más probable es que no efectuemos mediciones con los países de América, pues un conocimiento básico de geografía basta para saber que todos ellos se encuentran a más de 3000 kilómetros. No sabemos exactamente a qué distancia se encuentran, pero sabemos que de ningún modo van a cumplir el criterio establecido en la consulta. De modo similar podemos eliminar Australia y gran parte de Asia, porque se encuentran en una situación similar. 
 
+\begin{figure*}[!hbt]   
+\centering
+\includegraphics[width=.5\mycolumnwidth]{Consultas/Ej_indices_espaciales.pdf}
+\caption{\small Para calcular los diez puntos más cercanos a una coordenada dada (en rojo), nuestra intuición espacial nos ayuda a decidir que estos se han de buscar en un subconjunto reducido tal como el de los situados dentro del circulo azul de la figura. Este proceso de \emph{filtrado} y \emph{refinamiento} ahorra operaciones, y es el fundamento conceptual de los índices espaciales.}
+\label{Fig:Ej_indices_espaciales} 
+\end{figure*}
+
 Ese conocimiento básico de geografía que tenemos es en realidad una especie de índice espacial. No sirve para saber las distancias exactas ni resolver la consulta por completo, pero sirve para dar una aproximación y facilitar el trabajo. Descartamos un buen numero de países de forma casi inmediata, y luego solo realizamos las operaciones costosas (la medición) con un subconjunto del total. En nuestra mente, tenemos el conocimiento estructurado a distintos niveles. Incluso si memorizamos todas esa distancias, existe otro nivel más general de conocimiento, a otra escala, siendo este el que nos indica de forma rápida que toda América está fuera de la distancia establecida en la consulta y no merece la pena efectuar mediciones referidas a países de ese continente
 
 Con la utilización un índice espacial, el proceso de consulta espacial se compone de dos subprocesos: \emph{filtrado} y \emph{refinamiento} \cite{Freksa1991Kluwer}. En el proceso de filtrado se hace una primera selección aproximada de entidades, las cuales son candidatas a cumplir los criterios de la consulta. Se reduce de este modo el número de elementos sobre los que se ha de trabajar, y esta reducción, apoyada en los índices espaciales, tiene un coste operacional menor que aplicar la consulta en sí a todos los elementos.\index{Filtrado y refinamiento}
@@ -421,12 +433,7 @@ Por ejemplo, las funciones de interpolación, que veremos en el capítulo \ref{Cre
 
 Si vemos la figura \ref{Fig:Ej_indices_espaciales}, para calcular cuales son los diez puntos (en negro) más cercanos a una coordenada dada (en rojo), no mediríamos las distancias de todos ellos. Mirando a simple vista podemos estimar que esos puntos van a estar dentro de un círculo aproximadamente como el representado en la figura, y podemos prescindir de los restantes a la hora de calcular las distancias exactas. Dentro de ese circulo hay más de diez puntos, con lo cual debe \emph{refinarse} ese resultado antes de poder ofrecer una respuesta exacta a la consulta.
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.5\mycolumnwidth]{Consultas/Ej_indices_espaciales.pdf}
-\caption{\small Para calcular los diez puntos más cercanos a una coordenada dada (en rojo), nuestra intuición espacial nos ayuda a decidir que estos se han de buscar en un subconjunto reducido tal como el de los situados dentro del circulo azul de la figura. Este proceso de \emph{filtrado} y \emph{refinamiento} ahorra operaciones, y es el fundamento conceptual de los índices espaciales.}
-\label{Fig:Ej_indices_espaciales} 
-\end{figure}
+
 
 Otros procesos en los que son vitales los índices espaciales son las operaciones de solape entre capas de polígonos, que veremos en el capítulo \ref{Operaciones_geometricas}. Sin ellos, el rendimiento de estas operaciones espaciales sería mucho menor o incluso, como en el caso de la interpolación, totalmente insuficiente para que tales operaciones se puedan aplicar en la mayoría de los casos.
 
@@ -440,4 +447,5 @@ Al incorporar la componente espacial, se añaden nuevos elementos para realizar c
 
 La aplicación de criterios espaciales hace necesaria la utilización de índices espaciales para optimizar el trabajo con grandes volúmenes de datos. Estos índices estructuran los datos de tal modo que en la realización de consultas espaciales no es necesario efectuar dicha consulta sobre la totalidad de los datos, sino únicamente sobre una fracción de ellos.
 
+\end{multicols}
 \pagestyle{empty}

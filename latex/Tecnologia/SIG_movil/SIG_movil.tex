@@ -48,12 +48,12 @@ Hoy en día son muchos los dispositivos que podemos emplear para disponer de una 
 
 \index{GPS}\index{Teléfono móvil}\index{Tablet PC}
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=0.90\textwidth]{SIG_movil/TiposDispositivosMoviles.png}
 	\caption{\small Distintos tipos de dispositivos móviles}
 \label{Fig:TiposDispositivosMoviles} 
-\end{figure}
+\end{figure*}
 
 
 Las características de estos dispositivos son distintas a las de un ordenador de sobremesa en el que utilizamos el \emph{software} SIG que hemos visto hasta ahora, haciendo que deba desarrollase software específico y que deban tenerse en cuenta algunas consideraciones adicionales. A su vez, cada uno de los anteriores dispositivos tiene unas capacidades propias que lo hacen más interesante para unas u otras tareas dentro del trabajo en campo.
@@ -76,12 +76,12 @@ Para dar una definición más formal de lo que entendemos por SIG móvil, podemos d
 
 Por su parte, \cite{Brimicombre2002GIS} distingue tres elementos principales que dan forma al contexto de las aplicaciones SIG móviles: SIG, Internet, y dispositivos móviles y Nuevas Tecnologías de la Información y la Comunicación (NTIC). La figura \ref{Fig:LBSInterseccion} esquematiza esto.\index{NTIC}
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=0.35\mycolumnwidth]{SIG_movil/LBSInterseccion.pdf}
 	\caption{\small Clasificación de aplicaciones del ámbito del SIG móvil en función de las tecnologías empleadas (según \cite{Brimicombre2002GIS})}
 \label{Fig:LBSInterseccion} 
-\end{figure}
+\end{figure*}
 
 En el centro, como tecnologías aglutinadoras de las anteriores, encontramos los \emph{Servicios Basados en Localización} (LBS\footnote{\emph{Location--Based Services}}). En general, se suelen recoger bajo esta denominación los servicios que toman en consideración la posición del usuario, y en los que se produce la participación de un tercero, el encargado de proveer el servicio como parte fundamental de un negocio. Dichos servicios pueden ir desde la localización del comercio más próximo hasta el envío de avisos cuando se encuentre cerca de otro usuario conocido. 
 \index{Servicios Basados en Localización}\index{Location--Based Services (LBS)|see{Servicios Basados en Localización}}
@@ -174,12 +174,12 @@ Por el contrario, en los métodos basados en terminal es el propio dispositivo el
 
 La figura \ref{Fig:MetodosPosicionamiento} esquematiza lo anterior.
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=0.95\textwidth]{SIG_movil/MetodosPosicionamiento.pdf}
 	\caption{\small Metodos de posicionamiento basados en red (a) y en terminal (b)}
 \label{Fig:MetodosPosicionamiento} 
-\end{figure}
+\end{figure*}
 
 Con independencia del tipo de método, el proceso de cálculo de posición sigue un esquema como el siguiente:
 
@@ -253,23 +253,23 @@ Esto no quiere decir que este tipo de capacidades no se encuentren en los SIG mó
 
 A modo de ejemplo, y tras lo explicado hasta este punto, se muestra en la figura \ref{Fig:SIGMovil} el aspecto de una aplicación SIG móvil.
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=0.4\textwidth]{SIG_movil/SigMovil.png}
 	\caption{\small Aspecto de una aplicación SIG móvil (gvSIG Mobile)}
 \label{Fig:SIGMovil} 
-\end{figure}
+\end{figure*}
 
 En los servicios basados en localización, todo lo anterior tiene lugar de un modo aún más patente, reduciéndose por lo general más aún las funcionalidades. El usuario tiene menos capacidad para <<operar>> con el dispositivo y con el \emph{software}, y los servicios se diseñan para que sean sencillos de consumir. Los teléfonos móviles, que representan el dispositivo por excelencia para este tipo de aplicaciones, tienen capacidades más reducidas que otros de los adecuados para el SIG móvil, por lo que esta limitación de funcionalidades es también producto del dispositivo al que están orientadas mayoritariamente. La menor especialización de los usuarios influye también en que las aplicaciones presenten esas características.
 
 La imagen \ref{Fig:EjemplosLBS} muestra dos ejemplos de aplicaciones para servicios basados en localización. Adviértase que estas no tienen necesariamente que guardar similitud con la idea clásica de un SIG, y que pueden no incluir ningún tipo de representación cartográfica. Es decir, que pueden proveer el servicio dando algún tipo de información geográfica (en el caso del ejemplo de la izquierda, se ofrecen mensajes de otros usuarios del servicio localizados en la misma zona) sin necesidad de mostrarla sobre un mapa. En el caso de la captura de pantalla mostrada en el lado derecho, la información sí aparece en un mapa, en el cual se muestran los contactos del usuario que se encuentran cercanos. El servicio en este caso es una forma particular de agenda de contactos que hace énfasis en algunos de ellos en función de su localización y la del usuario.
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=0.7\textwidth]{SIG_movil/EjemplosLBS.png}
 	\caption{\small Dos servicios basados en localizacion sobre un teléfono móvil. En la parte izquierda, Foursquare [\url{http://www.foursquare.com}]. En la parte derecha, Life360 [\url{http://www.life360.com}].}
 \label{Fig:EjemplosLBS} 
-\end{figure}
+\end{figure*}
 
 
 \subsection{El contexto}
@@ -309,12 +309,12 @@ Si recurrimos al clásico ejemplo del cálculo de rutas, aunque el análisis llevad
 
 Al contrario que en el caso de usar un dispositivo móvil como un navegador GPS, ese viaje por esa ruta no vamos a realizarlo inmediatamente, no tiene necesariamente que ser un trayecto cercano a nuestra posición actual e incluso no vamos a ser nosotros mismos quienes hagamos el recorrido. De este modo, el contexto temporal o el personal del usuario no tienen significado alguno. Podemos incluir esas variables explícitamente si el \emph{software} así nos lo permite, pero no son una parte inherente al cálculo y que siempre sea tenida en cuenta. Por su parte, en un dispositivo móvil pueden incorporarse todos estos factores asumiendo que, en la mayoría de los casos, sí van a ser de importancia. En resumen, que el hecho de que se trabaje sobre un dispositivo móvil y este permita conocer su posición añade significado a todas las clases de contexto.
 
-\begin{figure}[!hbtp]   
+\begin{figure*}[!hbtp]   
 	\centering
 	\includegraphics[width=\textwidth]{SIG_movil/RealidadAumentada.png}
 	\caption{\small Dos ejemplos de realidad aumentada (cortesía de 5 Magazine)}
 \label{Fig:RealidadAumentada} 
-\end{figure}
+\end{figure*}
 
 El \emph{software} debe diseñarse de forma que pueda responder a ese contexto y adaptarse a él. Las siguientes son las áreas principales en las que esa adaptación puede producirse \cite{Reichenbacher2004PhD}:
 

@@ -2,13 +2,13 @@
 \chapter{Introducción. ¿Qué es un SIG?}
 \label{Introduccion_fundamentos}
 
-
-
 \bigskip
 
 \begin{intro}
 Este capítulo presenta los conceptos fundamentales sobre Sistemas de Información Geográfica (SIG), definiéndolos y presentando tanto sus capacidades fundamentales como la forma en que estas pueden ser aprovechadas. Asimismo, se presentan los SIG como sistemas complejos, y se describe cada uno de sus componentes principales. El capítulo presenta una visión global del ámbito de los SIG y de la ciencia asociada a los SIG como disciplina independiente, al tiempo que muestra el contexto en el que el desarrollo y utilización de estos se produce en la actualidad.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -153,6 +153,13 @@ La distinción entre estas y los SIG es notable, máxime a día de hoy, y es fácil 
 
 Dos son las principales soluciones que deben conocerse por su relación directa con el ámbito SIG: Diseño Asistido por Ordenador (CAD\footnote{Computer--Aided Design}) y AM/FM.
 
+\begin{figure*}
+\centering
+\includegraphics[width=.7\mycolumnwidth]{Introduccion_fundamentos/CAD.png}
+\caption{\small Entorno de trabajo de una aplicación CAD.}
+\label{Fig:CAD} 
+\end{figure*}
+
 Las aplicaciones CAD (Figura \ref{Fig:CAD}) permiten el diseño informatizado de elementos muy diversos, que pueden ir desde una pieza industrial o la carrocería de un automóvil (tareas con poca relación con los SIG) a un edificio (con mayor relación con los SIG). El uso de herramientas CAD en disciplinas como la arquitectura para la creación de planos tiene cierta similitud con el uso de un SIG, y ambas herramientas se han nutrido la una de la otra en cuanto a sus funcionalidades. No obstante, siguen existiendo grandes diferencias que hacen que cada aplicación responda a unas necesidades concretas pese a la existencia de características comunes. De entre estas diferencias cabe destacar las siguientes \cite{ESRI2002GISCAD}\cite{Baguena1995Mapping}
 
 \begin{itemize}
@@ -162,12 +169,7 @@ Las aplicaciones CAD (Figura \ref{Fig:CAD}) permiten el diseño informatizado de 
 \item No todos los tipos de datos de un SIG se pueden incorporar en un CAD. Los datos procedentes de la teledetección, por ejemplo, no forman parte del abanico de datos que un CAD puede manejar.
 \end{itemize}
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.8\mycolumnwidth]{Introduccion_fundamentos/CAD.png}
-\caption{\small Entorno de trabajo de una aplicación CAD.}
-\label{Fig:CAD} 
-\end{figure}
+
 
 El CAD puede resultar suficiente para desarrollar algunas tareas propias de los SIG, en particular las relacionadas con el diseño cartográfico. No obstante, algunas circunstancias ponen de manifiesto las carencias de una herramienta CAD para sustituir completamente a un SIG, al tener requerimientos para los que esta no puede ofrecer una solución. Entre estos requerimientos cabe citar los siguientes:
 
@@ -210,12 +212,12 @@ Otra forma distinta de ver el sistema SIG es atendiendo a los elementos básicos 
 \item \textbf{Personas}. Las personas son las encargadas de diseñar y utilizar el software, siendo el motor del sistema SIG.
 \end{itemize}
 
-\begin{figure}[h]   
+\begin{figure*}[H]
 \centering
-\includegraphics[width=.55\mycolumnwidth]{Introduccion_fundamentos/Elementos_SIG.pdf}
+\includegraphics[width=.44\mycolumnwidth]{Introduccion_fundamentos/Elementos_SIG.pdf}
 \caption{\small Elementos que forman el sistema SIG}
 \label{Fig:Elementos_SIG} 
-\end{figure}
+\end{figure*}
 
 Para el enfoque de esta obra, cada uno de los elementos anteriores tiene unas características propias que deben estudiarse. No obstante, el hardware no es un elemento especialmente particular en el caso de un SIG, y las aplicaciones SIG que encontramos actualmente en el mercado en todas sus variedades (que son las que el lector de este libro va a utilizar habitualmente) se ejecutan en su mayoría sobre ordenadores personales sin requerimientos altamente específicos. Más aún, la expansión de las tecnologías SIG ha alcanzado hoy en día otros ámbitos como las plataformas móviles, haciendo de estas unas tecnologías poco específicas en lo que a \emph{hardware} se refiere. Por esta razón, no es necesario tratar en detalle esta pieza del sistema SIG, siendo más adecuado tratar el resto de elementos, más característicos e importantes para el aprendizaje de los conceptos SIG y la descripción de estos.
 
@@ -227,12 +229,12 @@ Las personas a su vez dan forma a los distintos ámbitos de trabajo, definiendo e
 
 Algunos autores proponen modificar el esquema clásico de cinco elementos para reflejar más correctamente la nueva realidad de los SIG. Por ejemplo, es habitual la propuesta de un esquema como el mostrado en la figura \ref{Fig:Elementos_SIG2}.
 
-\begin{figure}[h]   
+\begin{figure*}[H]
 \centering
-\includegraphics[width=.55\mycolumnwidth]{Introduccion_fundamentos/Elementos_SIG2.pdf}
+\includegraphics[width=.44\mycolumnwidth]{Introduccion_fundamentos/Elementos_SIG2.pdf}
 \caption{\small Una división distinta del sistema SIG}
 \label{Fig:Elementos_SIG2} 
-\end{figure}
+\end{figure*}
 
 La incorporación de la visualización es una diferencia notable con respecto al esquema clásico. En realidad, y si volvemos a ese enfoque basado en subsistemas, el subsistema de visualización resulta de enorme importancia en un SIG, siendo pese a ello habitual que no sea tratado con la suficiente profundidad en textos dedicados a los SIG desde un punto de vista genérico. Precisamente por no ser considerado un elemento independiente, no se le concede la necesaria atención como parte que debe estudiarse al tratar la disciplina de los SIG.
 
@@ -324,4 +326,5 @@ Existen otras herramientas y tecnologías que pueden en principio asemejarse a lo
 
 Todo el conjunto de conocimientos sobre los cuales se asientan los SIG conforman la denominada Ciencia de la Información Geográfica. Bajo esta denominación se recogen todos los temas a tratar en esta obra.
 
+\end{multicols}
 \pagestyle{empty}

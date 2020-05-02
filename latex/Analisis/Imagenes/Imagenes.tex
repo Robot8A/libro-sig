@@ -141,12 +141,12 @@ El proceso se lleva a cabo de igual modo, localizando puntos de control en la im
 
 La imagen \ref{Fig:Rectificacion} muestra un ejemplo gráfico de este proceso. Se dispone de un mapa escaneado sin coordenadas, y una imagen de la que sí se conocen las coordenadas de cada píxel, pues ha sufrido un proceso de georreferenciación y corrección previo. Localizando un número suficiente de puntos singulares en ambas imágenes, puede establecerse la transformación que permite asignar coordenadas a todos los píxeles del mapa escaneado. Una vez el proceso se ha realizado, este mapa escaneado puede ya emplearse dentro de un SIG junto con cualquier otra capa que represente esa misma porción del terreno, pues contienen toda la referencia geográfica necesaria.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/Rectificacion.png}
 \caption{\small Proceso de referenciación de una imagen (mapa escaneado), empleando para la localización de puntos de control (en amarillo) una fotografía aérea ya georreferenciada.}
 \label{Fig:Rectificacion} 
-\end{figure}
+\end{figure*}
 
 \subsubsection{Ortorrectificación}\index{Ortorrectificación}
 
@@ -154,21 +154,21 @@ La ortorrectificación persigue un objetivo similar a la rectificación, pero incl
 
 Esta elevación provoca un desplazamiento aparente de los píxeles y, según el caso, puede ser tan necesario corregir este efecto como lo es el hacerlo para las distorsiones del plano. En la figura \ref{Fig:Ortorrectificacion} se muestra una fotografía aérea antes y después del proceso de ortorrecificacion. A esta segunda se la denomina \emph{ortofotografía}.\index{Ortofotografía}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/Ortorrectificacion.png}
 \caption{\small Fotografía aérea antes y después del proceso de ortorrectificación}
 \label{Fig:Ortorrectificacion} 
-\end{figure}
+\end{figure*}
 
 La figura \ref{Fig:Empire_state} muestra claramente el efecto de las distorsiones que derivan del relieve del terreno o de la propia altura de los elementos fotografiados, tales como grandes edificios.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.65\mycolumnwidth]{Imagenes/Empire_state.png}
 \caption{\small Las distorsiones provocadas por el hecho de que la escena fotografiada no es plana se aprecian con claridad en esta imagen.}
 \label{Fig:Empire_state} 
-\end{figure}
+\end{figure*}
 
 La ortofotografía tiene una escala uniforme, y es como una versión fotográfica de un mapa de esa zona. Por esta razón, pueden medirse áreas y distancias en ella, o utilizarla para superponer sobre ella otras capas. En una imagen sin ortorrectificar, y cuando las distorsiones geométricas derivadas del relieve son notables, la medición daría lugar a valores erróneos y la superposición con otras capas no tendría una coincidencia completa.
 
@@ -249,19 +249,19 @@ Este procedimiento nos sirve para separar partes de la imagen en función de sus 
 
 La figura \ref{Fig:Segmentacion} nos muestra el resultado de una operación de segmentación aplicada sobre una imagen base (en este caso se trata de una ortofoto en blanco y negro). En los sucesivos apartados se empleará esta misma imagen original para ilustrar cada procedimiento. La curva de transformación asociada, con un umbral aplicado de 173, se muestra en la figura \ref{Fig:Curva_Segmentacion}.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/Segmentacion.png}
 \caption{\small Imagen original (a) y resultado de un proceso de segmentación (b)}
 \label{Fig:Segmentacion} 
-\end{figure}
+\end{figure*}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Imagenes/Curva_segmentacion.pdf}
 \caption{\small Curva de transformación asociada a una segmentación por umbral.}
 \label{Fig:Curva_Segmentacion} 
-\end{figure}
+\end{figure*}
 
 Como vemos, la función de transformación simplemente establece un valor umbral, a partir del cual se asocia el valor 255, mientras que por debajo se asocia el valor 0 (es habitual también emplear los valores 1 y 0 en lugar de los anteriores). Suponemos en este caso que los valores que resultan de interés y queremos aislar son aquellos que presentan valores superiores al umbral, mientras que todos los restantes los consideramos parte del fondo. La operación puede realizarse también al contrario, en caso de que los objetos a separar vengan caracterizados por valores bajos. En este caso, se asignaría 255 a los valores por debajo del umbral y 0 a los restantes.
 
@@ -287,12 +287,12 @@ Desde el punto de vista de las operaciones del álgebra de mapas que conocemos, l
 
 Puesto que muchos de los procedimientos de este apartado están, como se ha dicho, principalmente encaminados a la mejora visual de la imagen y que esta aporte más información a la hora de su visualización, la mejor manera de comprender uno de ellos es ver un ejemplo práctico, igual que hicimos en el caso de la segmentación. Para el caso de la expansión de contraste, la figura \ref{Fig:Expansion_contraste} muestra el resultado de aplicar este procedimiento sobre la imagen base ya presentada.\index{Expansión de contraste}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Imagenes/Expansion_contraste.png}
 \caption{\small Imagen tras un proceso de expansión de contraste}
 \label{Fig:Expansion_contraste} 
-\end{figure}
+\end{figure*}
 
 Como puede apreciarse si se compara con la imagen original, el proceso de expansión de contraste (también conocido como \emph{normalización}) aporta mayor definición a los distintos elementos de la imagen. Esto es así porque la expansión del contraste modifica el histograma de tal forma que todos los valores posibles de los Niveles Digitales sean empleados. Es decir, que de los 255 niveles de intensidad de gris el histograma abarque todos ellos, y al traducirse eso en las tonalidades de gris a la hora de representarse, estas también vayan desde el valor 0 (negro) hasta el 255(blanco). Logrando esto, se obtiene la mayor definición visual que puede apreciarse en la imagen.\index{Normalización}
 
@@ -321,12 +321,12 @@ Si se aplica la normalización a una imagen multibanda, es importante tener en cu
 
 Tanto el brillo como el contraste pueden modificarse mediante funciones lineales sencillas, tal como puede verse en la imagen \ref{Fig:Brillo_contraste}.\index{Brillo}\index{Contraste}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Brillo_contraste.png}
 \caption{\small Imagen original y modificación del brillo y el contraste, junto con sus curvas de transformación asociadas}
 \label{Fig:Brillo_contraste} 
-\end{figure}
+\end{figure*}
 
 Suponiendo como es habitual que trabajamos en un rango de valores entre 0 y 255, la modificación del brillo se lleva a cabo con una función de la forma
 
@@ -352,12 +352,12 @@ Valores altos de la pendiente y puntos de corte negativos dan lugar a imágenes d
 
 El caso de la expansión de contraste es un caso particular de este tipo de transformaciones lineales, que no obstante se ha analizado aparte por sus particularidades y por ser una operación muy frecuente. En concreto, la expansión de contraste es una operación que maximiza el contraste pero sin producir saturación en los tonos extremos (blancos y negros). La función de transformación correspondiente se representa en la figura \ref{Fig:Curva_expansion_contraste}.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Imagenes/Curva_expansion_contraste.pdf}
 \caption{\small Curva de transformación correspondiente a una expansión de contraste}
 \label{Fig:Curva_expansion_contraste} 
-\end{figure}
+\end{figure*}
 
 El empleo de funciones no lineales permite mayor flexibilidad a la hora de mejorar el contraste, al tiempo que se evita la aparición de saturación en los extremos del rango de valores. Una de las funciones más habituales en este caso es la siguiente:
 
@@ -379,12 +379,12 @@ La ecualización es un proceso similar a la normalización, en cuanto que hace más
 
 La figura \ref{Fig:Ecualizar} muestra la comparación entre la imagen original y la ecualizada, así como sus histogramas acumulados. Esto permite ver más claramente la naturaleza de la transformación. Teóricamente, si el histograma es constante tras la ecualización, el histograma acumulado debería ser una recta inclinada. El hecho de trabajar con valores discretos de los Niveles Digitales hace que no sea exactamente así, aunque puede claramente verse que la forma sí se asemeja a una recta en lugar de a la curva sigmoidal que presenta el histograma de la imagen original.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\textwidth]{Imagenes/Ecualizar.png}
 \caption{\small a) Imagen e histograma acumulado originales, b) imagen e histograma acumulado tras un proceso de ecualización.}
 \label{Fig:Ecualizar} 
-\end{figure}
+\end{figure*}
 
 La función de trasformación deriva del propio histograma acumulado original, teniendo su misma forma. De este modo, se hace innecesario el elegir valores umbral sobre el propio histograma, tal como sucedía en el caso de la expansión de contraste. Para un píxel con un Nivel Digital $ND$ en la imagen original, se tiene un valor en la imagen ecualizada dado por la expresión\index{Histograma}
 
@@ -432,23 +432,23 @@ La media es sensible a los valores extremos de la ventana, por lo que una opción
 
 El filtro de mediana no es una convolución, y no puede por tanto expresarse mediante un núcleo como sucedía con el de media.\index{Filtro!de mediana}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Imagenes/Suavizado.png}
 \caption{\small Imagen tras la aplicación de un filtro de suavizado}
 \label{Fig:Suavizado} 
-\end{figure}
+\end{figure*}
 
 La aplicación de un filtro de suavizado no solo tiene como efecto el desenfoque de la imagen, sino que también elimina el ruido de la misma. Por ello, estos filtros son una buena herramienta para tratar algunas de las deficiencias de las imágenes, que como vimos pueden presentar píxeles con Niveles Digitales muy distintos de los de su entorno.
 
 En la figura \ref{Fig:Filtro_mediana} puede observarse como la presencia de una línea errónea introducida en una imagen se corrige parcialmente con un filtro de mediana.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Filtro_mediana.png}
 \caption{\small Eliminación de una línea errónea por aplicación de un filtro de mediana}
 \label{Fig:Filtro_mediana} 
-\end{figure}
+\end{figure*}
 
 Filtros como el de mayoría o moda, que da como valor resultante de la celda aquel que se repite más entre las celdas circundantes, pueden también aplicarse para estos fines.
 
@@ -459,23 +459,23 @@ Otro tipo de ruido habitual es el conocido como \emph{sal y pimienta}, que apare
 Para limpiar estas imágenes resultantes, se emplean también filtros como los anteriores. Un filtro de mediana aplicado sobre la imagen de la figura \ref{Fig:Segmentacion} (resultado de una segmentación) elimina gran parte de los píxeles aislados y genera el resultado mostrado en la figura \ref{Fig:Filtro_salt_pepper}.
 
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Imagenes/Filtro_salt_pepper.png}
 \caption{\small Eliminación de ruido de tipo \emph{sal y pimienta} mediante filtro de mediana.}
 \label{Fig:Filtro_salt_pepper} 
-\end{figure}
+\end{figure*}
 
 \subsubsection{Filtros de realce}
 
 Los filtros de realce (o \emph{de paso alto}) tienen el efecto justamente contrario al de los anteriores, ya que acentúan las diferencias entre píxeles adyacentes, teniendo un efecto de enfoque. La definición aumenta, como puede verse en la imagen \ref{Fig:Realce}. Si se compara con la imagen original, se aprecia una separación más clara entre las tonalidades de píxeles contiguos, cuya diferencia se acentúa.\index{Filtro!de paso alto}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Imagenes/Realce.png}
 \caption{\small Imagen tras la aplicación de un filtro de realce}
 \label{Fig:Realce} 
-\end{figure}
+\end{figure*}
 
 Para obtener un filtro de realce, puede partirse de uno de suavizado, ya que una forma de realzar las diferencias entre píxeles es emplear un filtro de paso bajo para obtener una imagen suavizada, y después restar esta imagen de la imagen original. Haciendo esto se elimina el valor medio y se deja en cada píxel el valor que refleja la variación local de los Niveles Digitales.
 
@@ -509,12 +509,12 @@ En la figura \ref{Fig:Deteccion_bordes} puede verse el efecto de un filtro Lapla
 
 Para mostrar más claramente el resultado de estos filtros, se ha escogido una región de la imagen (en la parte superior izquierda) en lugar de la imagen completa, por contener un mayor número de entidades lineales. Como puede apreciarse, es en la detección de estos elementos lineales donde mejor actúan estos filtros.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Deteccion_bordes.png}
 \caption{\small Aplicación de un filtro de detección de bordes sobre la imagen original (a) y la imagen ecualizada (b).}
 \label{Fig:Deteccion_bordes} 
-\end{figure}
+\end{figure*}
 
 El filtro Laplaciano tiene su base en el análisis de las segundas derivadas de la función que los Niveles Digitales definen y la detección de puntos donde esta se anule. Otros filtros se basan en el estudio del gradiente (la primera derivada) de forma que se realcen las zonas en las que existan variaciones notables entre las intensidades de píxeles contiguos.
 
@@ -526,12 +526,12 @@ Aplicando filtros de esta segunda clase, la detección de bordes puede hacerse re
 
 El resultado de aplicar estos filtros puede verse en la figura \ref{Fig:Sobel}.
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Sobel.png}
 \caption{\small Aplicación de un filtro de Sobel vertical (a) y horizontal (b).}
 \label{Fig:Sobel} 
-\end{figure}
+\end{figure*}
 
 Otros filtros habituales son los siguientes, denominados \emph{filtros de Prewitt},\index{Filtro!de Prewitt}\index{Nucleo@Núcleo!de Prewitt}
 
@@ -605,12 +605,12 @@ Dadas dos imágenes RGB, una de ellas con mayor información espacial y otra con m
 
 En la figura \ref{Fig:IHS} puede verse un esquema del proceso de fusión de imágenes según lo descrito anteriormente.
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/IHS.pdf}
 \caption{\small Fusión de imágenes mediante transformación IHS}
 \label{Fig:IHS} 
-\end{figure}
+\end{figure*}
 
 \subsubsection{Transformación por componentes principales}
 
@@ -656,12 +656,12 @@ Las imágenes más sencillas contienen una única banda, y su representación en bla
 
 Las imágenes que tomamos con una cámara digital o una fotografía aérea en color escaneada y almacenada en un fichero, ambas utilizan este modelo de colores. Los periféricos de representación en los cuales las observamos, tales como una pantalla o un cañón de proyección, utilizan un esquema igual para reproducir un color dado. Este esquema se denomina de tipo \emph{aditivo}, ya que forma el color sumando unas intensidades concretas de cada uno de los colores básicos. La figura \ref{Fig:Descomposicion_RGB} muestra un ejemplo de descomposición en canales RGB. \index{Escaneo}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.7\textwidth]{Imagenes/Descomposicion_RGB.png}
 \caption{\small Descomposición de una imagen en color en sus componentes RGB.}
 \label{Fig:Descomposicion_RGB} 
-\end{figure}
+\end{figure*}
 
 \index{Modelo!de color RGB}
 
@@ -691,24 +691,24 @@ En general, pueden tomarse cualesquiera bandas para crear una composición en fal
 
 La figura \ref{Fig:Falso_color} muestra distintas composiciones a partir de las bandas de una imagen LANDSAT TM.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Falso_color.png}
 \caption{\small Distintas composiciones a partir de las bandas de una imagen LANDSAT TM. a) 1, 2, 5; b) 2, 4, 3; c) 2, 5, 3}
 \label{Fig:Falso_color} 
-\end{figure}
+\end{figure*}
 
 \subsection{Operaciones morfológicas}
 \label{Operaciones_morfologicas}
 
 Las operaciones morfológicas producen modificaciones de las \emph{formas} presentes en la imagen, siendo estas formas las de los distintos \emph{elementos} que encontramos en dicha imagen. En su concepción básica, estas operaciones se aplican sobre imágenes binarias (recordemos que estas pueden generarse en base a otro tipo de imágenes mediante las formulaciones vistas en la sección \ref{Segmentacion}), las cuales, según vimos, contienen únicamente dos valores: uno de ellos que representa los citados elementos y otro que representa el \emph{fondo} de la imagen. De esta forma, es sencillo entender a qué nos referimos cuando hablamos de las formas que aparecen en la imagen, que son las que se van a ver afectadas por las operaciones de esta sección. Esto puede entenderse recurriendo a la figura \ref{Fig:Imagen_binaria}, que será la que utilicemos como base para estudiar las operaciones morfológicas a lo largo de esta sección.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Imagenes/Imagen_binaria.png}
 \caption{\small Una sencilla imagen binaria. Para más claridad, se han trazado líneas divisorias entre los distintos píxeles.}
 \label{Fig:Imagen_binaria} 
-\end{figure}
+\end{figure*}
 
 Las operaciones morfológicas se aplican originalmente sobre imágenes binarias, pero existen igualmente versiones de los algoritmos correspondientes que pueden aplicarse sobre imágenes en escala de grises o incluso imágenes multibanda. A la hora de emplearlas dentro de un SIG, podemos aplicar este tipo de operaciones sobre cualquier capa ráster que contenga de algún modo \emph{formas} como las que hemos citado y pueden observarse en la anterior imagen. Tales capas pueden obtenerse como resultado de muchas de las operaciones que hemos visto en capítulos anteriores, y pueden también prepararse empleando algunos de los procedimientos presentados dentro de este mismo, tales como la detección de bordes. También, por supuesto, pueden ser imágenes más complejas que contengan este tipo de elementos, tales como las distintas zonas de cultivo de una zona dada, aunque estas requieren preparación o procesos previos. La \emph{Clasificacion}, que veremos en la sección \ref{Clasificacion}, es uno de tales procesos.\index{Clasificación}
 
@@ -737,12 +737,12 @@ Basadas en estas operaciones, existen otras derivadas, entre las cuales veremos 
 
 Las dos principales operaciones morfológicas son la erosión y la dilatación. Pese a que sus nombres son ya sumamente descriptivos, veamos gráficamente en la figura \ref{Fig:Erosion_dilatacion} el efecto de ambas sobre nuestra imagen base. \index{Erosión}\index{Dilatación}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.80\textwidth]{Imagenes/Erosion_dilatacion.png}
 \caption{\small Resultado de aplicar operaciones de erosión (a) y dilatación (b) sobre la imagen base.}
 \label{Fig:Erosion_dilatacion} 
-\end{figure}
+\end{figure*}
 
 Como es fácil apreciar, la erosión reduce el tamaño de las formas, mientras que la dilatación tiene el efecto contrario, <<engordándolas>>\footnote{Este efecto contrario en realidad hace que las operaciones sean una la \emph{dual} de la otra. Esto quiere decir que aplicar una de ellas sobre los elementos de la imagen es equivalente a aplicar la otra sobre el fondo}.
 
@@ -780,12 +780,12 @@ La aplicación de una operación de cierre rellena los huecos y concavidades de lo
 
 Una aplicación práctica de estas operaciones la podemos encontrar en la imagen \ref{Fig:Esqueleto}. En ella la imagen inicial $a)$ presenta una estructura lineal tal como una carretera, pero esta, a través de los distintos procesos aplicados para obtener la imagen binaria, ha <<perdido>> algunos píxeles, de forma que ya no existe una conexión correcta entre los distintos píxeles que la forman. La carretera ha quedado <<rota>> en fragmentes inconexos, que no representan realmente el objeto, y que van a dificultar el cálculo de parámetros acerca de este.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.85\textwidth]{Imagenes/Esqueletizacion.png}
 \caption{\small a) Imagen original con un objeto lineal desconectado. b) Objeto conectado tras la aplicación de una operación de cierre. c) Esqueleto del anterior objeto obtenido mediante la aplicación de operaciones morfológicas.}
 \label{Fig:Esqueleto} 
-\end{figure}
+\end{figure*}
 
 La operación de cierre produce, como hemos dicho, un rellenado de los huecos de la imagen. Este efecto es exactamente el que necesitamos en este punto, ya que incorporará a la carretera aquellos píxeles que faltan para establecer la conexión entre los distintos tramos, y convertir dicha carretera en un único objeto.
 
@@ -824,12 +824,12 @@ Atendiendo a lo anterior surge el concepto de \emph{firma espectral}. La firma e
 En la figura \ref{Fig:Firmas_espectrales} pueden verse algunas firmas espectrales características, teniéndose así una idea de las diferencias que pueden existir, y también de cómo estas pueden utilizarse para el análisis de imágenes.
 
 
-\begin{figure}[h] 
+\begin{figure*}[h] 
 \centering
 \includegraphics[width=.95\mycolumnwidth]{Imagenes/Firmas_espectrales.pdf}
 \caption{\small Firmas espectrales tipo de algunos elementos habituales}
 \label{Fig:Firmas_espectrales} 
-\end{figure}
+\end{figure*}
 
 Más detalladamente, y para un píxel caracterizado por su firma espectral, dos son los tipos de propiedades que se pueden extraer:
 
@@ -879,12 +879,12 @@ Como resultado de lo anterior, las bandas de imágenes de satélite correspondient
 
 Sin necesidad de definir aún ningún índice, podemos ver claramente este hecho en la figura \ref{Fig:Garden_city}. En ella, se ha creado una imagen en falso color empleando las bandas del infrarrojo cercano, el rojo y el verde para los canales del rojo, verde y azul respectivamente (los del modelo RGB)\footnote{Este esquema es de uso habitual y se denota como RGB = NRG, siendo N = Near infrared (infrarrojo cercano), R = Red (rojo) y G = Green (verde). Como regla mnemotécnica, la lectura en ingles del acrónimo NRG suena parecida a la del vocablo inglés \emph{energy} (energía), y es también común referirse así a él.}. Debido a lo anterior, las zonas con cultivos con alto vigor vegetativo aparecen con un tono rojo muy marcado, que permite rápidamente identificarlas.\index{Falso color}
 
-\begin{figure}[h] 
+\begin{figure*}[h] 
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Imagenes/Garden_city.png}
 \caption{\small La creación de una imagen de falso color con un esquema RGB=NRG permite localizar las zonas de vegetación por su coloración roja intensa. Esto es debido a la alta reflectancia en las banda del infrarrojo visible y la baja reflectancia en el rango visible, causadas ambas por la actividad fotosintética.}
 \label{Fig:Garden_city} 
-\end{figure}
+\end{figure*}
 
 Dependiendo del tipo de sensor del cual provengan las imágenes a analizar, serán unas u otras bandas las que deban emplearse como bandas del rojo e infrarrojo cercano. En el caso particular del sensor LANDSAT, por ejemplo, la banda del rojo es la 3, mientras que la del infrarrojo cercano es la 4.
 
@@ -919,12 +919,12 @@ C = e^{-\alpha\frac{\mathrm{NDVI}}{\beta - \mathrm{NDVI}}}
 
 En la figura \ref{Fig:NDVI} puede verse el aspecto de una capa de NDVI para la zona de estudio habitual. Si se compara con la composición de color mostrada anteriormente puede observarse cómo las zonas sin vegetación presentan tonos oscuros (valores bajos de NDVI) y las de vegetación tonos claros (valores altos de NDVI).
 
-\begin{figure}[h] 
+\begin{figure*}[h] 
 \centering
 \includegraphics[width=.5\textwidth]{Imagenes/NDVI.png}
 \caption{\small (NDVI)}
 \label{Fig:NDVI} 
-\end{figure}
+\end{figure*}
 
 El número de índices de vegetación dentro de este primer grupo es muy elevado, todos ellos con una formulación similar a la del NDVI y tratando de mejorar ciertos aspectos de este. Algunos de los más habituales son los mostrados a continuación.
 
@@ -955,12 +955,12 @@ Para el cálculo de los índices de vegetación del segundo grupo se requiere, como
 
 El fundamento en el que reside el uso de la linea de suelo y su incorporación a los índices de vegetación puede comprenderse con facilidad si se observa la figura \ref{Fig:Linea_del_suelo}. Los puntos de la gráfica representada son los correspondientes a los valores en las bandas del rojo y el infrarrojo para los píxeles sobre zonas de suelo desnudo. A estos se ajusta la recta $r$ mostrada, y los puntos sobre la misma tales como el punto $X$ se asocian al suelo desnudo. 
 
-\begin{figure}[h] 
+\begin{figure*}[h] 
 \centering
 \includegraphics[width=.55\mycolumnwidth]{Imagenes/Linea_del_suelo.pdf}
 \caption{\small Representación gráfica de la línea de suelo, un punto correspondiente a suelo desnudo ($X$) y un punto correspondiente a la presencia de cierta vegetación ($X'$)}
 \label{Fig:Linea_del_suelo} 
-\end{figure}
+\end{figure*}
 
 Para ese mismo suelo, una cierta cobertura vegetal haría que el valor correspondiente tuviera una menor reflectancia en el rojo y mayor en el infrarrojo cercano, alejándose de la línea de suelo perpendicularmente. Cuanto mayor es la cobertura vegetal y mayor la actividad fotosintética, mayor será esta distancia entre el punto y la linea de suelo, y por lo tanto su medida puede constituir un índice de vegetación válido. Esta es la razón por la que estos índices, como ya se dijo, se conozcan como índices basados en distancia.
 
@@ -1089,12 +1089,12 @@ Decíamos al inicio del capítulo que podemos, a partir de imágenes, identificar e
 
 Del mismo modo, extraer la localización de cada árbol dentro de una masa arbórea también requiere identificar estos por la forma de sus copas en la imagen, al igual que, por ejemplo, la localización de edificios (Figura \ref{Fig:Identificacion_edificios}).
  
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.75\textwidth]{Imagenes/Identificacion_edificios.png}
 \caption{\small Identificación automatizada de edificios a partir de una imagen aérea (cortesía de Visual Learning Systems, Inc)}
 \label{Fig:Identificacion_edificios} 
-\end{figure}
+\end{figure*}
 
 En cierta medida, el proceso de clasificación se basa de forma global en una concepción ráster de los resultados a obtener, mientras que la extracción de elementos enfoca dichos resultados como entidades vectoriales (que son, precisamente, esos elementos a detectar). Por ello, tiene en realidad mucha relación con todo lo que veremos en el capítulo \ref{Creacion_capas_vectoriales}. En conjunto con los conceptos que veremos entonces, aplicamos también los que conocemos de este capítulo ---tales como las firmas espectrales---, así como las ya mencionadas ideas sobre clasificación que igualmente se detallarán en breve.
 

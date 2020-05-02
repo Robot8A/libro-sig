@@ -46,12 +46,12 @@ Esta estructura se compone fundamentalmente de un lienzo sobre el que se sitúan 
 
 Junto a este lienzo existen herramientas de navegación que permiten ampliar o reducir la escala, o bien modificar el encuadre (Figura \ref{Fig:Herramientas_navegacion}). Asimismo, se presentan todas las funciones que permiten obtener las distintas formas de representación que veremos en la parte \ref{Visualizacion}, tales como el ajuste de colores o el establecimiento de etiquetas en función de los valores asociados a las distintas entidades, entre otros.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.99\textwidth]{SIGs_escritorio/Herramientas_navegacion.png}
 \caption{\small Herramientas de navegación fundamentales en el entorno gráfico de un SIG de escritorio. a) alejamiento (\emph{zoom out}), b) acercamiento (\emph{zoom in}), c) desplazamiento (\emph{pan})}
 \label{Fig:Herramientas_navegacion} 
-\end{figure}
+\end{figure*}
 
 Estas capacidades convierte a los datos geográficos en un elemento activo, pues, a diferencia de un mapa clásico donde no pueden modificarse sus características, en un SIG el usuario puede de forma rápida y sencilla elegir \emph{qué} ve y \emph{cómo} lo ve.
 
@@ -70,12 +70,12 @@ Esta mayor complejidad hace asimismo que puedan existir diversas formas en las q
 En el caso de una representación tridimensional real, los objetos poseen información sobre su forma tridimensional, y junto con las coordenadas que delimitan su geometría plana (las geometrías básicas que conocemos: punto, línea y polígono), existen valores adicionales en el eje vertical. De este modo, pueden representarse entidades tales como edificios, o una ruta tridimensional que represente la trayectoria de un avión. Asimismo, y como puede verse en la figura, pueden añadirse elementos adicionales que aprovechan las capacidades de representación 3D, así como etiquetas o incluso elementos interactivos que también actúan en 3D (por ejemplo, para la selección de entidades).
 
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{SIGs_escritorio/Tipos_vistas_3D.png}
 \caption{\small Distintas formas de representación 3D de capas de datos geográficos}
 \label{Fig:Tipos_vistas_3D} 
-\end{figure}
+\end{figure*}
 
 Es importante recalcar que la visualización de una capa dentro de un SIG es independiente de la información que dicha capa contiene o la forma en que esta se almacena. El dato geográfico y su representación van por separado, y el dato en sí no define la representación, sino que únicamente sirve como apoyo para esta. Esto es particularmente cierto para el caso de capas vectoriales, así como para capas ráster que contengan un valor de tipo no gráfico, es decir, aquellas que no sean imágenes.
 
@@ -133,12 +133,12 @@ Debe pensarse que el proceso presentado como ejemplo es muy sencillo y únicament
 La imagen \ref{Fig:Proceso_complejo} muestra el aspecto de uno de tales procesos implementado en QGIS, un software GIS con capacidad de de creación de modelos. El proceso representado en la figura \ref{Fig:Esquema_MonteCarlo} también es un ejemplo de otro tipo de análisis que puede adaptarse ventajosamente en este tipo de herramientas de modelización.
 
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.9\textwidth]{SIGs_escritorio/Proceso_complejo.png}
 \caption{\small Esquema de un proceso complejo creado a partir de operaciones simples de análisis con datos SIG.}
 \label{Fig:Proceso_complejo} 
-\end{figure}
+\end{figure*}
 
 Asimismo, las herramientas SIG que contienen funcionalidad de análisis suelen permitir el acceso a estas a traves de lenguajes de \emph{scripting}, lo cual facilita la creación de flujos de trabajo y la automatización de rutinas complejas de análisis. Si bien este trabajo no se realiza de un modo gráfico e intuitivo como en el ejemplo mostrado anteriormente, y requiere mayores conocimientos, la flexibilidad y potencia que ofrece es mucho mayor.
 
@@ -162,12 +162,12 @@ Las herramientas destinadas a la edición de entidades geométricas heredan sus ca
 
 Otras funciones de edición que encontramos son las que permiten simplificar algunas tareas, tales como la división de un polígono. La figura  \ref{Fig:Division_poligono} muestra cómo un polígono puede dividirse en dos simplemente trazando una línea divisoria.  Otras funcionalidades similares incluyen la eliminación automática de polígonos espúreos (véase \ref{Poligonos_espureos}), o el ajuste automático entre entidades.\index{Polígono!espureo}
 
-\begin{figure}
+\begin{figure*}
 \centering
 \includegraphics[width=.65\mycolumnwidth]{SIGs_escritorio/Division_poligono.pdf}
 \caption{\small División automática de un polígono en dos nuevas entidades a partir de una línea. Funcionalidades de este tipo aparecen en los SIG para facilitar las tareas de edición.}
 \label{Fig:Division_poligono} 
-\end{figure}
+\end{figure*}
 
 En general, el número de funcionalidades es sensiblemente menor que en el caso de los programas CAD, ya que gran parte de ellas no tiene aplicación directa en el caso de trabajar con datos geográficos. No obstante, también aparecen herramientas adicionales, como sucede en el caso de que se registre información topológica, lo cual ha de considerarse por igual en el proceso de edición. Así, herramientas como la mostrada en la figura \ref{Fig:Division_poligono} han de tener en cuenta la existencia de una estructura topológica y un modelo de representación particular en el SIG, y no operarán igual en todas las aplicaciones, ya que, como sabemos, no todas presentan las mismas capacidades en este terreno.
 
@@ -208,12 +208,12 @@ Otra aplicación en esta linea es la generación de una serie de mapas que cubren 
 
 La figura \ref{Fig:Serie_mapas} muestra un ejemplo de lo anterior.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.9\textwidth]{SIGs_escritorio/Serie_mapas.png}
 \caption{\small La automatización de las tareas de creación cartográfica permite simplificar la producción de grandes volúmenes de cartografía, como por ejemplo al dividir un área geográfica en una serie dada de mapas.}
 \label{Fig:Serie_mapas} 
-\end{figure}
+\end{figure*}
 
 Estas posibilidades surgen de la separación existente en un SIG entre los datos espaciales y el diseño del documento cartográfico que los contiene, del mismo modo que ya vimos existe entre datos y parámetros de representación a la hora de visualizar los primeros.
 
@@ -238,12 +238,12 @@ Un usuario experimentado no encontrará problemas en manejar un SIG de escritorio
 
 Así, existen visores que ocupan un papel secundario como parte de un producto compuesto que incluye al propio programa y a los datos en sí. Ejemplos muy claros y muy populares son aplicaciones como Google Earth (figura \ref{Fig:GEarth}) , que permite que cada usuario incorpore su propia información para visualizar esta, pero cuyo mayor interés es el acceso a una enorme base de datos de imágenes de satélite con cobertura global. De esta forma, la aplicación puede utilizarse para explorar una área deseada, sin necesidad de disponer junto con ella de datos para dicha zona, puesto que por defecto la aplicación accede a una base de datos de imágenes que van indisolublemente unidos a ella.\index{Google!Earth}
 
-\begin{figure}[!hbt]\label{Fig:GEarth}
+\begin{figure*}[!hbt]\label{Fig:GEarth}
 \centering
 \includegraphics[width=.8\textwidth]{SIGs_escritorio/gearth.png}
 \caption{\small Aspecto de un globo o visor tridimensional (GoogleEarth).}
 \label{Fig:GEarth} 
-\end{figure}
+\end{figure*}
 
 El usuario puede también añadir sus propias capas y usar estos visualizadores de la misma manera que emplea las capacidades de visualización de un SIG de escritorio más rico en funcionalidades, pero parte del interés de la aplicación no está solo en sus capacidades, sino en los datos que tiene vinculados y que permiten emplear estas.
 

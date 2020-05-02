@@ -2,13 +2,14 @@
 \chapter{Modelos para la información geográfica}
 \label{Tipos_datos}
 
- 
 
 \bigskip
 
 \begin{intro}
 La realidad geográfica debe recogerse en un formato que pueda ser entendido por el ordenador y así susceptible de emplearse dentro de un SIG. En este capítulo se mostrarán los enfoques conceptuales y prácticos más frecuentes para llevar esto a cabo, que a su vez son los responsables indirectos de las arquitecturas subyacentes en los SIG. Para ello, se estudiarán los distintos tipos de información con los que trabajamos en un SIG y las formas más adecuadas de entender, interpretar y manejar esta.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -89,19 +90,19 @@ Antes de entrar a describir los distintos modelos de representación, veamos algu
 
 \index{Modelo Digital de Elevaciones}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Tipos_datos/MDE_modelos_representacion.png}
 \caption{\small Distintas formas de representar una capa con información altitudinal.}
 \label{Fig:MDE_modelos_representacion} 
-\end{figure}
+\end{figure*}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Tipos_datos/Vias_modelos_representacion.png}
 \caption{\small Distintas formas de representar una capa con información sobre una red viaria.}
 \label{Fig:Vias_modelos_representacion} 
-\end{figure}
+\end{figure*}
 
 Comenzando con la elevación, encontramos cuatro distintas formas de representarla, a saber:
 
@@ -135,12 +136,12 @@ En un principio, puede pensarse que el modelo ráster se asemeja al modelo geográ
 
 De forma esquemática, los enfoques de los modelos de representación ráster y vectorial se muestran en la figura \ref{Fig:Esquemas_modelos_representacion}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.9\textwidth]{Tipos_datos/Esquemas_modelos_representacion.pdf}
 \caption{\small Comparación entre los esquemas del modelo de representación vectorial (a) y ráster (b).}
 \label{Fig:Esquemas_modelos_representacion} 
-\end{figure}
+\end{figure*}
 
 Podemos entender estos enfoques haciendo uso del esquema de Sinton presentado con anterioridad. En el modelo vectorial controlamos la definición de los valores asociados, y medimos la localización y forma de estos, dejando fijo el tiempo. En el modelo ráster, aunque la componente temporal también es fija, la componente que controlamos es la espacial (a través de la sistematicidad de la malla), mientras que medimos la naturaleza de los valores en cada una de las celdas.
 
@@ -153,12 +154,12 @@ Antes de pasar a la definición detallada de los modelos ráster y vectorial, menc
 
 En el modelo ráster, la zona de estudio se divide de forma sistemática en una serie de unidades mínimas (denominadas habitualmente \emph{celdas}), y para cada una de estas se recoge la información pertinente que la describe.  Se puede ver esto en detalle en la figura \ref{Fig:Raster_closeup}, que muestra aumentada una porción la malla ráster de elevaciones de la figura \ref{Fig:MDE_modelos_representacion}, de modo que los límites de las celdas se hacen patentes y puede además representarse en cada una de ellas su valor asociado.
 
-\begin{figure}[!hbt]   
+\begin{figure*}  
 \centering
 \includegraphics[width=.4\textwidth]{Tipos_datos/Raster_closeup.png}
 \caption{\small Celdas de una malla ráster con sus valores asociados.}
 \label{Fig:Raster_closeup} 
-\end{figure}
+\end{figure*}
 
 Aunque la malla de celdas puede contener información sobre varias variables, lo habitual es que trate una única variable. Es decir, que se tenga un único valor para cada una de las celdas.
 
@@ -187,25 +188,26 @@ En el modelo ráster no se recogen de forma explícita las coordenadas de cada una
 
 Lo más habitual es definir el emplazamiento de una única celda (habitualmente la celda superior izquierda), una orientación fija, y una distancia entre las celdas (el paso de la malla). Como se muestra en la figura \ref{Fig:Elementos_capa_raster}, esto ya permite, mediante un sencillo cálculo, conocer las coordenadas de todas las celdas sin necesidad de almacenar estas.
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.4\textwidth]{Tipos_datos/Elementos_capa_raster.pdf}
-\caption{\small La estructura regular de la malla ráster permite conocer las coordenadas de las celdas sin necesidad de almacenar estas, sino tan solo recogiendo algunos parámetros de la malla como la localización de una celda base ($x,y$), la orientación global o el tamaño de celda ($d$).}
-\label{Fig:Elementos_capa_raster} 
-\end{figure}
 
 La orientación de las capas ráster es habitualmente Norte--Sur, de tal modo que si pasamos de la primera a la segunda fila estamos descendiendo en latitud (este hecho sería matizable en función de la proyección empleada). Dicho de otra forma, la parte de arriba de la imagen es el norte, y la de abajo es el sur. Esta convención simplifica el trabajo con capas ráster dentro de un SIG y permite aplicar directamente la fórmula mostrada en la figura \ref{Fig:Elementos_capa_raster}.
 
 No obstante, puede suceder que la fuente de datos original no se adhiera a este formato (por ejemplo, una fotografía aérea en la que el avión no volaba en dirección Norte--Sur o perpendicular, o una porción de un mapa escaneado que no tiene tampoco esa orientación). En tal caso, y puesto que los SIG trabajan en general con tal orientación en sus representaciones y a la hora de incorporar capas ráster, nos encontraremos con situaciones como la mostrada en la figura \ref{Fig:Malla_raster_rotada}
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.5\textwidth]{Tipos_datos/Malla_raster_rotada.png}
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=\textwidth]{Tipos_datos/Elementos_capa_raster.pdf}
+\caption{\small La estructura regular de la malla ráster permite conocer las coordenadas de las celdas sin necesidad de almacenar estas, sino tan solo recogiendo algunos parámetros de la malla como la localización de una celda base ($x,y$), la orientación global o el tamaño de celda ($d$).}
+\label{Fig:Elementos_capa_raster} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=.8\textwidth]{Tipos_datos/Malla_raster_rotada.png}
 \caption{\small Aunque la zona de estudio no tenga orientación Norte--Sur, los SIG trabajan habitualmente con esta orientación, y las imágenes deben adecuarse a ello.}
-\label{Fig:Malla_raster_rotada} 
-\end{figure}
+\label{Fig:Malla_raster_rotada}
+\end{minipage}
+\end{figure*}
 
-En ella vemos cómo la orientación de la banda de estudio recogida es distinta de la Norte--Sur  de la imagen, lo cual, unido a la forma rectangular que ha de tener dicha imagen, causa la aparición de zonas sin información (en negro). Esto implica por una parte la necesidad de almacenar un gran número de valores sin interés, y por otra la necesidad de especificar de algún modo que todas esas celdas que aparecen en negro en la imagen son realmente celdas para las cuales no se dispone de información. Esto último se suele llevar a cabo mediante la definición de un valor arbitrario que indique la falta de datos (denominado generalmente valor de \emph{sin datos}), que codifica tal situación, de tal modo que pueden ignorarse las celdas con dicho valor a la hora de representar o analizar la capa ráster en cuestión. \index{Sin datos!valor de}
+En ella vemos cómo la orientación de la banda de estudio recogida es distinta de la Norte--Sur de la imagen, lo cual, unido a la forma rectangular que ha de tener dicha imagen, causa la aparición de zonas sin información (en negro). Esto implica por una parte la necesidad de almacenar un gran número de valores sin interés, y por otra la necesidad de especificar de algún modo que todas esas celdas que aparecen en negro en la imagen son realmente celdas para las cuales no se dispone de información. Esto último se suele llevar a cabo mediante la definición de un valor arbitrario que indique la falta de datos (denominado generalmente valor de \emph{sin datos}), que codifica tal situación, de tal modo que pueden ignorarse las celdas con dicho valor a la hora de representar o analizar la capa ráster en cuestión. \index{Sin datos!valor de}
 
 El otro parámetro necesario junto con la orientación de la malla y la situación geográfica de una de sus celdas es el denominado \emph{tamaño de celda} o \emph{tamaño de píxel}, también conocido como \emph{resolución}, pues, en efecto, su magnitud define la resolución de la capa. Un tamaño de celda mayor implica una menor resolución, y viceversa.\index{Resolución}\index{Tamaño!de celda}\index{Tamaño!de píxel}
 
@@ -217,12 +219,12 @@ Muchos son los factores que influyen en el tamaño de celda de una capa ráster, e
 
 Para el caso de capas ráster de variables continuas, en la sección \ref{Eleccion_caracteristicas_capa_resultante_raster} se da información detallada sobre cómo definir el tamaño de celda óptimo a la hora de crear estas a partir de datos de otra clase tales como datos vectoriales.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Tipos_datos/Diferentes_resoluciones.png}
 \caption{\small Imágenes de diferente resolución en función del sensor con que han sido obtenidas. Al tener distintos tamaños de píxel, servirán para distintos usos dentro de un SIG.}
 \label{Fig:Diferentes_resoluciones} 
-\end{figure}
+\end{figure*}
 
 Una vez conocemos el formato ráster, podemos relacionarlo con lo que ya hemos visto relativo a los modelos geográficos. En primer lugar, y por sus propias características, puede pensarse que la representación ráster es más adecuada para variables de tipo continuo que varían a su vez de forma continua en el espacio geográfico. Es decir, es más próxima al modelo geográfico de campos que al de entidades discretas. Esto es así debido principalmente a que una capa ráster cubre todo el espacio, y ello favorece el estudio de dicha variabilidad. No obstante, no debe considerarse que el ámbito de las variables continuas y los campos es exclusivo de las capas ráster. De hecho, de las cuatro representaciones mostradas para el caso de la elevación, solo una de ellas es de tipo ráster.
 
@@ -250,12 +252,12 @@ El otro modelo principal de representación es el modelo vectorial. En este model
 
 Si el modelo ráster era similar al modelo conceptual de campos, el vectorial lo es al de entidades discretas, pues modeliza el espacio geográfico mediante una serie de primitivas geométricas que contienen los elementos más destacados de dicho espacio. Estas primitivas son de tres tipos: puntos, líneas y polígonos.\index{Primitivas geométricas}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
-\includegraphics[width=.95\textwidth]{Tipos_datos/Primitivas_vectoriales.pdf}
+\includegraphics[width=\textwidth]{Tipos_datos/Primitivas_vectoriales.pdf}
 \caption{\small Primitivas geométricas en el modelo de representación vectorial y ejemplos particulares de cada una de ellas con atributos asociados}
 \label{Fig:Primitivas_vectoriales} 
-\end{figure}
+\end{figure*}
 
 Utilizando puntos, líneas o polígonos, puede modelizarse el espacio geográfico si se asocia a estas geometrías una serie de valores definitorios. La componente espacial de la información queda así en la propia primitiva (recoge la forma, posición y otras propiedades espaciales), y la componente temática queda en dichos valores asociados (Figura \ref{Fig:Primitivas_vectoriales}).
 
@@ -263,12 +265,12 @@ A la hora de definir las formas geométricas básicas, todas ellas pueden reducirs
 
 Una única entidad (para la cual existirá un único conjunto de valores asociados) puede contener varias primitivas. Así, en un mapa mundial en que cada entidad represente un país, y tal y como se ve en la figura \ref{Fig:Casos_particulares_poligonos}, países como Canadá estarán representados por más de un polígono, pues no puede recogerse todo su territorio mediante uno único. Todos estos polígonos constituyen una única entidad, ya que todos pertenecen al mismo país y tendrán el mismo conjunto de valores asociados.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.85\textwidth]{Tipos_datos/Casos_particulares_poligonos.png}
 \caption{\small Casos particulares de polígonos: a) varios polígonos disjuntos en una misma entidad (en este caso, mismo país), b) Polígonos con islas (huecos).}
 \label{Fig:Casos_particulares_poligonos} 
-\end{figure}
+\end{figure*}
 
 \index{Polígono!con huecos}\index{Entidades!multiples}
 
@@ -278,13 +280,6 @@ En la figura anterior, vemos como Sudáfrica presenta esta situación, ya que dent
 
 Como se muestra en la figura \ref{Fig:Poligonos_con_huecos}, el conjunto del territorio ocupado por Sudáfrica y las zonas interiores que no pertenecen al país no puede verse como un conjunto de polígonos sin más. Para representar Sudáfrica de forma aislada es necesario <<restar>> del polígono que engloba todo el territorio los polígonos respectivos a los países interiores. De no hacerlo así, un cálculo sencillo tal y como el del área de dicho país arrojará un resultado erróneo, pues considerará igualmente estas zonas interiores.
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.6\textwidth]{Tipos_datos/Poligonos_con_huecos.png}
-\caption{\small Los huecos de un polígono han de considerarse como parte de este.}
-\label{Fig:Poligonos_con_huecos} 
-\end{figure}
-
 En realidad, los huecos se registran como polígonos disjuntos que pertenecen a la entidad, aunque en lugar de representar un territorio que se añade, representan uno que se <<quita>>. Una forma habitual de hacer esto es almacenar las coordenadas de los vértices de estos polígonos interiores en sentido inverso, de tal modo que su área es negativa. De esta forma, la suma total del área de los polígonos de la entidad es igual al área buscada\footnote{La fórmula empleada para el cálculo del área de un polígono se expone en la página \pageref{Eq:Area_poligono}}.
 
 \index{Polígono!área de}
@@ -292,6 +287,13 @@ En realidad, los huecos se registran como polígonos disjuntos que pertenecen a l
 Dentro de un SIG, una capa vectorial puede contener un único tipo de primitiva. Así, tenemos capas vectoriales de puntos, de líneas y de polígonos, respectivamente. La elección de uno u otro tipo de capa para registrar una variable o conjunto de ellas ha de ser función del tipo de fenómeno que se pretende modelizar con dicha capa o la precisión necesaria, entre otros factores. 
 
 Por ejemplo, una capa de puntos puede representar un conjunto de ciudades, cada una de ellas definida como un único punto. Sin embargo, puede emplearse una capa de polígonos y no recoger una única coordenada (correspondiente, por ejemplo, al centro de la ciudad), sino el contorno o los límites administrativos de esta. Dependiendo del caso, será más apropiado elegir una u otra alternativa.
+
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=.5\textwidth]{Tipos_datos/Poligonos_con_huecos.png}
+\caption{\small Los huecos de un polígono han de considerarse como parte de este.}
+\label{Fig:Poligonos_con_huecos} 
+\end{figure*}
 
 De igual modo, la capa de vías representada en la figura \ref{Fig:Vias_modelos_representacion} es una capa de líneas. Cada línea, como elemento teórico de ancho nulo, representa el eje de la vía. Si se requiere una mayor precisión en la definición de la superficie de rodadura de dichas vías, una capa de polígonos puede ser utilizada en lugar de una de líneas.
 
@@ -331,12 +333,12 @@ Disponer de topología en una capa vectorial es de gran importancia a la hora de 
 
 En la figura \ref{Fig:Topologia_edicion} se puede observar la diferencia existente entre editar una capa de polígonos con topología y una sin ella. En el primer caso, la información contenida en la capa antes de su edición nos informa no solo de la forma de cada polígono, sino también del hecho de que ciertos polígonos comparten bordes comunes y de que el conjunto de ellos cubre el espacio de forma completa (constituyen una teselación\index{Teselación}). Así, al modificar un punto en uno de los polígonos, todos aquellos polígonos adyacentes que comparten dicho punto modifican también su perímetro. Las capacidades de edición implementadas en el Sistema de Información Geográfica hacen uso de la información topológica a la hora de editar geometrías. En el segundo caso, sin embargo, esta información no existe, y no se pueden alterar los polígonos adyacentes, perdiéndose la teselación completa del espacio.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
-\includegraphics[width=.6\mycolumnwidth]{Tipos_datos/Topologia_edicion.pdf}
+\includegraphics[width=.5\mycolumnwidth]{Tipos_datos/Topologia_edicion.pdf}
 \caption{\small Diferencias entre la edición (desplazamiento de un punto) no disponiendo de topología (a) o con ella (b).}
 \label{Fig:Topologia_edicion} 
-\end{figure}
+\end{figure*}
 
 La topología es en este caso un elemento que contribuye a la calidad de los datos, pues mantiene la coherencia espacial de estos y evita la aparición de elementos tales como polígonos de muy pequeño tamaño, frecuentes en la digitalización de entidades debido a las pequeñas imprecisiones que se presentan en el proceso, y que causan la presencia de falsos solapes entre polígonos.
 
@@ -348,12 +350,12 @@ Otro elemento que no se puede recoger sin topología son las direcciones de circu
 
 Estas circunstancias se recogen de forma esquemática en la figura \ref{Fig:Topologia_vias}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Tipos_datos/Topologia_vias.pdf}
 \caption{\small Capa de vías de comunicación sin topología (a) o con ella (b). Los puntos en este segundo caso indican conexiones entre vias, y son una representación visible de la topología existente. Las flechas indican la dirección de circulación y, al igual que sucede con las conexiones, solo están presentes si existe topología}
 \label{Fig:Topologia_vias} 
-\end{figure}
+\end{figure*}
 
 
 Aunque, como se ha mencionado, las capas ráster en cierta forma contienen información topológica (se conoce la relación de adyacencia entre las distintas celdas), esta es \emph{débil}, y no suficiente para análisis complejos como el de redes donde existen distintos elementos como los mencionados cruces o las direcciones de circulación. Aparte de la inherente peor disposición del modelo de representación para recoger una entidad espacial tal como una red, el modelo ráster no es óptimo para recoger la necesaria información topológica al respecto. Existen algunos intentos de adaptarlo a estas circunstancias (véase, por ejemplo \cite{Husdal2000MsC}), pero en general no se encuentran implementados de forma habitual.
@@ -390,12 +392,12 @@ La denominación de \emph{diccionario de puntos} que se mencionaba anteriormente 
 
 Existen diversos modelos para almacenar tanto las propias geometrías como sus relaciones inherentes, dos de los cuales se muestran en la figura \ref{Fig:Modelos_topologia} mediante sendos ejemplos en los que se codifican polígonos y líneas.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\textwidth]{Tipos_datos/Modelos_topologia.pdf}
 \caption{\small Dos modelos para representar la topología de líneas y polígonos. a) DIME, b) arco--nodo.}
 \label{Fig:Modelos_topologia} 
-\end{figure}
+\end{figure*}
 
 El primero de estos modelos es un modelo de carácter histórico denominado DIME (\emph{Dual Independent Map Encoding})\index{Dual Independent Map Encoding}, desarrollado originalmente por el \emph{US Bureau of the Census}\index{US Bureau of the Census}, y posteriormente mejorado en el modelo TIGER, empleado para la digitalización de cartografía urbana. El segundo es el modelo \emph{arco--nodo}, probablemente el más difundido y popular en la actualidad, aunque a este respecto los planteamientos existentes son muy variados.\index{Modelo!arco--nodo}
 
@@ -473,25 +475,30 @@ La comparación entre ambos modelos resulta necesaria para hacer un uso correcto 
 
 Asimismo, existe una imprecisión en las formas. El detalle con el que puede recogerse la forma de una entidad geográfica según el modelo vectorial es, en la práctica, ilimitado, mientras que, como puede verse en la imagen \ref{Fig:Imprecision_raster}, el modelo ráster restringe las formas a ángulos rectos, ya que la unidad base es un cuadrado. 
 
-\begin{figure}[!hbt]   
+
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.5\mycolumnwidth]{Tipos_datos/Imprecision_raster.png}
+\includegraphics[width=.7\textwidth]{Tipos_datos/Imprecision_raster.png}
 \caption{\small Imprecisión de forma en el modelo de representación ráster. La división del espacio en unidades cuadradas impide la representación fiel de entidades tales como curvas como la mostrada en trazo rojo en la figura.}
 \label{Fig:Imprecision_raster} 
-\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.8\textwidth]{Tipos_datos/Ambiguedad_raster.pdf}
+\vspace*{1cm}
+\caption{\small Ambigüedad en la asignación de valores a una celda en una capa ráster, debido al tamaño de esta, que condiciona la precisión con la que puede recogerse la realidad existente sobre el terreno.}
+\label{Fig:Ambiguedad_raster} 
+\end{minipage}
+\end{figure*}
+
 
 El perímetro de una entidad geográfica estará compuesto por líneas horizontales o verticales exclusivamente y, además, su longitud y la superficie que encierra serán respectivamente múltiplos del tamaño de celda y el área de dicha celda. Esta es la principal razón por la cual, si el uso principal que se le va a dar a una capa es su representación gráfica, deba optarse por el modelo vectorial. En caso contrario, y salvo que la resolución sea suficientemente alta, los mapas creados mostraran la falta de resolución y podrán distinguirse las unidades mínimas de la capas ráster (al igual que pasa en una imagen digital \emph{pixelada}), teniendo un aspecto que no es el propio de un mapa, tal y como estamos acostumbrados a usarlo.
 
 El hecho de que dentro de una celda el valor de la variable recogida sea constante, da lugar a ambigüedades como la mostrada en la figura \ref{Fig:Ambiguedad_raster}, donde una celda está ocupada por dos valores distintos, pero solo puede asignársele uno de ellos, debiendo establecerse algún criterio sistemático para llevar esto a cabo.
 
 Un hecho similar sucede en el ejemplo de la capa de vías. Algunas celdas son atravesadas por más de una vía, pero esa información se pierde, ya que el tamaño de celda no es suficiente para recogerla. La celda en cuestión aparece como celda de vía, pero no sabemos cuántas diferentes la atraviesan, ni tampoco si entre ellas están enlazadas o no.
-
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Ambiguedad_raster.pdf}
-\caption{\small Ambigüedad en la asignación de valores a una celda en una capa ráster, debido al tamaño de esta, que condiciona la precisión con la que puede recogerse la realidad existente sobre el terreno.}
-\label{Fig:Ambiguedad_raster} 
-\end{figure}
 
 Hay que tener en cuenta, no obstante, que la precisión de la representación vectorial es, precisamente, de la representación como tal, es decir, del modelo, pero no del dato en sí que tenemos en dicho formato vectorial, el cual depende de otros condicionantes tales como la escala de trabajo. Existe siempre incertidumbre en los datos, y el modelo de almacenamiento no excluye esta circunstancia. Los aspectos relativos a la calidad de los datos, tanto para datos ráster como vectoriales, se desarrollan en profundidad en el capítulo \ref{Calidad_datos}.
 \item \textbf{Volumen de almacenamiento}. El número de elementos a almacenar es, en general, muy superior en el caso del modelo ráster. Esto es así debido a que toda la superficie a recoger se divide en las mismas unidades, independientemente de la complejidad de la variable en cada punto o de la necesidad de estudiarla con mayor o menor detalle en unos puntos que en otros. Para variables que se conciban mejor según un modelo conceptual de entidades discretas, el modelo vectorial resulta más adecuado, ya que todas las zonas sin entidades no es necesario registrarlas de modo explicito, mientras que en el modelo ráster estas deben registrarse de igual modo que aquellas en las que sí existe información relevante.
@@ -561,12 +568,12 @@ Así, si la primera fila de la capa de vías en formato ráster no aparece ninguna 
 
 A la hora de tratar el conjunto de todas las celdas, se define un orden en el que recorrerla, denominado \emph{orden de barrido} o \emph{de escaneo} (Figura \ref{Fig:Orden_escaneo}), de tal modo que la matriz bidimensional queda reducida a una cadena de valores, es decir, a un vector unidimensional. Los distintos \emph{trozos} de esa cadena se van codificando según el esquema anterior, de tal modo que cuando aparecen muchos valores iguales consecutivos, estos pueden sustituirse ventajosamente por un único par de valores.\index{Orden!de barrido}\index{Orden!de escaneo}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Tipos_datos/Ordenes_escaneo.pdf}
 \caption{\small Ordenes de escaneo. a) fila a fila sin retorno, b) fila a fila con retorno.}
 \label{Fig:Orden_escaneo} 
-\end{figure}
+\end{figure*}
  
 La forma más sencilla de recorrer la imagen es hacerlo por filas, empezando por la fila superior y desplazándose de derecha a izquierda (Figura \ref{Fig:Orden_escaneo}a). No obstante, el salto que se produce al final de cada fila suele implicar una discontinuidad en los valores. Invirtiendo la dirección del recorrido en cada fila, se tiene el orden mostrado en la figura \ref{Fig:Orden_escaneo}b, el cual suele tener como resultado mayores niveles de compresión de datos, ya que la cadena resultante de recorrer la imagen contiene \emph{trozos} generalmente de mayor tamaño.
 
@@ -574,12 +581,12 @@ Un esquema de barrido más complejo es el basado en el denominado \emph{orden de 
 
 La matriz que contiene los valores de orden de Morton (el orden en que se visita cada celda según el esquema anterior), se conoce como \emph{Matriz de Morton}, la cual ya citamos por su importancia histórica en el capítulo \ref{Historia}.\index{Matriz!de Morton}\index{Orden!de Morton}\index{Morton!matriz de}\index{Morton!orden de}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Orden_Morton.pdf}
 \caption{\small Un ejemplo sencillo de barrido de una capa ráster según órdenes de Morton. Los valores en las celdas no indican los valores de la variable, sino el orden en que se visita dicha celda según este esquema de barrido}
 \label{Fig:Orden_Morton} 
-\end{figure}
+\end{figure*}
 
 Un ejemplo de este orden de barrido aplicado a una pequeña matriz puede verse en la figura \ref{Fig:Orden_Morton}.
 
@@ -590,12 +597,12 @@ Un ejemplo gráfico de un árbol cuaternario puede encontrarse en la figura \ref{F
 
 Los quadtrees son estructuras complejas, y no profundizaremos más en su descripción dentro de este capítulo. Para el lector interesado, la definición original de esta estructura de datos puede encontrarse en \cite{Finkel1974Acta}. 
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Quadtree.pdf}
 \caption{\small Ejemplo de un árbol cuaternario. En las zonas con más variabilidad (mayor densidad de puntos), los cuadrantes se subdividen hasta una profundidad mayor. La estructura es tal que cada cuadrante tiene dentro a lo sumo un punto. (Tomado de Wikipedia)}
 \label{Fig:Quadtree} 
-\end{figure}
+\end{figure*}
 
 Es importante reseñar que cuando la capa ráster contiene una información tal como una red viaria, la cual es susceptible de presentar valores idénticos en celdas contiguas, la codificación de tipo \emph{Run--Length} ---con cualquiera de los esquemas de barrido anteriores--- es ventajosa. Sin embargo, no lo es tanto cuando se trabaja con otro tipo de variables. 
 
@@ -619,12 +626,12 @@ La forma en la que las bandas se tratan dentro del fichero y el modo en que se o
 
 La figura \ref{Fig:Esquemas_almacenamiento_bandas} se muestra un ejemplo muy sencillo de los anteriores esquemas. Para una imagen de $2\times 2$ celdas y dos bandas, se recoge el orden en que se almacenaría capa valor según cada uno de dichos esquemas.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Tipos_datos/Esquemas_almacenamiento_bandas.pdf}
 \caption{\small Esquemas de almacenamiento para imágenes multibanda. Los números indican el orden en que se almacena cada valor.}
 \label{Fig:Esquemas_almacenamiento_bandas} 
-\end{figure}
+\end{figure*}
 
 \subsection{Modelos para representaciones vectoriales}
 
@@ -649,12 +656,12 @@ La creación del índice espacial supone la creación de una estructura espacial en
 Existen dos enfoques principales para los índices espaciales: continuos y discretos \cite{Guting1994VLDB}. Los continuos utilizan las coordenadas mismas de las entidades, simplificando la forma de estas, mientras que en los discretos la simplificación se aplica al espacio, discretizando este. En ambos, las entidades que se emplean son rectangulares en la mayoría de los casos. La figura \ref{Fig:Tipos_indices_espaciales} muestra la aproximación de una geometría poligonal que se obtiene en ambos tipos de modelos. 
 \index{Indice@Índice!espacial!tipos}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Tipos_datos/Tipos_indices_espaciales.pdf}
 \caption{\small Aproximación continua (a) y discreta (b) para un índice espacial.}
 \label{Fig:Tipos_indices_espaciales} 
-\end{figure}
+\end{figure*}
 
 En el caso continuo, se sustituye toda la complejidad del polígono por simplemente cuatro puntos: aquellos que conforman el rectángulo dentro del que este se inscribe. En el caso discreto, se reduce el polígono a unas cuantas celdas de una malla. Realizar comprobaciones sobre estas estructuras resulta mucho más sencillo, y por ello se emplean para realizar aproximaciones que simplifican las operaciones\footnote{Este proceso, conocido como \emph{filtrado y refinamiento}, lo veremos en detalle en el capítulo \ref{Consultas}}.\index{Filtrado y refinamiento}
 
@@ -678,4 +685,5 @@ En el modelo ráster el espacio se divide sistemáticamente en unidades mínimas de
 
 La ultima etapa es la que conlleva el almacenamiento de los modelos de representación, convirtiendo los elementos base de estos en valores numéricos manejables por el ordenador. Cada modelo de representación tiene sus particulares modelos de almacenamiento, los cuales tratan de maximizar el rendimiento de las operaciones realizadas sobre los datos espaciales, al tiempo que reducen el espacio que dichos datos ocupan.
 
+\end{multicols}
 \pagestyle{empty}

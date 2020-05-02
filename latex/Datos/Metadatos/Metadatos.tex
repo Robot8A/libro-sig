@@ -8,6 +8,8 @@
 Los metadatos son aquellos datos que describen los datos espaciales. En este capítulo describiremos en detalle qué son los metadatos, su utilidad, y cómo crearlos y emplearlos.
 \end{intro}
 
+\begin{multicols}{2}
+
 \section{Introducción}
 \pagestyle{fancy}
 
@@ -157,12 +159,12 @@ Por ejemplo, algunos de los datos que pueden resultar de interés a escala de ele
 
 Podemos encontrar el caso opuesto, en el que varias capas comparten los mismos metadatos, y por tanto estos pueden asociarse a escala de toda una familia de datos. Ese es el caso cuando se tiene un conjunto de capas generadas por una misma entidad y para un mismo fin, las cuales cubren una amplia zona geográfica y debido a ello se encuentran divididas horizontalmente. Estas circunstancias se dan de forma habitual en series de datos de carácter nacional o autonómico, y conforman una de las situaciones en las que el registro de metadatos puede hacerse para toda la serie en su conjunto, al menos para algunos de esos metadatos.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.65\mycolumnwidth]{Metadatos/Granularidad_metadatos.pdf}
 \caption{\small Granularidad de los metadatos. Los metadatos pueden hacer referencia a elementos a distinta escala.}
 \label{Fig:Granularidad_metadatos} 
-\end{figure}
+\end{figure*}
 
 Los metadatos pueden así registrarse a una escala distinta a la de la capa como unidad de datos, aunque esta sigue siendo la referencia más habitual a la hora de crear metadatos (Figura \ref{Fig:Granularidad_metadatos}).
 
@@ -240,5 +242,5 @@ Los metadatos pueden asociarse con los datos geográficos en niveles de detalle d
 
 Algunas de las secciones más importantes que encontramos en los metadatos son la identificación del dato, los valores relativos a su calidad o los relacionados con su distribución, entre otros.
 
-
+\end{multicols}
 \pagestyle{empty}

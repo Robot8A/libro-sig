@@ -2,13 +2,13 @@
 \chapter{Introducción. ¿Con qué trabajo en un SIG?}
 \label{Introduccion_datos}
 
-
-
 \bigskip
 
 \begin{intro}
 Los datos son el elemento clave de un SIG, pues sin ellos el resto de componentes no tienen utilidad alguna. La preparación de un adecuado conjunto de datos es base para poder llevar adelante con garantías todo proyecto SIG. En este capítulo veremos las características fundamentales de los datos y de la información espacial, presentando los conceptos básicos de estos que deben tenerse siempre presentes a la hora de trabajar con un SIG
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -85,12 +85,12 @@ En general, la información geográfica se recoge haciendo fija la componente temp
 
 Un concepto a tener en cuenta en relación con las componentes de la información geográfica es la \emph{dimensión}\index{Dimensión}. Los elementos que registramos pueden ir desde sencillos puntos (0D) hasta volúmenes tridimensionales (3D). Un caso particular ---y muy frecuente--- lo encontramos cuando estudiamos la forma tridimensional del terreno, pero tratando la elevación como variable temática, no como una parte más de la componente espacial. En este caso, tenemos una serie de valores de elevación (Z) localizados en el plano XY. Esto no es realmente equivalente a utilizar una componente espacial tridimensional, ya que no permite recoger en un mismo punto distintos valores (no puede, por ejemplo, modelizarse la forma de una cueva o un objeto vertical), por lo que se conoce como representación en 2.5 dimensiones (2.5D). La figura \ref{Fig:Dimensiones} muestra esquemáticamente el concepto de dimensión de los datos dentro de un SIG.\index{2.5D}
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.95\textwidth]{Introduccion_datos/Dimensiones.pdf}
 \caption{\small Dimensión de los datos geográficos}
 \label{Fig:Dimensiones} 
-\end{figure}
+\end{figure*}
 
 Por ultimo, un aspecto importante de toda variable estudiada es su \emph{continuidad}.\index{Continuidad} Se entiende esta continuidad como la capacidad de la variable para tomar todos los valores dentro de un rango definido. La temperatura, la presión o la elevación son valores continuos, mientras que ninguna variable de tipo nominal puede ser continua, ya que se encuentra limitada a un numero (finito) de identificadores posibles. Por ejemplo, en el caso del número de un DNI, los valores son siempre enteros, existe el valor 1 y el valor 2, pero no los infinitos valores decimales entre ambos.
 
@@ -124,12 +124,12 @@ Lógicamente, no debe dejarse de lado nunca el rigor cartográfico y, como se dijo
 \index{Uso conjunto de distintas escalas}
 La figura \ref{Fig:Distintas_escalas_horizontal} muestra un ejemplo de lo anterior en el que puede verse cómo varias fotografías aéreas forman un mosaico que cubre una zona dada, teniendo estas distinto nivel de detalle tal y como puede apreciarse.
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.8\textwidth]{Introduccion_datos/Distintas_escalas_horizontal.png}
 \caption{\small Integración de datos en sentido horizontal. A pesar de que la escala de detalle es distinta para las fotografías aéreas de la imagen, estas se combinan sin problema en un SIG, representándose a una escala dada todas ellas de forma sencilla. Nótese la mayor definición en la parte inferior de la imagen, que se forma con imágenes tomadas a una escala distinta a la de las de la parte superior. Adviértase igualmente la distinta iluminación, ya que han sido tomadas en fecha y horas distintas.}
 \label{Fig:Distintas_escalas_horizontal} 
-\end{figure}
+\end{figure*}
 
 
 \section{División vertical de la información. Capas}
@@ -144,12 +144,12 @@ En el caso de un SIG, los distintos tipos de información se pueden combinar de f
 
 Para comprender mejor el concepto de capa, pensemos en un mapa topográfico clásico. En él vamos a encontrar elementos como curvas de nivel, carreteras, núcleos urbanos, o simbología relativa a edificios y puntos singulares (iglesias, monumentos, etc.)  Todos estos elementos en su conjunto componen el mapa, y aparecen en una misma hoja como una unidad coherente de información geográfica. No obstante, cada uno de los de estos grupos de información recogidos ---elevaciones, red viaria, núcleos urbanos, puntos de interés arquitectónico--- pueden recogerse de forma independiente, y combinarse al componer el mapa según las necesidades del momento, o bien combinarse de modo distinto o emplearse individualmente (Figura \ref{Fig:Concepto_capa}).
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.7\textwidth]{Introduccion_datos/Concepto_capa.png}
 \caption{\small Concepto de \emph{capa} de información geográfica dentro de un SIG}
 \label{Fig:Concepto_capa} 
-\end{figure}
+\end{figure*}
 
 La figura es lo suficientemente gráfica como para entender la razón de que a este tipo de división la denominemos \emph{vertical}, así como el propio nombre de \emph{capa}, ya que de ella resulta una serie de diferentes niveles que se pueden superponer según el criterio particular de cada usuario de SIG.
 
@@ -185,4 +185,5 @@ La información geográfica tiene dos componentes: una componente temática y una c
 
 La información geográfica se divide horizontal y verticalmente. Las unidades mediante que incorporamos esta información a un SIG se conocen como \emph{capas}, y son uno de los elementos primordiales en la estructura de manejo de datos de todo SIG. El trabajo con capas más hace transparente la gestión de la información geográfica en un SIG, permite una mejor integración de distintos datos, y es la base para muchas operaciones, algunas de las cuales iremos viendo en capítulos sucesivos.
 
+\end{multicols}
 \pagestyle{empty}

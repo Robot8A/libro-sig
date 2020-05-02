@@ -2,8 +2,6 @@
 \chapter{La calidad de los datos espaciales}
 \label{Calidad_datos}
 
- 
-
 \bigskip
 
 \begin{intro}
@@ -11,6 +9,8 @@ Todo dato espacial contiene algún tipo de error, en mayor o menor medida. Conoce
 
 Puesto que los datos son la materia prima para obtención de nuevos datos a través de los procesos y operaciones que dentro de un SIG realizamos con ellos, trataremos también la forma en que los errores en los datos de partida afectan a los resultados que derivemos de ellos.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -60,12 +60,12 @@ El concepto básico es el \emph{error}, que no es sino la discrepancia existente 
 
 Dos términos importantes en el estudio de la calidad son la \emph{precisión} y \emph{exactitud}. La precisión indica el nivel de detalle con el que se recoge la información. Un capa en la que las posiciones se han medido con 5 valores decimales es más precisa que una en la que se han medido con un único decimal. \index{Precisión}\index{Exactitud}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.5\textwidth]{Calidad_datos/Imprecision_exactitud.pdf}
 \caption{\small Diferencia entre precisión y exactitud (Tomado de \cite{Heywood1998Longman}). En a) y b) la precisión es elevada, mientras que en c) y d) es baja. Por su parte, en a) y c) la exactitud es baja, siendo alta en b) y d).}
 \label{Fig:Imprecision_exactitud}
-\end{figure}
+\end{figure*}
 
 Dependiendo del uso que se pretenda dar a una capa de datos geográficos, se requerirá una u otra precisión. Un trabajo geodésico requerirá medir la localización de un punto con precisión milimétrica, mientras que para un muestreo para inventario forestal es suficiente localizar las parcelas correspondientes con una precisión mucho menor.
 
@@ -121,12 +121,12 @@ La calidad de un dato espacial depende de muchos factores. Las características q
 
 Es importante recalcar que los errores que pueden incorporarse en estas componentes de la calidad pueden ser tanto de tipo cuantitativo como de tipo cualitativo, y que ello no está necesariamente ligado a la naturaleza de la componente o el tipo de variable a la que esta hace referencia. Así, un error en un atributo de tipo categórico supone un error cualitativo, pero un error posicional en la componente $z$ (o de atributo de tipo continuo, si lo consideramos como tal) también puede dar lugar a un error cualitativo, como se muestra en la figura \ref{Fig:Error_cualitativo_elevacion}.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.75\textwidth]{Calidad_datos/Error_cualitativo_elevacion.pdf}
 \caption{\small a) MDE con valores reales. b) y c) Dos MDE con errores posicionales en $z$. En el caso c), el error no solo es cualitativo, sino también cuantitativo, ya que modifica la forma del terreno, pasando de ser una depresión a ser un pico.}
 \label{Fig:Error_cualitativo_elevacion}
-\end{figure}
+\end{figure*}
 
 En la figura, que representa una porción de un Modelo Digital de Elevaciones y dos variantes alternativas con sendos errores de medición de la elevación, en el primer caso, y pese a que el error es mayor (hay mayor discrepancia entre el valor real y el recogido en el MDE), no varía la configuración del terreno. En la celda central encontramos una depresión, ya que en ella la elevación es menor que en las circundantes, y esto sigue ocurriendo así a pesar de existir ese error posicional. En el segundo caso (subfigura c), sin embargo, el error es menor en magnitud, pero al ser de signo contrario hace que la depresión se convierta en un pico, una configuración del terreno exactamente inversa. Si estudiamos las formas del terreno en ese punto (un análisis que arroja resultados cualitativos), obtendremos un valor erróneo. \index{Modelo Digital de Elevaciones}
 
@@ -136,12 +136,12 @@ La forma en que los distintos tipos de errores aparecen en una capa es diferente
 
 Así, los errores posicionales son más comunes en el caso de capas vectoriales, y una de las fuentes de error principal en este sentido son los procesos de digitalización, especialmente si son de tipo manual. Junto a los errores de digitalización que vimos en el capítulo \ref{Fuentes_datos} (véase \ref{Condiciones_digitalizacion}), existen otros que pueden aparecer al crear una capa vectorial, tales como los que se muestran en la figura \ref{Fig:Errores_digitalizacion} para el caso de digitalizar una línea.\index{Digitalización}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.7\textwidth]{Calidad_datos/Errores_digitalizacion.pdf}
 \caption{\small Algunos errores que aparecen en la digitalización de lineas. a) Registro inexacto, b) puntos mal situados, c) desplazamientos por vértices insuficientes, d) errores de registro.}
 \label{Fig:Errores_digitalizacion}
-\end{figure}
+\end{figure*}
 
 Con independencia de la pericia y experiencia de un operador, resulta imposible que sea capaz de reproducir exactamente el objeto original y trazar con el cursor de la tableta digitalizadora o el ratón todos los detalles de este con absoluta fidelidad. Entre los errores que pueden aparecer encontramos falsos nudos (intersecciones de una línea consigo misma que no existen en realidad), puntos situados fuera del objeto, coincidencia imperfecta entre polígonos o mala referenciación de la hoja al situarla sobre la tableta (en el proceso de registro).
 
@@ -159,12 +159,12 @@ Además de los errores de un único dato espacial (una capa de información), es im
 
 Como muestra la figura \ref{Fig:Sinergia_errores}, dos errores sistemáticos de igual magnitud en sendas capas pueden tener efectos distintos sobre el resultado dependiendo de sus signos.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.95\textwidth]{Calidad_datos/Sinergias_errores.pdf}
 \caption{\small Un error $e$ pueden tener distintas consecuencias según interactúen con los errores de otros datos espaciales ($e'$). En a) los errores casi se anulan, mientras que en b) se suman y dan lugar a un resultado erróneo. Los elementos en negro y gris indican la posición real.}
 \label{Fig:Sinergia_errores}
-\end{figure}
+\end{figure*}
 
 En la figura, tanto la capa de puntos como la de polígonos presentan un error sistemático. No obstante, un análisis que cuente el número de puntos dentro del polígono seguirá dando el mismo resultado en uno de los casos, ya que la forma de los errores de ambas capas hace que estos no afecten a este análisis, mientras que en el otro caso el resultado es completamente distinto del real.
 
@@ -194,12 +194,12 @@ La detección de este tipo de valores puede realizarse, al igual que en el caso n
 
 En base a lo anterior, existen una serie de procedimientos y metodologías para la detección de valores ilógicos en un juego de datos, los cuales se dividen de forma más genérica en dos grupos principales: unidimensionales y multidimensionales. Cuando en los multidimensionales la vecindad se define únicamente en función de la localización espacial y sin utilizar la componente temática, se tiene la detección de \emph{outliers} espaciales. La figura \ref{Fig:Deteccion_outliers} muestra un esquema de esta clasificación y las metodologías más habituales. En \cite{Shekhard2003Unified} puede encontrarse más información al respecto.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.7\textwidth]{Calidad_datos/Deteccion_outliers.pdf}
 \caption{\small Clasificación de métodos para la detección de observaciones inconsistentes \emph{(outliers)}}
 \label{Fig:Deteccion_outliers}
-\end{figure}
+\end{figure*}
 
 
 Una vez localizado el error, este puede cuantificarse de diversas formas, según sea la naturaleza de la variable sobre la que se produce dicho error. 
@@ -246,21 +246,21 @@ En el caso del MDE propuesto, y para una operación dada a aplicar sobre este, la
 
 En la figura \ref{Fig:Esquema_MonteCarlo} se muestra un esquema gráfico de esta metodología.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.5\textwidth]{Calidad_datos/Esquema_MonteCarlo.pdf}
 \caption{\small Esquema de la modelación de errores mediante simulaciones de Monte Carlo}
 \label{Fig:Esquema_MonteCarlo}
-\end{figure}
+\end{figure*}
  
 Para ver con más claridad el efecto de este proceso, la figura \ref{Fig:Simulaciones_MonteCarlo} muestra respectivamente los resultados obtenidos a partir de un MDE, y la media de 20 y 50 simulaciones obtenidas según lo explicado anteriormente para el calculo de la curvatura horizontal (esté parámetro se explica en el capítulo \ref{Geomorfometria}).
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.8\textwidth]{Calidad_datos/Simulaciones_MonteCarlo.png}
 \caption{\small De izquierda a derecha, curvatura horizontal obtenida a partir del MDE original o como media de 20 y 50 simulaciones de Monte Carlo (tomado de \cite{Hengl2008Elsevier})}
 \label{Fig:Simulaciones_MonteCarlo}
-\end{figure}
+\end{figure*}
 
 Pese a su importancia, las herramientas para estos análisis no se implementan de forma habitual en los SIG, sino que deben llevarse a cabo utilizando funcionalidades individuales de análisis y programando los procesos repetitivos que son necesarios para calcular todas las capas derivadas empleadas. Por esta razón, es extraño que estos procesos se lleven a cabo en proyectos SIG de modo genérico. El usuario de SIG es consciente de los errores que presentan los datos espaciales con los que trabaja y las implicaciones de estos en lo que respecta a la calidad de datos, pero raramente desarrolla procesos de modelación de la incertidumbre, que quedan por el momento reservados para un ámbito más teórico que práctico.
 
@@ -305,4 +305,5 @@ Modelar el error y su propagación puede emplearse para conocer de forma más adec
 Por último, es importante ser consciente de los errores que contienen los datos y de la posible aparición de estos a medida que realizamos tareas con ellos, con objeto de minimizar dicha aparición y limitar la presencia e influencia de los errores en los resultados finales.
 
 
+\end{multicols}
 \pagestyle{empty}

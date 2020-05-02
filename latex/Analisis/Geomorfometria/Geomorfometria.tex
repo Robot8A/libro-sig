@@ -296,12 +296,12 @@ Y según \ref{Eq:Parametros_Zevenbergen}
 
 Como ejemplo, el mapa de pendientes resultante de utilizar esta última formulación puede verse en la figura \ref{Fig:Mapa_pendiente}.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Pendiente.png}
 \caption{\small Mapa de pendientes obtenido a partir del MDE}
 \label{Fig:Mapa_pendiente}
-\end{figure}
+\end{figure*}
 
 Podemos expresar ambas formulaciones como el resultado de convoluciones (ver \ref{Funciones_focales}), mediante un núcleo. Por ejemplo, las parciales según la metodología de \cite{Evans1972Harper} se corresponden con los núcleos siguientes:\index{Nucleo@Núcleo}\index{Convolución}
 
@@ -360,23 +360,23 @@ En este caso, la orientación no esta definida cuando la pendiente es nula.
 
 El mapa de orientaciones para la zona del juego de datos de referencia se muestra en la figura \ref{Fig:Mapa_orientacion}.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Orientacion.png}
 \caption{\small Mapa de orientaciones obtenido a partir del MDE.}
 \label{Fig:Mapa_orientacion}
-\end{figure}
+\end{figure*}
 
 Es de reseñar que la orientación es un parámetro circular, ya que $a$ y $a+360${\degree} indican la misma dirección. Por esta razón, debe tenerse cuidado al realizar análisis estadísticos sobre los valores de orientación. Una posible solución que elimina este hecho es trabajar con las proyecciones   $\cos(a)$ y $\sin(a)$ \cite{King1999Geoderma} (ver \ref{Estadisticas_lineas}). También a la hora de crear una representación gráfica de un mapa de orientaciones debe tenerse en cuenta la naturaleza circular del parámetros. Nótese como en la figura \ref{Fig:Mapa_orientacion} la escala de colores también es circular, de tal modo que el valor máximo (360) tiene asociado el mismo color que el mínimo (0), ya que en realidad representan una misma orientación.\par
 
 Tanto la orientación como pendiente pueden representarse de modo simultaneo no como una capa nueva de valores, sino mediante elementos vectoriales (líneas) que representen el gradiente, las cuales pueden acompañar a la propia capa de elevaciones a partir de la cual se calculan (Figura \ref{Fig:Representacion_gradiente}). Es de interés reseñar que, aunque la pendiente y la elevación son habitualmente aplicadas a una capa de elevaciones como todos los restantes parámetros que vemos en este capítulo, no ha de limitarse su aplicación a estas. Para cualquier otra variable de la cual queramos ver cómo varía en el espacio, ambos parámetros son perfectamente aplicables.
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Representacion_gradiente.png}
 \caption{\small Representación del gradiente mediante elementos lineales. Para una mejor interpretación se han añadido curvas de nivel cada 10 metros.}
 \label{Fig:Representacion_gradiente}
-\end{figure}
+\end{figure*}
 
 Como veremos más en detalle en las próximas secciones, la orientación tiene relación directa con el comportamiento de los flujos sobre el terreno y sirve por tanto para el análisis hidrológico. Los análisis que veremos son de tipo regional, aunque la orientación puede usarse también en análisis focales para definir parámetros relacionados con el comportamiento hidrológico, tales como el \emph{índice de convergencia} \cite{Koethe1996SARA}.
 
@@ -384,12 +384,12 @@ Otro de los usos habituales de los MDE es el relativo a la insolación. Tradicion
 
 Una primera aproximación mediante un modelo sencillo se obtiene combinando los valores de orientación y pendiente en los denominados \emph{relieves sombreados}. Estos mapas intentan reflejar la topografía del MDE de forma más realista, constituyendo además representaciones muy intuitivas. Por esta razón, se han empleado para resaltar otros mapas y enriquecerlos visualmente \cite{Horn1981IEEE}, tal y como puede verse en la figura \ref{Fig:Relieve_sombreado}. Empleando transparencias, puede reflejarse en una única imagen la información de una capa ráster y el relieve subyacente.\index{Relieve sombreado}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Geomorfometria/Relieve_sombreado.png}
 \caption{\small Utilización de una capa de relieve sombreado para mejorar la visualización de una imagen aérea.}
 \label{Fig:Relieve_sombreado} 
-\end{figure}
+\end{figure*}
 
 
 Para una posición dada del Sol definida por su azimut $\phi$ y su elevación sobre el horizonte $\theta$, la insolación sobre una celda de pendiente $s$ y orientación $a$ viene expresada por la ecuación \cite{Shary2005GFDQ}:
@@ -408,12 +408,12 @@ Respecto al estudio de la insolación no como un parámetro local, sino teniendo e
 
 En la figura \ref{Fig:Visibilidad_insolacion} puede verse esto gráficamente.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.9\mycolumnwidth]{Geomorfometria/Visibilidad_insolacion.png}
 \caption{\small Zonas en sombra (a) frente a zonas bajo insolación (b), por comparación entre el perfil del terreno y la línea de visión entre la celda problema y el Sol. }
 \label{Fig:Visibilidad_insolacion} 
-\end{figure}
+\end{figure*}
 
 Para analizar la insolación a lo largo de un periodo dado, basta dividir este en intervalos y estudiar la posición del Sol en cada uno.de ellos. Los ángulos $\phi$ y $\theta$ se obtienen en cada instante a partir de modelos astronómicos sencillos. En \cite{Wilson2000Wiley} se encuentran detalladas las expresiones correspondientes. Del análisis de todos esos intervalos obtenemos el tiempo de insolación total como suma del de todos los intervalos en los que el Sol es visible desde la celda, así como un valor total de insolación como suma de las energías recibidas en ellos.
 
@@ -485,12 +485,12 @@ Las medidas geométricas basadas en derivadas de segundo grado aportan informació
 
 Al contrario que sucedía con la pendiente o la orientación, no existe una única curvatura, sino un número infinito de ellas. Para definir una curvatura particular necesitamos no solo el punto donde calcularla, sino también un plano que corte a la superficie en el mismo. Este plano ha de contener al vector normal a la superficie, y la intersección de dicho plano con esta da lugar a lo que se denomina una \emph{sección normal} (Figura \ref{Fig:Seccion_normal}), sobre la cual se estudia la curvatura. La curvatura de la curva plana que representa la sección normal es el inverso del radio del circulo que se ajusta a la curva en el punto dado (Figura \ref{Fig:Concepto_curvatura}). Por tanto, tiene dimensiones  [L$^{-1}$].
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Geomorfometria/Seccion_normal.pdf}
 \caption{\small Una sección normal es la resultante de la intersección de la superficie con un plano que contiene al vector normal a esta en un punto.}
 \label{Fig:Seccion_normal}
-\end{figure}
+\end{figure*}
 
 Matemáticamente, la curvatura $k$ de la curva $z(x)$ viene dada por:
 
@@ -502,12 +502,12 @@ k=\frac{\frac{\mathrm{d}^2 z}{\mathrm{d}z^2}}{\left [ 1 + \left (
 
 De entre los planos que pueden tomarse, algunos aportan más información que otros. Los planos normales a la superficie que son paralelo y normal a la curva de nivel (mutuamente ortogonales) resultan de especial interés. Estos definen, respectivamente, las curvaturas denominadas horizontal y vertical.\index{Curva!de nivel}
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Geomorfometria/Concepto_curvatura.pdf}
 \caption{\small La curvatura es el inverso del radio ($1/R$)  del círculo que ajusta a la curva en un punto dado. Por convención, es positiva en el caso convexo ($R_2 > 0$) y negativa en el concavo ($R_1 < 0$).}
 \label{Fig:Concepto_curvatura}
-\end{figure}
+\end{figure*}
 
 Junto con la notación introducida en \ref{Eq:Notacion_derivadas}, utilizaremos la siguiente para simplificar las expresiones:
 
@@ -643,22 +643,22 @@ La principal ventaja del método, su simplicidad, es también su principal defecto
 
 La aparición de segmentos rectilíneos paralelos en zonas llanas (Figura \ref{Fig:Lineas_paralelas_D8}) o la acumulación de errores en pendientes monótonas (\ref{Fig:Acumulacion_error_D8}), son, entre otras, algunas de las consecuencias indeseadas de lo anterior.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width= .4\mycolumnwidth]{Geomorfometria/Acumulacion_error_D8.png}
 \caption{\small Propagación de errores de dirección en el modelo D8.La flecha señala la dirección real de la pendiente y las celdas sombreadas la dirección de flujo calculada}
 \label{Fig:Acumulacion_error_D8} 
-\end{figure}
+\end{figure*}
 
 \index{Error!Propagación}
 
 
-\begin{figure}[h]      
+\begin{figure*}[h]      
 \centering
 \includegraphics[width= .65\mycolumnwidth]{Geomorfometria/Lineas_paralelas_D8.png}
 \caption{\small Líneas paralelas de flujo como resultado de la aplicación del modelo D8}
 \label{Fig:Lineas_paralelas_D8}
-\end{figure}
+\end{figure*}
 
 \index{Lineas paralelas (problema de)@Líneas paralelas (problema de)}
 
@@ -708,12 +708,12 @@ f_b=\frac{\phi_a}{\phi_a+\phi_b}
 
 Aunque muy poco habituales, existen asimismo metodologías no basadas en el modelo D8, en las cuales el flujo no se desplaza entre los centros de una celda y las de su entorno, sino libremente a través de toda la celda sin restringirse a su punto central (Figura \ref{Fig:KRA}). El modelo KRA (\emph{Kinematic Routing Algorithm})\cite{Lea1992Chapman}, de flujo unidimensional, o el DEMON (\emph{Digital Elevation MOdel Networks}) \cite{CostaCabral1994WRR}, de flujo bidimensional, son ejemplo de ellos.\index{DEMON}\index{KRA}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.3\mycolumnwidth]{Geomorfometria/KRAD8.pdf}
 \caption{\small Cálculo de dirección de flujo según Kinematic Routing Algorithm (KRA)\cite{Lea1992Chapman}(trazo fino) y comparación con D8 \cite{Callaghan1984CVGIP} (trazo grueso)}
 \label{Fig:KRA} 
-\end{figure}
+\end{figure*}
 
 Otro autores como \cite{Pilesjo1998Geoinf} proponen modelos que aplican distintas metodologías en función de la forma del relieve en cada celda, distinguiendo entre grupos de formas orográficas.
 
@@ -752,12 +752,12 @@ Existen dos formas de aplicar estas ideas para dar solución al problema:
 
 Respecto a la primera, podemos asimilar la dirección de flujo de la celda a la tendencia en ese sentido de las celdas que vierten sobre ella. Trabajando sobre la metodología del D8 para ello, y entendiendo cada dirección de flujo como un vector que une el centro de la celda origen con el de aquella sobre la que vierte su flujo, una simple suma vectorial de los vectores que representan dichos flujos dará lugar a un nuevo vector, el cual puede utilizarse como dirección de flujo (Figura \ref{Fig:Zonas_planas_dir_flujo}).\index{D8}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.2\mycolumnwidth]{Geomorfometria/Zonas_planas_dir_flujo.png}
 \caption{\small Cálculo de dirección de flujo sobre una celda llana (en trazo grueso) como suma vectorial de las direcciones de las celdas que vierten sobre la misma (en trazo fino).}
 \label{Fig:Zonas_planas_dir_flujo} 
-\end{figure}
+\end{figure*}
 
 Si alguna de las celdas situadas alrededor de la celda problema es a su vez plana, al evaluar la dirección de flujo de esta será necesario recurrir también al algoritmo anterior, continuándose así sucesivamente  hasta alcanzar una zona no llana. En ese momento, quedarán definidas todas las direcciones anteriores hasta llegar a dicho emplazamiento desde la celda problema original.
 
@@ -765,24 +765,24 @@ Aunque solucionando eficientemente la dificultad de las zonas planas, esta metod
 
 \cite{Jenson1988PERS} propone una filosofía opuesta empleando las celdas hacia las que vierte la zona llana y que tengan por sí mismas un flujo bien definido. Con ellas, aplicando un proceso iterativo similar al anterior, se define el flujo de las celdas circundantes a las mismas encaminándolo hacia ellas y continuando de este modo hacia las restantes celdas hasta completar la totalidad de la zona llana (Figura \ref{Zonas_planas_dir_flujo_jenson}).  No obstante, la similitud en cuanto a sus conceptos, aunque con algunas diferencias, hace que puedan asociarse a esta alternativa unas desventajas similares a las comentadas en el método anterior.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.6\textwidth]{Geomorfometria/Zonas_planas_dir_flujo_jenson.png}
 \caption{\small Cálculo de direcciones de flujo sobre zonas llanas según \cite{Jenson1988PERS}. La malla de la izquierda representa las alturas del MDE, donde se aprecia la zona llana de elevación 1 (en gris). Las mallas sucesivas presentan las etapas del proceso iterativo de asignación de direcciones de flujo a partir del punto de salida existente.}
 \label{Zonas_planas_dir_flujo_jenson} 
-\end{figure}
+\end{figure*}
 
 El segundo planteamiento, la modificación del MDE para darle una cierta pendiente sobre las zonas llanas, es más adecuado, puesto que da como resultado un MDE hidrológicamente correcto sobre el que pueden aplicarse sin problemas las formulaciones habituales. \cite{Garbrecht1997JH} propone establecer dicha modificación aplicando los conceptos de las dos soluciones anteriores. Es decir, considerando que el flujo sigue la dirección marcada por las celdas aguas arriba, alejándose de las zonas altas, y confluyendo hacia la dirección señalada por las celdas aguas abajo.
 
 Para ello, define dos capas de elevaciones modificadas, una reflejando cada uno de los fenómenos anteriores (alejamiento de las zonas altas y direccionamiento hacia las zonas bajas), la suma de las cuales da lugar al MDE modificado sin zonas llanas (Figura \ref{Zonas_planas_dir_flujo_garbrecht}).
 
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.6\textwidth]{Geomorfometria/Zonas_planas_dir_flujo_garbrecht.png}
 \caption{\small Modificación del MDE para el cálculo de direcciones de flujo sobre zonas llanas según \cite{Garbrecht1997JH}. De izquierda a derecha y de arriba a abajo: elevaciones originales, modificación de elevaciones según los dos supuestos considerados y elevaciones finales resultantes.}
 \label{Zonas_planas_dir_flujo_garbrecht}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Depresiones}
 \label{Depresiones}
@@ -824,24 +824,24 @@ Al aplicar alguno de los algoritmos anteriores, obtenemos sobre la depresión una
 
 La figura \ref{Fig:Llenado_depresiones} presenta un esquema comparativo de los diferentes resultados que se obtienen mediante la aplicación de un simple llenado y de la consideración conjunta de llenado y apertura.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.85\textwidth]{Geomorfometria/Llenado_depresiones.png}
 \caption{\small De derecha a izquierda, elevaciones originales, eliminación de la depresión usando llenado y eliminación de la depresión mediante llenado y modificación de celdas obstáculo. En negro, celda de desagüe. En gris, celdas modificadas.}
 \label{Fig:Llenado_depresiones} 
-\end{figure}
+\end{figure*}
 
 
 \cite{Planchon2001Catena} propone una solución con un planteamiento radicalmente opuesto. En este caso el algoritmo trabaja <<inundando>> la totalidad el MDT ---elevando la cota de todo él como si hubiera un exceso de agua a lo largo de toda su extensión--- y posteriormente retirando dicha capa de agua a excepción de en las depresiones, donde esta se queda y las llena, eliminándolas así.
 
 La figura (\ref{Fig:Planchon}) muestra un sencillo esquema del funcionamiento de esta formulación.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.65\mycolumnwidth]{Geomorfometria/Depresiones_planchon.png}
 \caption{\small Eliminación de depresiones según \cite{Planchon2001Catena}.}
 \label{Fig:Planchon} 
-\end{figure}
+\end{figure*}
 
 \subsection{Área acumulada y parámetros derivados}
 \label{Area_acumulada}
@@ -852,30 +852,30 @@ Para una celda cualquiera, su flujo va a desplazarse por efecto de la gravedad a
 
 El D8 es, por su simplicidad, el más didáctico de los métodos, y permite comprender visualmente el concepto de este parámetro (Figura \ref{Fig:Area_acumulada_D8}).\index{D8}\index{Area@Área!acumulada}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width= .55\mycolumnwidth]{Geomorfometria/Area_acumulada_D8.png}
 \caption{\small El área acumulada de una celda dada (en rojo) es la suma de las áreas de las celdas conectadas con esta y situadas aguas arriba (en azul). Los trazos indican la conectividad entre celdas según el modelo D8}
 \label{Fig:Area_acumulada_D8} 
-\end{figure}
+\end{figure*}
 
 La diferencia entre los métodos de asignación de direcciones de flujo se ve de forma gráfica al calcular el área acumulada empleando cada uno de ellos. La figura \ref{Fig:Diferencias_metodos_area_acumulada} muestra los valores de área acumulada para una superficie generada artificialmente con forma de cono, calculados estos con cada uno de los métodos explicados en \ref{Direcciones_flujo}.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.55\mycolumnwidth]{Geomorfometria/Diferencias_metodos_area_acumulada.pdf}
 \caption{\small Representación del área acumulada sobre un cono circular según los principales algoritmos de asignación de direcciones de flujo (adaptado de \cite{Conrad2007phd})}
 \label{Fig:Diferencias_metodos_area_acumulada} 
-\end{figure}
+\end{figure*}
 
 En la figura \ref{Fig:Area_acumulada} puede verse el mapa de área acumulada para la región del juego de datos de ejemplo. Como se dijo en \ref{Funciones_locales}, el uso de una transformación logarítmica enriquece la representación resultante.\index{Transformación!logarítimica}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Area_acumulada.png}
 \caption{\small Mapa de área acumulada. Se ha utilizado una representación logarítmica para aumentar la información visual proporcionada la imagen)}
 \label{Fig:Area_acumulada} 
-\end{figure}
+\end{figure*}
 
 Puede aplicarse una ponderación a las celdas, de tal forma que los valores resultantes no expresen un área, sino otra variable distinta. Por ejemplo, puede considerarse un valor de escorrentía para cada celda, de tal modo que se obtendría una escorrentía acumulada.\index{Escorrentía}
 
@@ -891,12 +891,12 @@ Si tenemos un MDE de la parte baja del cauce, podemos calcular sin problemas tod
 La figura \ref{Fig:Contaminacion_borde} muestra la porción del MDE de ejemplo que ofrece datos validos de área acumulada y otros parámetros hidrológicos. La cuenca vertiente a las celdas mostradas no alcanza los bordes del MDE, garantizando así que se encuentra contenida íntegramente dentro de este.
 
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Contaminacion_borde.png}
 \caption{\small MDE tras aplicar una máscara basada en contaminación de borde. Las celdas con valores son las únicas para las que puede calcularse el área acumulada de forma fiable.}
 \label{Fig:Contaminacion_borde} 
-\end{figure}
+\end{figure*}
 
 Por último, citar el concepto de \emph{área aportante específica}, que se emplea para el cálculo de índices y otros parámetros derivados. Este área específica se obtiene dividiendo el área entre la anchura de la sección considerada $(a' = a / w)$, siendo esta el ancho de celda.\index{Area@Área! aportante!específica}\index{Area@Área!aportante|see{Acumulación de flujo}}
 
@@ -929,12 +929,12 @@ La elección de un umbral debe realizarse de tal modo que la red de drenaje coinc
 
 La figura \ref{Fig:Red_drenaje} muestra dos capas con redes de drenaje extraídas aplicando distintos valores de umbral. 
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\textwidth]{Geomorfometria/Red_drenaje.png}
 \caption{\small Redes de drenaje extraidas para umbrales de area acumulada de 10ha (a), 1ha (b) y 0,1ha (c)}
 \label{Fig:Red_drenaje} 
-\end{figure}
+\end{figure*}
 
 La estimación de un valor óptimo de umbral de forma automatizada es difícil, aunque existen formulaciones al respecto. Quizás la más elaborada de ellas es la desarrollada por \cite{Tarboton1991HP}, quien, fundamentándose en la constancia de las diferencias altitudinales entre los extremos de tramos de un mismo orden \cite{Broscoe1959Naval}, propone una aproximación estadística a este cálculo.
 
@@ -956,12 +956,12 @@ La localización de estas celdas, en lugar de con la aplicación de los conceptos 
 
 La figura \ref{Fig:Celdas_concavas_peucker} muestra gráficamente la aplicación del algoritmo de localización de celdas cóncavas.
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Geomorfometria/Celdas_concavas_peucker.png}
 \caption{\small Identificación de celdas de valle según \cite{Peuker1975CGIP}. En cada pasada se señala la celda más elevada de cada cuatro. Las celdas no señaladas al final del proceso constituyen las celdas de valle.}
 \label{Fig:Celdas_concavas_peucker} 
-\end{figure}
+\end{figure*}
 
 Con respecto a la extracción de redes de drenaje, existe una preparación del MDE que puede mejorar esta si se dispone de información adicional. Al contrario que la eliminación de zonas llanas y depresiones, no se trata de una preparación necesaria, sino simplemente de configurar el MDE antes de su análisis para reflejar esa información adicional.
 
@@ -979,12 +979,12 @@ Juntos a los cauces, las cuencas vertientes son los otros objetos geográficos co
 
 Con el conocimiento de las direcciones de flujo y las conexiones entre celdas, el procedimiento para delinear una cuenca vertiente no difiere mucho del cálculo del área acumulada para una celda. Al igual que sucedía en la extracción de cauces, lo general es aplicar el método D8, ya que da lugar a cuencas bien definidas, que pueden representarse mediante capas ráster con dos únicos valores, uno para las celdas que pertenecen a la cuenca vertiente y otro para las que no. Si se aplica otra metodología tal como D$\infty$ o FD8, al dividirse el flujo entre las celdas circundantes, pueden existir celdas que aporten su flujo a la cuenca pero no de forma completa, con lo que su pertenencia a la misma no lo es en el mismo grado que las restantes. La figura \ref{Fig:Comparacion_metodos_cuencas} muestra gráficamente la diferencia entre las cuencas obtenidas utilizando los métodos D8 y FD8 respectivamente.
 
-\begin{figure}[!hbt]    
+\begin{figure*}[!hbt]    
 \centering
 \includegraphics[width=.65\textwidth]{Geomorfometria/Comparacion_metodos_cuencas.pdf}
 \caption{\small Comparación entre una cuenca calculada mediante el método FD8 (a) y otra aplicando el método D8 (b). Las celdas en color gris solo aportan parte de su flujo a la unidad hidrológica. El punto rojo señala el punto de cierre.}
 \label{Fig:Comparacion_metodos_cuencas} 
-\end{figure}
+\end{figure*}
 
 Nótese que, aunque ambas cuencas sufren el efecto de la contaminación de borde, la calculada por el método FD8 lo hace en mayor medida. Es decir, el algoritmo de flujo puede condicionar la extensión de la cuenca vertiente y con ello efectos tales como el de contaminación de borde.
 
@@ -1002,12 +1002,12 @@ Para el primer caso, se calculan las cuencas vertientes a todos las celdas de sa
 Si asignamos ordenes jerárquicos de Shreve \cite{Shreve1966JGeol}, tendremos una subcuenca para cada subtramo, ya que estos ordenes varían en cada confluencia. Si, por el contrario, empleamos ordenes de Strahler \cite{Strahler1964Chow}, solo serán consideradas como celdas de salida aquella confluencias en las que se unan cauces de igual orden. La figura  \ref{Fig:Subcuencas_shreve} muestra un ejemplo de la primera de estas variantes.\index{Orden!de Shreve}
 
 
-\begin{figure}[h]    
+\begin{figure*}[h]    
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Subcuencas_shreve.png}
 \caption{\small División de una cuenca en subcuencas con puntos de salida en confluencias con variación de órdenes de cauce}
 \label{Fig:Subcuencas_shreve} 
-\end{figure}
+\end{figure*}
 
 El otro método de subdivisión no requiere el empleo de otras celdas de salida además de la correspondiente a la cuenca global. Las subcuencas se establecen de tal modo que todas ellas tienen un superficie similar, la cual condiciona el número de estas que aparecen. 
 
@@ -1022,12 +1022,12 @@ Como ya vimos en \ref{Funciones_globales}, la capa con la cuenca puede usarse co
 
 Un parámetro de interés es la distancia de flujo desde cada celda hasta el punto de salida. Suponiendo una velocidad media en las celdas de la cuenca, estas distancias pueden convertirse en tiempos de salida. La estimación de la velocidad constante puede hacerse, por ejemplo, utilizando el tiempo de concentración de la cuenca. El histograma de frecuencias de estos puede emplearse para obtener un hidrograma unitario de la cuenca (Figura \ref{Fig:Tiempos_salida}).\index{Hidrogama unitario}\index{Tiempo de concentración}
 
-\begin{figure}[!hbt]    
+\begin{figure*}[!hbt]    
 \centering
 \includegraphics[width=.9\textwidth]{Geomorfometria/Tiempo_salida.png}
 \caption{\small a) Mapa de tiempos de salida suponiendo velocidad constante. b) Histograma de frecuencias asociado.}
 \label{Fig:Tiempos_salida} 
-\end{figure}
+\end{figure*}
 
 El cálculo puede hacerse de forma más precisa si se suponen distintas velocidades en los cauces y fuera de ellos. \cite{Garrote1995JH} propone una relación de la forma
 
@@ -1099,12 +1099,12 @@ Cada línea de visión pasa por una serie de celdas, las cuales serán visibles o n
 
 \noindent siendo $d_{AB}$ la distancia entre $A$ y $B$. Si el ángulo formado por cualquier otra celda, $B'$, más próxima a $A$ que $B$ es mayor, entonces $B$ no es visible desde $A$. El procedimiento puede ilustrarse con un pequeño ejemplo numérico como el siguiente.
 
-\begin{figure}[!hbt] 
+\begin{figure*}[!hbt] 
 \centering
 \includegraphics[width=.3\textwidth]{Geomorfometria/Raster_peque.pdf}
 \caption{\small Una pequeña capa ráster de ejemplo}
 \label{Fig:Raster_peque} 
-\end{figure}
+\end{figure*}
 
 Sobre la capa ráster de la figura \ref{Fig:Raster_peque}, definimos una linea de visión entre las celdas superior e inferior de la columna izquierda. Si suponemos un tamaño de celda igual a 1, los valores de los ángulos y si son visibles o no desde la primera celda (la de la esquina superior izquierda) se presentan en la tabla \ref{Tabla:Visibilidad}.
 
@@ -1127,12 +1127,12 @@ En el cálculo de visibilidades, ha de incorporarse asimismo el significado físic
 
 En la figura \ref{Fig:Cuenca_visual} puede verse la cuenca visual asociada a una celda concreta.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Geomorfometria/Cuenca_visual.png}
 \caption{\small Cuenca visual asociada a un punto dado (en rojo). Se ha supuesto una altura del objeto de 20 metros.} 
 \label{Fig:Cuenca_visual}
-\end{figure}
+\end{figure*}
 
 El uso de cuencas visuales es habitual, por ejemplo, para el emplazamiento de antenas de telefonía o radio. Puesto que la intensidad de la señal decrece con la distancia, también en este caso deben delimitarse las cuencas visuales (que en este caso señalarían aquellas celdas que reciben y pueden utilizar la señal de la antena) no en base únicamente a los elementos del relieve, sino también a la distancia.
 
@@ -1153,12 +1153,12 @@ Hasta este punto, hemos utilizado el concepto de visibilidad para un único punto
 
 El resultado de este análisis de visibilidad repetido se conoce como \emph{exposición visual} \cite{Berry1996Wiley}. La figura \ref{Fig:Exposicion_visual}, muestra el numero de celdas de cauce vistas desde las restantes, sirviendo así para evaluar en cierto modo la belleza paisajística que deriva de la presencia del cauce. Estas celdas a su vez se han ponderado en función de la importancia del cauce.\index{Exposición visual}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Geomorfometria/Exposicion_visual.png}
 \caption{\small Mapa de exposición visual de un cauce, reflejando el número de celdas pertenecientes a este que son visibles desde cada una de las restantes, ponderadas por su importancia jerárquica en la red de drenaje.} 
 \label{Fig:Exposicion_visual}
-\end{figure}
+\end{figure*}
 
 Relacionado con la exposición visual, encontramos otros análisis derivados, de gran importancia en muchos estudios. Uno de ellos es el análisis de cobertura, que pretende calcular las formas óptimas de cubrir un terreno, de forma que un numero mínimo de observadores pueda observar la totalidad de un área. Dos son los análisis principales en este sentido: determinar el número mínimo de puntos y su localización para que todo un área quede bajo observación, o determinar la localización de un número $n$ de puntos que hace máxima el área observada.
 
@@ -1178,12 +1178,12 @@ Con independencia del método, el tamaño de la ventana de análisis medido en unid
 
 Una primera clasificación la podemos obtener a partir del análisis de curvaturas. En particular, tomando las curvaturas horizontal y vertical, podemos combinar estas y definir nueve grupos distintos que caracterizan los procesos de acumulación \cite{Dikau1989TF}. Se establece un valor mínimo en valor absoluto, por debajo del cual las celdas se consideran sin curvatura, es decir, planas. Los valores continuos de curvatura pueden ahora categorizarse en tres clases: convexa, cóncava o plana. Cruzando estos tres grupos para las dos curvaturas, obtenemos el conjunto de las nueve clases posibles (Figura \ref{Fig:Clasificacion_curvaturas}).\index{Curvaturas!clasificación por}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Geomorfometria/Clasificacion_curvaturas.png}
 \caption{\small Caracterización de procesos de acumulación según los valores de las curvaturas horizontal y vertical asociadas}
 \label{Fig:Clasificacion_curvaturas} 
-\end{figure}
+\end{figure*}
 
 Recordando el significado de las curvaturas, tendremos procesos de acumulación en las celdas con ambas curvaturas concavas, ya que el flujo se concentrará y tenderá a frenarse. Del mismo modo, las celdas con ambas curvaturas convexas registrarán procesos de dispersión. Entre estas, las combinaciones restantes identifican zonas de tránsito con diversas características.
 

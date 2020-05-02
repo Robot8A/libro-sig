@@ -16,26 +16,35 @@
 \usepackage{paralist}
 \usepackage{fancyhdr}
 \usepackage{geometry}
-\usepackage{fixltx2e}
 \usepackage{bibentry}
+\usepackage{multicol}
+\usepackage{float}
 \usepackage[raggedright]{titlesec}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[all]{nowidow}
-\brokenpenalty=10000\relax
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\@verbatim}
+  {\verbatim@font}
+  {\verbatim@font\small}
+  {}{}
+\makeatother
+
 
 \renewcommand*\ttdefault{txtt}
-
-\setlength{\pltopsep}{.5em}
-\setlength{\plpartopsep}{.5em}
 
 \makeindex
 \widowpenalty=9999
 
 \renewcommand{\baselinestretch}{1}
 \renewcommand{\enumerate}{\compactenum}
+\setdefaultleftmargin{1mm}{}{}{}{}{}
 \renewcommand{\itemize}{\compactitem}
+\setlength{\pltopsep}{.1em}
+\setlength{\plpartopsep}{.1em}
 
-\geometry{verbose,dvips,paperwidth=155mm,paperheight=220mm,tmargin=2.6cm,bmargin=2.2cm, left=.7in, right=.8in}
+\geometry{verbose,dvips,paperwidth=7.44in,paperheight=9.68in,tmargin=2.6cm,bmargin=2.2cm, left=.8in, right=.6in}
 \newcommand{\mycolumnwidth}{\textwidth}
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
@@ -79,7 +88,7 @@
     \interlinepenalty\@M
     {\Large \bfseries #1}\\
     \hrulefill
-    \par
+    \par    
   }}
 
 \renewcommand{\v}[1]{\ensuremath{\overline{\mathbf{#1}}}}
@@ -88,7 +97,6 @@
 \newenvironment{intro}{\small\itshape}{\normalsize\par\nobreak\noindent\rule{\textwidth}{0.5pt}}
 
 \definecolor{urlcolor}{rgb}{0,0,0.5}
-\definecolor{granate}{rgb}{0.5,0.0,0.0}
 
 \newcommand{\footurl}[1]{\footnote{\url{#1}\xspace}}
 \newcommand{\lt}{<}

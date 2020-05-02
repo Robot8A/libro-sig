@@ -27,12 +27,12 @@ Otras operaciones, sin embargo, tales como convertir una capa ráster en una capa
 
 La coexistencia de los datos vectoriales y ráster no solo es una realidad, sino que en gran parte de las ocasiones es una necesidad. A lo largo de las distintas fases de trabajo dentro de un proyecto SIG, un mismo dato puede emplearse de varias formas distintas con objeto de satisfacer las distintas necesidades que aparezcan. Como muestra la figura \ref{Fig:Conversiones}, para una capa de elevaciones, las conversiones entre modelos de datos aparecen en diversos puntos dentro de un ciclo de trabajo habitual. Una de ellas es una conversión de vectorial a ráster tal y como las que vimos en el capítulo anterior. Las restantes son en sentido inverso (de ráster a vectorial), como las que trataremos en el presente.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\textwidth]{Creacion_capas_vectoriales/Conversiones.png}
 \caption{\small Distintas conversiones de modelo de datos, a lo largo de un proceso de trabajo con una capa de elevaciones: a) mapa escaneado, b) curvas de nivel, c) capa ráster, d) curvas de nivel.}
 \label{Fig:Conversiones} 
-\end{figure}
+\end{figure*}
 
 En el esquema de la figura, partimos de un mapa escaneado, el cual es una imagen donde se pueden ver las curvas de nivel con sus valores de altitud correspondientes. Se trata de una capa ráster, pero los análisis que podemos realizar a partir de ella son prácticamente nulos. En realidad, no es más que un <<dibujo>>. Para obtener un dato más susceptible de análisis debemos vectorizar esas curvas de nivel, convirtiéndolas en una capa vectorial de líneas. Este proceso de vectorización ya se comentó en el capítulo \ref{Fuentes_datos}, cuando vimos las fuentes de datos más habituales. \index{Escaneo}\index{Curva!de nivel}
 
@@ -51,12 +51,12 @@ A lo largo de este capítulo vamos a ver dos clases de procesos para crear capas 
 
 Partiendo de una capa ráster discreta, el proceso de vectorización pretende generar una capa vectorial que recoja las geometrías que aparecen en dicha capa. Estas geometrías vienen definidas por la forma en que los valores de las mismas clases se disponen en la malla de celdas. Este es el caso que encontramos cuando disponemos de una capa ráster pero el modelo conceptual del espacio geográfico no es modelo de campos sino un modelo de entidades discretas. Cada una de estas entidades se constituyen mediante conjuntos de celdas contiguas con el mismo valor. Esta idea se recoge en la figura \ref{Fig:Vectorizacion}
 
-\begin{figure}[h]   
+\begin{figure*}[h]   
 \centering
 \includegraphics[width=.9\mycolumnwidth]{Creacion_capas_vectoriales/Vectorizacion.pdf}
 \caption{\small Vectorización de capas ráster discretas en capas de polígonos (a) y de líneas (b). .}
 \label{Fig:Vectorizacion}. 
-\end{figure}
+\end{figure*}
 
 En la conversión de capas continuas, veremos cómo expresar una capa ráster continua mediante un conjunto de entidades, en particular mediante lineas y polígonos. Para el caso de líneas, analizaremos cómo delinear un conjunto de isolíneas a partir de una capa ráster. En el caso de polígonos, estudiaremos cómo crear un TIN, estructura de triángulos irregulares que, como ya vimos, sirve para almacenar variables continuas, particularmente la elevación.\index{Isolíneas}
 
@@ -73,12 +73,12 @@ Estas operaciones pueden partir de capas ráster con variables continuas, de las 
 
 Otros procesos de vectorización que ya conocemos son los que se llevan a cabo a partir de cartografía escaneada. En este caso, no obstante, la situación es bien distinta, ya que lo que a simple vista parece una misma línea o un mismo polígono en el mapa escaneado, realmente no es un conjunto de celdas con un único valor (es decir de un único color), sino con varios valores (colores) similares. Esta situación hace más difícil trabajar con este tipo de capas a la hora de vectorizar y reconocer las entidades que se deben vectorizar, y requiere procesos previos de tratamiento para que ese mapa escaneado se encuentre en las mejores condiciones antes de proceder a la vectorización. La figura \ref{Fig:Condiciones_vectorizacion} muestra una imagen que contiene líneas y polígonos, y junto a ellas las representaciones de estas que resultan óptimas para proceder a vectorizarlas como capas de líneas o capas de polígonos respectivamente.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.88\textwidth]{Creacion_capas_vectoriales/Condiciones_vectorizacion.png}
 \caption{\small b)Imagen con polígonos y lineas para vectorizar. a) y c) La misma imagen tras ser trasformada con objeto de mejorar las condiciones para la vectorización (como capas de líneas y polígonos respectivamente) y aumentar la calidad de esta.}
 \label{Fig:Condiciones_vectorizacion}. 
-\end{figure}
+\end{figure*}
 
 El paso de las versiones originales a estas versiones óptimas implica el uso de operaciones de álgebra de mapas, así como las que se vieron en las secciones \ref{Segmentacion} o \ref{Operaciones_morfologicas}, dentro del capítulo dedicado al tratamiento de imágenes. Los algoritmos que trataremos en esta sección supondrán ya que se trabaja sobre una capa donde las entidades a vectorizar están representadas por valores uniformes, dependiendo su rendimiento de esta circunstancia. No obstante, haremos mención también a los procesos de preparación previos, ya que en algunos casos son parte inseparable de ciertos procesos de vectorización muy frecuentes en un SIG.\index{Algebra@Álgebra!de mapas}
 
@@ -161,12 +161,12 @@ Los puntos que nos interesan para la delineación de un polígono no son, a difere
 Siendo dichas celdas externas las que debemos tratar para delinear la entidad vectorial, el primer paso es, por tanto, su localización. Esta no es difícil si recordamos algunas de las operaciones morfológicas que vimos en el capítulo \ref{Procesado_imagenes}. Por supuesto, la aplicación de estas exige que se den, una vez más, una buenas condiciones en la imagen, en particular que la frontera del polígono a vectorizar esté claramente definido. Para ello basta, como ya hemos dicho, que el valor dentro del polígono sea uniforme (valor que consideraremos como si fuera el 255 o 1 de las imágenes binarias, según lo comentado en su momento), y distinto de los restantes a su alrededor (valores todos ellos que consideraremos como el valor 0 de las imágenes binarias, que entonces identificábamos con el fondo)
 
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.98\textwidth]{Creacion_capas_vectoriales/Erosion_para_vectorizacion.png}
 \caption{\small a) Imagen base con un polígono a vectorizar. Las celdas que forman el contorno se muestran en gris. b) La imagen anterior tras un proceso de dilatación. c) Contorno del polígono obtenido a partir de la diferencia entre las dos imágenes anteriores.}
 \label{Fig:Erosion_para_vectorizacion}. 
-\end{figure}
+\end{figure*}
 
 De las operaciones morfológicas que conocemos, la erosión nos da una idea de la forma de proceder a la hora de localizar las celdas importantes. De la forma en que lo presentamos entonces, el proceso de erosión elimina aquellas celdas que se sitúan en contacto con el fondo y están en el borde del objeto. Estas son exactamente las que nos interesan de cara a la vectorización. Como muestra la figura \ref{Fig:Erosion_para_vectorizacion}, la diferencia entre una imagen binaria y dicha imagen tras un proceso de erosión es el contorno del objeto.\index{Erosión}
 
@@ -183,12 +183,12 @@ Sobre este contorno, el proceso de digitalización ya no difiere, a primera vista
 
 Para ello, y como en el caso de las curvas de nivel, basta comenzar en uno de los puntos e ir siguiendo de un modo sistemático el contorno, añadiendo las coordenadas de los puntos recorridos. Dichas coordenadas, no obstante, no son en este caso las de los centros de las celdas, sino que se deben tomar las de los vértices para que esta forma se almacene el contorno de cada una de las celdas externas al objeto vectorizado. Particularmente, son de interés las coordenadas de aquellos vértices que se sitúan en el lado exterior del contorno. Esto puede comprenderse mejor viendo la figura \ref{Fig:Vertices_vectorizacion}.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_vectoriales/Vertices_vectorizacion.pdf}
 \caption{\small Mientras que en la vectorización de líneas (a) se toman las coordenadas del centro de la celda, en el caso de polígonos (b) se deben utilizar las de los vértices para delinear completo el contorno del objeto.}
 \label{Fig:Vertices_vectorizacion}. 
-\end{figure}
+\end{figure*}
 
 Los resultados en los dos supuestos representados en la figura son bien distintos, a pesar de que el objeto a vectorizar es el mismo, pero en un caso se interpreta como una línea y en otro como un polígono.
 
@@ -204,12 +204,12 @@ Aunque, como ya sabemos, las variables de tipo continuo como la elevación se rec
 
 Las curvas de nivel se integran fácilmente con otro tipo de capas, de forma más adecuada que si utilizamos una capa ráster o un TIN. Por ejemplo, en la figura \ref{Fig:Adicion_curvas_nivel} se muestra un mapa de pendientes y junto a este el mismo mapa pero con curvas de nivel correspondientes a la elevación. Combinar las dos variables (pendiente y elevación) en un solo mapa no tendría un resultado similar si se usara una capa ráster de elevaciones en lugar de curvas de nivel.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_vectoriales/Adicion_curvas_nivel.png}
 \caption{\small Adición de curvas de nivel a un mapa de pendientes. Estas facilitan la interpretación a la vez que no interfieren con la visualización del mapa principal}
 \label{Fig:Adicion_curvas_nivel}. 
-\end{figure}
+\end{figure*}
 
 De este modo, las curvas de nivel aportan una valiosa información adicional y facilitan la interpretación de la variable principal (la pendiente), pero sin interferir en la visualización de esta. Veremos más acerca de los mapas de isolíneas y su representación en el apartado \ref{MapasIsolineas}.
 
@@ -244,12 +244,12 @@ Entre los métodos de análisis por celdas, uno con gran relevancia (especialmente
 
 El fundamento de este método es el hecho de que, si una curva de nivel atraviesa una celda, existen únicamente 16 posibles configuraciones de los vértices de esa celda en función de si su valores correspondientes están \emph{dentro} o \emph{fuera} de la curva de nivel. La figura \ref{Fig:Marching_squares} muestra esas configuraciones.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Creacion_capas_vectoriales/Marching_squares.pdf}
 \caption{\small Posibles configuraciones de una celda según el algoritmo \emph{Marching Squares}. Los vértices en negro estan dentro de la curva de nivel, mientras que los blancos se encuentran fuera.}
 \label{Fig:Marching_squares}. 
-\end{figure}
+\end{figure*}
 
 En base a esto, se recorren todas las celdas, se analiza en cuál de las configuraciones se encuentra cada una de ellas y, cuando corresponda, se traza una linea entre el punto de entrada y de salida de la curva de nivel en la celda. Estos puntos se calculan, al igual que ya veíamos para los métodos de seguimiento, mediante interpolación.
 
@@ -280,12 +280,12 @@ La selección de las celdas que deben considerarse como vértices de la red puede 
 
 La significancia de una celda se obtiene mediante un análisis local con una ventana $3\times 3$, estudiando las cuatro posibles direcciones que pasan por la celda central (Figura \ref{Fig:Significancia_TIN}).
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Creacion_capas_vectoriales/Significancia_TIN.pdf}
 \caption{\small La significancia de una celda es la media de las significancias según las cuatro direcciones definidas. Para una dirección definida (en rojo), la significancia es la distancia $d$ entre la celda central y la recta que une las celdas de los extremos}
 \label{Fig:Significancia_TIN}. 
-\end{figure}
+\end{figure*}
 
 En cada dirección se traza una recta que pasa por dos puntos extremos, teniendo en cuenta la elevación de los mismos. La distancia entre la celda central y dicha recta es la que define la significancia. La media de las cuatro significancias calculadas según todas las direcciones posible es la significancia global de la celda.\index{Significancia}
 
@@ -321,12 +321,12 @@ Esta ultima propiedad es de especial interés para garantizar que los triángulos 
 
 La triangulación de Delaunay es el dual de otra estructura denominada \emph{Teselación de Voronoi}, como puede verse en la figura \ref{Fig:Delaunay_Voronoi}. La teselación de Voronoi asocia a cada punto un polígono que representa el lugar geométrico de las coordenadas que tienen a dicho punto como punto más cercano de todos los del conjunto. Esto es similar a lo que veíamos para el método de interpolación por vecino más cercano, el cual genera, de hecho, una teselación de Voronoi\footnote{Aunque en aquel momento lo analizábamos desde un punto de vista ráster.}.\index{Teselación de Voronoi}
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Creacion_capas_vectoriales/Delaunay_voronoi.pdf}
 \caption{\small Teselación de Voronoi (en trazo discontinuo) y Triangulación de Delaunay (en trazo continuo) a partir de un conjunto de puntos (en azul)}
 \label{Fig:Delaunay_Voronoi}. 
-\end{figure}
+\end{figure*}
 
 Los algoritmos para crear una triangulación de Delaunay son abundantes, y existe mucha literatura al respecto. Comparaciones entre los más habituales y descripciones de estos pueden encontrarse en  \cite{Su1995ACM} y \cite{Fortune1992WC}, donde se tratan con detalle los más importantes.
 
@@ -343,21 +343,21 @@ Además de los métodos anteriores para seleccionar un conjunto reducido de puntos
 
 Como se muestra en la figura \ref{Fig:Simplificacion_triangulacion}, pueden eliminarse puntos de una triangulación y rehacer esta con los puntos restantes. Este es el fundamento del proceso de simplificación, eliminando progresivamente vértices y, cada vez que uno de ellos es eliminado, recalculando la triangulación de la mejor forma posible.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=.8\mycolumnwidth]{Creacion_capas_vectoriales/Simplificacion_triangulacion.pdf}
 \caption{\small Esquema de la eliminación de un vértice (en rojo) en una triangulación}
 \label{Fig:Simplificacion_triangulacion}. 
-\end{figure}
+\end{figure*}
 
 Este procedimiento de simplificación es similar al que vimos para el algoritmo de selección de puntos \emph{drop heuristic}, que partía de un TIN muy denso con todas las celdas ráster como vértices. Si en lugar de partir de dicho TIN se comienza con otro calculado según algún otro algoritmo, este puede irse simplificando hasta alcanzar un nuevo nivel de precisión fijado de antemano. La figura \ref{Fig:TIN_Simplificado} muestra un TIN y dos versiones simplificadas del mismo, de distinto grado de simplificación. Nótese cómo en la imagen, si se eliminan puntos del exterior, varía el contorno de la triangulación.
 
-\begin{figure}[!hbt]   
+\begin{figure*}[!hbt]   
 \centering
 \includegraphics[width=\textwidth]{Creacion_capas_vectoriales/TIN_Simplificado.png}
 \caption{\small TIN original (a) y dos simplificaciones (b, c) en base al anterior.}
 \label{Fig:TIN_Simplificado}. 
-\end{figure}
+\end{figure*}
 
 Más detalle sobre algoritmos de simplificación puede encontrarse en \cite{andrews96simplifying}.
 

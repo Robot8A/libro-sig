@@ -2,13 +2,13 @@
 \chapter{Historia de los SIG}
 \label{Historia}
 
-
-
 \bigskip
 
 \begin{intro}
 Antes de comenzar a estudiar en profundidad los Sistemas de Información Geográfica y sus elementos constituyentes, así como la ciencia que definen, es conveniente ver cómo se ha llegado hasta la situación actual a partir de los esfuerzos llevados a cabo en diversas direcciones. Estudiar la evolución y desarrollo de los SIG es ciertamente importante, en la medida en que nos encontramos ante una disciplina compleja que se nutre de muchas fuentes distintas. En este capítulo recorreremos el camino desde los primeros programas que establecieron las bases para el concepto de SIG, hasta llegar a la concepción moderna de este. De esta manera, será más sencillo entender más adelante el porqué de cada una de las partes de un SIG, su funcionalidad y su razón de ser.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -35,7 +35,7 @@ En el Harvard Laboratory, ve la luz en 1964 SYMAP\index{SYMAP}, un aplicación qu
 
 En 1969, utilizando elementos de una versión anterior de SYMAP, David Sinton\index{Synton, David}, también en el Harvard Laboratory, desarrolla GRID\index{GRID}, un programa en el que la información es almacenada en forma de cuadrículas. Hasta ese momento, la estructura de cuadrículas regulares era solo utilizada para las salidas de los programas, pero no para la entrada y almacenamiento de datos. Son los inicios de los Sistemas de Información Geográfica \emph{ráster}\footnote{los conceptos de SIG ráster y vectorial se tratan extensamente en el capítulo \ref{Tipos_datos}. No te preocupes si ahora no comprendes completamente qué representa cada uno de ellos y qué los diferencia.}.
 
-\begin{figure}[h]   
+\begin{figure}[H]
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Historia/SYMAP.png}
 \caption{\small Aspecto de un mapa generado con SYMAP}
@@ -44,23 +44,24 @@ En 1969, utilizando elementos de una versión anterior de SYMAP, David Sinton\ind
 
 SYMAP evoluciona y nuevos programas aparecen, tales como SYMVU\index{SYMVU} (Figura \ref{Fig:SYMVU}), con capacidad de representación tridimensional, o CALFORM\index{CALFORM}, con nuevas capacidades de representación y de generación de resultados impresos. GRID da lugar a IMGRID\index{IMGRID} (Interactive Manipulation GRID)\index{Interactive Manipulation GRID}, que sentará la base para el trabajo de Dana Tomlin\index{Tomlin, Dana} con su paquete MAP\index{MAP}, el cual incluye todos los elementos que hoy en día son imprescindibles para el análisis ráster (y que veremos en el capítulo \ref{Algebra_de_mapas})
 
-\begin{figure}[h]   
+
+Si la década de los sesenta es la de los pioneros y las primeras implementaciones, la de los setenta es la de la investigación y el desarrollo. A partir de los SIG primitivos se va dando forma a un área de conocimiento sin duda con gran futuro, y se elabora una base sólida de conocimiento y de herramientas aptas para un uso más genérico. Sin haber entrado aún en la época del uso masivo y generalizado, los primeros paquetes comienzan a distribuirse y pasan a incorporarse a la comunidad cartográfica, lejos ya de ser el producto de unos pocos pioneros.
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Historia/SYMVU.png}
 \caption{\small Representación tridimensional creada con SYMVU}
 \label{Fig:SYMVU} 
 \end{figure}
 
-Si la década de los sesenta es la de los pioneros y las primeras implementaciones, la de los setenta es la de la investigación y el desarrollo. A partir de los SIG primitivos se va dando forma a un área de conocimiento sin duda con gran futuro, y se elabora una base sólida de conocimiento y de herramientas aptas para un uso más genérico. Sin haber entrado aún en la época del uso masivo y generalizado, los primeros paquetes comienzan a distribuirse y pasan a incorporarse a la comunidad cartográfica, lejos ya de ser el producto de unos pocos pioneros.
-
 A partir de este punto, el campo de los SIG recorre sucesivas etapas hasta nuestros días (Figura \ref{Fig:Etapas_evolucion_SIG}), evolucionando muy rápidamente ante la influencia de numerosos factores externos. Desde este punto, vamos a estudiar cómo esos factores han ido a su vez evolucionando y cómo su influencia ha condicionado el rumbo seguido por los SIG. Distinguiremos los siguientes elementos:
 
-\begin{figure}[!hbt]   
+\begin{figure*}
 \centering
 \includegraphics[width=.9\textwidth]{Historia/Etapas_historia.pdf}
 \caption{\small Esquema temporal de la evolución de los SIG.}
 \label{Fig:Etapas_evolucion_SIG} 
-\end{figure}
+\end{figure*}
 
 \begin{itemize}
 \item La evolución del SIG como \textbf{disciplina}. Cómo ha cambiado la presencia social de los SIG y su relación con otras disciplinas científicas, tanto influenciándolas como siendo influenciado por ellas.
@@ -204,4 +205,5 @@ Desde ese punto hasta nuestros días, los SIG han ido definiéndose en base a la e
 
 Siendo en su origen aplicaciones muy específicas, en nuestros días los SIG son aplicaciones genéricas formadas por diversos elementos, cuya tendencia actual es a la convergencia en productos más versátiles y amplios.
 
+\end{multicols}
 \pagestyle{empty}

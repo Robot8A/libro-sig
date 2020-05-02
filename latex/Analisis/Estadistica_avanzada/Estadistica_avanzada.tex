@@ -76,12 +76,12 @@ La clasificación supervisada es una forma de clasificación que requiere por part
 
 La figura \ref{Fig:Esquema_clasificacion_supervisada} muestra un esquema de este proceso.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Esquema_clasificacion_supervisada.png}
 \caption{\small Esquema del proceso de clasificación supervisada}
 \label{Fig:Esquema_clasificacion_supervisada}
-\end{figure}
+\end{figure*}
 
 La forma en que pueden proporcionarse definiciones de clase a un método de clasificación supervisada son dos:
 
@@ -125,12 +125,12 @@ El método de clasificación por paralelepípedos establece regiones, una por cada 
 
 Los distintos lados de los paralelepípedos vienen definidos por la media de cada variable en la clase y su desviación típica. La longitud de los lados es igual a dos veces la desviación típica, y se encuentran centrados en la media. Un esquema de esto puede verse en la figura \ref{Fig:Paralelepipedos}. Los puntos representados son elementos que se quieren clasificar, que en el caso de una capa ráster serán mucho más numerosos, uno por cada celda. Por simplicidad de representación y visualización, se supone en dicha figura, así como en las siguientes correspondientes a otros métodos, que se utilizan dos variables para efectuar la clasificación (por tanto, es un gráfico bidimensional), y se definen tres únicas clases. El mismo tipo de análisis puede, no obstante, aplicarse a cualquier numero $n$ de variables (resultaría un espacio de atributos n--dimensional) y, por supuesto, cualquier número de clases.\index{Clasificación!por paralelepípedos}
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Paralelepipedos.pdf}
 \caption{\small Método de clasificación por paralelepípedos}
 \label{Fig:Paralelepipedos}
-\end{figure}
+\end{figure*}
 
 Una característica de este método es que pueden existir elementos que no puedan ser clasificados al no caer dentro de ningún paralelepípedo. Del mismo modo, estos pueden solaparse y ciertos elementos pueden pertenecer simultáneamente a varias clases. En caso de darse esta circunstancia, puede ser resuelta aplicando alguno de los otros métodos tal como el de máxima verosimilitud.
 
@@ -154,12 +154,12 @@ En lugar de emplear distancia euclídea puede utilizarse la distancia de Manhatta
 
 Puede verse que esta metodología guarda similitud conceptual con la interpolación por vecindad, en la que asignábamos el valor del punto más cercano. En la figura \ref{Fig:Minima_distancia} puede verse un gráfico explicativo de este método de clasificación.\index{Interpolación}
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Minima_distancia.pdf}
 \caption{\small Método de clasificación por mínima distancia}
 \label{Fig:Minima_distancia}
-\end{figure}
+\end{figure*}
 
 A diferencia del método anterior, todos los elementos pueden ser clasificados, ya que siempre existe uno más cercano. Esto constituye una de las potenciales desventajas del método, ya que puede hacer asignaciones incorrectas en el caso de que un elemento sea muy distinto a todas las clases de partida. Se asignará a la clase más similar, lo cual no significa necesariamente que sea lo suficientemente similar a ella como para considerarlo parte de la misma.
 
@@ -205,12 +205,12 @@ Este método comparte con el de distancia mínima el hecho de que todos los elemen
 
 Puede verse un gráfico relativo a este método en la figura \ref{Fig:Maxima_verosimilitud}, considerando la aplicación de un umbral inferior de probabilidad.
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Maxima_verosimilitud.pdf}
 \caption{\small Método de clasificación por máxima verosimilitud.}
 \label{Fig:Maxima_verosimilitud}
-\end{figure}
+\end{figure*}
 
 Es importante recalcar que al emplear este método se asume que los datos tienen una distribución normal, lo cual no ha de ser necesariamente cierto según qué tipo de variables manejemos. Es importante tener en cuenta este hecho antes de utilizar este clasificador sobre nuestros datos.
 
@@ -250,23 +250,23 @@ Como es fácil intuir, los valores iniciales de las medias de clase condicionan e
 
 En la figura \ref{Fig:Clases_iniciales_isoclusters} puede verse gráficamente la forma de definir estas clases iniciales. Sobre la diagonal que atraviesa el espacio de atributos se establecen tantos puntos como clases quieran definirse. Estos serán los valores medios a los que se calculen las distancias desde cada elemento en la primera iteración.
 
-\begin{figure}[h]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Clases_iniciales_isoclusters.pdf}
 \caption{\small Definición de clases iniciales para el proceso de clasificación no supervisada, estableciendo los centros de clases equiespaciados en el espacio de atributos.}
 \label{Fig:Clases_iniciales_isoclusters}
-\end{figure}
+\end{figure*}
 
 Como puede verse, los centros de las clases no se corresponden con los centros de los grupos que existen en el conjunto de elementos, pero al cubrir el espacio y repartirse a lo largo de este, garantizan que en las sucesivas iteraciones estos centros puedan desplazarse al lugar correcto donde las clases que definan presenten una mínima variabilidad.
 
 En la figura \ref{Fig:Etapas_clustering} pueden verse algunas etapas de un proceso de clasificación no supervisada por el método de distancia mínima iterativa, en el que se aprecian los cambios que las clases van sufriendo a lo largo de las sucesivas iteraciones.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Etapas_clustering.png}
 \caption{\small Distintas etapas de un proceso de clasificación no supervisada por distancia mínima iterativa.}
 \label{Fig:Etapas_clustering}
-\end{figure}
+\end{figure*}
 
 
 \subsubsection{ISODATA}
@@ -283,23 +283,23 @@ Con todo lo anterior, además de especificarse un número de clases a crear se est
 
 Como conclusión de esta sección dedicada a la clasificación y los métodos existentes, en la figura \ref{Fig:Comparacion_metodos_clasificacion} se muestra un ejemplo de clasificación de usos de suelo en un área de estudio, en base a imágenes de satélite y parámetros fisiográficos, llevada a cabo por algunos de los métodos descritos anteriormente.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=\textwidth]{Estadistica_avanzada/Comparacion_clasificacion.png}
 \caption{\small Comparación de la clasificación en clases de uso de suelo generada partir de una imagen de satélite y parámetros fisiográficos mediante los métodos de a) mínima distancia b) máxima verosimilitud y c) mínima distancia iterativa (no supervisada)}
 \label{Fig:Comparacion_metodos_clasificacion}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Clustering jerárquico}
 
 Un algoritmo habitual en clasificación de objetos es la utilización de árboles jerárquicos. El proceso se basa en la creación de un árbol en el cual se disponen en sus extremos todos los objetos a clasificar, y las ramas que estos conforman se van unificando, agrupándose por similitud hasta llegar a formar una única (Figura \ref{Fig:Clustering_jerarquico})\index{Clustering!jerárquico}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.65\mycolumnwidth]{Estadistica_avanzada/Cluster_jerarquico.pdf}
 \caption{\small Dendrograma resultante de un proceso de clustering jerárquico}
 \label{Fig:Clustering_jerarquico}
-\end{figure}
+\end{figure*}
 
 El dendrograma resultante de este proceso puede utilizarse después para clasificar los elementos, simplemente descendiendo en él hasta el nivel en el que el número de clases existentes sea lo más cercano posible al deseado. Este dendrograma es más rico en información que la mera clasificación, ya que presenta distintos niveles de agrupación en lugar de uno único.\index{Dendrograma}
 
@@ -495,12 +495,12 @@ w_i(u,v)= e^{\left({\frac{-d}{h}}\right)^2}
 
 \noindent donde $d$ es la distancia entre las coordenadas de la observación y $(u,v)$, y $h$ es la \emph{anchura}. Este parámetro es el equivalente al radio máximo de influencia que veíamos para el cálculo de densidad empleando un núcleo gaussiano. La figura \ref{Fig:Ponderacion_GWR} muestra el empleo de una función como la anterior.\index{Nucleo@Núcleo!gaussiano}
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Ponderacion_GWR.pdf}
 \caption{\small Funcion de ponderación para la estimación de parámetros en el método de Regresión Ponderada Geográficamente (GWR).}
 \label{Fig:Ponderacion_GWR}
-\end{figure}
+\end{figure*}
 
 
 \section{Evaluación multicriterio y combinación de capas} \label{Evaluacion_multicriterio}
@@ -562,12 +562,12 @@ Un elemento clave en la lógica difusa son las funciones que nos permiten calcula
 
 Por ejemplo, para el supuesto de utilizar la distancia a una ciudad como variable base, una posible función de miembro es la mostrada en la figura \ref{Fig:Funcion_de_miembro}.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.85\mycolumnwidth]{Estadistica_avanzada/Funcion_de_miembro.pdf}
 \caption{\small Un ejemplo de función de miembro. En trazo punteado, aspecto de una función de miembro que asignara tan solo valores \emph{verdadero} y \emph{falso}}.
 \label{Fig:Funcion_de_miembro}
-\end{figure}
+\end{figure*}
 
 Para definir esta función de miembro, se han establecido, además de los valores límite, un rango de valores óptimos (entre 6000 y 10000 metros de distancia), que son los que delimitan las zonas idóneas para situar nuestra fábrica. En este rango, se tiene un valor 1. Desde los valores óptimos, los valores descienden, haciéndolo de tal modo que toman un valor igual a 0,5 en el punto en el que situábamos los valores límite. Esto es lógico si pensamos que hay que definir un punto umbral a partir del cual considerar si el elemento está dentro o fuera de la clase (para así tener la clasificación dicotómica de verdadero y falso), y ese punto resulta natural establecerlo en la mitad del intervalo.
 
@@ -575,12 +575,12 @@ Junto con la gráfica de la función de miembro anterior, se muestra la forma que 
 
 La diferencia entre los resultados que se obtienen al aplicar una función de miembro como la anterior y aplicando una mera clasificación en dos clases de distancia pueden apreciarse en las capas de la figura \ref{Fig:Capas_logica_difusa}. Junto con una capa de distancia a un punto dado, se muestran las resultantes de, en base a dicha capa, aplicar un criterio en forma de restricción con dos clases posible (zonas dentro del intervalo óptimo \emph{vs.} zonas fuera del intervalo) o bien creando una variable que refleje la certidumbre de pertenencia a cada una de las clases anteriores.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Capas_logica_difusa.png}
 \caption{\small a) Capa de distancias a un punto. b) Separación en dos clases  de viabilidad en función de la pertenencia a un intervalo óptimo de distancia (en blanco zonas viables, en negro zonas inviables). c) Certidumbre de pertenencia a la clase viable aplicando la función de miembro de la figura \ref{Fig:Funcion_de_miembro}}.
 \label{Fig:Capas_logica_difusa}
-\end{figure}
+\end{figure*}
 
 La función de miembro puede ser cualquier función, y no necesariamente similar a la que se muestra en la figura \ref{Fig:Funcion_de_miembro}. Basta con que cumpla las siguiente condiciones:
 
@@ -737,12 +737,12 @@ Esta distinción entre factores y restricciones es importante para una correcta i
 
 Las operaciones lógicas pueden evaluarse como operaciones aritméticas, aplicando el operador multiplicación y codificando con valores 0 y 1 los valores lógicos \emph{verdadero} y \emph{falso}. El ejemplo de la figura \ref{Fig:Factores_restricciones} muestra un supuesto de combinación de dos factores y una restricción en un modelo sencillo.
 
-\begin{figure}[!hbt]
+\begin{figure*}[!hbt]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Factores_restricciones.png}
 \caption{\small Combinación de factores y restricciones en un modelo sencillo. Los factores a) y b) se combinan para obtener un resultado ponderado d). A este se le aplica después la restricción c) para obtener el mapa final e).}.
 \label{Fig:Factores_restricciones}
-\end{figure}
+\end{figure*}
 
 
 \section{Análisis de Componentes Principales}
