@@ -1,9 +1,6 @@
 \chapter{Operaciones geométricas con datos vectoriales}
 \label{Operaciones_geometricas}
 
-
-
-
 \bigskip
 
 \begin{intro}
@@ -11,6 +8,8 @@ Las capas vectoriales contiene una parte de información geométrica (las geometrí
 
 Al igual que entonces, se requiere un buen conocimiento del formato vectorial,y en este caso también conocer los cálculos básicos en $\mathbb{R}^2$ y las relaciones espaciales, que fueron ambos descritos en el capítulo \ref{Analisis_espacial}. Al final de este, habrás aprendido cómo llevar a cabo operaciones espaciales con ambos modelos de representación, estando así ya en disposición de elegir el más adecuado en cada caso y emplear eficientemente todo tipo de datos espaciales.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -38,7 +37,7 @@ Como se muestra en la figura \ref{Fig:Zona_influencia_circular}, este análisis s
 
 El hecho de poder plantear este análisis de dos formas distintas es debido a que, según lo visto en \ref{Calculos_espaciales_basicos}, en un espacio métrico se tiene que, para dos puntos A y B, la distancia entre A y B ($d_{AB}$) es igual a la distancia entre B y A ($d_{BA}$). Pueden calcularse zonas de influencia basadas en otro tipo de medidas que no cumplen la anterior propiedad, aunque las operaciones correspondientes se llevan a cabo sobre capas en formato ráster, y las estudiaremos en el capítulo \ref{Costes}
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.9\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_circular.pdf}
 \caption{\small Zona de influencia a partir de puntos. La influencia puede analizarse a partir de los puntos que la ejercen (a) o los que la reciben (b)}
@@ -53,18 +52,7 @@ Podemos utilizar este tipo de zonas de influencia para, por ejemplo, estudiar qu
 
 De igual modo que en el ejemplo anterior, el análisis se pueden plantear de forma contraria, calculando las zonas de influencia de cada industria y viendo si estas cortan al trazado del cauce. Aquí podemos ver que, aunque los procedimientos para puntos y líneas sean distintos, su significado es el mismo, y por ello pueden utilizarse las zonas de influencia creadas a partir tanto de unas como de otras geometrías, indistintamente.
 
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.5\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_lineas.png}
-\caption{\small Zona de influencia a partir de elementos lineales (cauces).}
-\label{Fig:Zona_influencia_lineas}
-\end{figure*}
-
-En el caso de polígonos, y puesto que ya conforman regiones, las zonas de influencia pueden establecerse no solo hacia el exterior, sino también hacia el interior de la geometría (Figura \ref{Fig:Zona_influencia_poligonos}). En el caso de extender el área del polígono, la interpretación es la misma que en los ejemplos anteriores. Por ejemplo, para un polígono que delimita el perímetro de un núcleo urbano, su zona de influencia puede indicar la extensión de territorio al que los habitantes de ese núcleo podrían desplazarse en busca de algún servicio, o bien la de la región de procedencia de quienes pueden acudir a la ciudad en busca del mismo. Una zona de influencia hacia el interior, sin embargo, nos indicaría por ejemplo qué habitantes no es probable que salgan del núcleo urbano en busca de un servicio dado, ya que este desplazamiento es demasiado costoso.
-
-Otro uso habitual de este tipo de zonas de influencia la encontramos en la gestión de costas. Si consideramos una zona de protección costera de una dimensión dada, el polígono de influencia hacia el interior calculado con esa distancia y el contorno de la zona interior representa las zonas a menos de dicha distancia de la costa. Por tanto, son aquellas zonas fuera de la zona de protección sobre las que pueden establecerse actividades tales como la edificación o implantación de infraestructuras.
-
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_poligonos.pdf}
 \caption{\small Zona de influencia a partir de polígonos. a) Hacia el exterior,b) hacia el interior.} 
@@ -72,11 +60,31 @@ Otro uso habitual de este tipo de zonas de influencia la encontramos en la gesti
 \end{figure*}
 
 
+En el caso de polígonos, y puesto que ya conforman regiones, las zonas de influencia pueden establecerse no solo hacia el exterior, sino también hacia el interior de la geometría (Figura \ref{Fig:Zona_influencia_poligonos}). En el caso de extender el área del polígono, la interpretación es la misma que en los ejemplos anteriores. Por ejemplo, para un polígono que delimita el perímetro de un núcleo urbano, su zona de influencia puede indicar la extensión de territorio al que los habitantes de ese núcleo podrían desplazarse en busca de algún servicio, o bien la de la región de procedencia de quienes pueden acudir a la ciudad en busca del mismo. Una zona de influencia hacia el interior, sin embargo, nos indicaría por ejemplo qué habitantes no es probable que salgan del núcleo urbano en busca de un servicio dado, ya que este desplazamiento es demasiado costoso.
+
+Otro uso habitual de este tipo de zonas de influencia la encontramos en la gestión de costas. Si consideramos una zona de protección costera de una dimensión dada, el polígono de influencia hacia el interior calculado con esa distancia y el contorno de la zona interior representa las zonas a menos de dicha distancia de la costa. Por tanto, son aquellas zonas fuera de la zona de protección sobre las que pueden establecerse actividades tales como la edificación o implantación de infraestructuras.
+
+\begin{figure*}[!ht]
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.9\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_lineas.png}
+\caption{\small Zona de influencia a partir de elementos lineales (cauces).}
+\label{Fig:Zona_influencia_lineas}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.9\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_variable.png}
+\caption{\small Zonas de influencia variable establecidas en función de los ordenes de los cauces.} 
+\label{Fig:Zona_influencia_variable}
+\end{minipage}
+\end{figure*}
+
 Mientras que la zona de influencia exterior no tiene ningún límite, la trazada hacia el interior viene limitada por las propias dimensiones del polígono de origen.
 
 Sobre la base anterior de zonas de influencia delimitadas a partir de las geometrías fundamentales, existen muchas variantes y formas de construirlas. Un proceso habitual es la creación no de una única zona de influencia para cada entidad base, sino de un conjunto de ellas equiespaciadas, de tal forma que puedan considerarse distintos grados de influencia. Este conjunto de zonas de tamaños sucesivos forman una serie de polígonos concéntricos que pueden, además, representarse de forma distinta para reflejar más explícitamente su significado (Figura \ref{Fig:Zonas_influencia_concentricas}).
 
-\begin{figure*}[h]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Zonas_influencia_concentricas.png}
 \caption{\small Zonas de influencia concéntricas a partir de una entidad lineal} 
@@ -93,21 +101,8 @@ Tanto el caudal del cauce como la potencia de la antena son atributos de la enti
 
 La figura \ref{Fig:Zona_influencia_variable} muestra el aspecto de una zona de influencia calculada a partir de una red de drenaje, cuya dimensión se establece en función del orden jerárquico de cada tramo.
 
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.5\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_variable.png}
-\caption{\small Zonas de influencia variable establecidas en función de los ordenes de los cauces.} 
-\label{Fig:Zona_influencia_variable}
-\end{figure*}
 
-Otra de las modificaciones que se pueden plantear a la creación de zonas de influencia es la simplificación de estas cuando existen solapes. En el resultado de la figura \ref{Fig:Zona_influencia_circular} puede verse cómo las distintas zonas de influencia se solapan en algunos puntos. No obstante la zona global que se ve afectada por la presencia de los puntos (antenas según suponíamos para el ejemplo), puede reflejarse de igual modo con un único polígono, ya que, puesto que existe contacto entre las zonas, puede simplemente considerarse el contorno del conjunto.
-
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.3\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_disolver.pdf}
-\caption{\small Zona de influencia única a partir de un conjunto de zonas de influencia individuales que se solapan.} 
-\label{Fig:Zona_influencia_disolver}
-\end{figure*}
+Otra de las modificaciones que se pueden plantear a la creación de zonas de influencia es la simplificación de estas cuando existen solapes. En el resultado del caso a) la figura \ref{Fig:Zona_influencia_circular} puede verse cómo las distintas zonas de influencia se solapan en algunos puntos. No obstante la zona global que se ve afectada por la presencia de los puntos (antenas según suponíamos para el ejemplo), puede reflejarse de igual modo con un único polígono, ya que, puesto que existe contacto entre las zonas, puede simplemente considerarse el contorno del conjunto.
 
 En general, todas las entidades geográficas se prestan a la creación de zonas de influencia sin ninguna consideración especial. No obstante, en el caso de curvas o polígonos muy convolucionados pueden en ocasiones darse formas incoherentes.
 
@@ -141,7 +136,7 @@ Esta operación se conoce como \emph{clipping} en inglés y es habitual verla así 
 
 En la figura \ref{Fig:Recorte_vectorial} podemos ver cómo la capa de entrada con polígonos, líneas y puntos se restringe a una extensión menor manteniendo dentro de dicha zona la misma información original. Se considera en este ejemplo un único polígono de recorte, pero pueden ser varios, e incluso polígonos con huecos interiores, sin que exista diferencia alguna en la operación.\index{Polígono!de recorte}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.9\textwidth]{Operaciones_geometricas/Recorte_vectorial.png}
 \caption{\small Recorte vectorial de un conjunto de capas de puntos, líneas y polígonos, con una capa de polígonos.} 
@@ -182,7 +177,7 @@ A diferencia del recorte, la información empleada para crear la tabla resultante
 
 Puede verse un sencillo ejemplo en la figura \ref{Fig:Interseccion_vectorial}.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Interseccion_vectorial.pdf}
 \caption{\small Interseccion entre dos capas de polígonos, mostrando las geometrías y la tabla de atributos resultante.}
@@ -211,7 +206,7 @@ La tabla de atributos correspondiente es igual a la de la intersección, con tant
 
 La figura \ref{Fig:Union_vectorial} muestra un ejemplo de unión de capas vectoriales.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Union_vectorial.pdf}
 \caption{\small Unión de dos capas de polígonos, mostrando las geometrías y la tabla de atributos resultante.}
@@ -239,7 +234,7 @@ Otra solución es la eliminación \emph{a posteriori}, tratando de localizar los p
 
 La figura \ref{Fig:Poligonos_espureos} muestra un ejemplo de la aparición de este tipo de polígonos.
 
-\begin{figure*}[h]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.95\mycolumnwidth]{Operaciones_geometricas/Poligonos_espureos.pdf}
 \caption{\small Aparición de polígonos espúreos de pequeño tamaño tras el solape entre capas con discrepancias.}
@@ -263,7 +258,7 @@ La tabla de la capa resultante contiene tantos elementos como existan en el conj
 
 Para comprender mejor esta operación, puede verse un ejemplo en la figura \ref{Fig:Ejemplo_juntar_capas}.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Juntar_capas.pdf}
 \caption{\small Ejemplo de las tablas y entidades resultantes tras juntar dos capas.} 
@@ -302,7 +297,7 @@ No obstante, pueden disolverse las entidades según distintos grupos, tantos como
 
 En la figura \ref{Fig:Disolver} se muestra un ejemplo de lo anterior.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Disolver.png}
 \caption{\small Obtención de una capa de comunidades autónomas a partir de una de provincias mediante un proceso de disolución. En la capa original se han representado los polígonos en función de la comunidad a la que pertenecen. Aunque aparecen con el mismo color, son polígonos independientes.}
@@ -338,9 +333,9 @@ Existen diversas formas de contornos mínimos, entre las que cabe destacar.
 
 La envolvente convexa mínima (habitualmente citada como \emph{convex hull}, su denominación en inglés) es la más común de las envolventes. Define el polígono convexo de menor área dentro del cual se contienen todos los puntos del conjunto, y su significado tanto geográfico como geométrico es de gran utilidad en muchos aspectos.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.85\textwidth]{Operaciones_geometricas/Convex_hull.png}
+\includegraphics[width=.7\textwidth]{Operaciones_geometricas/Convex_hull.png}
 \caption{\small Contorno convexo mínimo.}
 \label{Fig:Convex_hull}
 \end{figure*}
@@ -351,27 +346,14 @@ La envolvente convexa delimita el área dentro de la cual se puede inferir el com
 
 El polígono que define a la envolvente mínima convexa puede ser empleado asimismo como dato de entrada para otras operaciones geométricas. Dados, por ejemplo una serie de puntos en los que ha aparecido una enfermedad infecciosa,puede calcularse la envolvente mínima convexa y a partir de ella calcular una zona de influencia con una distancia definida en función de la capacidad de propagación de la enfermedad. El nuevo polígono resultante representa la región que puede verse afectada por dicha enfermedad.
 
-Una serie de envolventes convexas sucesivas sobre un conjunto de puntos forma una teselación en capas en forma de cebolla\footnote{\emph{Onion peeling}, en inglés}, de utilidad para la realización de diversos análisis estadísticos sobre dichos puntos (Figura \ref{Fig:Onion_peeling}).\index{Teselación!en capas}\index{Onion peeling|see{Teselación!en capas}}
+Una serie de envolventes convexas sucesivas sobre un conjunto de puntos forma una teselación en capas en forma de cebolla\footnote{\emph{Onion peeling}, en inglés}, de utilidad para la realización de diversos análisis estadísticos sobre dichos puntos.
 
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Onion_peeling.png}
-\caption{\small Serie de contornos convexos formando una teselacion en capas (\emph{onion peeling}).}
-\label{Fig:Onion_peeling}
-\end{figure*}
 
 \subsection{Círculo mínimo}
 
 \index{Circulo@Círculo!mínimo}
 
-El círculo mínimo es aquel circulo que contiene a todos los puntos de un conjunto dado con el menor radio posible (Figura \ref{Fig:Circulo_minimo})
-
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Circulo_minimo.png}
-\caption{\small Círculo de radio mínimo que engloba a una serie de puntos.}
-\label{Fig:Circulo_minimo}
-\end{figure*}
+El círculo mínimo es aquel circulo que contiene a todos los puntos de un conjunto dado con el menor radio posible.
 
 El significado de este círculo mínimo es variado, ya que tanto el centro como el radio del mismo se prestan a diversas interpretaciones. Por ejemplo, si suponemos un terreno plano y una serie de núcleos de población (cada uno de ellos representado por un punto), y queremos situar una antena para dar cobertura a la región definida por esos puntos, el centro del círculo mínimo es una buena opción. Esto es así porque minimiza la distancia a la que se sitúa el punto más alejado, y por tanto minimizará la fuerza de la señal necesaria para ofrecer esa cobertura completa. La intensidad de la señal se puede calcular en función del radio del círculo.
 
@@ -389,14 +371,7 @@ Es de reseñar que los punto situados en el borde del círculo mínimo siempre pert
 
 \subsection{Rectángulo mínimo}
 
-El rectángulo mínimo es el rectángulo de menor área que cubre todos los puntos de un conjunto (Figura \ref{Fig:Rectangulo_minimo}).
-
-\begin{figure*}[h]
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Rectangulo_minimo.png}
-\caption{\small Rectángulo mínimo que engloba a un conjunto de puntos.}
-\label{Fig:Rectangulo_minimo}
-\end{figure*}
+El rectángulo mínimo es el rectángulo de menor área que cubre todos los puntos de un conjunto.
 
 \index{Rectángulo!mínimo}
 
@@ -429,7 +404,7 @@ El suavizado de líneas es también útil como preparación de datos de líneas proce
 
 Algo similar sucede cuando las operaciones de vectorización\index{Vectorización} se realizan de forma automática, tales como las que vimos en en capítulo \ref{Creacion_capas_vectoriales}. El suavizado de las líneas mejora en tal caso la calidad de estas, no solo en su aspecto estético, sino también en muchos casos su similitud con el objeto modelizado, pues se trata de formas más naturales(Figura \ref{Fig:Suavizar_digitalizado}).
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Suavizar_digitalizado.pdf}
 \caption{\small Suavizado de una línea procedente de vectorización a partir de una capa ráster. En negro, línea original con esquinas angulosas. En rojo, línea suavizada.} 
@@ -442,7 +417,7 @@ Los algoritmos para la generalización de líneas son muy diversos y tienen cada u
 
 No obstante, no todos los puntos de un línea tienen la misma importancia y aportan la misma cantidad de información. Algunos puntos pueden resultar redundantes, mientras que otros pueden ser cruciales para la forma del trazado. Como puede verse en la figura \ref{Fig:Simplificacion_importancia_ptos}, eliminar algunos puntos puede no tener apenas efectos sobre la línea original o bien resultar en una variación drástica de su forma. Un mismo número de puntos eliminados puede dar lugar a lineas muy similares o muy distintas a la original, según sea el caso, por lo que esta medida de la simplificación no es una medida de cuan fidedigna es la linea resultante.
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Operaciones_geometricas/Simplificacion_importancia_ptos.pdf}
 \caption{\small La eliminación de puntos de la linea original (a) puede dar lugar a líneas muy similares (b) o muy distintas (c), ya que no todos los puntos tienen la misma importancia.}
@@ -465,7 +440,7 @@ Uno de los algoritmos más habitualmente utilizados es el propuesto por\cite{Doug
 
 En la figura \ref{Fig:Generalizacion} puede verse cómo una línea original se simplifica de diversas formas al aplicar tolerancias crecientes con este algoritmo.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.9\textwidth]{Operaciones_geometricas/Simplificacion_lineas.png}
 \caption{\small Generalización de un conjunto de líneas (en trazo punteado) mediante el algoritmo de \cite{Douglas1973TAC} para valores de tolerancia de 10 (a), 20 (b) y 50 metros (c).} 
@@ -492,4 +467,5 @@ Las tablas pueden también usarse para definir otro tipo de operaciones tales com
 
 Por último, las operaciones de generalización de líneas son útiles para disminuir el tamaño de los datos vectoriales, con las ventajas de manejo y proceso que ello conlleva.
 
+\end{multicols}
 \pagestyle{empty}

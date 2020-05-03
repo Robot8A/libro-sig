@@ -35,7 +35,7 @@ Siguiendo este mismo enfoque, estudiaremos en primer lugar los conceptos fundame
 
  Si el lector esta familiarizado con los conceptos relativos a bases de datos no espaciales y las consultas sobre estas, puede prescindir de leer la próxima sección y avanzar hasta la siguiente para ver directamente las particularidades del trabajo con bases de datos espaciales. De cualquier modo, el capítulo no pretende ser un manual sobre el uso de bases de datos o sus fundamentos, ya que este tema es muy amplio y escapa por completo al alcance de este texto.
 
-\section{Consultas dentro de un SIG}
+\section{Consultas en un SIG}
 
 Antes de entrar en detalle en los distintos tipos de consultas y la forma de realizar estas, veamos qué es lo que realmente significa una consulta dentro de un SIG. Aunque mencionaremos algunos breves ejemplos de consultas sobre capas ráster, en general ya hemos dicho que estas se entienden como consultas sobre datos vectoriales, en los cuales la estructura propia del dato es más propicia para este tipo de operaciones. Así, partimos de datos vectoriales y de la presencia de algún Sistema Gestor de Bases de Datos o tecnología similar dentro de un SIG.
 
@@ -253,10 +253,12 @@ Las consultas pueden ser mucho más complejas, y las sentencias \texttt{SELECT} p
 La sentencia siguiente recupera en una nueva tabla todos los países cuyas capitales tienen una población de hombres mayor que de mujeres.
 
 \begin{verbatim}
-SELECT Nombre
-FROM Paises
-WHERE Capital IN (SELECT Nombre FROM Capitales 
-	WHERE Poblacion_hombres > Poblacion_mujeres)
+SELECT Nombre FROM Paises
+WHERE Capital IN 
+   (SELECT Nombre 
+    FROM Capitales 
+    WHERE Poblacion_hombres 
+       > Poblacion_mujeres)
 \end{verbatim}
 
 La subconsulta entre paréntesis crea una tabla con los nombres de las capitales que cumplen la condición relativa a las poblaciones de hombres y mujeres. La otra consulta selecciona los países cuya capital aparece en dicha tabla (esa inclusión la define el comando \texttt{IN}). En conjunto, tenemos una única consulta, pero que se basa en dos tablas con una relación entre sí.
@@ -386,7 +388,7 @@ WHERE Cross(Rios.Shape, Paises.Shape)
 
 Al igual que en el apartado anterior, el objetivo de este apartado no es mostrar con detalle la sintaxis del lenguaje SQL cuando este se emplea para la realización de consultas espaciales. Los anteriores son únicamente algunos ejemplos para poner de manifiesto la potencia de este planteamiento y mostrar cómo los elementos espaciales se integran en el lenguaje SQL. Puede encontrarse más información en \cite{Egenhofer1994IEEE}.
 
-Además de esta extensión a SQL, existen otras propuestas propuestas alternativas tales como Geo--SQL, SSQL (Spatial SQL)o SQL-MM.\index{SQL-MM}\index{Geo--SQL}\index{Spatial SQL}
+Además de esta extensión a SQL, existen otras propuestas propuestas alternativas tales como Geo--SQL, SSQL (Spatial SQL) o SQL-MM.\index{SQL-MM}\index{Geo--SQL}\index{Spatial SQL}
                                                           
 
 \subsection{Índices espaciales}

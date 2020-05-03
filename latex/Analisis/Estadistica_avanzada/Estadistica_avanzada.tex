@@ -1,8 +1,6 @@
 
 \chapter{Más estadística espacial} \label{Estadistica_avanzada}
 
-
-
 \bigskip
 
 \begin{intro}
@@ -10,6 +8,8 @@ En el capítulo \ref{Estadistica_espacial} vimos algunos elementos estadísticos a
 
 Las formulaciones de este capítulo se aplican mayoritariamente sobre capas de datos ráster, y el álgebra de mapas es la herramienta principal que debe conocerse para entender dichas formulaciones. Algunas metodologías nos permitirán generar capas ráster a partir de datos vectoriales, lo que hace interesante haber leído anteriormente el capítulo \ref{Creacion_capas_raster}. Las imágenes son un tipo de dato muy utilizado en algunas de estas formulaciones, por lo que la lectura del capítulo dedicado a estas también es recomendable.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -76,7 +76,7 @@ La clasificación supervisada es una forma de clasificación que requiere por part
 
 La figura \ref{Fig:Esquema_clasificacion_supervisada} muestra un esquema de este proceso.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Esquema_clasificacion_supervisada.png}
 \caption{\small Esquema del proceso de clasificación supervisada}
@@ -125,7 +125,7 @@ El método de clasificación por paralelepípedos establece regiones, una por cada 
 
 Los distintos lados de los paralelepípedos vienen definidos por la media de cada variable en la clase y su desviación típica. La longitud de los lados es igual a dos veces la desviación típica, y se encuentran centrados en la media. Un esquema de esto puede verse en la figura \ref{Fig:Paralelepipedos}. Los puntos representados son elementos que se quieren clasificar, que en el caso de una capa ráster serán mucho más numerosos, uno por cada celda. Por simplicidad de representación y visualización, se supone en dicha figura, así como en las siguientes correspondientes a otros métodos, que se utilizan dos variables para efectuar la clasificación (por tanto, es un gráfico bidimensional), y se definen tres únicas clases. El mismo tipo de análisis puede, no obstante, aplicarse a cualquier numero $n$ de variables (resultaría un espacio de atributos n--dimensional) y, por supuesto, cualquier número de clases.\index{Clasificación!por paralelepípedos}
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Paralelepipedos.pdf}
 \caption{\small Método de clasificación por paralelepípedos}
@@ -154,7 +154,7 @@ En lugar de emplear distancia euclídea puede utilizarse la distancia de Manhatta
 
 Puede verse que esta metodología guarda similitud conceptual con la interpolación por vecindad, en la que asignábamos el valor del punto más cercano. En la figura \ref{Fig:Minima_distancia} puede verse un gráfico explicativo de este método de clasificación.\index{Interpolación}
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Minima_distancia.pdf}
 \caption{\small Método de clasificación por mínima distancia}
@@ -205,7 +205,7 @@ Este método comparte con el de distancia mínima el hecho de que todos los elemen
 
 Puede verse un gráfico relativo a este método en la figura \ref{Fig:Maxima_verosimilitud}, considerando la aplicación de un umbral inferior de probabilidad.
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Maxima_verosimilitud.pdf}
 \caption{\small Método de clasificación por máxima verosimilitud.}
@@ -250,7 +250,7 @@ Como es fácil intuir, los valores iniciales de las medias de clase condicionan e
 
 En la figura \ref{Fig:Clases_iniciales_isoclusters} puede verse gráficamente la forma de definir estas clases iniciales. Sobre la diagonal que atraviesa el espacio de atributos se establecen tantos puntos como clases quieran definirse. Estos serán los valores medios a los que se calculen las distancias desde cada elemento en la primera iteración.
 
-\begin{figure*}[h]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Clases_iniciales_isoclusters.pdf}
 \caption{\small Definición de clases iniciales para el proceso de clasificación no supervisada, estableciendo los centros de clases equiespaciados en el espacio de atributos.}
@@ -261,7 +261,7 @@ Como puede verse, los centros de las clases no se corresponden con los centros d
 
 En la figura \ref{Fig:Etapas_clustering} pueden verse algunas etapas de un proceso de clasificación no supervisada por el método de distancia mínima iterativa, en el que se aprecian los cambios que las clases van sufriendo a lo largo de las sucesivas iteraciones.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Etapas_clustering.png}
 \caption{\small Distintas etapas de un proceso de clasificación no supervisada por distancia mínima iterativa.}
@@ -283,7 +283,7 @@ Con todo lo anterior, además de especificarse un número de clases a crear se est
 
 Como conclusión de esta sección dedicada a la clasificación y los métodos existentes, en la figura \ref{Fig:Comparacion_metodos_clasificacion} se muestra un ejemplo de clasificación de usos de suelo en un área de estudio, en base a imágenes de satélite y parámetros fisiográficos, llevada a cabo por algunos de los métodos descritos anteriormente.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Estadistica_avanzada/Comparacion_clasificacion.png}
 \caption{\small Comparación de la clasificación en clases de uso de suelo generada partir de una imagen de satélite y parámetros fisiográficos mediante los métodos de a) mínima distancia b) máxima verosimilitud y c) mínima distancia iterativa (no supervisada)}
@@ -294,7 +294,7 @@ Como conclusión de esta sección dedicada a la clasificación y los métodos existe
 
 Un algoritmo habitual en clasificación de objetos es la utilización de árboles jerárquicos. El proceso se basa en la creación de un árbol en el cual se disponen en sus extremos todos los objetos a clasificar, y las ramas que estos conforman se van unificando, agrupándose por similitud hasta llegar a formar una única (Figura \ref{Fig:Clustering_jerarquico})\index{Clustering!jerárquico}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.65\mycolumnwidth]{Estadistica_avanzada/Cluster_jerarquico.pdf}
 \caption{\small Dendrograma resultante de un proceso de clustering jerárquico}
@@ -495,7 +495,7 @@ w_i(u,v)= e^{\left({\frac{-d}{h}}\right)^2}
 
 \noindent donde $d$ es la distancia entre las coordenadas de la observación y $(u,v)$, y $h$ es la \emph{anchura}. Este parámetro es el equivalente al radio máximo de influencia que veíamos para el cálculo de densidad empleando un núcleo gaussiano. La figura \ref{Fig:Ponderacion_GWR} muestra el empleo de una función como la anterior.\index{Nucleo@Núcleo!gaussiano}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Ponderacion_GWR.pdf}
 \caption{\small Funcion de ponderación para la estimación de parámetros en el método de Regresión Ponderada Geográficamente (GWR).}
@@ -562,7 +562,7 @@ Un elemento clave en la lógica difusa son las funciones que nos permiten calcula
 
 Por ejemplo, para el supuesto de utilizar la distancia a una ciudad como variable base, una posible función de miembro es la mostrada en la figura \ref{Fig:Funcion_de_miembro}.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.85\mycolumnwidth]{Estadistica_avanzada/Funcion_de_miembro.pdf}
 \caption{\small Un ejemplo de función de miembro. En trazo punteado, aspecto de una función de miembro que asignara tan solo valores \emph{verdadero} y \emph{falso}}.
@@ -575,7 +575,7 @@ Junto con la gráfica de la función de miembro anterior, se muestra la forma que 
 
 La diferencia entre los resultados que se obtienen al aplicar una función de miembro como la anterior y aplicando una mera clasificación en dos clases de distancia pueden apreciarse en las capas de la figura \ref{Fig:Capas_logica_difusa}. Junto con una capa de distancia a un punto dado, se muestran las resultantes de, en base a dicha capa, aplicar un criterio en forma de restricción con dos clases posible (zonas dentro del intervalo óptimo \emph{vs.} zonas fuera del intervalo) o bien creando una variable que refleje la certidumbre de pertenencia a cada una de las clases anteriores.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Capas_logica_difusa.png}
 \caption{\small a) Capa de distancias a un punto. b) Separación en dos clases  de viabilidad en función de la pertenencia a un intervalo óptimo de distancia (en blanco zonas viables, en negro zonas inviables). c) Certidumbre de pertenencia a la clase viable aplicando la función de miembro de la figura \ref{Fig:Funcion_de_miembro}}.
@@ -737,7 +737,7 @@ Esta distinción entre factores y restricciones es importante para una correcta i
 
 Las operaciones lógicas pueden evaluarse como operaciones aritméticas, aplicando el operador multiplicación y codificando con valores 0 y 1 los valores lógicos \emph{verdadero} y \emph{falso}. El ejemplo de la figura \ref{Fig:Factores_restricciones} muestra un supuesto de combinación de dos factores y una restricción en un modelo sencillo.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Factores_restricciones.png}
 \caption{\small Combinación de factores y restricciones en un modelo sencillo. Los factores a) y b) se combinan para obtener un resultado ponderado d). A este se le aplica después la restricción c) para obtener el mapa final e).}.
@@ -812,4 +812,5 @@ Otras formulaciones vistas son las relativas a la combinación de capas. A la hor
 
 Por último, hemos visto cómo el método de análisis de componentes principales permite reducir el número de variables con los que se trabaja en un modelo, reduciendo un conjunto de $n$ capas a uno menor, tomando aquellas que explican la mayor variabilidad. Esto es de utilidad para establecer modelos de combinación entre capas, así como para reducir el volumen de datos en imágenes.
 
+\end{multicols}
 \pagestyle{empty}

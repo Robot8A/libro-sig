@@ -21,12 +21,12 @@ Una buena parte de los análisis geográficos se realizan sobre capas en formato r
 
 La información de la que disponemos no siempre se encuentra en este formato, pero ello no significa necesariamente que no podamos utilizarla. A partir de información en otros formatos podemos generar capas ráster (este proceso lo denominaremos \emph{rasterización})\index{Rasterización} que reúnan las características para ser analizadas mediante dichos algoritmos. El problema es en todos los casos la creación de una estructura regular a partir de información que no es regular, tal como la contenida en un TIN\index{Triangulated Irregular Network (TIN)}, una capa de polígonos, una de líneas, o una capa de valores puntuales.
 
-Si disponemos de una capa de polígonos y estos cubren la totalidad del territorio, este proceso no es difícil. Basta ver dentro de qué polígono cae la coordenada que define cada celda, y asignar a esta el valor de uno de los atributos de la capa de polígonos, el cual contenga la variable a recoger en la capa ráster\footnote{En realidad, y aunque esta sea una manera sencilla de rasterizar unos polígonos, operando de este modo el rendimiento que se obtendría sería insuficiente, ya que el número de celdas a comprobar es muy elevado. Existen otro tipo de algoritmos, denominados \emph{de barrido}\index{Algoritmos de barrido}, que resultan más eficaces, aunque no los detallaremos aquí. Estos algoritmos no tiene en su origen ninguna relación con un SIG, sino con la mera representación gráfica. Piensa que la pantalla de tu ordenador es como una capa ráster, formada por una malla de pequeños puntos de luz, y representar todo polígono en ella requiere en primer lugar expresar ese polígono en la forma en la que la estructura de la pantalla lo requiere. En \cite{Dunlavey1983ACM} puedes encontrar más información al respecto.\\ Para el caso de la rasterización de líneas, una referencia fundamental es \cite{Bresenham1965IBM}}. En el caso del TIN es similar, ya que cada uno de los triángulos permite el cálculo de valores en sus puntos, y puede igualmente establecerse una relación entre estos y las celdas de una malla ráster que cubra el mismo espacio geográfico.
+Si disponemos de una capa de polígonos y estos cubren la totalidad del territorio, este proceso no es difícil. Basta ver dentro de qué polígono cae la coordenada que define cada celda, y asignar a esta el valor de uno de los atributos de la capa de polígonos, el cual contenga la variable a recoger en la capa ráster. En el caso del TIN es similar, ya que cada uno de los triángulos permite el cálculo de valores en sus puntos, y puede igualmente establecerse una relación entre estos y las celdas de una malla ráster que cubra el mismo espacio geográfico.
 
 Si tenemos una capa de líneas la cosa no es muy distinta. Basta ver por qué celdas pasan esas líneas y asignar el valor de estas a dichas celdas. Pueden existir ambigüedades a la hora de considerar \emph{cuánto} ha de recorrer una linea a través de una celda para considerar que pasa por esta y asignarle el valor correspondientes, como se muestra en la figura \ref{Fig:Formas_rasterizacion_lineas}. No obstante, y salvando estos aspectos, no resulta difícil rasterizar una capa de líneas y tener una capa ráster válida.
 
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.7\textwidth]{Creacion_capas_raster/Formas_rasterizacion_lineas.pdf}
 \caption{\small Formas distintas de rasterizar una línea en función del criterio empleado.}
@@ -65,31 +65,21 @@ Junto con lo anterior, la información de una determinada variable cuantitativa t
 
 Un método de interpolación permite el calculo de valores en puntos no muestreados, a partir de los valores recogidos en otra serie de puntos.
 
-Supongamos el siguiente ejemplo sencillo:
 
-\begin{center}
-\includegraphics[width=.3\mycolumnwidth]{Creacion_capas_raster/EjInterpolacion_1.pdf} 
-\end{center}
+En la figura \ref{Fig:EjInterpolacion} encontramos tres situaciones en las cuales se hace necesario e uso de interpolación. En todas ellas, los cuatro puntos señalados han sido muestreados y se dispone de un valor en ellos. Adviértase que no han de encontrarse necesariamente en el centro de las celdas. El problema es el mismo en cada uno de estos supuestos: queremos estimar los valores en las celdas de la malla, en particular en la celda marcada con un interrogante.
 
-Los cuatro puntos señalados han sido muestreados y se dispone de un valor en ellos. Adviértase que no han de encontrarse necesariamente en el centro de las celdas. Queremos estimar los valores en las celdas de la malla, en particular en la celda marcada con un interrogante.
+Para el caso a) La lógica nos indica que el valor en esta celda debe estar alrededor de 10, ya que este valor sigue la tendencia natural de los valores recogidos, que tiene todos ellos un valor de esa magnitud. Si aplicamos cualquiera de los métodos de interpolación que veremos a continuación, el valor que obtengamos será con seguridad muy aproximado a esa cifra.
+ 
+\begin{figure*}[!ht]   
+\centering
+\includegraphics[width=.65\mycolumnwidth]{Creacion_capas_raster/EjInterpolacion.pdf}
+\caption{\small Tres situaciones para la aplicación deinterpolación espacial.}
+\label{Fig:EjInterpolacion} 
+\end{figure*}
 
-La lógica nos indica que el valor en esta celda debe estar alrededor de 10, ya que este valor sigue la tendencia natural de los valores recogidos, que tiene todos ellos un valor de esa magnitud. Si aplicamos cualquiera de los métodos de interpolación que veremos a continuación, el valor que obtengamos será con seguridad muy aproximado a esa cifra.
+Supongamos ahora que nos encontramos en el caso b). En este supuesto, la lógica nos indica que el valor será inferior a 10, y también probablemente a la media de los valores muestrales (9), ya que la celda problema se sitúa más cerca de los valores inferiores que de los superiores a ese valor medio. Razonando de este modo, aplicamos el hecho de que la proximidad incrementa la semejanza de valores. Es decir, que existe autocorrelación espacial para la variable interpolada.\index{Autocorrelación espacial}
 
-Otro ejemplo sería el siguiente:
-
-\begin{center}
-\includegraphics[width=.3\mycolumnwidth]{Creacion_capas_raster/EjInterpolacion_2.pdf} 
-\end{center}
-
-En este caso, la lógica nos indica que el valorá ser inferior a 10, y también probablemente a la media de los valores muestrales (9), ya que la celda problema se sitúa más cerca de los valores inferiores que de los superiores a ese valor medio. Razonando de este modo, aplicamos el hecho de que la proximidad incrementa la semejanza de valores. Es decir, que existe autocorrelación espacial para la variable interpolada.\index{Autocorrelación espacial}
-
-El caso siguiente ya es algo distinto:
-
-\begin{center}
-\includegraphics[width=.3\mycolumnwidth]{Creacion_capas_raster/EjInterpolacion_3.pdf} 
-\end{center}
-
-En este caso, no parece tan sencillo <<adivinar>> el valor que corresponde. Esto es así no porque las operaciones sean más complejas, sino porque no existe de la misma forma que en los ejemplos anteriores la autocorrelación espacial de la variable, y esa \emph{lógica} no resulta tan obvia. Utilizando los distintos métodos de interpolación, puede ser que estos den valores distintos, ya que se comportarán de forma diferente ante tal situación.
+El caso c) es algo distinto. Aquí ya no parece tan sencillo <<adivinar>> el valor que corresponde. Esto es así no porque las operaciones sean más complejas, sino porque no existe de la misma forma que en los ejemplos anteriores la autocorrelación espacial de la variable, y esa \emph{lógica} no resulta tan obvia. Utilizando los distintos métodos de interpolación, puede ser que estos den valores distintos, ya que se comportarán de forma diferente ante tal situación.
 
 Estos sencillos ejemplos numéricos tienen como objetivo el dar otra imagen distinta de lo que el proceso de interpolación conlleva, y que puede resultar más intuitivo al analizarlo sobre un conjunto reducido de puntos. A pesar de sus diferencias, grandes en muchos casos, todos parten de ideas comunes que lo único que pretenden es replicar de forma lo más precisa posible un campo a partir de un conjunto definido de puntos con valores de este.
 
@@ -120,11 +110,19 @@ Se trata, por tanto, de un método local, exacto y determinístico.
 
 El resultado es una capa con saltos abruptos (tanto como lo sean las diferencias entre los valores de puntos cercanos), con un aspecto <<aterrazado>> (Figura \ref{Fig:Interpolacion_vecindad}). El conjunto de celdas con el mismo valor (dentro de la misma terraza) representa el lugar geométrico de las celdas cuyo punto más cercano de entre los de partida es uno dado.
 
-\begin{figure*}[h]   
-\centering
-\includegraphics[width=.65\mycolumnwidth]{Creacion_capas_raster/Interpolacion_vecindad.png}
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=\mycolumnwidth]{Creacion_capas_raster/Interpolacion_vecindad.png}
 \caption{\small Superficie obtenida mediante interpolación por vecindad.}
 \label{Fig:Interpolacion_vecindad} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Creacion_capas_raster/Pesos_ponderacion_distancia.pdf}
+\caption{\small Variación del peso asignado en función de la distancia mediante ponderación por distancia inversa (trazo punteado) y decremento lineal (trazo continuo) para valores $k=1$, $k=2$ y $k=3$.}
+\label{Fig:Pesos_ponderacion_distancia}. 
+\end{minipage}
 \end{figure*}
 
 La interpolación por vecindad no es adecuada para el trabajo con variables continuas, pero sí para variables categóricas. Por ejemplo, para un conjunto de puntos cada uno de los cuales esté identificado con un código numérico, la interpolación por vecindad de ese valor da como resultado una capa donde los valores de las celdas identifican el punto más cercano. Esto puede utilizarse para calcular la influencia de cada uno de ellos en el espacio representado.
@@ -172,32 +170,29 @@ Otra función habitual es la de la forma
 
 En la figura \ref{Fig:Pesos_ponderacion_distancia} puede verse el efecto del aumento de la distancia sobre los pesos asignados según las ecuaciones \ref{Eq:Distancia_inversa} y \ref{Eq:Decremento_lineal}.
 
-\begin{figure*}[h]   
-\centering
-\includegraphics[width=.65\mycolumnwidth]{Creacion_capas_raster/Pesos_ponderacion_distancia.pdf}
-\caption{\small Variación del peso asignado en función de la distancia mediante ponderación por distancia inversa (trazo punteado) y decremento lineal (trazo continuo) para valores $k=1$, $k=2$ y $k=3$.}
-\label{Fig:Pesos_ponderacion_distancia}. 
-\end{figure*}
-
 La figura \ref{Fig:Interpolacion_distancia} muestra la superficie calculada a partir de datos puntuales de elevación aplicando el método de ponderación por distancia inversa.
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.65\mycolumnwidth]{Creacion_capas_raster/Interpolacion_distancia.png}
-\caption{\small Superficie obtenidas mediante ponderación por distancia inversa}
+\includegraphics[width=\mycolumnwidth]{Creacion_capas_raster/Interpolacion_distancia.png}
+\caption{\small Superficie obtenida mediante ponderación por distancia inversa}
 \label{Fig:Interpolacion_distancia} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=.45\mycolumnwidth]{Creacion_capas_raster/Zonas_llanas_por_IDW.pdf}
+\caption{\small La interpolación basada en ponderación por distancia (a) no crea valores extremos si estos no han sido recogidos, lo cual deriva en un  <<aplanamiento>> de la superficie y la aparición de falsas terrazas. Otros métodos tales como los \emph{splines} (b) sí que permiten la aparición de valores fuera del rango muestreado.}
+\label{Fig:Zonas_llanas_por_IDW} 
+\end{minipage}
 \end{figure*}
+
 
 Los métodos basados en ponderación por distancia solo tienen en cuenta el alejamiento, pero no la posición. Es decir, un punto situado a una distancia $d$ hacia el Norte tiene la misma influencia que uno situado a esa misma distancia $d$ pero hacia el Oeste.
 
 Igualmente, los métodos basados en distancia no generan valores que se encuentren fuera del rango de valores de los datos de entrada. Eso causa efectos indeseados en caso de que el muestro de datos no recoja los puntos característicos de la superficie interpolada. La figura \ref{Fig:Zonas_llanas_por_IDW} muestra en un caso unidimensional cómo, de no recogerse los valores extremos (tales como cimas o valles), estos desaparecen y son sustituidos por tramos llanos 
 
-\begin{figure*}[h]   
-\centering
-\includegraphics[width=.45\mycolumnwidth]{Creacion_capas_raster/Zonas_llanas_por_IDW.pdf}
-\caption{\small La interpolación basada en ponderación por distancia (a) no crea valores extremos si estos no han sido recogidos, lo cual deriva en un  <<aplanamiento>> de la superficie y la aparición de falsas terrazas. Otros métodos tales como los \emph{splines} (b) sí que permiten la aparición de valores fuera del rango muestreado.}
-\label{Fig:Zonas_llanas_por_IDW} 
-\end{figure*}
+
 
 Puede entenderse el método de vecino más cercano como un caso particular de método ponderado por distancia, en el que se emplea un único punto de influencia, y su peso asignado es $p_1=1$.
 
@@ -216,7 +211,7 @@ Estas funciones son de tipo polinómico, y permiten el cálculo de parámetros en t
 
 La fígura \ref{Fig:Interpolacion_funcion} muestra superficies con valores de elevación obtenidos mediante ajuste polinómico de grados dos y cinco.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.9\textwidth]{Creacion_capas_raster/Interpolacion_funcion.png}
 \caption{\small Superficies obtenidas mediante interpolación por ajuste polinómico de segundo (a) y quinto (b) grado.}
@@ -236,7 +231,7 @@ Si bien en muchos casos la superficie interpolada puede no reflejar con precisió
 
 Supongamos una capa de temperatura. Esta dependerá de la altura, pero también de la latitud. Existe, por tanto, una tendencia global: a mayor latitud (supóngase hemisferio norte), menor temperatura. Esta se puede modelizar con una función lineal, y separar el efecto de ambos factores, altitud y latitud (Figura \ref{Fig:Superficies_tendencia}). El efecto local puede entenderse como el residuo de primer orden de la superficie interpolada.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.95\textwidth]{Creacion_capas_raster/Separacion_tendencia.png}
 \caption{\small Separación de una variable en un efecto debido a una tendencia geográfica (en este caso en forma de plano inclinado con valores mayores la zona este) y un efecto local.}
@@ -267,9 +262,9 @@ Los splines no sufren los principales defectos de los dos métodos anteriores. Po
 
 La figura \ref{Fig:Interpolacion_splines} muestra una superficie calculada mediante interpolación con splines.
 
-\begin{figure*}[!hbt]  
+\begin{figure*}[!ht]  
 \centering
-\includegraphics[width=.65\mycolumnwidth]{Creacion_capas_raster/Interpolacion_splines.png}
+\includegraphics[width=.5\mycolumnwidth]{Creacion_capas_raster/Interpolacion_splines.png}
 \caption{\small Superficie obtenida mediante interpolación con splines.}
 \label{Fig:Interpolacion_splines} 
 \end{figure*}
@@ -350,7 +345,7 @@ La aplicación del kriging ordinario implica la asunción de una serie de caracter
 
 La figura \ref{Fig:Interpolacion_kriging} muestra una superficie obtenida mediante kriging ordinario, junto a la capa de varianzas asociada.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.95\textwidth]{Creacion_capas_raster/Interpolacion_kriging.png}
 \caption{\small Superficie obtenida mediante interpolación por kriging ordinario y capa de varianzas. Nótese que, para lograr una representación visual mejor, la vista 3D tiene una orientación contraria a la vista 2D.}
@@ -382,7 +377,7 @@ Lógicamente, el trabajar con una fracción reducida de la población introduce un 
 \item ¿Que tamaño de muestreo (número $n$ de muestras) se necesita para un nivel de precisión dado? El error esta acotado en función de los puntos muestrales. En algunos casos se necesita realizar una estimación con un alto grado de precisión, y dentro de un amplio intervalo de confianza. En otros, sin embargo, no es necesario, y plantear un muestreo demasiado amplio supone un gasto innecesario de recursos.
 \item ¿Dónde tomar esas $n$ muestras? Por la existencia de autocorrelación espacial o por la variación espacial que pueden presentar otras variables relacionadas, una de las partes más importantes del muestreo es determinar la localización exacta en la que tomar las muestras. Existen tres modelos básicos de muestreo: aleatorio, estratificado y regular (Figura \ref{Fig:Tipos_muestreo})
 
-\begin{figure*}[!hbt] 
+\begin{figure*}[!ht] 
 \centering
 \includegraphics[width=.98\textwidth]{Creacion_capas_raster/Tipos_muestreo.png}
 \caption{\small Tipos de muestreo. a) regular, b) aleatorio, c) estratificado} 
@@ -408,7 +403,7 @@ El empleo de los denominados \emph{muestreos pilotos} es una herramienta para co
 \end{itemize}
 
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_raster/Representatividad_muestreo.png}
 \caption{\small El muestreo a) es representativo en el espacio de atributos pero no en el geográfico. El b), sin embargo, es representativo en el espacio geográfico pero no en el de atributos.} 
@@ -434,7 +429,7 @@ No existe un método universalmente establecido como más adecuado en todas situac
 
 La figura \ref{Fig:Kriging_resultados} muestra tres capas interpoladas mediante kriging a partir de un conjunto de puntos. El empleo de distintos ajustes y variogramas(lógicamente, no todos correctos) da lugar a capas completamente diferentes. Si no se emplea correctamente, un método de interpolación puede producir resultados carentes de sentido, que aunque dan lugar a una capa con datos en todas sus celdas, dichos datos pueden no ser adecuados.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_raster/Kriging_resultados.png}
 \caption{\small Distintos resutlados obtenidos por kriging a partir de un mismo juego de puntos, utilizando diferentes ajustes.} 
@@ -503,7 +498,7 @@ Si no disponemos de un conjunto de datos de validación y el juego de datos dispo
 
 De esta forma, obtenemos un conjunto de pares de valores con los valores reales y estimados en cada punto, que podemos mostrar en una gráfica como la de la figura \ref{Fig:Validacion_cruzada}. De igual modo, podemos efectuar un análisis de regresión y obtener la expresión de la recta de ajuste, el coeficiente de correlación de esta o el residuo medio cuadrático. El valor representativo en este caso, no obstante, es la propia expresión de la función. En caso de un ajuste perfecto, la recta debe ser de la forma $y=x$, por lo que resulta interesante representar esta recta ideal para poder comparar.\index{Validación cruzada}
 
-\begin{figure*}[!hbt]  
+\begin{figure*}[!ht]  
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Creacion_capas_raster/Validacion_cruzada.pdf}
 \caption{\small Validación cruzada previa de datos puntuales para interpolación.} 
@@ -523,7 +518,7 @@ Por simplicidad, ignoraremos por el momento los atributos asociados a cada punto
 
 La figura \ref{Fig:Densidad_sencillo} muestra un ejemplo sencillo con la áreas de influencia de dos únicos puntos. Donde ambas áreas intersecan, la densidad es, lógicamente, mayor. Las celdas que no están en el área de influencia de ningún punto tienen un valor de densidad nulo.
 
-\begin{figure*}[!hbt]  
+\begin{figure*}[!ht]  
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Creacion_capas_raster/Densidad_sencillo.pdf}
 \caption{\small Esquema del cálculo de densidades utilizando un área de influencia fija.} 
@@ -532,7 +527,7 @@ La figura \ref{Fig:Densidad_sencillo} muestra un ejemplo sencillo con la áreas d
 
 La elección del área de influencia afecta directamente al resultado obtenido, tal como puede verse en la figura \ref{Fig:Densidad}, que muestra dos capas de densidad calculadas para distintos radios de influencia.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_raster/Densidad.png}
 \caption{\small Capas de densidad a partir de una capa de puntos. El tamaño del radio de influencia en (b) es el doble que en (a).}
@@ -557,7 +552,7 @@ k(h)=\left(1-\frac{h^2}{r^2}\right)^2 \qquad \forall h \leq r
 
 \noindent donde $h$ es la distancia al punto y $r$ el radio máximo de influencia.
 
-\begin{figure*}[!hbt]  
+\begin{figure*}[!ht]  
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Creacion_capas_raster/Nucleo_gaussiano.pdf}
 \caption{\small Comparación entre una función núcleo constante (en trazo punteado) y un núcleo gaussiano (en trazo continuo) para un radio de influencia $r=2$.} 
@@ -566,7 +561,7 @@ k(h)=\left(1-\frac{h^2}{r^2}\right)^2 \qquad \forall h \leq r
 
 Como puede observarse comparando las figuras \ref{Fig:Densidad} y \ref{Fig:Densidad_kernel}, la diferencia entre el uso de uno u otro núcleo es notable, pero la utilización de radios distintos, independientemente del método empleado, da lugar a resultados muy diferenciados. El radio de influencia máxima es, pues, el parámetro más importante en la estimación de densidades, y debe seleccionarse de acuerdo con la distribución de los puntos muestrales.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.85\textwidth]{Creacion_capas_raster/Densidad_kernel.png}
 \caption{\small Capas de densidad a partir de una capa de puntos mediante nucleo gaussiano. El tamaño del radio de influencia en (b) es el doble que en (a).} 
@@ -577,7 +572,7 @@ Además de emplear las coordenadas de cada punto para la estimación de densidad, 
 
 La figura \ref{Fig:Densidad_sencillo_ponderada} muestra un ejemplo del cálculo de densidades si se emplea ponderación de los puntos.
 
-\begin{figure*}[!hbt]  
+\begin{figure*}[!ht]  
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Creacion_capas_raster/Densidad_sencillo_ponderada.pdf}
 \caption{\small Esquema del cálculo de densidades utilizando un área de influencia fija y ponderación según valores. El punto inferior derecho tiene un peso $p=2$, mientras que el superior izquierdo un peso $p=1$.} 

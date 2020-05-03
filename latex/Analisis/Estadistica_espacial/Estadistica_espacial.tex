@@ -12,7 +12,8 @@ Un elemento clave del análisis estadístico es el variograma, que analizaremos en
 
 Unos conocimientos básicos de estadística descriptiva son necesarios para seguir el contenido de este capítulo.
 \end{intro}
- 
+
+\begin{multicols}{2} 
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -75,11 +76,22 @@ Puede ser interesante también analizar el centro mediano como una linea en lugar
 
 En la figura \ref{Fig:Centro_mediano} puede verse una representación de lo anterior.
 
-\begin{figure*}[h]   
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.45\mycolumnwidth]{Estadistica_espacial/Centro_mediano.png}
+\includegraphics[width=.8\mycolumnwidth]{Estadistica_espacial/Centro_mediano.png}
 \caption{\small Centro mediano y lineas de división pasando por este, las cuales dividen el conjunto de puntos en dos partes iguales a Este y Oeste, y Norte y Sur, respectivamente.}
 \label{Fig:Centro_mediano} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.8\mycolumnwidth]{Estadistica_espacial/Centro_medio_y_desviacion.png}
+\caption{\small Circulo de radio igual a la distancia típica centrado en el centro medio del conjunto.}
+\label{Fig:Centro_medio_y_desviacion} 
+\end{minipage}
+\end{figure*}
+\begin{figure*}
 \end{figure*}
 
 El inconveniente del centro mediano es que depende de los ejes escogidos y no es por tanto invariante ante rotaciones. Para solucionar esto suele emplearse como definición alternativa la de aquel punto del espacio que hace mínima la suma de distancias a todos los puntos de datos\cite{King1962Prentice}. El cálculo de este punto requiere de un proceso iterativo \cite{Rogerson2001Sage} en el cual se tiene que 
@@ -109,12 +121,6 @@ Es interesante comentar que la distancia a la media en el concepto habitual de d
 
 Una forma de representar esta distancia típica es mediante un circulo de radio dicha distancia centrado en el centro medio (Figura \ref{Fig:Centro_medio_y_desviacion})
 
-\begin{figure*}[h]   
-\centering
-\includegraphics[width=.45\mycolumnwidth]{Estadistica_espacial/Centro_medio_y_desviacion.png}
-\caption{\small Circulo de radio igual a la distancia típica centrado en el centro medio del conjunto.}
-\label{Fig:Centro_medio_y_desviacion} 
-\end{figure*}
 
 La distancia típica puede, igualmente, calcularse ponderando los distintos puntos, quedando su expresión como
 
@@ -125,7 +131,7 @@ s_d = \sqrt{\frac{\sum_{i=1}^n a_i d_i^2}{\sum_{i=1}^N a_i}}
 Mediante esta representación se asume, no obstante, que la dispersión es la misma en todas direcciones. Esta simplificación raramente es cierta, y es más correcto definir en lugar de un círculo una \emph{elipse de desviación}\index{Elipse de desviación}. Esta elipse de desviación viene definida por sus semiejes mayor y menor, en los cuales se dan, respectivamente, la mayor y menor dispersión. El ángulo $\alpha$ que define al semieje mayor $x'$ viene expresado según
 
 \begin{eqnarray}
- \tan{\alpha} &=& \frac{\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i}{2\sum_{i=1}^N dx_i dy_i} \nonumber \\ &&{} + \frac{\sqrt{\left(\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i \right)^2 +4\sum_{i=1}^N dx_i dy_i}}{2\sum_{i=1}^N dx_i dy_i}
+ \tan{\alpha} = \frac{\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i}{2\sum_{i=1}^N dx_i dy_i} \nonumber \\  + \frac{\sqrt{\left(\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i \right)^2 +4\sum_{i=1}^N dx_i dy_i}}{2\sum_{i=1}^N dx_i dy_i} \nonumber
 \end{eqnarray}
 
 \noindent siendo $dx_i$ y $dy_i$ las distancias en los ejes $x$ e $y$ respectivamente entre el punto i--ésimo y el centro medio.
@@ -135,11 +141,11 @@ El semieje menor es perpendicular al anterior.
 Las distancias típicas en cada uno de estos dos semiejes vienen expresadas por 
 
 \begin{eqnarray}
-\delta_{x'} &=& \bigg(\sum_{i=1}^N dx^2_i \cos^2{\alpha} + 2\left(\sum_{i=1}^N dx_i dy_i\right)\sin{\alpha}\cos{\alpha} \nonumber \\ &&{} + \sum_{i=1}^N dy_i^2 \sin^2{\alpha}\bigg)^{\frac{1}{2}}
+\delta_{x'} &=& \bigg(\sum_{i=1}^N dx^2_i \cos^2{\alpha} \nonumber\\ &&{} + 2\left(\sum_{i=1}^N dx_i dy_i\right)\sin{\alpha}\cos{\alpha} \nonumber \\ &&{} + \sum_{i=1}^N dy_i^2 \sin^2{\alpha}\bigg)^{\frac{1}{2}}
 \end{eqnarray}
 
 \begin{eqnarray}
-\delta_{y'} &=& \bigg(\sum_{i=1}^N dx^2_i \sin^2{\alpha} + 2\left(\sum_{i=1}^N dx_i dy_i\right)\sin{\alpha}\cos{\alpha} \nonumber \\ &&{} + \sum_{i=1}^N dy_i^2 \cos^2{\alpha}\bigg)^{\frac{1}{2}}
+\delta_{y'} &=& \bigg(\sum_{i=1}^N dx^2_i \sin^2{\alpha} \nonumber\\ &&{} + 2\left(\sum_{i=1}^N dx_i dy_i\right)\sin{\alpha}\cos{\alpha} \nonumber \\ &&{} + \sum_{i=1}^N dy_i^2 \cos^2{\alpha}\bigg)^{\frac{1}{2}}
 \end{eqnarray}
 
 Por último, la medida de desviación relativa que equivale en la estadística espacial al coeficiente de variación es la \emph{distancia relativa} \cite{McGrew1993William}, que se calcula dividiendo la distancia típica por el radio de un círculo con el mismo área que la zona de estudio. Si esta zona es circular, se tiene por tanto\index{Distancia!relativa}
@@ -158,7 +164,7 @@ En caso de que esta zona sea cuadrada y de área $A$ , se tiene que
 
 En la figura \ref{Fig:Distancia_relativa} puede verse cómo distribuciones espaciales iguales (con la misma distancia típica) representan dispersiones relativas distintas en relación a la zona de estudio.
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Distancia_relativa.pdf}
 \caption{\small Aunque ambas distribuciones tienen la misma distancia típica, la dispersión en relación al área analizada es distinta, con lo que los valores de distancia relativa serán distintos.}
@@ -201,7 +207,7 @@ Es decir, se tiene un vector cuya orientación viene definida por un ángulo $\ove
 
 El módulo $\overline{R}$ se conoce también como \emph{concentración angular} y es una medida inversa de la dispersión angular. No obstante, hay que tener en cuenta que valores próximos a cero, los cuales indicarían gran dispersión, puede proceder de dos agrupaciones de ángulos similares (es decir, con poca dispersión) si estas agrupaciones se diferencian entre sí 180\degree.\index{Concentración angular}
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Media_vectorial.pdf}
 \caption{\small Media vectorial (en rojo) de una serie de segmentos.}
@@ -262,7 +268,7 @@ Como se puede observar en la figura \ref{Fig:Patrones_puntos}, existen tres tipo
 \end{itemize}
 
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_espacial/Patrones_puntos.png}
 \caption{\small De izquierda a derecha, patrones de puntos agregado, aleatorio y regular.}
@@ -298,7 +304,7 @@ El análisis de cuadrantes no es en realidad una medida del patrón, sino de la di
 
 Otra debilidad de este método es que no es capaz de diferenciar entre distribuciones tales como las de la figura \ref{Fig:Debilidad_cuadrantes}, claramente distintas pero que arrojan un resultado idéntico al aplicar esta metodología con los cuadrantes mostrados.
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Debilidad_cuadrantes.pdf}
 \caption{\small Dos disposiciones de puntos distintas que darían un mismo resultado al analizarse por el método de cuadrantes.}
@@ -418,7 +424,7 @@ En este estimador no se consideran los efectos de borde, y aquellos puntos situa
 
 El valor $w_ij$ pondera los distintos puntos en función de su distancia al borde de la zona de estudio. Para calcularlo se traza una circunferencia por el punto $i$ con radio $d_{ij}$ (es decir, una circunferencia con centro en el punto $i$ y que pasa por el punto $j$), siendo $w_{ij}$ la fracción de dicha circunferencia que queda dentro de la zona de estudio (Figura \ref{Fig:Correcion_Ripley}).
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.35\mycolumnwidth]{Estadistica_espacial/Correccion_Ripley.pdf}
 \caption{\small Corrección del estimador $\hat{K}(h)$ en función de los efectos de borde. El parámetro de corrección es el cociente entre la longitud interior (en trazo continuo) y la total de la circunferencia }
@@ -552,9 +558,9 @@ El cuadrado de las varianzas se multiplica por $\frac12$ debido a que  $\gamma(x
 
 Puesto que puede calcularse la distancia entre dichos puntos, pueden representarse los valores de $\gamma$ frente a las distancias $h$. Se obtiene una nube de puntos (nube del variograma) como la mostrada en la figura \ref{Fig:Nube_variograma}.\index{Variograma!nube del}
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.85\mycolumnwidth]{Estadistica_espacial/Nube_variograma.png}
+\includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Nube_variograma.png}
 \caption{\small Representación de valores de semivarianza frente a distancia, formando la nube del variograma.}
 \label{Fig:Nube_variograma} 
 \end{figure*}
@@ -573,9 +579,9 @@ La función $\gamma(h)$ es lo que se conoce como \emph{variograma experimental}\f
 
 La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variograma de la figura \ref{Fig:Variograma}.
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.99\mycolumnwidth]{Estadistica_espacial/Variograma.png}
+\includegraphics[width=.75\mycolumnwidth]{Estadistica_espacial/Variograma.png}
 \caption{\small Resumen de la nube del variograma en un variograma experimental con sus elementos definitorios.}
 \label{Fig:Variograma} 
 \end{figure*}
@@ -649,11 +655,18 @@ El empleo de uno u otro modelo dependerá del conocimiento que tengamos acerca de
 
 La figura \ref{Fig:Variogramas} muestra las gráficas de los tipos de variogramas anteriores.
 
-\begin{figure*}[h]   
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.85\mycolumnwidth]{Estadistica_espacial/Variogramas.png}
+\includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Variogramas.png}
 \caption{\small Distintos modelos de variograma teórico con los mismos parámetros de forma.}
 \label{Fig:Variogramas} 
+\end{figure*}
+
+\begin{figure*}[!hbt]
+\centering
+\includegraphics[width=.95\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
+\caption{\small Relación entre correlograma (a) y variograma (b)}
+\label{Fig:Variograma_correlograma} 
 \end{figure*}
 
 Llevar a cabo el ajuste del variograma teórico no es en absoluto un proceso trivial. Lo más sencillo es tratar de minimizar el error cuadrático. No obstante, deben tenerse en cuenta algunas consideraciones adicionales como las siguientes:
@@ -693,20 +706,15 @@ S_{ij} =  (x_i - \overline{x}) (x_j - \overline{y})
 
 El conjunto de valores de covarianza y distancias entre puntos da lugar a una nube de valores que, al igual que ocurría con las semivarianzas, puede emplearse para crear una curva experimental y a partir de esta una curva teórica. Con dicha curva teórica se tiene conocimiento de la covarianza a cualquier distancia, y recibe el nombre de \emph{correlograma}.
 
-\begin{figure*}[!hbt]
-\centering
-\includegraphics[width=\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
-\caption{\small Relación entre correlograma (a) y variograma (b)}
-\label{Fig:Variograma_correlograma} 
-\end{figure*}
+
 
 Existe una relación directa entre el variograma y el correlagrama, como puede verse en la figura \ref{Fig:Variograma_correlograma}. Con la notación de la figura, se tiene para el caso del variograma que
 
 \begin{eqnarray}
 \gamma(h) = \left\{ \begin{array}{ll}
 0 & \textrm{si $\|h\| = 0$}\\
-C_0 + C_1\left(1-e^{h/a}\right) & \textrm{si $\|h\| \> a$}
-  \end{array} \right. 
+C_0 + C_1\left(1-e^{h/a}\right) & \textrm{si $\|h\| > a$}
+  \end{array} \right. \nonumber\\
 \end{eqnarray}
 
 Para el correlograma, se tiene que
@@ -714,7 +722,7 @@ Para el correlograma, se tiene que
 \begin{eqnarray}
 \gamma(h) = \left\{ \begin{array}{ll}
 C_0 + C_1 & \textrm{si $\|h\| = 0$}\\
-C_1\left(e^{h/a}\right) & \textrm{si $\|h\| \> a$}
+C_1\left(e^{h/a}\right) & \textrm{si $\|h\| > a$}
   \end{array} \right. 
 \end{eqnarray}
 
@@ -732,4 +740,5 @@ Otro elemento importante del análisis estadístico espacial es el análisis de pat
 
 Por último, la existencia de autocorrelación espacial puede medirse con índices como el $I$ de Moran o el $c$ de Geary, así como analizarse a través de variogramas. A partir de los datos de las semivarianzas se elabora un variograma experimental, el cual sirve como base para el ajuste de un variograma teórico. Este puede puede emplearse posteriormente en otras técnicas tales como el kriging, que veremos más adelante.
 
+\end{multicols}
 \pagestyle{empty}

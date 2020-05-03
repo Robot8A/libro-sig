@@ -54,7 +54,7 @@ Si vamos a llevar a cabo un estudio de cómo el relieve influye en los movimiento
 
 \begin{figure*}[!ht] 
 \centering
-\includegraphics[width= .45\mycolumnwidth]{Analisis_espacial/Escalas_formas_terreno.pdf}
+\includegraphics[width= .40\mycolumnwidth]{Analisis_espacial/Escalas_formas_terreno.pdf}
 \caption{\small Dependiendo de la escala de análisis, un mismo relieve puede ser caracterizado como cima (a) o fondo de valle (b)}
 \label{Fig:Escalas_formas_terreno} 
 \end{figure*}
@@ -67,7 +67,7 @@ Podemos ver más ejemplos de cómo la escala de análisis condiciona los resultados
 
 \begin{figure*}[!ht]
 \centering
-\includegraphics[width= .45\mycolumnwidth]{Analisis_espacial/Medida_linea_fractal.pdf}
+\includegraphics[width= .40\mycolumnwidth]{Analisis_espacial/Medida_linea_fractal.pdf}
 \caption{\small La unidad de medida empleada modifica el resultado obtenido.}
 \label{Fig:Medida_linea_fractal} 
 \end{figure*}
@@ -93,7 +93,7 @@ Las áreas que se definen para poder trabajar con las variables de esta índole so
 
 Este problema, por tener relación con la elección de la unidad de agregación de la información, se conoce como \emph{Problema de la Unidad de Área Modificable}(PUAM) \cite{Openshaw1983Geobooks} \footnote{\emph{Modifiable Areal Unit Problem, MAUP}}, y ha sido ampliamente estudiado en la literatura. Formalmente, puede definirse como <<un problema causado por la imposición de unidades artificiales de definición espacial en fenómenos geográficos continuos, teniendo ésto como consecuencia la generación de patrones artificiales>> \cite{Heywood1998Wesley}. Aunque no se trata de una cuestión de reciente descubrimiento, la aparición de los SIG y las mayores capacidades de análisis que estos han propiciado ha atraído de nuevo el interés sobre el Problema de la Unidad de Área Modificable. \index{Modifiable Areal Unit Problem}
 
-Los efectos del PAUM se pueden dividir en dos componentes: uno relacionado con la escala y otro relacionado con la agregación. El \emph{efecto de escala} describe la variación de los resultados obtenidos en relación con el número de zonas en que se divide el total de la zona de estudio. Es decir, el tamaño de las unidades. Este efecto esta claramente relacionado con lo visto en el punto anterior.\index{Escala!efecto de}
+Los efectos del PUAM se pueden dividir en dos componentes: uno relacionado con la escala y otro relacionado con la agregación. El \emph{efecto de escala} describe la variación de los resultados obtenidos en relación con el número de zonas en que se divide el total de la zona de estudio. Es decir, el tamaño de las unidades. Este efecto esta claramente relacionado con lo visto en el punto anterior.\index{Escala!efecto de}
 
 Por su parte, el \emph{efecto de zonificación} hace referencia a las diferencias que se producen cuando la información se agrega a una escala distinta. Por ejemplo, si se miden los datos de densidad de población por términos municipales, y posteriormente estos se agregan para presentarse por comunidades autónomas, ese cambio en la unidad de definición da lugar a diferencias en los valores resultantes. \index{Efecto!de escala}\index{de zonificación}
 
@@ -326,21 +326,23 @@ Para concluir, un sencillo análisis entre un punto y un polígono, el cual utiliz
 
 En la figura \ref{Fig:Punto_en_poligono} se muestra un ejemplo de lo anterior.
 
-\begin{figure*}[!ht]
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.5\mycolumnwidth]{Analisis_espacial/Punto_en_poligono.pdf}
+\includegraphics[width=\mycolumnwidth]{Analisis_espacial/Punto_en_poligono.pdf}
 \caption{\small Pertenencia de un punto al interior de un polígono en función del numero de cortes entre la frontera de dicho polígono y una semirecta con extremo en dicho punto.}
 \label{Fig:Punto_en_poligono} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.83\mycolumnwidth]{Analisis_espacial/Problema_punto_en_poligono.pdf}
+\caption{\small Problemas de la metodología para determinar si un punto se encuentra en el interior de un polígono cuando la semirecta coincide parcialmente con la frontera.}
+\label{Fig:Problema_punto_en_poligono} 
+\end{minipage}
 \end{figure*}
 
 La pertenencia o no del punto al polígono queda definida así en todos los casos, salvo cuando el punto está en la propia frontera o bien la semirecta coincide en algún tramo con el contorno, en cuyo caso resulta imposible el cálculo del número de cortes (Figura \ref{Fig:Problema_punto_en_poligono}).
-
-\begin{figure*}[!ht]
-\centering
-\includegraphics[width=.5\mycolumnwidth]{Analisis_espacial/Problema_punto_en_poligono.pdf}
-\caption{\small Problemas de la metodología para determinar si un punto se encuentra en el interior de un polígono cuando la semirecta coincide parcialmente con la frontera.}
-\label{Fig:Problema_punto_en_poligono} 
-\end{figure*}
 
 \section{Relaciones espaciales}
 \label{Relaciones_espaciales}
@@ -425,6 +427,7 @@ Un razonamiento similar puede aplicarse al caso de líneas, cuya principal difere
 A partir del modelo \emph{4--Intersection}, Egenhofer \cite{Egenhofer1989Springer} desarrolla el modelo \emph{9--Intersection}, en el cuál se amplia el anterior a la consideración de tres elementos en lugar de dos. Además de considerar las fronteras e interiores de los objetos A y B, se consideran asimismo los exteriores de los mismos ($A^-$ y $B^-$). La matriz característica queda entonces de la forma\index{9--Intersection}
 
 \begin{equation}
+\scriptstyle
 \Im_9(A,B) = \left( \begin{array}{ccc}
 A  \cap  B & A \cap \delta B & A \cap B^- \\
 \delta A \cap B &\delta A \cap \delta B & \delta A \cap B^- \\
@@ -432,7 +435,7 @@ A^- \cap B &A^- \cap \delta B & A^- \cap B^- \\
 \end{array} \right)
 \end{equation}
 
-El numero total de matrices posibles es en este caso de $2^9 = 512$. De todas ellas, solo un pequeño subconjunto representan relaciones posibles en $\mathbb{R}^2$ a las cuales pueda asignarse una interpretación geométrica. 
+El número total de matrices posibles es en este caso de $2^9 = 512$. De todas ellas, solo un pequeño subconjunto representan relaciones posibles en $\mathbb{R}^2$ a las cuales pueda asignarse una interpretación geométrica. 
 
 Por ejemplo, la matriz siguiente, en la que todos los elementos son el conjunto vacío, resulta imposible de obtener con ningún tipo de relación.
 
