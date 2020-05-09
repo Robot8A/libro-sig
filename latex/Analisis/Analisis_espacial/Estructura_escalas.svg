@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -452,6 +452,8 @@
          id="tspan4096"
          x="166.6989"
          y="348.5224"
-         style="font-size:24px">a)                                                b)</tspan></text>
+         style="font-size:24px"><tspan
+   style="font-size:22px"
+   id="tspan3803">a)                                                      b</tspan>)</tspan></text>
   </g>
 </svg>

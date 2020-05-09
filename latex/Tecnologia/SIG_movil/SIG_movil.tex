@@ -32,6 +32,13 @@ Algunas de las tecnologías y utilidades que aparecen con los SIG móviles distan 
 
 Comencemos viendo qué entendemos por SIG móvil y de qué formas puede presentarse. Para ello, analicemos como hemos hecho en otros apartados una situación habitual en el entorno de trabajo de un SIG, en particular la relativa a la creación de datos geográficos. Según vimos en el capítulo \ref{Fuentes_datos}, una de las formas de obtener datos con los que trabajar en un SIG es la toma de estos directamente en campo y su posterior incorporación dentro del SIG. Esto requería habitualmente la digitalización de los datos tomados, ya que dicha toma se desarrollaba en la mayor parte de los casos mediante medios analógicos. 
 
+\begin{figure*}[!ht]   
+	\centering
+	\includegraphics[width=0.90\textwidth]{SIG_movil/TiposDispositivosMoviles.png}
+	\caption{\small Distintos tipos de dispositivos móviles}
+\label{Fig:TiposDispositivosMoviles} 
+\end{figure*}
+
 Una importante mejora en este proceso se daría si la recogida de datos se efectuara empleando medios digitales, ya que el resultado sería mucho más cercano a lo que posteriormente va a necesitarse para el trabajo en gabinete. Además de esta ventaja inmediata y del ahorro de tiempo que traería consigo, existen otras ventajas directas que los medios digitales aportarían. Por ejemplo, si en lugar de un dispositivo de toma de datos contamos con dos de ellos, es relativamente sencillo (especialmente si los dispositivos pueden comunicarse entre sí) replicar los datos tomados, teniéndose así una copia de seguridad que evitará en gran medida la pérdida de los datos tomados por circunstancias diversas. El software instalado en el dispositivo puede a su vez contar con elementos que efectúen algún tipo de control de calidad, asegurándose de que no se introducen por descuido valores erróneos o de que no se deja sin rellenar ningún campo de un estadillo.
 
 No obstante, y a pesar de que esa recogida de datos se realiza con el fin de tratar estos posteriormente con ayuda de un SIG, el SIG como tal no participa en el proceso de toma de datos, sino tan solo en el trabajo de gabinete. Los dispositivos que se lleven al campo, sean del tipo que sean, simplemente recogen una serie de valores introducidos por el operario correspondiente, del mismo modo que este los anotaría en una libreta o estadillo. Sin embargo, nada impide que podamos llevar al campo una aplicación SIG (por ejemplo, un SIG de escritorio), y que sea en ese SIG, adaptado a esa particular tarea o no, donde tomemos los datos y en el que nos apoyemos para realizar todas las tareas adicionales que el trabajo de campo requiere.
@@ -47,14 +54,6 @@ Hoy en día son muchos los dispositivos que podemos emplear para disponer de una 
 \end{itemize}
 
 \index{GPS}\index{Teléfono móvil}\index{Tablet PC}
-
-\begin{figure*}[t]   
-	\centering
-	\includegraphics[width=0.90\textwidth]{SIG_movil/TiposDispositivosMoviles.png}
-	\caption{\small Distintos tipos de dispositivos móviles}
-\label{Fig:TiposDispositivosMoviles} 
-\end{figure*}
-
 
 Las características de estos dispositivos son distintas a las de un ordenador de sobremesa en el que utilizamos el \emph{software} SIG que hemos visto hasta ahora, haciendo que deba desarrollase software específico y que deban tenerse en cuenta algunas consideraciones adicionales. A su vez, cada uno de los anteriores dispositivos tiene unas capacidades propias que lo hacen más interesante para unas u otras tareas dentro del trabajo en campo.
 
@@ -76,12 +75,12 @@ Para dar una definición más formal de lo que entendemos por SIG móvil, podemos d
 
 Por su parte, \cite{Brimicombre2002GIS} distingue tres elementos principales que dan forma al contexto de las aplicaciones SIG móviles: SIG, Internet, y dispositivos móviles y Nuevas Tecnologías de la Información y la Comunicación (NTIC). La figura \ref{Fig:LBSInterseccion} esquematiza esto.\index{NTIC}
 
-\begin{figure*}[t]   
+\begin{figure}[H]   
 	\centering
 	\includegraphics[width=0.35\mycolumnwidth]{SIG_movil/LBSInterseccion.pdf}
 	\caption{\small Clasificación de aplicaciones del ámbito del SIG móvil en función de las tecnologías empleadas (según \cite{Brimicombre2002GIS})}
 \label{Fig:LBSInterseccion} 
-\end{figure*}
+\end{figure}
 
 En el centro, como tecnologías aglutinadoras de las anteriores, encontramos los \emph{Servicios Basados en Localización} (LBS\footnote{\emph{Location--Based Services}}). En general, se suelen recoger bajo esta denominación los servicios que toman en consideración la posición del usuario, y en los que se produce la participación de un tercero, el encargado de proveer el servicio como parte fundamental de un negocio. Dichos servicios pueden ir desde la localización del comercio más próximo hasta el envío de avisos cuando se encuentre cerca de otro usuario conocido. 
 \index{Servicios Basados en Localización}\index{Location--Based Services (LBS)|see{Servicios Basados en Localización}}
