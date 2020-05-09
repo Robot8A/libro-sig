@@ -37,7 +37,7 @@ Como se muestra en la figura \ref{Fig:Zona_influencia_circular}, este análisis s
 
 El hecho de poder plantear este análisis de dos formas distintas es debido a que, según lo visto en \ref{Calculos_espaciales_basicos}, en un espacio métrico se tiene que, para dos puntos A y B, la distancia entre A y B ($d_{AB}$) es igual a la distancia entre B y A ($d_{BA}$). Pueden calcularse zonas de influencia basadas en otro tipo de medidas que no cumplen la anterior propiedad, aunque las operaciones correspondientes se llevan a cabo sobre capas en formato ráster, y las estudiaremos en el capítulo \ref{Costes}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_circular.pdf}
 \caption{\small Zona de influencia a partir de puntos. La influencia puede analizarse a partir de los puntos que la ejercen (a) o los que la reciben (b)}
@@ -52,7 +52,7 @@ Podemos utilizar este tipo de zonas de influencia para, por ejemplo, estudiar qu
 
 De igual modo que en el ejemplo anterior, el análisis se pueden plantear de forma contraria, calculando las zonas de influencia de cada industria y viendo si estas cortan al trazado del cauce. Aquí podemos ver que, aunque los procedimientos para puntos y líneas sean distintos, su significado es el mismo, y por ello pueden utilizarse las zonas de influencia creadas a partir tanto de unas como de otras geometrías, indistintamente.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_poligonos.pdf}
 \caption{\small Zona de influencia a partir de polígonos. a) Hacia el exterior,b) hacia el interior.} 
@@ -64,7 +64,7 @@ En el caso de polígonos, y puesto que ya conforman regiones, las zonas de influe
 
 Otro uso habitual de este tipo de zonas de influencia la encontramos en la gestión de costas. Si consideramos una zona de protección costera de una dimensión dada, el polígono de influencia hacia el interior calculado con esa distancia y el contorno de la zona interior representa las zonas a menos de dicha distancia de la costa. Por tanto, son aquellas zonas fuera de la zona de protección sobre las que pueden establecerse actividades tales como la edificación o implantación de infraestructuras.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.9\mycolumnwidth]{Operaciones_geometricas/Zona_influencia_lineas.png}
@@ -82,14 +82,8 @@ Otro uso habitual de este tipo de zonas de influencia la encontramos en la gesti
 
 Mientras que la zona de influencia exterior no tiene ningún límite, la trazada hacia el interior viene limitada por las propias dimensiones del polígono de origen.
 
-Sobre la base anterior de zonas de influencia delimitadas a partir de las geometrías fundamentales, existen muchas variantes y formas de construirlas. Un proceso habitual es la creación no de una única zona de influencia para cada entidad base, sino de un conjunto de ellas equiespaciadas, de tal forma que puedan considerarse distintos grados de influencia. Este conjunto de zonas de tamaños sucesivos forman una serie de polígonos concéntricos que pueden, además, representarse de forma distinta para reflejar más explícitamente su significado (Figura \ref{Fig:Zonas_influencia_concentricas}).
+Sobre la base anterior de zonas de influencia delimitadas a partir de las geometrías fundamentales, existen muchas variantes y formas de construirlas. Un proceso habitual es la creación no de una única zona de influencia para cada entidad base, sino de un conjunto de ellas equiespaciadas, de tal forma que puedan considerarse distintos grados de influencia. Este conjunto de zonas de tamaños sucesivos forman una serie de polígonos concéntricos que pueden, además, representarse de forma distinta para reflejar más explícitamente su significado.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Zonas_influencia_concentricas.png}
-\caption{\small Zonas de influencia concéntricas a partir de una entidad lineal} 
-\label{Fig:Zonas_influencia_concentricas}
-\end{figure*}
 
 Es fácil ver que si se trazan dos áreas de influencia de tamaño $r$ y $2r$ a partir de una geometría de un tipo cualquiera, esta última es equivalente al área de influencia creada a partir de la primera, con distancia $r$.
 
@@ -136,9 +130,9 @@ Esta operación se conoce como \emph{clipping} en inglés y es habitual verla así 
 
 En la figura \ref{Fig:Recorte_vectorial} podemos ver cómo la capa de entrada con polígonos, líneas y puntos se restringe a una extensión menor manteniendo dentro de dicha zona la misma información original. Se considera en este ejemplo un único polígono de recorte, pero pueden ser varios, e incluso polígonos con huecos interiores, sin que exista diferencia alguna en la operación.\index{Polígono!de recorte}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.9\textwidth]{Operaciones_geometricas/Recorte_vectorial.png}
+\includegraphics[width=\textwidth]{Operaciones_geometricas/Recorte_vectorial.png}
 \caption{\small Recorte vectorial de un conjunto de capas de puntos, líneas y polígonos, con una capa de polígonos.} 
 \label{Fig:Recorte_vectorial}
 \end{figure*}
@@ -177,7 +171,7 @@ A diferencia del recorte, la información empleada para crear la tabla resultante
 
 Puede verse un sencillo ejemplo en la figura \ref{Fig:Interseccion_vectorial}.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Interseccion_vectorial.pdf}
 \caption{\small Interseccion entre dos capas de polígonos, mostrando las geometrías y la tabla de atributos resultante.}
@@ -206,7 +200,7 @@ La tabla de atributos correspondiente es igual a la de la intersección, con tant
 
 La figura \ref{Fig:Union_vectorial} muestra un ejemplo de unión de capas vectoriales.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Union_vectorial.pdf}
 \caption{\small Unión de dos capas de polígonos, mostrando las geometrías y la tabla de atributos resultante.}
@@ -236,7 +230,7 @@ La figura \ref{Fig:Poligonos_espureos} muestra un ejemplo de la aparición de est
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=.95\mycolumnwidth]{Operaciones_geometricas/Poligonos_espureos.pdf}
+\includegraphics[width=.65\mycolumnwidth]{Operaciones_geometricas/Poligonos_espureos.pdf}
 \caption{\small Aparición de polígonos espúreos de pequeño tamaño tras el solape entre capas con discrepancias.}
 \label{Fig:Poligonos_espureos}
 \end{figure*}
@@ -258,7 +252,7 @@ La tabla de la capa resultante contiene tantos elementos como existan en el conj
 
 Para comprender mejor esta operación, puede verse un ejemplo en la figura \ref{Fig:Ejemplo_juntar_capas}.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Juntar_capas.pdf}
 \caption{\small Ejemplo de las tablas y entidades resultantes tras juntar dos capas.} 
@@ -297,7 +291,7 @@ No obstante, pueden disolverse las entidades según distintos grupos, tantos como
 
 En la figura \ref{Fig:Disolver} se muestra un ejemplo de lo anterior.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Operaciones_geometricas/Disolver.png}
 \caption{\small Obtención de una capa de comunidades autónomas a partir de una de provincias mediante un proceso de disolución. En la capa original se han representado los polígonos en función de la comunidad a la que pertenecen. Aunque aparecen con el mismo color, son polígonos independientes.}
@@ -333,7 +327,7 @@ Existen diversas formas de contornos mínimos, entre las que cabe destacar.
 
 La envolvente convexa mínima (habitualmente citada como \emph{convex hull}, su denominación en inglés) es la más común de las envolventes. Define el polígono convexo de menor área dentro del cual se contienen todos los puntos del conjunto, y su significado tanto geográfico como geométrico es de gran utilidad en muchos aspectos.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.7\textwidth]{Operaciones_geometricas/Convex_hull.png}
 \caption{\small Contorno convexo mínimo.}
@@ -393,10 +387,27 @@ Las razones que por las cuales puede resultar de interés llevar a cabo un proces
 \begin{itemize}
 	\item \textbf{Reducción del tamaño de los datos}. Una reducción del número de puntos elimina puntos en muchos casos superfluos, de tal forma que la capa simplificada presenta la misma utilidad pero ocupa un espacio menor.
 	\item \textbf{Reducción del tiempo de proceso}. La capa generalizada se maneja de forma más rápida en operaciones tales como la representación en pantalla, la impresión, o la realización de otros cálculos. En términos generales, todos los cálculos con la linea generalizada, como por ejemplo el trazado de una zona de influencia o de cualquier otro de los procesos vistos en este capítulo, se efectúan con un menor costo de proceso, ya que requieren el análisis de un menor número de puntos. Otros procesos tales como la conversión de esa capa en una capa ráster también experimentan una ganancia en rendimiento.	
-	\end{itemize}
+\end{itemize}
 
 En ocasiones, la simplificación puede implicar la reducción de elementos más allá de puntos aislados, tal y como operan los algoritmos que a continuación veremos. Eliminando puntos a lo largo de una línea puede lograrse el resultado buscado, reduciendo el detalle longitudinalmente, pero un cambio de escala puede también implicar la necesidad de eliminar no únicamente puntos, sino líneas completas. Por ejemplo, si una capa de líneas recoge con detalle una vía mediante dos líneas, una para cada borde de la misma, no tiene sentido emplear una capa de tal detalle para un mapa a una escala tal como, por ejemplo, 1:200000. En este caso, puede sustituirse el par de líneas anteriores por una única, ya que la variación en el resultado no será perceptible. La simplificación de las líneas en este caso debe operar sustituyendo dos líneas por una única.
-	Si esa carretera queda recogida mediante un polígono, puede simplificarse mediante un proceso de <<adelgazamiento>> que convierta este en una línea central. La obtención de este eje del polígono se hace con un proceso que es similar a la zona de influencia hacia el interior de un polígono, la cual veíamos al principio de este mismo capítulo. \index{Adelgazamiento}
+
+Si esa carretera queda recogida mediante un polígono, puede simplificarse mediante un proceso de <<adelgazamiento>> que convierta este en una línea central. La obtención de este eje del polígono se hace con un proceso que es similar a la zona de influencia hacia el interior de un polígono, la cual veíamos al principio de este mismo capítulo. \index{Adelgazamiento}
+
+\begin{figure*}[!ht]
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.7\mycolumnwidth]{Operaciones_geometricas/Suavizar_digitalizado.pdf}
+\caption{\small Suavizado de una línea procedente de vectorización a partir de una capa ráster. En negro, línea original con esquinas angulosas. En rojo, línea suavizada.} 
+\label{Fig:Suavizar_digitalizado}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Operaciones_geometricas/Simplificacion_importancia_ptos.png}
+\caption{\small La eliminación de puntos de la linea original (a) puede dar lugar a líneas muy similares (b) o muy distintas (c), ya que no todos los puntos tienen la misma importancia.}
+\label{Fig:Simplificacion_importancia_ptos}
+\end{minipage}
+\end{figure*}
 
 Una operación también relacionada con la generalización de líneas es el \emph{suavizado}. En muchas ocasiones, las líneas de una capa vectorial son excesivamente angulosas y no presentan un aspecto natural, muy distinto del trazo suave con que un cartógrafo trazaría las mismas al realizar un mapa. Alterando el conjunto de puntos de la línea de forma similar a lo visto anteriormente, puede lograrse un redondeo en las curvas definidas por este. Dicho redondeo puede buscarse con meros fines estéticos, pero también para eliminar variaciones bruscas o desviaciones locales, manteniendo tan solo la forma general de la linea. Este es, por ejemplo, el proceso que debe realizarse si deseamos utilizar las lineas a una escala de menor detalle que la que originalmente se empleó en su creación. \index{Suavizado}
 
@@ -404,12 +415,6 @@ El suavizado de líneas es también útil como preparación de datos de líneas proce
 
 Algo similar sucede cuando las operaciones de vectorización\index{Vectorización} se realizan de forma automática, tales como las que vimos en en capítulo \ref{Creacion_capas_vectoriales}. El suavizado de las líneas mejora en tal caso la calidad de estas, no solo en su aspecto estético, sino también en muchos casos su similitud con el objeto modelizado, pues se trata de formas más naturales(Figura \ref{Fig:Suavizar_digitalizado}).
 
-\begin{figure*}[!ht]
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Operaciones_geometricas/Suavizar_digitalizado.pdf}
-\caption{\small Suavizado de una línea procedente de vectorización a partir de una capa ráster. En negro, línea original con esquinas angulosas. En rojo, línea suavizada.} 
-\label{Fig:Suavizar_digitalizado}
-\end{figure*}
 
 \subsection{Métodos}
 
@@ -419,9 +424,9 @@ No obstante, no todos los puntos de un línea tienen la misma importancia y aport
 
 \begin{figure*}[!ht]
 \centering
-\includegraphics[width=.6\mycolumnwidth]{Operaciones_geometricas/Simplificacion_importancia_ptos.pdf}
-\caption{\small La eliminación de puntos de la linea original (a) puede dar lugar a líneas muy similares (b) o muy distintas (c), ya que no todos los puntos tienen la misma importancia.}
-\label{Fig:Simplificacion_importancia_ptos}
+\includegraphics[width=\textwidth]{Operaciones_geometricas/Simplificacion_lineas.png}
+\caption{\small Generalización de un conjunto de líneas (en trazo punteado) mediante el algoritmo de \cite{Douglas1973TAC} para valores de tolerancia de 10 (a), 20 (b) y 50 metros (c).} 
+\label{Fig:Generalizacion}
 \end{figure*}
 
 Puesto que no todos los puntos deben ser considerados de igual modo, existen métodos de simplificación que consideran la naturaleza propia del punto dentro de la línea y estudian esta como entidad en su conjunto. Esto garantiza resultados mejores que con la mera eliminación sistemática de puntos intermedios.
@@ -440,12 +445,6 @@ Uno de los algoritmos más habitualmente utilizados es el propuesto por\cite{Doug
 
 En la figura \ref{Fig:Generalizacion} puede verse cómo una línea original se simplifica de diversas formas al aplicar tolerancias crecientes con este algoritmo.
 
-\begin{figure*}[!ht]
-\centering
-\includegraphics[width=.9\textwidth]{Operaciones_geometricas/Simplificacion_lineas.png}
-\caption{\small Generalización de un conjunto de líneas (en trazo punteado) mediante el algoritmo de \cite{Douglas1973TAC} para valores de tolerancia de 10 (a), 20 (b) y 50 metros (c).} 
-\label{Fig:Generalizacion}
-\end{figure*}
 
 Respecto a los algoritmos de suavizado, estos pueden dividirse en tres grupos principales \cite{McMaster1987Cartographica}:
 

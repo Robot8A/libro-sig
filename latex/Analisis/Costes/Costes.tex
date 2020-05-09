@@ -51,7 +51,7 @@ Este tipo de variables hacen referencia a los denominados espacios \emph{subjeti
 
 Aunque la capa con la superficie de fricción cubre toda una extensión dada, es probable que puntos de esta extensión no sean transitables. Si suponemos que el coste viene expresado por la pendiente, hay zonas tales como embalses donde, con independencia de su pendiente, no podemos cruzar. Una solución habitual es asignar a las celdas en estas zonas un valor muy elevado (coste infinito), que haga que no sea viable transitarlas. No obstante, una opción más correcta es asignar valor de sin datos a estas zonas, de forma que queden directamente excluidas del cálculo. Esto puede emplearse para excluir en el posterior trazado de rutas óptimas aquellos puntos que no deseen ser transitados, bien sea por los propios valores de la variable de coste o bien por otras razones.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.3\textwidth]{Costes/Ejemplo_superficie_friccion.pdf}
 \caption{\small Una superficie de fricción permite calcular el coste de una ruta definida sobre ella.}
@@ -103,7 +103,7 @@ Para visualizar gráficamente esta metodología, puede observarse que el proceso d
 
 En la figura \ref{Fig:Coste_acumulado} podemos ver la capa de coste acumulado resultante de utilizar tres puntos de destino y una superficie de fricción constante. Puesto que la superficie de fricción es constante, dicho coste acumulado es proporcional a la distancia.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.8\mycolumnwidth]{Costes/Coste_acumulado.png}
@@ -238,7 +238,7 @@ Frente al cálculo de zonas de influencia que vimos para las capas vectoriales, l
 
 Para comenzar, la figura \ref{Fig:Zona_influencia_raster} muestra una comparación entre la zona de influencia calculada sobre el trazado del cauce recogido según un modelo vectorial y la misma zona calculada sobre una base ráster. Para calcular esta última se ha creado la capa de coste acumulado tomando el cauce como conjunto de celdas de destino, pero deteniéndose el algoritmo una vez que se alcanza un umbral de distancia dado. También puede calcularse de la forma habitual, y después reclasificando todas aquellas celdas con distancia mayor que el umbral para asignarles valor de sin datos.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Costes/Zona_influencia_raster.png}
 \caption{\small Comparación entre a) zona de influencia en formato vectorial y b) zona de influencia en formato ráster.}
@@ -285,7 +285,7 @@ Podemos abordar el problema como un problema de costes habitual. Tomando la supe
 
 El modelo de coste, pese a incluir la pendiente, es en esta ocasión isotrópico, ya que el vehículo no puede desplazarse por zonas con pendiente superior al umbral, con independencia de la dirección en la que lo haga.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Costes/Zona_influencia_vehiculo.png}
 \caption{\small Zona de influencia (en azul) de una vía (en rojo) , suponiendo que es posible el desplazamiento desde esta siempre que la pendiente no supere el 5\%. En el fondo, mapa de pendientes. Tonalidades más oscuras indican mayor pendiente.}
@@ -302,7 +302,7 @@ Si en el caso del vehículo teníamos un umbral fijo, ahora este umbral es variabl
 
 Por ello, esta nueva capa también nos servirá como capa puntos de destino según la codificación habitual}, y además cada una de ellas contiene el valor de umbral. Es decir, que al operar según se explicó anteriormente para crear la capa de coste acumulado, el umbral dependerá de la celda concreta desde la que nos venimos desplazando. Las celdas por debajo del umbral son viables, mientras que las superiores, no. Este modelo es similar al que planteábamos al analizar la distancia hidrológica, solo que en este caso el umbral que aplicamos no es sobre el coste acumulado, sino que lo usamos para calcular en cada celda los costes unitarios. Para aquellas celdas que superan dicho umbral, el coste es infinito. Para las restantes, nulo.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\mycolumnwidth]{Costes/Influencia_calado.pdf}
 \caption{\small El calado $h$ define la inundabilidad de las zonas circundantes al cauce, en función de la elevación de estas. En rojo, celda central del cauce. }
@@ -354,7 +354,7 @@ Al acabar este proceso, se procede a repetirlo, en esta ocasión con todos los pu
 
 La figura \ref{Fig:Dijkstra} muestra un ejemplo de un grafo muy sencillo y el proceso de ejecución del algoritmo de Dijkstra sobre este. 
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.7\textwidth]{Costes/Dijkstra.pdf}
 \caption{\small Ejemplo de aplicación del algoritmo de Dijkstra para cálculo de rutas de mínimo coste. De izquierda a derecha, etapas sucesivas de asignación de coste por nodos (Adaptado de Wikipedia).}
@@ -375,7 +375,7 @@ De entre los múltiples algoritmos existentes para resolver este problema, los de
 
 Puesto que se obtiene como resultado un árbol y este es un grafo de tipo acíclico, la ausencia de ciclos (circuitos cerrados) garantiza que no existan tramos <<redundantes>> en la red. Por esta razón, la estructura de árbol es la adecuada para minimizar la longitud de la red. Desde la perspectiva de su aplicación real, no obstante, un árbol no es la forma más ventajosa de conectar una serie de puntos, ya que la conectividad es reducida y puede perderse si se pierde una de las conexiones (en otras palabras, si se rompe una tubería, habría puntos que no estarían abastecidos, y no resultaría posible abastecerles por otra vía).
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Costes/MST.pdf}
@@ -391,7 +391,7 @@ Puesto que se obtiene como resultado un árbol y este es un grafo de tipo acíclic
 \end{minipage}
 \end{figure*}
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Costes/Buffer_vectorial_red.png}
 \caption{\small Zona de influencia de un punto considerando distancias sobre una red en lugar de distancia euclídea.}

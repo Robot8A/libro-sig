@@ -45,7 +45,7 @@ El resultado de una consulta en un SIG generalmente es lo que conocemos como \em
 
 Como veremos más en detalle en las siguientes secciones, las consultas pueden hacerse solo sobre la componente temática de los datos, sobre la espacial, o sobre ambas. En cualquier caso, sabemos ya que estas en un SIG se hayan vinculadas, con lo que el resultado de la consulta afecta a ambas. La selección se hace patente sobre ambas componentes, con independencia de cuál de ellas haya sido la encargada de aplicar el criterio de selección. En el entorno habitual de un SIG, con su interfaz gráfica, tanto la tabla de atributos como la representación visual de la componente espacial se ven afectadas por la realización de una consulta. La figura \ref{Fig:Seleccion} muestra gráficamente este hecho.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=\textwidth]{Consultas/Seleccion.pdf}
 \caption{\small El resultado de una consulta temática en un SIG es una selección de entidades, que implica tanto a la componente temática como a la espacial de cada una de ellas. En ambos casos, el color amarillo indica los elementos seleccionados.}
@@ -124,7 +124,7 @@ Otros operadores lógicos que podemos emplear son el operador disyuntivo \emph{o}
 
 Más adelante volveremos a encontrar esquemas similares a estos, en particular al estudiar las operaciones de solape entre capas vectoriales, en el capítulo \ref{Operaciones_geometricas}.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.6\textwidth]{Consultas/Venn.pdf}
 \caption{\small Diagramas de Venn.}
@@ -321,7 +321,7 @@ La consulta sobre capas no vectoriales es, sin embargo, menos interesante, pues 
 
 La consulta sobre un punto concreto que hemos descrito la incorporan la gran mayoría de los SIG y es una herramienta de primer orden, sumamente sencilla, que nos permite hacer un uso simple aunque muy práctico de los datos geográficos. No obstante, una consulta espacial de este tipo puede ser más compleja e incorporar en el criterio algo más que un único punto. Por ejemplo, podemos seleccionar todas las entidades dentro de un área rectangular, o bien dentro de un polígono cualquiera que podríamos definir directamente sobre la propia representación en pantalla (Figura \ref{Fig:Seleccion_rectangulo}).
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Consultas/Seleccion_rectangulo.png}
 \caption{\small Consulta mediante rectángulo. Los países que intersecan con los limites definidos por dicho rectángulo quedan seleccionados.}
@@ -388,7 +388,7 @@ WHERE Cross(Rios.Shape, Paises.Shape)
 
 Al igual que en el apartado anterior, el objetivo de este apartado no es mostrar con detalle la sintaxis del lenguaje SQL cuando este se emplea para la realización de consultas espaciales. Los anteriores son únicamente algunos ejemplos para poner de manifiesto la potencia de este planteamiento y mostrar cómo los elementos espaciales se integran en el lenguaje SQL. Puede encontrarse más información en \cite{Egenhofer1994IEEE}.
 
-Además de esta extensión a SQL, existen otras propuestas propuestas alternativas tales como Geo--SQL, SSQL (Spatial SQL) o SQL-MM.\index{SQL-MM}\index{Geo--SQL}\index{Spatial SQL}
+Además de esta extensión a SQL, existen otras propuestas alternativas tales como Geo--SQL, SSQL (Spatial SQL) o SQL-MM.\index{SQL-MM}\index{Geo--SQL}\index{Spatial SQL}
                                                           
 
 \subsection{Índices espaciales}
@@ -416,7 +416,7 @@ Puede entenderse igualmente la idea de un índice espacial mediante un sencillo e
 
 La solución más inmediata es medir la distancia entre España y todos los países restantes, y después tomar aquellos que hayan arrojado un resultado de distancia menor a 3000. La operación daría el resultado esperado, pero implicaría un gran número de mediciones, y no sería una forma óptima de operar. De hecho, es probable que a nadie se le ocurriese operar de esta forma en ningún caso. Por ejemplo, lo más probable es que no efectuemos mediciones con los países de América, pues un conocimiento básico de geografía basta para saber que todos ellos se encuentran a más de 3000 kilómetros. No sabemos exactamente a qué distancia se encuentran, pero sabemos que de ningún modo van a cumplir el criterio establecido en la consulta. De modo similar podemos eliminar Australia y gran parte de Asia, porque se encuentran en una situación similar. 
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Consultas/Ej_indices_espaciales.pdf}
 \caption{\small Para calcular los diez puntos más cercanos a una coordenada dada (en rojo), nuestra intuición espacial nos ayuda a decidir que estos se han de buscar en un subconjunto reducido tal como el de los situados dentro del circulo azul de la figura. Este proceso de \emph{filtrado} y \emph{refinamiento} ahorra operaciones, y es el fundamento conceptual de los índices espaciales.}

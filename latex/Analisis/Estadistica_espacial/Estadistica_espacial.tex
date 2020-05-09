@@ -164,7 +164,7 @@ En caso de que esta zona sea cuadrada y de área $A$ , se tiene que
 
 En la figura \ref{Fig:Distancia_relativa} puede verse cómo distribuciones espaciales iguales (con la misma distancia típica) representan dispersiones relativas distintas en relación a la zona de estudio.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Distancia_relativa.pdf}
 \caption{\small Aunque ambas distribuciones tienen la misma distancia típica, la dispersión en relación al área analizada es distinta, con lo que los valores de distancia relativa serán distintos.}
@@ -207,9 +207,9 @@ Es decir, se tiene un vector cuya orientación viene definida por un ángulo $\ove
 
 El módulo $\overline{R}$ se conoce también como \emph{concentración angular} y es una medida inversa de la dispersión angular. No obstante, hay que tener en cuenta que valores próximos a cero, los cuales indicarían gran dispersión, puede proceder de dos agrupaciones de ángulos similares (es decir, con poca dispersión) si estas agrupaciones se diferencian entre sí 180\degree.\index{Concentración angular}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Media_vectorial.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_espacial/Media_vectorial.pdf}
 \caption{\small Media vectorial (en rojo) de una serie de segmentos.}
 \label{Fig:Media_vectorial} 
 \end{figure*}
@@ -217,7 +217,7 @@ El módulo $\overline{R}$ se conoce también como \emph{concentración angular} y e
 
 Cuando se trabaja con direcciones en lugar de orientaciones, es frecuente multiplicar por dos los valores angulares y posteriormente simplificar el ángulo aplicando módulo 360\degree. Es decir, aplicar la transformación $\alpha' = 2\alpha \mod 360\degree$.
 
-La forma en que las distintas orientaciones se congregan entorno a la media, relacionada directamente con la dispersión, puede servir para inferir la existencia de una dirección predominante o bien que los valores angulares se hallan uniformemente distribuidos. La comprobación de que existe una tendencia direccional es de interés para el estudio de muchos procesos tales como el estudio de movimiento de individuos de una especie, que puede denotar la existencia de una linea migratoria preferida o revelar la presencia de algún factor que causa dicha predominancia en las direcciones.
+La forma en que las distintas orientaciones se congregan en torno a la media, relacionada directamente con la dispersión, puede servir para inferir la existencia de una dirección predominante o bien que los valores angulares se hallan uniformemente distribuidos. La comprobación de que existe una tendencia direccional es de interés para el estudio de muchos procesos tales como el estudio de movimiento de individuos de una especie, que puede denotar la existencia de una linea migratoria preferida o revelar la presencia de algún factor que causa dicha predominancia en las direcciones.
 
 Existen diversos test que permiten aceptar o rechazar la hipótesis de existencia de uniformidad entre los cuales destacan el test de Rayleigh,  el test V de Kuiper \cite{Kuiper1960Akad} o el test de espaciamiento de Rao \cite{Rao1969PhD} \index{Raleygh, test de}\index{V de Kuiper, test} \index{Rao, test de espacialmiento de}
 
@@ -268,7 +268,7 @@ Como se puede observar en la figura \ref{Fig:Patrones_puntos}, existen tres tipo
 \end{itemize}
 
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_espacial/Patrones_puntos.png}
 \caption{\small De izquierda a derecha, patrones de puntos agregado, aleatorio y regular.}
@@ -304,7 +304,7 @@ El análisis de cuadrantes no es en realidad una medida del patrón, sino de la di
 
 Otra debilidad de este método es que no es capaz de diferenciar entre distribuciones tales como las de la figura \ref{Fig:Debilidad_cuadrantes}, claramente distintas pero que arrojan un resultado idéntico al aplicar esta metodología con los cuadrantes mostrados.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Estadistica_espacial/Debilidad_cuadrantes.pdf}
 \caption{\small Dos disposiciones de puntos distintas que darían un mismo resultado al analizarse por el método de cuadrantes.}
@@ -424,7 +424,7 @@ En este estimador no se consideran los efectos de borde, y aquellos puntos situa
 
 El valor $w_ij$ pondera los distintos puntos en función de su distancia al borde de la zona de estudio. Para calcularlo se traza una circunferencia por el punto $i$ con radio $d_{ij}$ (es decir, una circunferencia con centro en el punto $i$ y que pasa por el punto $j$), siendo $w_{ij}$ la fracción de dicha circunferencia que queda dentro de la zona de estudio (Figura \ref{Fig:Correcion_Ripley}).
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.35\mycolumnwidth]{Estadistica_espacial/Correccion_Ripley.pdf}
 \caption{\small Corrección del estimador $\hat{K}(h)$ en función de los efectos de borde. El parámetro de corrección es el cociente entre la longitud interior (en trazo continuo) y la total de la circunferencia }
@@ -482,7 +482,7 @@ En la función K de Ripley ya vimos en la ecuación \ref{Eq:Ripley} cómo el uso de
 
 Para un conjunto de $N$ entidades se tiene una matriz $W$ de dimensiones $N \times N$ en la que el elemento $w_{ij}$ refleja la influencia de la entidad $i$ sobre la $j$. Por convención, los valores $w_{ii}$ son iguales a cero. En el caso más sencillo, la matriz es de tipo binario, conteniendo únicamente valores 1 (existe vecindad efectiva entre las entidades) o 0 (no existe vecindad), pero los valores pueden ser cualesquiera. En la práctica, es de hecho habitual dividir estos valores por la suma de todos los valores de la columna, de forma que estén acotados siempre entre 0 y 1.
 
-Mas allá de los valores que pueda contener, una característica primordial de la matriz de ponderación espacial es el método con el que ha sido creada, ya que la forma en la que se establece la vecindad entre los distintos elementos tiene influencia directa sobre dicha matriz, Esto, sin duda, afecta a las operaciones realizadas posteriormente sobre esta, por lo que la elección del método a emplear en su creación es altamente relevante.\index{Matriz!de ponderación espacial}
+Mas allá de los valores que pueda contener, una característica primordial de la matriz de ponderación espacial es el método con el que ha sido creada, ya que la forma en la que se establece la vecindad entre los distintos elementos tiene influencia directa sobre dicha matriz. Esto, sin duda, afecta a las operaciones realizadas posteriormente sobre esta, por lo que la elección del método a emplear en su creación es altamente relevante.\index{Matriz!de ponderación espacial}
 
 \subsection{Medidas de autocorrelación espacial}
 
@@ -558,7 +558,7 @@ El cuadrado de las varianzas se multiplica por $\frac12$ debido a que  $\gamma(x
 
 Puesto que puede calcularse la distancia entre dichos puntos, pueden representarse los valores de $\gamma$ frente a las distancias $h$. Se obtiene una nube de puntos (nube del variograma) como la mostrada en la figura \ref{Fig:Nube_variograma}.\index{Variograma!nube del}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Nube_variograma.png}
 \caption{\small Representación de valores de semivarianza frente a distancia, formando la nube del variograma.}
@@ -579,7 +579,7 @@ La función $\gamma(h)$ es lo que se conoce como \emph{variograma experimental}\f
 
 La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variograma de la figura \ref{Fig:Variograma}.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Estadistica_espacial/Variograma.png}
 \caption{\small Resumen de la nube del variograma en un variograma experimental con sus elementos definitorios.}
@@ -655,14 +655,14 @@ El empleo de uno u otro modelo dependerá del conocimiento que tengamos acerca de
 
 La figura \ref{Fig:Variogramas} muestra las gráficas de los tipos de variogramas anteriores.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Variogramas.png}
 \caption{\small Distintos modelos de variograma teórico con los mismos parámetros de forma.}
 \label{Fig:Variogramas} 
 \end{figure*}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.95\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
 \caption{\small Relación entre correlograma (a) y variograma (b)}

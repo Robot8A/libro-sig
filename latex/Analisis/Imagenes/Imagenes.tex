@@ -125,7 +125,7 @@ Con los puntos de control determinados, debe elegirse un tipo de función para aj
 
 El número de puntos de control debe ser mayor al estrictamente necesario para poder realizar el ajuste, ya que la redundancia que aportan los puntos adicionales da significación estadística a la bondad de este.
 
-En base a los puntos de control puede calcularse la bondad del ajuste mediante el cálculo del error medio cuadrático. Por muy precisa que sea la transformación que realicemos, esta núnca va a asignar a todos los puntos de control la coordenada correcta que les corresponde, y que es la que hemos usado para definir dicha transformación. Las discrepancias entre esas coordenadas reales de los puntos de control y las asignadas a los mismos a partir del polinomio ajustado definen el error medio cuadrático del ajuste según la siguiente expresión:\index{Error!Medio Cuadrático}
+En base a los puntos de control puede calcularse la bondad del ajuste mediante el cálculo del error medio cuadrático. Por muy precisa que sea la transformación que realicemos, esta nunca va a asignar a todos los puntos de control la coordenada correcta que les corresponde, y que es la que hemos usado para definir dicha transformación. Las discrepancias entre esas coordenadas reales de los puntos de control y las asignadas a los mismos a partir del polinomio ajustado definen el error medio cuadrático del ajuste según la siguiente expresión:\index{Error!Medio Cuadrático}
 
 \begin{equation}
 \mathrm{EMC} = \sqrt{ \frac{\sum_{i=1}^{N} (x_i - x'_i )^2  +  (y_i - y'_i)^2}N      }
@@ -141,7 +141,7 @@ El proceso se lleva a cabo de igual modo, localizando puntos de control en la im
 
 La imagen \ref{Fig:Rectificacion} muestra un ejemplo gráfico de este proceso. Se dispone de un mapa escaneado sin coordenadas, y una imagen de la que sí se conocen las coordenadas de cada píxel, pues ha sufrido un proceso de georreferenciación y corrección previo. Localizando un número suficiente de puntos singulares en ambas imágenes, puede establecerse la transformación que permite asignar coordenadas a todos los píxeles del mapa escaneado. Una vez el proceso se ha realizado, este mapa escaneado puede ya emplearse dentro de un SIG junto con cualquier otra capa que represente esa misma porción del terreno, pues contienen toda la referencia geográfica necesaria.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Imagenes/Rectificacion.png}
 \caption{\small Proceso de referenciación de una imagen (mapa escaneado), empleando para la localización de puntos de control (en amarillo) una fotografía aérea ya georreferenciada.}
@@ -180,7 +180,7 @@ El proceso de ortorrectificación es complejo y tiene una base matemática extensa
 
 La corrección radiométrica corrige valores erróneamente registrados o ruido presente en la imagen, entre otras alteraciones que pueden aparecer en esta. Existen muchas razones por las que el Nivel Digital recogido en un píxel puede no ser correcto y no reflejar con fidelidad la realidad presente sobre el terreno. \index{Corrección!radiométrica}\index{Niveles Digitales}
 
-En algunos casos el valor que aparece en el píxel es un valor erróneo del cual no puede extraerse información alguna. Este caso se presenta, por ejemplo, si en el proceso de almacenamiento se ha producido una mala transmisión y algunos píxeles se han <<perdido>>. La información necesaria para establecer un valor correcto en dichos píxels no puede tomarse del propio píxel, sino que es necesario recurrir a los píxeles circundantes o a otros elementos tales como el histograma de la imagen.
+En algunos casos el valor que aparece en el píxel es un valor erróneo del cual no puede extraerse información alguna. Este caso se presenta, por ejemplo, si en el proceso de almacenamiento se ha producido una mala transmisión y algunos píxeles se han <<perdido>>. La información necesaria para establecer un valor correcto en dichos píxeles no puede tomarse del propio píxel, sino que es necesario recurrir a los píxeles circundantes o a otros elementos tales como el histograma de la imagen.
 
 En otros casos, no obstante, el Nivel Digital del píxel sí contiene información valiosa, y lo que es necesario es transformar este, ya que, debido a la influencia de factores externos, no es exactamente el que debiera corresponderle. El conocimiento de esos factores externos es necesario para poder realizar esta transformación.
 
@@ -249,7 +249,7 @@ Este procedimiento nos sirve para separar partes de la imagen en función de sus 
 
 La figura \ref{Fig:Segmentacion} nos muestra el resultado de una operación de segmentación aplicada sobre una imagen base (en este caso se trata de una ortofoto en blanco y negro). En los sucesivos apartados se empleará esta misma imagen original para ilustrar cada procedimiento. La curva de transformación asociada, con un umbral aplicado de 173, se muestra en la figura \ref{Fig:Curva_Segmentacion}.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/Segmentacion.png}
 \caption{\small Imagen original (a) y resultado de un proceso de segmentación (b)}
@@ -278,7 +278,7 @@ Para el lector interesado, en \cite{Gonzales1993Addison} o \cite{Haralick1992Add
 
 Desde el punto de vista de las operaciones del álgebra de mapas que conocemos, la segmentación es una reclasificación de valores lo más sencilla posible, ya que únicamente se crean dos clases (la de valores por debajo del umbral y la de valores por encima de él). Un proceso algo más complejo es la definición de varios umbrales, de forma que aparezcan más clases, siendo este también equivalente a la reclasificación según la vimos en su momento. No obstante, en el ámbito del análisis de imágenes esta operación se conoce habitualmente con el nombre de \emph{Density slicing}.\index{Density Slicing}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.8\mycolumnwidth]{Imagenes/Curva_segmentacion.pdf}
@@ -323,7 +323,7 @@ Si se aplica la normalización a una imagen multibanda, es importante tener en cu
 
 Tanto el brillo como el contraste pueden modificarse mediante funciones lineales sencillas, tal como puede verse en la imagen \ref{Fig:Brillo_contraste}.\index{Brillo}\index{Contraste}
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Brillo_contraste.png}
 \caption{\small Imagen original y modificación del brillo y el contraste, junto con sus curvas de transformación asociadas}
@@ -374,7 +374,7 @@ La ecualización es un proceso similar a la normalización, en cuanto que hace más
 
 La figura \ref{Fig:Ecualizar} muestra la comparación entre la imagen original y la ecualizada, así como sus histogramas acumulados. Esto permite ver más claramente la naturaleza de la transformación. Teóricamente, si el histograma es constante tras la ecualización, el histograma acumulado debería ser una recta inclinada. El hecho de trabajar con valores discretos de los Niveles Digitales hace que no sea exactamente así, aunque puede claramente verse que la forma sí se asemeja a una recta en lugar de a la curva sigmoidal que presenta el histograma de la imagen original.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Imagenes/Ecualizar.png}
 \caption{\small a) Imagen e histograma acumulado originales, b) imagen e histograma acumulado tras un proceso de ecualización.}
@@ -427,7 +427,7 @@ La media es sensible a los valores extremos de la ventana, por lo que una opción
 
 El filtro de mediana no es una convolución, y no puede por tanto expresarse mediante un núcleo como sucedía con el de media.\index{Filtro!de mediana}
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Imagenes/Suavizado.png}
 \caption{\small Imagen tras la aplicación de un filtro de suavizado}
@@ -453,7 +453,7 @@ Otro tipo de ruido habitual es el conocido como \emph{sal y pimienta}, que apare
 
 Para limpiar estas imágenes resultantes, se emplean también filtros como los anteriores. Un filtro de mediana aplicado sobre la imagen de la figura \ref{Fig:Segmentacion} (resultado de una segmentación) elimina gran parte de los píxeles aislados y genera el resultado mostrado en la figura \ref{Fig:Filtro_salt_pepper}.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.8\mycolumnwidth]{Imagenes/Filtro_salt_pepper.png}
@@ -507,7 +507,7 @@ En la figura \ref{Fig:Deteccion_bordes} puede verse el efecto de un filtro Lapla
 
 Para mostrar más claramente el resultado de estos filtros, se ha escogido una región de la imagen (en la parte superior izquierda) en lugar de la imagen completa, por contener un mayor número de entidades lineales. Como puede apreciarse, es en la detección de estos elementos lineales donde mejor actúan estos filtros.
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Imagenes/Deteccion_bordes.png}
 \caption{\small Aplicación de un filtro de detección de bordes sobre la imagen original (a) y la imagen ecualizada (b).}
@@ -603,7 +603,7 @@ Dadas dos imágenes RGB, una de ellas con mayor información espacial y otra con m
 
 En la figura \ref{Fig:IHS} puede verse un esquema del proceso de fusión de imágenes según lo descrito anteriormente.
 
-\begin{figure*}[!ht] 
+\begin{figure*}[t] 
 \centering
 \includegraphics[width=.9\textwidth]{Imagenes/IHS.pdf}
 \caption{\small Fusión de imágenes mediante transformación IHS}
@@ -643,18 +643,18 @@ Para el caso de los sensores más habituales existen recomendaciones sobre qué tr
 
 \section{Análisis y extracción de información}
 
-Con las imágenes ya preparadas y tratadas con objeto de <<exponer>> en la mayor medida posible la información que contienen, puede procederse a su análisis. El fin de este análisis puede ser la delineación e identificación de ciertos elementos (masas de agua, formaciones rocosas, construcciones, etc.), o bien la caracterización de las distintas áreas del terreno (tipo de uso de suelo, condiciones fisico--químicas, etc.), existiendo para cada uno de estos propósitos una serie de algoritmos y formulaciones.
+Con las imágenes ya preparadas y tratadas con objeto de <<exponer>> en la mayor medida posible la información que contienen, puede procederse a su análisis. El fin de este análisis puede ser la delineación e identificación de ciertos elementos (masas de agua, formaciones rocosas, construcciones, etc.), o bien la caracterización de las distintas áreas del terreno (tipo de uso de suelo, condiciones físico--químicas, etc.), existiendo para cada uno de estos propósitos una serie de algoritmos y formulaciones.
 
 \subsection{Visualización}
 \label{Visualizacion_imagenes}
 
-La obtención de de resultados a partir de imágenes, tales como la clasificación de las distintas zonas o la localización de áreas en en las que aparece algún elemento particular del terreno (por ejemplo, zonas de agua como ríos o embalses), se realiza, como veremos más adelante, a partir de los Niveles Digitales de las distintas bandas de una imagen. Este análisis es de tipo puramente numérico. No obstante, la conversión de esos Niveles Digitales en colores permite extraer los mismos resultados en base a la mera exploración visual, ya que presenta los valores de las bandas de un modo en que el ojo humano puede interpretarlos y analizarlos. Así, el análisis más inmediato que puede realizarse con una imagen es el de tipo visual, siempre que se tenga una representación adecuada de la imagen.
+La obtención de de resultados a partir de imágenes, tales como la clasificación de las distintas zonas o la localización de áreas en las que aparece algún elemento particular del terreno (por ejemplo, zonas de agua como ríos o embalses), se realiza, como veremos más adelante, a partir de los Niveles Digitales de las distintas bandas de una imagen. Este análisis es de tipo puramente numérico. No obstante, la conversión de esos Niveles Digitales en colores permite extraer los mismos resultados en base a la mera exploración visual, ya que presenta los valores de las bandas de un modo en que el ojo humano puede interpretarlos y analizarlos. Así, el análisis más inmediato que puede realizarse con una imagen es el de tipo visual, siempre que se tenga una representación adecuada de la imagen.
 
 Las imágenes más sencillas contienen una única banda, y su representación en blanco y negro (escala de grises) es la forma habitual de mostrarlas. Las imágenes digitales habituales se dividen en tres bandas, denominadas \emph{canales}, cada una de las cuales contiene la información sobre un color concreto. En el caso más frecuente del modelo RGB, ya conocido por nosotros, estos colores son el rojo, el verde y el azul. \index{Canal}
 
 Las imágenes que tomamos con una cámara digital o una fotografía aérea en color escaneada y almacenada en un fichero, ambas utilizan este modelo de colores. Los periféricos de representación en los cuales las observamos, tales como una pantalla o un cañón de proyección, utilizan un esquema igual para reproducir un color dado. Este esquema se denomina de tipo \emph{aditivo}, ya que forma el color sumando unas intensidades concretas de cada uno de los colores básicos. La figura \ref{Fig:Descomposicion_RGB} muestra un ejemplo de descomposición en canales RGB. \index{Escaneo}
 
-\begin{figure*}[!ht]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.7\textwidth]{Imagenes/Descomposicion_RGB.png}
 \caption{\small Descomposición de una imagen en color en sus componentes RGB.}
@@ -689,7 +689,7 @@ En general, pueden tomarse cualesquiera bandas para crear una composición en fal
 
 La figura \ref{Fig:Falso_color} muestra distintas composiciones a partir de las bandas de una imagen LANDSAT TM.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Imagenes/Falso_color.png}
 \caption{\small Distintas composiciones a partir de las bandas de una imagen LANDSAT TM. a) 1, 2, 5; b) 2, 4, 3; c) 2, 5, 3}
@@ -735,7 +735,7 @@ Basadas en estas operaciones, existen otras derivadas, entre las cuales veremos 
 
 Las dos principales operaciones morfológicas son la erosión y la dilatación. Pese a que sus nombres son ya sumamente descriptivos, veamos gráficamente en la figura \ref{Fig:Erosion_dilatacion} el efecto de ambas sobre nuestra imagen base. \index{Erosión}\index{Dilatación}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.80\textwidth]{Imagenes/Erosion_dilatacion.png}
 \caption{\small Resultado de aplicar operaciones de erosión (a) y dilatación (b) sobre la imagen base.}
@@ -778,7 +778,7 @@ La aplicación de una operación de cierre rellena los huecos y concavidades de lo
 
 Una aplicación práctica de estas operaciones la podemos encontrar en la imagen \ref{Fig:Esqueleto}. En ella la imagen inicial $a)$ presenta una estructura lineal tal como una carretera, pero esta, a través de los distintos procesos aplicados para obtener la imagen binaria, ha <<perdido>> algunos píxeles, de forma que ya no existe una conexión correcta entre los distintos píxeles que la forman. La carretera ha quedado <<rota>> en fragmentes inconexos, que no representan realmente el objeto, y que van a dificultar el cálculo de parámetros acerca de este.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.85\textwidth]{Imagenes/Esqueletizacion.png}
 \caption{\small a) Imagen original con un objeto lineal desconectado. b) Objeto conectado tras la aplicación de una operación de cierre. c) Esqueleto del anterior objeto obtenido mediante la aplicación de operaciones morfológicas.}
@@ -822,7 +822,7 @@ Atendiendo a lo anterior surge el concepto de \emph{firma espectral}. La firma e
 En la figura \ref{Fig:Firmas_espectrales} pueden verse algunas firmas espectrales características, teniéndose así una idea de las diferencias que pueden existir, y también de cómo estas pueden utilizarse para el análisis de imágenes.
 
 
-\begin{figure*}[!ht] 
+\begin{figure*}[t] 
 \centering
 \includegraphics[width=.95\mycolumnwidth]{Imagenes/Firmas_espectrales.pdf}
 \caption{\small Firmas espectrales tipo de algunos elementos habituales}
@@ -878,7 +878,7 @@ Como resultado de lo anterior, las bandas de imágenes de satélite correspondient
 
 Sin necesidad de definir aún ningún índice, podemos ver claramente este hecho en la figura \ref{Fig:Garden_city}. En ella, se ha creado una imagen en falso color empleando las bandas del infrarrojo cercano, el rojo y el verde para los canales del rojo, verde y azul respectivamente (los del modelo RGB)\footnote{Este esquema es de uso habitual y se denota como RGB = NRG, siendo N = Near infrared (infrarrojo cercano), R = Red (rojo) y G = Green (verde). Como regla mnemotécnica, la lectura en ingles del acrónimo NRG suena parecida a la del vocablo inglés \emph{energy} (energía), y es también común referirse así a él.}. Debido a lo anterior, las zonas con cultivos con alto vigor vegetativo aparecen con un tono rojo muy marcado, que permite rápidamente identificarlas.\index{Falso color}
 
-\begin{figure*}[!ht] 
+\begin{figure*}[t] 
 \centering
 \includegraphics[width=.4\mycolumnwidth]{Imagenes/Garden_city.png}
 \caption{\small La creación de una imagen de falso color con un esquema RGB=NRG permite localizar las zonas de vegetación por su coloración roja intensa. Esto es debido a la alta reflectancia en las banda del infrarrojo visible y la baja reflectancia en el rango visible, causadas ambas por la actividad fotosintética.}
@@ -918,7 +918,7 @@ C = e^{-\alpha\frac{\mathrm{NDVI}}{\beta - \mathrm{NDVI}}}
 
 En la figura \ref{Fig:NDVI} puede verse el aspecto de una capa de NDVI para la zona de estudio habitual. Si se compara con la composición de color mostrada anteriormente puede observarse cómo las zonas sin vegetación presentan tonos oscuros (valores bajos de NDVI) y las de vegetación tonos claros (valores altos de NDVI).
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \centering
 \includegraphics[width=.8\textwidth]{Imagenes/NDVI.png}
@@ -1046,40 +1046,9 @@ Los coeficientes de las combinaciones lineales que expresan la transformación se
 
 El caso más frecuente es la utilización de bandas del sensor LANDSAT TM, empleándose todas ellas excepto la del infrarrojo térmico, es decir, un total de seis bandas. Las bandas resultantes (3) corresponden a los ejes de la linea de suelo (que expresa la humedad), la vegetación (el verdor) ---recuérdese que este es perpendicular al anterior--- y el brillo. Los valores de estas bandas por separado tienen ya una interpretación relacionada de forma directa con las variables físicas del medio.
 
-Las expresiones que relacionan los valores originales del sensor LANDSAT TM con los de las bandas de suelo, verdor y brillo son las siguientes:\index{LANDSAT}
-
-\begin{eqnarray}
- \mathrm{Brillo} &=& 0.3037TM1+0.2793TM2 \nonumber \\&&+0.4343TM3+0.5585TM4 \nonumber \\&&+0.5082TM5 +0.1863TM7\nonumber \\
-\end{eqnarray}
-
-\begin{eqnarray}
- \mathrm{Verde} &=& -0.2848TM1-0.2435TM2\nonumber \\&&-0.5436TM3+0.7243TM4\nonumber \\&&+0.0840TM5-0.1800TM7\nonumber \\
-\end{eqnarray}
-
-\begin{eqnarray}
- \mathrm{Humedad} &=& 0.1509TM1+0.1793TM2\nonumber \\&&+0.3299TM3+0.3406TM4\nonumber \\&&-0.7112TM5-0.4572TM7\nonumber \\
-\end{eqnarray}
-
-Otra transformación cuyos coeficientes se encuentran ya calculados es la que parte de datos del sensor MSS, que en este caso genera un total de cuatro nuevas bandas. Las tres primeras expresan respectivamente el brillo, el verdor y el denominado \emph{Índice de Vegetación Amarilla} (YVI, \emph{Yellow Vegetation Index}), con información acerca de la vegetación en mal estado sanitario, y los datos de la última pueden asociarse con el ruido atmosférico.\index{YVI}
-
-Las fórmulas a emplear en este caso son las siguientes:
-
-\begin{eqnarray}
- \mathrm{Brillo} &=& 0.433MSS+0.632MSS2 \nonumber \\&& +0.586MSS3+0.264MSS4\nonumber \\
-\end{eqnarray}
-\begin{eqnarray}
- \mathrm{Verdor} &=& -0.290MSS1-0.562MSS2 \nonumber \\&& +0.600MSS3+0.491MSS4\nonumber \\
-\end{eqnarray}
-\begin{eqnarray}
- \mathrm{YVI} &=& -0.829MSS1+0.522MSS2\nonumber \\&& -0.039MSS3+0.194MSS4\nonumber \\
-\end{eqnarray}
-\begin{eqnarray}
- \mathrm{Ruido} &=& 0.223MSS1+0.012MSS2\nonumber \\&& -0.543MSS3+0.810MSS4\nonumber \\
-\end{eqnarray}
-
 \subsection{Detección de elementos}
  
-\begin{figure*}[!ht] 
+\begin{figure*}[t] 
 \centering
 \includegraphics[width=.65\textwidth]{Imagenes/Identificacion_edificios.png}
 \caption{\small Identificación automatizada de edificios a partir de una imagen aérea (cortesía de Visual Learning Systems, Inc)}

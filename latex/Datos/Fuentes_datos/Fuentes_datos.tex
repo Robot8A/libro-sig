@@ -35,7 +35,7 @@ Gran parte de los datos geográficos que se producen actualmente son en formato d
 Los datos geográficos digitales tienen una serie de ventajas frente a los analógicos (además del mero hecho de que podemos incorporarlos a nuestro SIG), y suponen, como sucede en muchos otros campos, un salto cualitativo importante. Entender las ventajas frente a los datos analógicos ayuda a comprender un poco más la importancia de los SIG y la relevancia que cobran en el manejo de los datos geográficos. Estas ventajas pueden resumirse en las siguientes:\index{Ventajas datos digitales}
 
 \begin{itemize}
- \item \textbf{Sencillez de actualización}. La cartografía digital es editable, y esto simplifica enormemente la introducción cambios. Si en una capa con información catastral cambia la frontera de una parcela, basta modificar esta frontera. En un mapa analógico habría que rehacer todo el mapa y volver a imprimirse. 
+ \item \textbf{Sencillez de actualización}. La cartografía digital es editable, y esto simplifica enormemente la introducción de cambios. Si en una capa con información catastral cambia la frontera de una parcela, basta modificar esta frontera. En un mapa analógico habría que rehacer todo el mapa y volver a imprimirse. 
 
 Además, y gracias a la división en capas, pueden actualizarse a distintos ritmos las distintas variables, pues son independientes y pueden modificarse por separado.
 
@@ -77,7 +77,7 @@ La teledetección es, como decimos, una fuente de datos primordial en los SIG, y 
 
 Las fotografías aéreas fueron el primer producto de la teledetección, pero hoy en día existen otros  que, basados en esa misma idea de registro de información, pueden ser empleados como fuentes de datos espaciales dentro de un SIG. Para comprenderlos, estudiemos algo más en detalle los elementos del proceso de teledetección, los cuales se representan de forma esquemática en la figura \ref{Fig:Elementos_teledeteccion}. Estos elementos son los siguientes:
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.4\textwidth]{Fuentes_datos/Elementos_teledeteccion.pdf}
 \caption{\small Esquema de un sistema de teledetección.}
@@ -105,7 +105,7 @@ Es necesario conocer los conceptos fundamentales sobre la radiación y su interac
 
 La radiación electromagnética es una de las cuatro fuerzas fundamentales de la naturaleza\footnote{Las otras tres son la gravitatoria, la interacción nuclear débil y la interacción nuclear fuerte} y deriva del campo electromagnético, el cual es ejercido por las partículas cargadas eléctricamente. Para explicar esta existen dos modelos conocidos como \emph{modelo ondulatorio} y \emph{modelo de partículas}. Según el primero, que será en el que profundicemos algo más, la radiación electromagnética es producto de las alteraciones en los campos eléctrico y magnético, que generan dos ondas ortogonales entre sí, correspondientes a cada uno de los campos anteriores (Figura \ref{Fig:Radiacion_electromagnetica}).\index{Modelo!ondulatorio}\index{Modelo!de partículas}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.75\textwidth]{Fuentes_datos/Onde_electromagnetique.pdf}
 \caption{\small Ondas correspondientes a los campos magnético y eléctrico, ortogonales entre sí (Tomado de Wikipedia). }
@@ -116,7 +116,7 @@ Estas ondas se desplazan a la velocidad de la luz, y se pueden describir con los
 
 La radiación electromagnética puede cubrir de forma continua todo un amplio rango de valores de longitudes de onda. Este rango se conoce como \emph{espectro electromagnético}\index{Espectro electromagnético}. Pese a la continuidad de sus valores, es habitual agruparlos en regiones, discretizando la amplitud del espectro, ya que las radiaciones en longitudes de onda similares presentan a su vez comportamientos similares en muchos sentidos. En la figura \ref{Fig:Espectro_electromagnetico} se muestra un esquema del espectro electromágnético y sus principales regiones de interés.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=\textwidth]{Fuentes_datos/Electromagnetic_spectrum-es.pdf}
 \caption{\small Espectro electromagnético y sus principales regiones de interés (Tomado de Wikipedia).}
@@ -153,7 +153,7 @@ La radiación emitida por una fuente de radiación es alterada por la presencia de
 \begin{itemize}
 	\item \textbf{Absorción}. El objeto toma la energía de la radiación.
 	\item \textbf{Transmisión}. La radiación atraviesa el objeto y continua su camino.
-	\item \textbf{Reflexión}. la radiación <<rebota>> en el objeto y vuelve al espacio.	
+	\item \textbf{Reflexión}. La radiación <<rebota>> en el objeto y vuelve al espacio.	
 \end{itemize}
 
 \index{Absorción}\index{Tansmisión}\index{Reflexión}
@@ -190,7 +190,7 @@ Por su parte, los satélites artificiales presentan unas características distinta
 
 A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \emph{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. \index{Parámetros orbitales}\index{Orbita@Órbita}
 
-Por una lado, las órbitas pueden clasificarse en función de su eje de rotación en tres tipos:
+Por un lado, las órbitas pueden clasificarse en función de su eje de rotación en tres tipos:
 
 \begin{itemize}
 	\item \textbf{Ecuatoriales}, si se sitúan en el mismo plano en el ecuador terrestre.
@@ -213,7 +213,7 @@ Con un criterio distinto, atendiendo a la forma en que se produce el movimiento,
 	
 	\index{Orbita@Órbita!Heliosíncrona}
 	
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Orbita_landsat.png}
 \caption{\small Esquema de barrido de un satélite con órbita heliosíncrona}
@@ -249,7 +249,7 @@ Una técnica más moderna pero similar al radar es el denominado LiDAR \footnote{A
 
 Los sistemas modernos de LiDAR son capaces de proporcionar además varios retornos, de modo que, si el sensor sobrevuela una zona arbolada, se tiene información sobre la distancia a la copa y la distancia al suelo, ya que parte del láser atraviesa la copa y alcanza el terreno. Este tipo de resultados supone un salto cualitativo con respecto a los obtenidos con otras tecnologías. Esto permite no solo estudiar el terreno, sino derivar otros parámetro tales como la altura de la vegetación \cite{Andersen2001PrecForestry}. Asimismo, debido a su precisión, permite recoger elementos del terreno que con otros sistemas no resulta posible registrar, tales como edificios. A modo de ejemplo, la figura \ref{Fig:LiDARWTC} muestra un modelo del World Trade Center el 27 de septiembre de 2001, creado a partir de datos LiDAR. \index{World Trade Center}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.5\textwidth]{Fuentes_datos/LiDARWTC.png}
 \caption{\small Modelo del World Trade Center realizado a partir de datos LiDAR tomados el día 27 de septiembre de 2001 (Fuente: NOAA/U.S. Army JPSD)}
@@ -258,7 +258,7 @@ Los sistemas modernos de LiDAR son capaces de proporcionar además varios retorno
 
 En la terminología del LiDAR, la imagen correspondiente al primer retorno (el de los puntos más altos) se conoce como Modelo Digital de Superficie (MDS), mientras que el correspondiente a la altura del suelo se conoce como Modelo Digital de Elevaciones (MDE). Veremos mucho acerca de MDE en posteriores capítulos de este libro. \index{Modelo Digital de Superficie}\index{Modelo Digital de Elevaciones}
 
-En \cite{Kraus2001IASPRS} puede encontrarse una buena descripción del proceso de creación de estas capas de elevación partir de datos LiDAR.
+En \cite{Kraus2001IASPRS} puede encontrarse una buena descripción del proceso de creación de estas capas de elevación a partir de datos LiDAR.
 
 Además de la división entre activos y pasivos, otra forma de clasificar los sensores es en función de la forma en la que registran la imagen. Algunos sensores poseen un único detector de radiación que no cubre todo el ancho de la franja del terreno que se pretende recoger. Por medio de espejos oscilantes, se envía a este detector la radiación procedente de los distintos puntos a lo ancho de esa franja, de forma que se van recogiendo los distintos píxeles de la imagen uno a uno, recorriendo esta de un lado a otro (Figura \ref{Fig:Tipos_sensores}a). Estos sensores se denominan \emph{de barrido}. 
 
@@ -266,7 +266,7 @@ Los denominados sensores \emph{de empuje} (Figura \ref{Fig:Tipos_sensores}b) eli
 
 \index{Sensores!de empuje}\index{Sensores!de barrido}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Tipos_sensores.pdf}
 \caption{\small Esquema de funcionamiento de un sensor de barrido (a) y uno de empuje (b)}
@@ -296,7 +296,7 @@ Uno de los parámetros principales que definen las propiedades de un sistema de t
 	El número de Niveles Digitales\index{Niveles Digitales} distintos que pueden recogerse es la medida de la resolución espacial, y habitualmente es una potencia de dos (de la forma $2^n$). Tanto las imágenes en blanco y negro como las imágenes en color trabajan con 256 ($2^8$) niveles, ya que este es el valor más cercano al número de diferentes intensidades que el ojo humano puede diferenciar\footnote{En el ámbito del tratamiento de imágenes esto se conoce como \emph{profundidad de color}. Una mayor profundidad de color indica mayor número de colores posibles. Una pantalla normal de ordenador puede mostrar un total de 16.7 millones de colores distintos , que corresponden a las combinaciones entre los 256 posibles niveles de cada una de las tres bandas ($256 ^3 = 16,777,216$)}. No obstante, los sensores de teledetección pueden tener una mayor resolución radiométrica (hasta 1024 o 2048 niveles), que si bien no se aprecia en la representación visual, sí que supone una diferencia en el tratamiento analítico de esos Niveles Digitales.
 	En la figura \ref{Fig:Resolucion_radiometrica} puede apreciarse la diferencia entre dos imágenes, cada una de las cuales tiene una resolución radiométrica distinta.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Resolucion_radiometrica.png}
 \caption{\small Dos imagenes con distinta resolución radiométrica (de izquierda a derecha, 8 y 256 niveles, respectivamente).}
@@ -308,7 +308,7 @@ Uno de los parámetros principales que definen las propiedades de un sistema de t
 	La resolución temporal depende de la altura a la que se encuentra la plataforma que monta el sensor, así como la resolución espacial. Si el tamaño de las imágenes es reducido (GIFOV pequeño), las franjas son más estrechas y se requieren más para cubrir toda la superficie y volver a comenzar el ciclo, con lo que la resolución espacial será menor.
 \end{itemize}
 
-Parece lógico pensar que lo ideal en toda circunstancia sería disponer de imágenes procedentes de sistemas con altas resoluciones en cualquiera de las clases anteriores. De esta forma, tendríamos imágenes con gran detalle espacial, espectral y radiométrico, y actualizadas frecuentemente. No obstante, la tecnología actual no dispone de elementos que ofrezcan resoluciones elevadas en todas las magnitudes del proceso, y en la creación de los sensores se favorecen unas en detrimento de otras. Algunas resolución presentan además un cierto antagonismo, como hemos visto para las resoluciones espacial y temporal, con lo que no resulta viable que ambas sean elevadas simultáneamente.
+Parece lógico pensar que lo ideal en toda circunstancia sería disponer de imágenes procedentes de sistemas con altas resoluciones en cualquiera de las clases anteriores. De esta forma, tendríamos imágenes con gran detalle espacial, espectral y radiométrico, y actualizadas frecuentemente. No obstante, la tecnología actual no dispone de elementos que ofrezcan resoluciones elevadas en todas las magnitudes del proceso, y en la creación de los sensores se favorecen unas en detrimento de otras. Algunas resoluciones presentan además un cierto antagonismo, como hemos visto para las resoluciones espacial y temporal, con lo que no resulta viable que ambas sean elevadas simultáneamente.
 
 Así, existen sensores con, por ejemplo, gran resolución espacial, en los cuales la resolución espectral no es tan elevada. Por el contrario, los sensores con mayor resolución espectral no suelen ofrecer un nivel de detalle espacial tan elevado como los anteriores. En ocasiones, una misma plataforma puede montar a bordo varios sensores, de tal forma que el conjunto de ellos ofrezca información detallada de forma global, pero un único sensor no proporciona resolución elevada en todas las variables.
 
@@ -318,7 +318,7 @@ A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de r
 
 Si se pretende localizar elementos de pequeño tamaño, es imprescindible trabajar con altas resoluciones espaciales. Si lo que se desea es clasificar una serie de zonas en función de sus características, la resolución espectral debe ser alta, ya que, como veremos, se usa la información de todas las bandas para dar esa clasificación, y un número mayor de bandas dará como resultado una mayor precisión.\index{Bandas}
 
-De igual, modo, la detección de cambios de intensidad en una banda hace necesario que se trabaje con una buena resolución radiométrica, pero si lo que se desea es estudiar esos cambios a lo largo de un periodo corto de tiempo, trabajar con un sensor con gran resolución temporal se hace imprescindible.
+De igual modo, la detección de cambios de intensidad en una banda hace necesario que se trabaje con una buena resolución radiométrica, pero si lo que se desea es estudiar esos cambios a lo largo de un periodo corto de tiempo, trabajar con un sensor con gran resolución temporal se hace imprescindible.
 
 En cada caso, las circunstancias particulares del trabajo condicionan la elección de uno u otro sensor, puesto que, como se ha dicho, un único sensor no ofrece elevadas resoluciones en todas las variables.
 
@@ -409,14 +409,14 @@ Para llevar a cabo ese trazado de la entidad, se necesita emplear algún equipo q
 
 La forma tradicional de proceder a la digitalización manual de entidades es utilizando equipos y periféricos expresamente diseñados para llevar a cabo esta tarea. La \emph{tableta digitalizadora} (Figura \ref{Fig:Tableta_digitalizadora}) es la herramienta fundamental para este trabajo.\index{Tableta digitalizadora}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Tableta_digitalizadora.pdf}
 \caption{\small Esquema de una tableta digitalizadora y los elementos del proceso de digitalización.}
 \label{Fig:Tableta_digitalizadora} 
 \end{figure*}
 
-Se trata de una superficie plana a modo de atril, sobre la cual se sitúa el documento cartográfico a digitalizar, y sobre este se van trazando las distintas entidades con un cursor. Este cursor registra los movimientos del operario, convirtiendo las posiciones del cursos en coordenadas reales, que son las que van a constituir la entidad digitalizada. El trabajo del operario consiste en seguir con el cursor las formas de las distintas entidades, como si las estuviera calcando, de modo que indique al sistema las geometrías que se quieren definir.
+Se trata de una superficie plana a modo de atril, sobre la cual se sitúa el documento cartográfico a digitalizar, y sobre este se van trazando las distintas entidades con un cursor. Este cursor registra los movimientos del operario, convirtiendo las posiciones del cursor en coordenadas reales, que son las que van a constituir la entidad digitalizada. El trabajo del operario consiste en seguir con el cursor las formas de las distintas entidades, como si las estuviera calcando, de modo que indique al sistema las geometrías que se quieren definir.
 
 El proceso de digitalización implica los siguientes pasos \cite{Heywood1998Longman}:
 
@@ -444,13 +444,13 @@ Las tabletas digitalizadoras son elementos caros, motivo por el cual se tiende a
 
 La otra forma de digitalizar elementos es utilizando las capacidades de edición de un SIG. Estas capacidades son heredadas de las aplicaciones de diseño asistido por ordenador (CAD)\index{CAD}, y permiten <<dibujar>> en la pantalla del ordenador entidades y formas tales como los puntos, líneas y rectas que constituyen los objetos en el modelo de representación vectorial.
 
-En este proceso se parte igualmente de un capa base, generalmente una imagen, y basándose en ella se van definiendo los objetos, <<dibujándolos>> sobre la pantalla, una vez más como si se calcara aquello que puede visualizarse en dicha imagen. El hecho de que un SIG nos permita tener varias capas simultáneamente y visualizarlas a voluntad, facilita el proceso de digitalización. También lo facilita el poder tener varias imágenes sobre el fondo (cada una de ellas como una capa individual), de modo que podemos cubrir un área más amplia que la de una simple hoja de mapa o una única imagen.
+En este proceso se parte igualmente de una capa base, generalmente una imagen, y basándose en ella se van definiendo los objetos, <<dibujándolos>> sobre la pantalla, una vez más como si se calcara aquello que puede visualizarse en dicha imagen. El hecho de que un SIG nos permita tener varias capas simultáneamente y visualizarlas a voluntad, facilita el proceso de digitalización. También lo facilita el poder tener varias imágenes sobre el fondo (cada una de ellas como una capa individual), de modo que podemos cubrir un área más amplia que la de una simple hoja de mapa o una única imagen.
 
 En este proceso, no partimos en realidad de un documento cartográfico analógico, pues ya ha sido necesario digitalizarlo de alguna forma para incorporarlo en un SIG. El proceso es una digitalización de las entidades como tales, pero la información ya ha de estar en formato digital, aunque no en el modelo de representación vectorial, sino en el modelo ráster. Por ello, puede utilizarse como capa de partida una imagen originalmente en formato digital o bien una imagen originalmente en formato impreso. En este ultimo caso, la imagen ha debido digitalizarse previamente mediante un proceso de \emph{escaneo}, el cual se tratará en la siguiente sección.
 
 En la figura \ref{Fig:Digitalizacion_en_pantalla} puede verse un ejemplo de la digitalización de una imagen en pantalla.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Digitalizacion_en_pantalla.png}
 \caption{\small Digitalización en pantalla. En rojo, polígono ya digitalizado. Las lineas rojas indican un nuevo polígono, actualmente en edición}
@@ -472,7 +472,7 @@ Frente a dicho trabajo con tableta digitalizadora, la digitalización en pantalla
 	\item \textbf{Mayor comodidad para el operario}. La postura del operario es más adecuada cuando se digitaliza sobre la pantalla, permitiendo unas mejores condiciones. Esto que se traduce en menor cansancio y ello indirectamente comporta resultados más precisos.
 \end{itemize}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Correccion_digitalizacion.png}
 \caption{\small Corrección de entidades con las funciones de edición de un SIG. El polígono de la derecha se encuentra en edición, siendo modificado uno de sus vértices.}
@@ -508,7 +508,7 @@ Existen tres tipos principales de escáneres:
 	\item \textbf{Alimentados}. El sensor se mantiene fijo y el documento se desplaza mediante un mecanismo de arrastre, de forma similar a como avanza el papel en una impresora doméstica. Salvo que dispongan de mecanismos específicos para corregir esta circunstancia, suelen presentar importantes distorsiones geométricas causadas por un desplazamiento impreciso del papel.
 \end{itemize}
 
-\begin{figure*}
+\begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
 \includegraphics[width=\textwidth]{Fuentes_datos/Escaner_sobremesa.png}
 \caption{\small Escáner de sobremesa (tomado de Wikipedia)}
@@ -523,7 +523,7 @@ Existen tres tipos principales de escáneres:
 \end{minipage}
 \end{figure*}
 
-Los parámetros básicos que definen las características de un escáner son la resolución espacial y la resolución radiométrica. La primera de estas de mide habitualmente en \emph{puntos por pulgada}\footnote{\emph{Dots per inch}(dpi)} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos.\index{Dots per inch}\index{Resolución!espacial}\index{Resolución!radiométrica}
+Los parámetros básicos que definen las características de un escáner son la resolución espacial y la resolución radiométrica. La primera de estas se mide habitualmente en \emph{puntos por pulgada}\footnote{\emph{Dots per inch}(dpi)} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos.\index{Dots per inch}\index{Resolución!espacial}\index{Resolución!radiométrica}
 
 A la hora de trabajar con documentos cartográficos de cara a su posterior utilización en un SIG, tanto la resolución espacial como la radiométrica de los escáneres habituales es en general más que suficiente, incluso en ocasiones en aquellos de uso doméstico. No obstante, es habitual que se presenten distorsiones geométricas que suponen un problema importante a la hora de mantener la precisión cartográfica, y ello exige la utilización de equipos de mayor calidad si se requiere un resultado de alta precisión. Estos equipos no han de ser necesariamente de aquellos pensados para el trabajo con cartografía, sino que pueden ser de uso genérico, siempre, eso sí, que sean de la calidad necesaria.
 
@@ -636,7 +636,7 @@ Por todo ello, la interpolación de direcciones permite una aproximación válida p
 
 Un caso particular de digitalización lo encontramos en la \emph{fotogrametría}. En la definición clásica de \cite{Bonneval1972Eyrolles}, esta se define como la técnica para estudiar y definir con precisión la forma, dimensiones y posición en el espacio de un objeto cualquiera, utilizando medidas realizadas sobre una o varias fotografías. Esta definición no limita el alcance de la fotogrametría al ámbito de lo geográfico, y se utilizan sus principios en campos tales como la arqueología o la documentación de obras y monumentos, empleando para ello fotografías no aéreas, sino terrestres. Es la denominada \emph{fotogrametría terrestre}. No obstante, la rama de interés para este libro es la de la \emph{fotogrametría aérea}, cuya base de trabajo tradicional son las fotografías aéreas.
 
-Esta clase de fotogrametría viene, pues, ligada íntimamente a los inicios de la teledetección, cuando los sensores modernos que hemos estudiado antes en este mismo capítulo no se habían desarrollado, y los existentes (básicamente cámaras fotográficas especialmente adaptadas a la toma de fotografías de tipo cartográfico) se montaban a bordo de aviones. Es por esta razón que tradicionalmente existe una conexión indudable entre ambas materias, no existiendo una frontera clara entre ambas, y se consideran en ocasiones como términos idénticos que hacen referencia la disciplina global de obtención de imágenes y tratamiento de estas.
+Esta clase de fotogrametría viene, pues, ligada íntimamente a los inicios de la teledetección, cuando los sensores modernos que hemos estudiado antes en este mismo capítulo no se habían desarrollado, y los existentes (básicamente cámaras fotográficas especialmente adaptadas a la toma de fotografías de tipo cartográfico) se montaban a bordo de aviones. Es por esta razón que tradicionalmente existe una conexión indudable entre ambas materias, no existiendo una frontera clara entre ambas, y se consideran en ocasiones como términos idénticos que hacen referencia a la disciplina global de obtención de imágenes y tratamiento de estas.
 
 Históricamente, el término \emph{teledetección} aparece con posterioridad, una vez que las técnicas de toma de imágenes avanzan y dan un gran salto cualitativo con la aparición de las imágenes satelitales y los sensores electro--ópticos que ya conocemos. Algunos autores engloban la fotogrametría dentro de la teledetección, mientras que otros se refieren con el termino teledetección a las tecnologías más actuales y las consideran disciplinas distintas aunque muy relacionadas. Junto con la fotogrametria aérea aparece la fotogrametría espacial, encargada de operar sobre imágenes de satélite bajo unos principios similares.
 
@@ -666,7 +666,7 @@ La visión tridimensional en el ser humano se basa en el hecho de que la imagen q
 
 Cuando se emplean imágenes de satélite, los pares se pueden obtener con aquellas plataformas y sensores que permiten variar el ángulo de visión, de modo que en la misma pasada del satélite se toman imágenes de una zona desde distintos puntos. El sensor toma una imagen cenital y posteriormente, una vez ha superado la zona en su recorrido, toma una segunda imagen mirando <<hacia atrás>>, la cual, combinada con la primera, permite el levantamiento del terreno y la realización de los procesos fotogramétricos (Figura \ref{Fig:Par_estereo_satelite}).
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.85\textwidth]{Fuentes_datos/Par_estereo_satelite.pdf}
 \caption{\small Toma de pares de imágenes estereosópicas desde un satélite, mediante variación del ángulo de visión.}
@@ -694,7 +694,7 @@ La información contenida en el documento cartográfico puede también contener ele
 
 Dentro de los errores que aparecen como consecuencia de la digitalización en sí, un tipo importante de ellos son las discrepancias y coincidencias imperfectas entre las distintas entidades, tal como las que se muestran en la figura \ref{Fig:Imprecisiones_digitalizacion}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Imprecisiones_digitalizacion.pdf}
 \caption{\small Errores derivados del proceso de digitalización. a) Versión correcta, con nodos coincidentes. b) y c) Versiones con errores que causan una falsa desconexión entre las líneas.}
@@ -782,7 +782,7 @@ Los receptores actuales están preparados para trabajar con un número máximo de s
 
 El diseño de la red de satélites está pensado para garantizar que en cualquier punto de la superficie terrestre y en cualquier momento, un receptor puede localizar el número necesario de satélites para obtener con exactitud su precisión. La localización en la que se disponen los satélites con los que se establece comunicación no es irrelevante, ya que condiciona la precisión del posicionamiento, afectando a lo que se conoce como \emph{dilución de la precisión} (DOP\footnote{Dilution of Precision}). Si los ángulos de los satélites son grandes, la precisión que se obtiene es mayor que si estos son menores (Figura \ref{Fig:DOP}).\index{Dilution of Precision}
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Fuentes_datos/DOP.pdf}
 \caption{\small Dilución de la precisión. La geometría de los satélites en el ejemplo a) da una mayor precisión en el cálculo de la posición del receptor que la del ejemplo b).}
@@ -815,7 +815,7 @@ En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS pue
 
 La figura \ref{Fig:DGPS} muestra un esquema del funcionamiento del GPS diferencial.
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.5\textwidth]{Fuentes_datos/DGPS.pdf}
 \caption{\small Esquema de funcionamiento del GPS diferencial}
@@ -855,7 +855,7 @@ Por último, y teniendo en cuenta que el sistema GPS mide las coordenadas $(x,y,z
 	\item GPS para la medición del tiempo. Estos GPS no resultan de tanto interés para su uso en un SIG, ya que se encuentran fijos en un punto y no conceden importancia a la localización espacial, sino tan solo al tiempo. Se utilizan en estudios que requieran una medición muy precisa del tiempo, ya que la referencia temporal que ofrece el sistema GPS es muy precisa y estable.
 \end{itemize}
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.6\mycolumnwidth]{Fuentes_datos/gps.pdf}
 \caption{\small Receptor GPS de bajo coste para uso general (a) y receptor GPS de alta precisión con antena externa (b)}
@@ -1074,13 +1074,13 @@ En el apartado relativo a los modelos de almacenamiento vimos algunas ideas sobr
 
 Por el contrario, existen otros métodos de compresión \emph{con pérdidas}, en los cuales se pierde información y la imagen resultante, además de ocupar menos espacio, tiene una menor calidad y no es exactamente igual a la original, sino simplemente muy similar a esta. Los algoritmos de compresión con pérdidas toman de la imagen original la información más importante para después recrear esta, ignorando la menos relevante, que se pierde en aras de obtener un menor volumen de almacenamiento.\index{Compresión!con pérdidas}
 
-Siempre que sea posible, los formatos de compresión sin pérdidas deben preferirse frente a los que utilizan algoritmos de compresión son pérdidas, ya que no se pierde información alguna con ellos. En función de las necesidades que se tenga con respecto a las imágenes a almacenar, debe elegirse el formato adecuado, considerando siempre la degradación que la compresión con pérdidas implica.
+Siempre que sea posible, los formatos de compresión sin pérdidas deben preferirse frente a los que utilizan algoritmos de compresión con pérdidas, ya que no se pierde información alguna con ellos. En función de las necesidades que se tenga con respecto a las imágenes a almacenar, debe elegirse el formato adecuado, considerando siempre la degradación que la compresión con pérdidas implica.
 
 Algunos formatos de imagen que emplean compresión con pérdidas son altamente populares, ya que se emplean para tareas donde la reducción de tamaño de los ficheros es prioritaria, y este tipo de compresión ofrece una reducción en general mayor que la de los algoritmos sin pérdidas. Así, por ejemplo, las imágenes que se incorporan en paginas Web han de ser de pequeño tamaño para agilizar su carga, y ese tamaño resulta un factor decisivo, especialmente donde la velocidad de conexión es limitada. Para el trabajo con un SIG, no obstante, la calidad de la imagen es de mucho mayor importancia que su tamaño, y los formatos de compresión sin pérdidas responden mejor a las necesidades del almacenamiento de datos SIG.
 
 En la imagen \ref{Fig:Compresion_con_perdidas} puede verse el efecto de la utilización de compresión con pérdidas.
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\textwidth]{Fuentes_datos/Compresion_con_perdidas.png}
 \caption{\small Efectos de la utilización de algoritmos de compresión con pérdidas. a) Imagen original. b) Imagen almacenada mediante compresión con pérdidas. c) Imagen tras diez procesos de lectura y almacenamiento en un formato de archivo con compresión con pérdidas. El efecto de la degradación sucesiva que la imagen sufre es claramente apreciable.}

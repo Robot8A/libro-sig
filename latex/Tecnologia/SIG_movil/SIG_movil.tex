@@ -2,8 +2,6 @@
 \chapter{SIG móvil}
 \label{SIG_movil}
 
-
-
 \bigskip
 
 \begin{intro}
@@ -12,6 +10,8 @@ Los SIG no han sido ajenos a la popularización de las tecnologías móviles y la i
 
 En este capítulo veremos las características de una nueva forma de SIG basada en su uso sobre dispositivos móviles, y trataremos las nuevas posibilidades que esto ofrece. Asimismo, y puesto que los SIG móviles se apoyan en otra serie de tecnologías (especialmente de comunicación y posicionamiento), desarrollaremos estas para definir el marco tecnológico en el que se encuadra esta rama particular del SIG.
 \end{intro}
+
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -48,7 +48,7 @@ Hoy en día son muchos los dispositivos que podemos emplear para disponer de una 
 
 \index{GPS}\index{Teléfono móvil}\index{Tablet PC}
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
 	\includegraphics[width=0.90\textwidth]{SIG_movil/TiposDispositivosMoviles.png}
 	\caption{\small Distintos tipos de dispositivos móviles}
@@ -76,7 +76,7 @@ Para dar una definición más formal de lo que entendemos por SIG móvil, podemos d
 
 Por su parte, \cite{Brimicombre2002GIS} distingue tres elementos principales que dan forma al contexto de las aplicaciones SIG móviles: SIG, Internet, y dispositivos móviles y Nuevas Tecnologías de la Información y la Comunicación (NTIC). La figura \ref{Fig:LBSInterseccion} esquematiza esto.\index{NTIC}
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
 	\includegraphics[width=0.35\mycolumnwidth]{SIG_movil/LBSInterseccion.pdf}
 	\caption{\small Clasificación de aplicaciones del ámbito del SIG móvil en función de las tecnologías empleadas (según \cite{Brimicombre2002GIS})}
@@ -174,7 +174,7 @@ Por el contrario, en los métodos basados en terminal es el propio dispositivo el
 
 La figura \ref{Fig:MetodosPosicionamiento} esquematiza lo anterior.
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
 	\includegraphics[width=0.95\textwidth]{SIG_movil/MetodosPosicionamiento.pdf}
 	\caption{\small Metodos de posicionamiento basados en red (a) y en terminal (b)}
@@ -253,10 +253,10 @@ Esto no quiere decir que este tipo de capacidades no se encuentren en los SIG mó
 
 A modo de ejemplo, y tras lo explicado hasta este punto, se muestra en la figura \ref{Fig:SIGMovil} el aspecto de una aplicación SIG móvil.
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
-	\includegraphics[width=0.4\textwidth]{SIG_movil/SigMovil.png}
-	\caption{\small Aspecto de una aplicación SIG móvil (gvSIG Mobile)}
+	\includegraphics[width=0.65\textwidth]{SIG_movil/SigMovil.png}
+	\caption{\small Aspecto de una aplicación SIG móvil (QField) (Cortesia OPENGIS.ch)}
 \label{Fig:SIGMovil} 
 \end{figure*}
 
@@ -264,7 +264,7 @@ En los servicios basados en localización, todo lo anterior tiene lugar de un mod
 
 La imagen \ref{Fig:EjemplosLBS} muestra dos ejemplos de aplicaciones para servicios basados en localización. Adviértase que estas no tienen necesariamente que guardar similitud con la idea clásica de un SIG, y que pueden no incluir ningún tipo de representación cartográfica. Es decir, que pueden proveer el servicio dando algún tipo de información geográfica (en el caso del ejemplo de la izquierda, se ofrecen mensajes de otros usuarios del servicio localizados en la misma zona) sin necesidad de mostrarla sobre un mapa. En el caso de la captura de pantalla mostrada en el lado derecho, la información sí aparece en un mapa, en el cual se muestran los contactos del usuario que se encuentran cercanos. El servicio en este caso es una forma particular de agenda de contactos que hace énfasis en algunos de ellos en función de su localización y la del usuario.
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
 	\includegraphics[width=0.7\textwidth]{SIG_movil/EjemplosLBS.png}
 	\caption{\small Dos servicios basados en localizacion sobre un teléfono móvil. En la parte izquierda, Foursquare [\url{http://www.foursquare.com}]. En la parte derecha, Life360 [\url{http://www.life360.com}].}
@@ -309,7 +309,7 @@ Si recurrimos al clásico ejemplo del cálculo de rutas, aunque el análisis llevad
 
 Al contrario que en el caso de usar un dispositivo móvil como un navegador GPS, ese viaje por esa ruta no vamos a realizarlo inmediatamente, no tiene necesariamente que ser un trayecto cercano a nuestra posición actual e incluso no vamos a ser nosotros mismos quienes hagamos el recorrido. De este modo, el contexto temporal o el personal del usuario no tienen significado alguno. Podemos incluir esas variables explícitamente si el \emph{software} así nos lo permite, pero no son una parte inherente al cálculo y que siempre sea tenida en cuenta. Por su parte, en un dispositivo móvil pueden incorporarse todos estos factores asumiendo que, en la mayoría de los casos, sí van a ser de importancia. En resumen, que el hecho de que se trabaje sobre un dispositivo móvil y este permita conocer su posición añade significado a todas las clases de contexto.
 
-\begin{figure*}[!hbtp]   
+\begin{figure*}[t]   
 	\centering
 	\includegraphics[width=\textwidth]{SIG_movil/RealidadAumentada.png}
 	\caption{\small Dos ejemplos de realidad aumentada (cortesía de 5 Magazine)}
@@ -319,7 +319,7 @@ Al contrario que en el caso de usar un dispositivo móvil como un navegador GPS, 
 El \emph{software} debe diseñarse de forma que pueda responder a ese contexto y adaptarse a él. Las siguientes son las áreas principales en las que esa adaptación puede producirse \cite{Reichenbacher2004PhD}:
 
 \begin{itemize}
-	\item \textbf{Información}. La información proporcionada a un usuario varía en función del contexto en que se encuentre. Por ejemplo una búsqueda de un determinado tipo de comercio puede restringirse a un radio de alcance desde su posición habitual, o bien filtrarse para informar solo de aquellos que ofrezcan algún producto o servicio que sea de interés para el usuario.
+\item \textbf{Información}. La información proporcionada a un usuario varía en función del contexto en que se encuentre. Por ejemplo una búsqueda de un determinado tipo de comercio puede restringirse a un radio de alcance desde su posición habitual, o bien filtrarse para informar solo de aquellos que ofrezcan algún producto o servicio que sea de interés para el usuario.
 \item \textbf{Tecnología}. Conociendo las características del dispositivo, puede establecerse la mejor forma de ofrecer un servicio. Si, por ejemplo, la pantalla del dispositivo es demasiado reducida, no será interesante hacerlo mediante imágenes de gran tamaño, así cómo proveer algún tipo de información sonora si el dispositivo no dispone de capacidades para reproducir sonido. Como ya vimos, una de las características del SIG móvil es la variedad de plataformas, por lo que la adaptación en este sentido es importante para poder satisfacer las necesidades de los usuarios con independencia de qué plataforma emplean.
 \item \textbf{Interfaz de usuario}. El servicio puede alterar la interfaz sobre la que opera el usuario. El ejemplo más clásico es el desplazamiento de un mapa a medida que este se mueve.
 \item \textbf{Presentación}. Si la información requiere ser representada, esto puede hacerse de diversas formas en función del contexto. La simbología empleada se adapta, por ejemplo, a las preferencias del usuario (resaltando aquellos elementos que le resultan de mayor interés) o a la hora del día (señalando de algún modo explicito el hecho de que algunos elementos pueden no estar disponibles, tales como comercios si es de madrugada), entre otros factores.
@@ -332,4 +332,5 @@ Los SIG móviles combinan las tecnologías SIG con los dispositivos móviles, el ac
 
 Para comprender el funcionamiento de las tecnologías implicadas en el SIG móvil, hemos analizando por separado los métodos de posicionamiento, las redes inalámbricas y las aplicaciones de \emph{software}, cada una de las cuales desempeña un papel básico en definir las capacidades de un sistema SIG móvil.
 
+\end{multicols}
 \pagestyle{empty}

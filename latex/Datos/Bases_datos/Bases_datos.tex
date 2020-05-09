@@ -29,7 +29,7 @@ Podemos ver más claramente las implicaciones de utilizar una base de datos si re
 
 Imaginemos, por ejemplo, el caso de un ingeniero encargado de planear la instalación de un tendido eléctrico a través de nuestra zona forestal de ejemplo. Sin duda, deberá emplear datos tales como Modelos Digitales de Elevaciones,\index{Modelo Digital de Elevaciones} capas de zonas protegidas o capas de arbolado para establecer el trazado óptimo y estimar costes de la línea, entre otras tareas. Si en una situación ideal este ingeniero estaría en comunicación con el gestor forestal y ambos compartirían sus conocimientos dentro de un equipo multidisciplinar, también en lo referente a los datos debería existir una comunicación igual que implique, ente otras cosas, un uso compartido y convenientemente coordinado de ellos. En otras palabras, los datos también tienen ese carácter multidisciplinar y deben dejar de verse como algo propio de un uso particular, para concebirse como un conjunto global del que se benefician muy diversos usuarios.
 
-Establecer un uso compartido de los datos en una situación como la anterior no parece difícil, ya que simplemente se trata de dos profesionales que realizan tareas relacionadas y que, de un modo u otro, van a tener un contacto directo. El gestor forestal puede sencillamente dar una copia de sus datos al ingeniero y este podrá trabajar después con ellos de forma independiente. Aunque los datos con que trabajen son inicialmente los mismos, en realidad esta práctica da lugar son dos copias aisladas que constituyen dos universos distintos.
+Establecer un uso compartido de los datos en una situación como la anterior no parece difícil, ya que simplemente se trata de dos profesionales que realizan tareas relacionadas y que, de un modo u otro, van a tener un contacto directo. El gestor forestal puede sencillamente dar una copia de sus datos al ingeniero y este podrá trabajar después con ellos de forma independiente. Aunque los datos con que trabajan son inicialmente los mismos, en realidad esta práctica da lugar a dos copias aisladas que constituyen dos universos distintos.
 
 La situación real, sin embargo, es habitualmente mucho más compleja, y utilizar un esquema de colaboración como el anterior puede ser imposible, carecer por completo de sentido, o tener un buen número de consecuencias negativas. A medida que aumenta el número de usuarios, resulta menos recomendable que cada uno trabaje con sus propios datos y se los hagan llegar entre ellos a medida que los necesitan (una realidad que, desgraciadamente, se presenta con más frecuencia de lo recomendable). No debe olvidarse que un conjunto más amplio de usuarios que trabajan de esta forma y son ellos mismos quienes gestionan sus propios datos, implica directamente un número también más elevado de aplicaciones informáticas y de formatos de archivo, complicando enormemente el trabajo coordinado en cuanto el equipo tiene un tamaño medio.
 
@@ -84,7 +84,7 @@ En función de la estructura utilizada para construir una base de datos, existen 
 
 La figura \ref{Fig:Comparacion_BBDD} muestra una comparación esquemática de los anteriores modelos de bases de datos.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.99\textwidth]{Bases_datos/ComparacionModelos.pdf}
 \caption{\small Comparación entre algunos modelos de base de datos más frecuentes (adaptado de \cite{USDT2001}).}
@@ -147,7 +147,7 @@ En la definición de clave cabe también la presencia de claves compuestas, es dec
 
 Cuando trabajamos con datos espaciales, es habitual emplear la componente espacial como clave, ya que esta suele ser única. En el caso de almacenar información sobre ciudades, con los nombres sucede de forma similar a lo visto para el caso de personas, ya que existen ciudades con el mismo nombre en distintos lugares. La localización de estas, sin embargo, es única, ya que no puede haber dos ciudades simultáneamente en el mismo lugar.
 
-\begin{table*}[!hbt]
+\begin{table*}[t]
 \textbf{a)}
 
 \begin{center}
@@ -221,7 +221,7 @@ Para ser de verdadera utilidad y responder a todas las necesidades que pueden pl
 	Se denomina \emph{transaccional} al SGBD capaz de garantizar la integridad de los datos, no permitiendo que las transacciones puedan quedar en un estado intermedio. Esto implica la capacidad de poder volver a un estado anterior en caso de que por cualquier causa (error en el sistema, fallo eléctrico, etc) no haya podido completarse la transacción.
 \end{itemize}\index{Sistema Gestor de Bases de Datos (SGBD)!Transaccional}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/SGBD.pdf}
 \caption{\small Representación esquemática del papel de un Sistema Gestor de Base de Datos.}
@@ -278,7 +278,7 @@ Para desarrollar el diseño conceptual de una base de datos siguiendo el modelo E
 
 El modelo así creado se expresa mediante un diagrama en el que las entidades se representan como cajas rectangulares, las relaciones mediante rombos y los atributos en círculos o elipses, todos ellos con sus correspondientes nombres en el interior. Cuando un atributo es un identificador, se representa con su nombre subrayado, del mismo modo que en la definición de esquemas que ya vimos anteriormente (Figura \ref{Fig:SimbolosER}). Si el número de atributos es elevado o el diagrama es complejo por existir gran cantidad de tablas e interrelaciones, pueden omitirse los atributos para una mayor legibilidad, describiéndose en un documento adicional.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/EjemploDiagramaER.pdf}
 \caption{\small Ejemplo de diagrama E-R.}
@@ -290,7 +290,7 @@ Como ejemplo de lo anterior, la información sobre personas y ciudades que venimo
 El modelo E--R presenta algunas limitaciones semánticas, y no es suficiente para expresar con detalle la estructura de algunos tipos de información. Por esta razón, surge el conocido como \emph{modelo E--R extendido}, que amplía el modelo E-R añadiendo nuevos elementos. Con su mayor potencia, el modelo E--R extendido acerca el diseño conceptual a los conceptos de la programación orientada a objetos, incorporando por ejemplo mecanismos de herencia. No obstante, el enfoque orientado a objetos recoge no solo la estructura del sistema de información, sino también su comportamiento dinámico.
 
 
-\begin{table*}[!hbt]
+\begin{table*}[t]
 \centering
 \resizebox{.8\textwidth}{!}{
 \begin{tabular}{ccccccc}\toprule

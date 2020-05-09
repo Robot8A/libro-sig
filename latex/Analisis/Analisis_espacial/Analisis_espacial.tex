@@ -41,7 +41,7 @@ Por ejemplo, sea el conjunto de puntos de la figura \ref{Fig:Estructura_escalas}
 
 \index{Estructura!regular}\index{Estructura!agregada}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width= .55\mycolumnwidth]{Analisis_espacial/Estructura_escalas.pdf}
 \caption{\small Dependiendo de la escala de análisis, la estructura de un conjunto de puntos puede ser distinta.}
@@ -52,7 +52,7 @@ La escala de análisis debe ir inseparablemente relacionada con el fenómeno que p
 
 Si vamos a llevar a cabo un estudio de cómo el relieve influye en los movimientos de las masas de aire a nivel de todo el planeta, no tiene sentido estudiar las formas del relieve a este último nivel de máximo detalle. Como se muestra en la figura \ref{Fig:Escalas_formas_terreno}, si para definir las formas de relieve en un punto dado lo hacemos considerando dicho punto y los valores de elevación a su alrededor, la caracterización que hagamos varía en función de la dimensión de esa zona alrededor (que es la que define la escala de análisis). Para valores pequeños de dicha zona de análisis, el punto analizado puede definirse como una cima, mientras que aumentando la escala de análisis se advierte que el punto se sitúa en el fondo de un valle.
 
-\begin{figure*}[!ht] 
+\begin{figure*}[t] 
 \centering
 \includegraphics[width= .40\mycolumnwidth]{Analisis_espacial/Escalas_formas_terreno.pdf}
 \caption{\small Dependiendo de la escala de análisis, un mismo relieve puede ser caracterizado como cima (a) o fondo de valle (b)}
@@ -65,7 +65,7 @@ Este enfoque de escalas múltiples es relevante también en relación con los propi
 
 Podemos ver más ejemplos de cómo la escala de análisis condiciona los resultados obtenidos. Supóngase un elemento lineal tal como un camino o el contorno de una finca cuyo perímetro quiere medirse. Como puede verse en la figura \ref{Fig:Medida_linea_fractal}, la unidad de medida empleada provoca que se obtengan resultados distintos. Para medir la longitud de la línea utilizamos una unidad mínima, que podemos asimilar a una especie de <<vara de medir>>. Todos los elementos de la línea que son menores que esa unidad mínima no se recogen. En el caso a) se obtiene un resultado de siete unidades. Si reducimos a la mitad la unidad, cabe esperar que la longitud sea el doble. Sin embargo, obtenemos un total de 17 unidades, de forma que la proporción entre el tamaño de nuestra vara de medida y el número de unidades resultante no se mantiene.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width= .40\mycolumnwidth]{Analisis_espacial/Medida_linea_fractal.pdf}
 \caption{\small La unidad de medida empleada modifica el resultado obtenido.}
@@ -125,7 +125,7 @@ En caso de no existir ningún tipo de autocorrelación espacial, se tiene que los 
 
 La figura \ref{Fig:Autocorrelacion_espacial} muestra unas sencillas capas ráster en las que se presentan los tres tipos de autocorrelación espacial anteriores.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Analisis_espacial/Autocorrelacion_espacial.png}
 \caption{\small a) Autocorrelación espacial positiva. b) Autocorrelación espacial negativa. c) Ausencia de autocorrelación espacial (independencia)}
@@ -152,7 +152,7 @@ Es importante considerar todos estos factores de forma global, pues todos ellos 
 
 Tanto la disposición de los datos como las propiedades de la variable estudiada (por ejemplo, la propia autocorrelación espacial como propiedad intrínseca), exhiben una estructura determinada. En la figura \ref{Fig:Estructura_espacial} pueden verse dos conjuntos de puntos distintos, sobre los cuales cabe plantearse si los resultados obtenidos de su análisis pueden darse como igual de fiables. Puesto que la estructura espacial de ambos es distinta y la componente espacial juega un papel importante, esta estructura puede condicionar los resultados y tener influencia sobre estos.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Estadistica_espacial/Estructura_espacial.pdf}
 \caption{\small Dos estructuras distintas con diferentes implicaciones a la hora del análisis de los datos que representan}
@@ -211,7 +211,7 @@ Como veíamos al tratar el Problema del de Unidad de Área Modificable, algunas de
 
 Para cada una de estas unidades, se tiene un valor de la variable estudiada, pero lo que dicho valor representa en el territorio puede variar en función del criterio establecido. Como se recoge en la figura \ref{Fig:Support_size}, en la cual la variable recogida es la elevación, el valor de cada celda puede ser la elevación en el centro de la celda o bien el valor medio de toda ella, entre otras opciones posibles.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.45\mycolumnwidth]{Analisis_espacial/Support_size.pdf}
 \caption{\small El valor recogido en una unidad puede interpretarse con distintos criterios. a) Media de la celda. b) Valor en el punto medio.}
@@ -254,9 +254,9 @@ Si, por el contrario, se permite tan solo el movimiento en dirección vertical y 
 
 En la figura \ref{Fig:Distancia_raster} pueden verse los valores de distancia entre una celda central y sus circundantes según las definiciones de distancia anteriores, junto con otras como la distancia \emph{ortogonal} o la distancia \emph{Chamfer 3--4}\cite{Borgefors1986CompuVision}. El objetivo de estas distancias es mitigar en cierta medida la distorsión que se produce con las otras distancias ráster a medida que aumenta el alejamiento.\index{Distancia!Chamfer 3--4}\index{Distancia!ortogonal}\index{Chamfer 3--4 (distancia)}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Analisis_espacial/Distancia_raster.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Analisis_espacial/Distancia_raster.pdf}
 \caption{\small Distintos tipos de distancia ráster: a) tablero de ajedrez, b) Manhattan, c) ortogonal, d) Chamfer 3--4}
 \label{Fig:Distancia_raster} 
 \end{figure*}
@@ -415,7 +415,7 @@ Para cada una de las cuatro intersecciones se estudia algún invariante topológic
 
 Teniendo cuatro elementos y dos posibles valores para cada uno, existen un total de $2^4 = 16$ diferentes matrices con la forma anterior. De estas, ocho pueden darse en un plano entre objetos bidimensionales con fronteras cerradas, cada uno de los cuales define una \emph{región}. Estas ocho relaciones son las mostradas en la figura \ref{Fig:4Intersection}, con sus matrices características correspondientes.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\textwidth]{Analisis_espacial/4Intersection.png}
 \caption{\small Conjunto de relaciones posibles entre regiones según el modelo \emph{4--Intersection}.}

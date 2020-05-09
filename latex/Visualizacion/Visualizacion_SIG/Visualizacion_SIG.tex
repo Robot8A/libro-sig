@@ -2,14 +2,13 @@
 \chapter{La visualización en términos SIG}
 \label{Visualizacion_SIG}
 
-
-
 \bigskip
 
 \begin{intro}
 Ahora que ya conocemos la teoría del diseño cartográfico y sus ideas principales, es momento de aplicar esto a los SIG y ver en qué medida un SIG nos permite aplicar esas ideas. El objetivo de este capítulo es facilitar la aplicación de todo lo visto en los anteriores, para mejorar así nuestro trabajo con un SIG. Se trata de un capítulo eminentemente práctico en el que veremos la visualización no desde un punto de vista conceptual, sino directamente sobre el SIG, y aprenderemos cómo usar este para lograr crear mejores mapas y, en general, mejores visualizaciones de todo tipo de datos susceptibles de ser incorporados en un SIG.
 \end{intro}
 
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -71,7 +70,7 @@ En el caso de líneas que se entrecruzan (calles, ríos, etc.), es importante evit
 
 \begin{figure*}
 \centering
-\includegraphics[width=\mycolumnwidth]{Visualizacion_SIG/EtiquetasLineas.pdf}
+\includegraphics[width=.8\mycolumnwidth]{Visualizacion_SIG/EtiquetasLineas.pdf}
 \caption{\small La posición de la etiqueta sobre una línea en un cruce puede dar lugar a ambigüedades (a) o a situaciones bien definidas (b).}
 \label{Fig:EtiquetasLineas} 
 \end{figure*}
@@ -80,7 +79,7 @@ Para el caso particular de las isolíneas, se recomienda situar la etiqueta sobre
 
 \begin{figure*}
 \centering
-\includegraphics[width=.8\mycolumnwidth]{Visualizacion_SIG/EtiquetasIsolineas.pdf}
+\includegraphics[width=.7\mycolumnwidth]{Visualizacion_SIG/EtiquetasIsolineas.pdf}
 \caption{\small Etiquetado de isolíneas. Deben situarse las etiquetas cercanas entre sí y sobre la línea, como en el ejemplo b)}
 \label{Fig:EtiquetasIsolineas} 
 \end{figure*}
@@ -130,9 +129,9 @@ Tanto si se usa el valor como si se usa el tono, otra de las consecuencias de la
 
 Mencionábamos en el apartado \ref{CreacionClases} que no se recomienda un número de clases mayor de 7 u 8, ya que haría complejo el identificar cada una de ellas en la leyenda y conocer la cantidad exacta que se representa. Ello no significa, sin embargo, que el ojo humano no pueda distinguir más de 8 valores distintos de un tono dado. Si extendemos el número de clases, podemos lograr un efecto de transición suave entre los colores de las distintas celdas y eso, aunque no facilite la identificación de un color concreto con su valor asociado de la variable representado, crea una representación mucho más informativa. Puede verse esto claramente en la figura \ref{Fig:RepresentacionRaster}
 
-\begin{figure*}
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=\mycolumnwidth]{Visualizacion_SIG/RepresentacionRaster.png}
+\includegraphics[width=.85\mycolumnwidth]{Visualizacion_SIG/RepresentacionRaster.png}
 \caption{\small Representación de dos capas ráster con valores de elevación (a) y ángulo de iluminación (b) mediante 255 (izquierda) y 8 (derecha) clases.}
 \label{Fig:RepresentacionRaster} 
 \end{figure*}
@@ -149,7 +148,7 @@ Argumentábamos en los primeros capítulos de este libro, cuando presentábamos el 
 
 Pese a esto, resulta claro que a la hora de representar la información geográfica, una capa aislada no constituye la forma óptima de visualizar esta. Si en un mapa encontramos elementos variados, ello no obedece a la mera economía de espacio, sino a que añadir información adicional a la de esa capa que queremos representar nos ayuda a entenderla mejor. Los procesos que tienen lugar en el espacio están relacionados unos con otros, y visualizar esas relaciones aporta una mayor riqueza a la visualización, haciendo que sea más sencillo extraer la información contenida en ella. Podemos ver un claro ejemplo de esto en la figura \ref{Fig:DiferenciaCombinacionCapas}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\mycolumnwidth]{Visualizacion_SIG/DiferenciaCombinacionCapas.png}
 \caption{\small Añadir capas adicionales que complementen a aquella que resulta de interés nos ayuda a interpretar mejor esta y a lograr una representación más eficaz.}
@@ -164,7 +163,7 @@ El primer aspecto a considerar es el orden de las capas, que indica cómo se disp
 
 La figura \ref{Fig:OrdenPintadoCapas} muestra un claro ejemplo de lo anterior en el que se puede apreciar la diferencia que supone variar el orden de las capas.
 
-\begin{figure*}
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=\mycolumnwidth]{Visualizacion_SIG/OrdenPintadoCapas.png}
 \caption{\small Variar el orden de las capas puede suponer un cambio radical en la representación final obtenida. Todas las imágenes proceden del mismo conjunto de capas, pero las representaciones son muy distintas.}
@@ -181,7 +180,7 @@ Con un razonamiento similar, podemos establecer la mejor forma de ordenar las ca
 
 En ocasiones, un determinado orden viene impuesto por el significado que tienen las capas. Por ejemplo, si nuestro mapa contiene una capa con la red de drenaje y otra con carreteras, lo lógico y habitual es que las carreteras estén por encima de los ríos, ya que lo normal es que pasen por encima de estos y no al contrario. En la practica cartográfica, este tipo de situación se resuelve simbolizando de forma particular este tipo de coincidencias, como se muestra en la figura \ref{Fig:CruceCarreterasRios}. Esto requiere en el SIG unas capacidades avanzadas de edición gráfica, algo que, como vimos en el primer capítulo de esta parte, no es muy común. No obstante, algunos SIG incluyen no solo esas capacidades, sino también funcionalidades que crean automáticamente esos elementos gráficos en función del análisis de las capas, de tal modo que automatizan la tarea.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.7\mycolumnwidth]{Visualizacion_SIG/CruceCarreterasRios.pdf}
 \caption{\small Representación errónea (a) y correcta (b) de capas al combinar una de carreteras (en marrón) y otra de red de drenaje (en azul). La inclusión de un elemento que simbolice el cruce (c) supone, no obstante, una mejor solución desde el punto de vista cartográfico.}
@@ -202,7 +201,7 @@ La división horizontal de los datos puede dar lugar a problemas en el caso de ca
 En el caso, sin embargo, de trabajar con las capas de forma independiente, y si estas han de combinarse en una misma representación, es necesario que los esquemas de representación sean coherentes unos con otros, para que en la representación global aparezcan como una única capa de información. De modo contrario, la representación será ambigua y confusa, y no mostrará de la forma adecuada la información que esas capas contienen. No considerar esta circunstancia lleva a errores tales como los mostrados en la figura \ref{Fig:Representacion_capas_incoherente}. 
 
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\textwidth]{Visualizacion_SIG/Representacion_capas_incoherente.png}
 \caption{\small a) dos representaciones incorrectas de conjuntos de capas, debido a incoherencia entre los parámetros de representación empleados en cada una de ellas. b) representación correcta y homogénea con parámetros de representación comunes.}
@@ -232,7 +231,7 @@ A la hora de preparar cartografía impresa, la resolución no es un problema, ya q
 	\item Punteados. Al igual que en el caso anterior, si el punteado no tiene un paso suficiente, puede no resultar evidente la discontinuidad de la linea, creándose una representación ambigua.
 \end{itemize}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.35\mycolumnwidth]{Visualizacion_SIG/Serifas.png}
 \caption{\small Concepto de serifa.}
@@ -260,7 +259,7 @@ Por último, el hecho de que la escala de la representación pueda variar según la
 El mismo problema sucede en el caso de emplear símbolos. Si, por ejemplo, tenemos una capa de puntos con la localización de bocas de incendios y representamos cada uno con un pequeño dibujo de una de ellas, al aumentar el tamaño de cada icono se perderá definición, mientras que al disminuirlo la pantalla no tiene resolución suficiente para dibujarlo correctamente y no se identificará su forma. En general, el empleo de símbolos puntuales de este tipo se desaconseja a la hora de representar cartografía en pantalla.
 
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.85\mycolumnwidth]{Visualizacion_SIG/ProblemasRepresentacionSimbolos.pdf}
 \caption{\small El cambio de escala varía el tamaño de los símbolos tales como las etiquetas, haciéndolos demasiado pequeños (a) o demasiado grandes (b)}
@@ -271,7 +270,7 @@ El mismo problema sucede en el caso de emplear símbolos. Si, por ejemplo, tenemo
 Una solución a esto es especificar un tamaño absoluto de estos elementos que no varíe con la escala. Es decir, que un símbolo o una etiqueta de texto tengan siempre el mismo tamaño en pantalla y ocupen los mismos píxeles. A escalas bajas, sin embargo, este método puede dar lugar a representaciones saturadas, como se observa en la figura \ref{Fig:RepresentacionSaturada}. Este problema es más notable si se tiene en cuenta que en pantalla se emplean generalmente tamaños de letra más grandes que en un mapa impreso, por lo que se debe reducir la cantidad de texto mostrado para evitar una densidad de etiquetas demasiado elevada.
 
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.7\mycolumnwidth]{Visualizacion_SIG/RepresentacionSaturada.png}
 \caption{\small Representación saturada al representar elementos con tamaño fijo a una escala baja.}
@@ -296,7 +295,7 @@ Por todo ello, porque el factor visual es de gran relevancia en los SIG 3D, una 
 	
 	En otros casos, para una única variable es necesario elegir la visualización en función de aquello que queramos mostrar de forma más clara. Si consideramos una capa de líneas (tridimensional, es decir, formada por un conjunto de puntos definidos mediante 3 coordenadas cada uno) que representa la trayectoria de un avión, la vista cenital nos permitirá ver el recorrido de este, pero será difícil apreciar si ha ascendido o descendido durante el vuelo. Una vista de perfil soluciona esto, pero hace complicado apreciar el desplazamiento en el eje perpendicular a la linea de visión, por lo que el recorrido no se conoce con la misma exactitud. Incluso si este puede apreciarse de algún modo (por ejemplo, variando el grosor de la línea cuando el avión se acerca o aleja del observador para así representar la distancia en profundidad), una capa base con un mapa topográfico no se visualizaría apenas desde esa vista de perfil, haciendo imposible saber cuándo en ese recorrido se ha pasado de un país a otro.	A diferencia de lo que sucede con un mapa bidimensional, en una vista tridimensional no se aprecian de igual modo todas las dimensiones implicadas en la representación, ya que el soporte (la pantalla) solo posee dos dimensiones.
 	
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.75\mycolumnwidth]{Visualizacion_SIG/Extrusion.png}
 \caption{\small La extrusión permite la creación de objetos volumétricos a partir de objetos planos. Los edificios de la imagen se han creado únicamente a partir de la planta y un valor de altura para cada uno de ellos.}
@@ -313,25 +312,29 @@ Por todo ello, porque el factor visual es de gran relevancia en los SIG 3D, una 
 
 	En realidad, estamos utilizando esta junto a la variable tamaño, una variable que para el caso de polígonos no existía en la representación bidimensional (existe, pero debe distorsionarse el contorno del polígono, algo que no resulta adecuado ya que este tiene un significado geográfico, o bien puede aplicarse sobre el grosor de la línea de contorno, lo cual no es tan fácil de percibir e interpretar).
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=0.55\mycolumnwidth]{Visualizacion_SIG/Coropletas3D.png}
+\includegraphics[width=.9\mycolumnwidth]{Visualizacion_SIG/Coropletas3D.png}
 \caption{\small La dimensión vertical puede emplearse como variable visual para visualizar la componente temática de la información geográfica.}
 \label{Fig:Coropletas3D} 
-\end{figure*}
-	
-	Un planteamiento similar se puede aplicar a capas ráster, como se observa en la figura \ref{Fig:Superficie3D}. La superficie mostrada sobre el terreno no es un relieve procedente de una capa de elevación, sino de una variable distinta (por ejemplo, presión o temperatura del aire), la cual, además de simbolizarse mediante una rampa de colores, se representa en forma de relieve para hacer más evidente la variación de esos valores. La capa no tiene componente vertical, ya que es una capa ráster bidimensional, por lo que podemos utilizar esa tercera dimensión como variable visual. Hemos visto algunas visualizaciones así en otras partes del libro, por ejemplo en la figura \ref{Fig:Coste_acumulado_3D}.
-				
-\begin{figure*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=0.5\mycolumnwidth]{Visualizacion_SIG/Superficie3D.png}
+\includegraphics[width=.9\mycolumnwidth]{Visualizacion_SIG/Superficie3D.png}
 \caption{\small La dimensión vertical puede utilizarse también para simbolizar capas ráster con variables distintas a la elevación.}
 \label{Fig:Superficie3D} 
+\end{minipage}
 \end{figure*}
+
+
+	Un planteamiento similar se puede aplicar a capas ráster, como se observa en la figura \ref{Fig:Superficie3D}. La superficie mostrada sobre el terreno no es un relieve procedente de una capa de elevación, sino de una variable distinta (por ejemplo, presión o temperatura del aire), la cual, además de simbolizarse mediante una rampa de colores, se representa en forma de relieve para hacer más evidente la variación de esos valores. La capa no tiene componente vertical, ya que es una capa ráster bidimensional, por lo que podemos utilizar esa tercera dimensión como variable visual. Hemos visto algunas visualizaciones así en otras partes del libro, por ejemplo en la figura \ref{Fig:Coste_acumulado_3D}.
+				
 
 	\item \textbf{Exageración del relieve.} Es habitual que en una visualización tridimensional exista algún modo de distorsionar el relieve para hacerlo más acusado. Mientras que las componentes $x$ e $y$ son proporcionales, la componente $z$ puede alterarse aplicándole un factor de escala para lograr que resulte más obvia la configuración del relieve (Figura \ref{Fig:ExageracionRelieve}). Esto sirve para acentuar la morfología del terreno, pero también puede ayudar a la comprensión de otras variables, especialmente si el relieve tiene influencia en ellas. Esta exageración se aplica al propio relieve terrestre (es decir, al relieve de un terreno real), así como al que puedan tener las distintas capas debido a la forma en que se representan, tal como en el ejemplo presentado en el punto anterior.\index{Exageración del relieve}
 	
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\mycolumnwidth]{Visualizacion_SIG/ExageracionRelieve.png}
 \caption{\small La exageración del relieve permite hacer más evidente la configuración de este.}
@@ -381,7 +384,7 @@ Algunos de los nuevos elementos que pueden añadirse a una representación en un S
 	
 	Un caso particular son las fotografías de tipo inmersivo, en las que el usuario puede navegar a través de fotografías del entorno como si se encontrara realmente en él (Figura \ref{Fig:FotografiasInmersivas}).\index{Fotografías inmersivas}
 	
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.85\mycolumnwidth]{Visualizacion_SIG/FotografiasInmersivas.png}
 \caption{\small Las fotografias inmersivas permiten al usuario <<meterse>> en el mapa, ampliando la información que se muestra acerca de un lugar con imágenes reales tomadas sobre el terreno. Al igual que se navega por un mapa, el usuario puede navegar por el terreno haciendo uso de los controles interactivos correspondientes (imagen tomada de Google Street View).}
@@ -403,4 +406,5 @@ Puesto que una parte de las representaciones que generamos en un SIG están desti
 
 Además de trabajar con las formas cartográficas clásicas que un SIG es capaz de producir, existen nuevas formas que también hemos detallado, entre las que destacan las vistas tridimensionales y las animaciones. Junto a ellas, una de las tendencias actuales que aumentan las posibilidades de un SIG como herramienta de visualización es la incorporación de otros elementos tales como vídeos, fotografías u otros documentos de diversas clases. 
 
+\end{multicols}
 \pagestyle{empty}

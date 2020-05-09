@@ -10,6 +10,8 @@
 El avance de las redes locales y de Internet ha permitido que se acceda a la información geográfica contenida en un SIG utilizando el paradigma cliente--servidor. Para ello es necesario contar con componentes en el lado servidor que distribuyan la información y componentes en el lado del cliente para acceder a esta. En este capítulo veremos las características de ambos elementos y cómo estos responden a las necesidades que el trabajo con datos remotos plantea en el ámbito SIG. Enfocaremos particularmente el capítulo a las tecnologías de \emph{Web Mapping}, las cuales permiten incorporar las ideas de los SIG dentro de paginas Web, utilizando un navegador Web como aplicación principal. \index{Web Mapping}
 \end{intro}
 
+\begin{multicols}{2}
+
 \section{Introducción}
 \pagestyle{fancy}
 
@@ -56,7 +58,7 @@ El proceso mediante el que podemos ver esa página en un navegador Web comprende 
 
 La figura \ref{Fig:Asi_funciona_internet} muestra un esquema de este proceso.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.95\mycolumnwidth]{Cliente_servidor/Asi_funciona_internet.pdf}
 \caption{\small Esquema del proceso de consulta de una página Web desde un navegador.}
@@ -108,11 +110,21 @@ Incorporar este tipo de mapas a una página Web no requiere ninguna tecnología pa
 
 La figura \ref{Fig:XeroxPARC} muestra una imagen de una primigenia cartografía Web presentada a través del visor Xerox PARC Map Viewer\index{Xerox PARC Map Viewer}.
 
-\begin{figure*}[!hbt]   
+
+\begin{figure*}[ht]
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.85\mycolumnwidth]{Cliente_servidor/XeroxPARC.png}
-\caption{\small Visor de mapas Xerox PARC Map Viewer, uno de los primeros en su campo}
+\includegraphics[width=\mycolumnwidth]{Cliente_servidor/XeroxPARC.png}
+\caption{\small Visor de mapas Xerox PARC Map Viewer, uno de los primeros en su campo.}
 \label{Fig:XeroxPARC} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Cliente_servidor/tiger.png}
+\caption{\small Interfaz de TIGER MapServer (año 1997).}
+\label{Fig:Tiger} 
+\end{minipage}
 \end{figure*}
 
 
@@ -130,32 +142,16 @@ Si se trabaja con imágenes estáticas, trabajar con datos que cubran toda la exte
 
 Esto es de especial importancia si pensamos que las máquinas que se encuentran al otro lado (en el servidor) son ordenadores potentes con gran capacidad, que pueden almacenar enormes juegos de datos. Un juego de datos con imágenes de todo el mundo a gran resolución ocupa un tamaño que probablemente lo haga inutilizable en un ordenador personal (además de que ese juego probablemente quede fuera del alcance del usuario de ese ordenador en lo que a su adquisición respecta), pero puede perfectamente ser servido desde un potente servidor, sirviendo en cada caso la <<porción>> de él que cada usuario requiere según utiliza el cliente correspondiente. En esto se basan gran parte de servicios y de aplicaciones desarrolladas sobre ellos, como veremos más adelante.
 
-De especial importancia para el desarrollo de estas capacidades ha sido la popularización y mejora de las tecnologías que permiten el desarrollo de las denominadas \emph{Aplicaciones Ricas de Internet} (RIA)\footnote{Rich Internet Applications}. Este tipo de aplicaciones llevan a la Web algunos elementos de las tecnologías de escritorio, y en general permiten optimizar el volumen de datos necesario para operar con la aplicación dentro del entorno del navegador.\index{Rich Internet Applications (RIA)}
+De especial importancia para el desarrollo de estas capacidades ha sido la popularización y mejora de las tecnologías que permiten el desarrollo de las denominadas \emph{Aplicaciones de Internet Enriquecidas} (RIA)\footnote{Rich Internet Applications}. Este tipo de aplicaciones llevan a la Web algunos elementos de las tecnologías de escritorio, y en general permiten optimizar el volumen de datos necesario para operar con la aplicación dentro del entorno del navegador.\index{Rich Internet Applications (RIA)}
 
 Si no se emplean estas tecnologías, un cambio mínimo en la configuración de la pagina por parte del usuario (por ejemplo, modificar el encuadre del mapa en una aplicación SIG), requiere la recarga total de la página, de la misma forma que sucede cuando hacemos clic en un hiperenlace. En realidad, estamos pasando a una página Web distinta. 
 
 En un entorno RIA, sin embargo, se cargan al inicio (en el primer acceso a la página) los elementos que constituyen la aplicación en sí, y posteriormente se transmiten únicamente los datos que vayan siendo necesarios a medida que el usuario opere con la aplicación. Esto mejora notablemente la sensación del usuario, ya que este nunca tiene ante sí una pantalla sin contenido mientras se carga la página, puesto que esta ya no ha de cargarse de nuevo, y la carga de datos puede además realizarse mientras el propio usuario opera.
 
-AJAX \footnote{Asynchronous JavaScript And XML} es una técnica de desarrollo muy popular en este sentido, y de la que los SIG Web hacen uso habitualmente. La figura \ref{Fig:AJAX} muestra una comparación entre el esquema de una aplicación Web tradicional y una basada en AJAX. \index{AJAX}
-
-\begin{figure*}[!hbt]   
-\centering
-\includegraphics[width=.55\mycolumnwidth]{Cliente_servidor/ajax.png}
-\caption{\small Comparación entre el esquema de una aplicación Web tradicional y una basada en AJAX.}
-\label{Fig:AJAX} 
-\end{figure*}
-
 Profundizar más en estos aspectos es, no obstante, demasiado técnico para el enfoque de este libro, no siendo necesario además para la comprensión de las tecnologías Web desde el punto de vista del usuario. Tan solo es necesario diferenciar entre el comportamiento de una página Web anterior a la introducción de estas técnicas, en la cual cualquier interacción (clic del ratón) suponía una recarga completa de la página, mientras que en el caso de una RIA, la experiencia es más fluida y cercana a la que se tiene usando una aplicación de escritorio.
 
-\begin{figure*}[!hbt]   
-\centering
-\includegraphics[width=.9\mycolumnwidth]{Cliente_servidor/tiger.png}
-\caption{\small Interfaz de TIGER MapServer (año 1997)}
-\label{Fig:Tiger} 
-\end{figure*}
 
-
-La figura \ref{Fig:Tiger} muestra el aspecto de una aplicación de \emph{Web Mapping} previa a la introducción de tecnologías como AJAX, en particular la Web a través de la que se accedía a los datos del proyecto TIGER, creado por el U.S Census Bureau.\index{TIGER}\index{U.S. Census Bureau}
+La figura \ref{Fig:Tiger} muestra el aspecto de una aplicación de \emph{Web Mapping} previa a la introducción de esta clase de tecnologías.
 
 
 Además de modificar la zona representada, un usuario debe poder modificar la forma en que los datos dentro de esa zona se muestran. Es decir, debe poder cambiar el estilo de los elementos representados, variando colores o formas de la misma manera que esto puede hacerse en un SIG de escritorio. Asimismo, muchas aplicaciones Web permiten la consulta de varias capas de datos, incluso de datos provenientes de varios servidores distintos, datos que no necesariamente han de mostrarse todos simultáneamente. Igual que en un SIG de escritorio seleccionamos unas u otras capas para su visualización y podemos alterar el orden de representación de estas, también podemos realizar estas operaciones en una aplicación SIG Web.
@@ -171,15 +167,6 @@ Por último, y aunque en la actualidad son pocos los servicios de este tipo que e
 Un tipo de aplicación bastante extendida de este tipo es el cálculo de rutas óptimas. A partir de una capa con vías de comunicación un usuario establece un punto de salida y otro de destino y la aplicación Web calcula la ruta que optimiza el tiempo empleado o la distancia total recorrida, según lo explicado en el capítulo \ref{Costes}. 
 
 El término \emph{Web Mapping}, habitualmente empleado para designar a la cartografía Web, se sustituye por \emph{Web GIS} a medida que las capacidades de las aplicaciones Web aumentan, para indicar así que todos los componentes que forman parte de un SIG en su sentido clásico, esto es, un SIG de escritorio, se incorporan a dicha aplicación Web.\index{Web GIS}
-
-La figura \ref{Fig:Tipos_Cartografia_Web} muestra un esquema de la evolución de la cartografía Web a través de los tipos anteriormente descritos.
-
-\begin{figure*}[!hbt]   
-\centering
-\includegraphics[width=.6\mycolumnwidth]{Cliente_servidor/tipos_cartografia_web.pdf}
-\caption{\small Evolución de los tipos de cartografía en la Web (según \cite{Kraak2001Francis})}
-\label{Fig:Tipos_Cartografia_Web} 
-\end{figure*}
 
 \subsection{ \emph{Mashups}}
 
@@ -209,9 +196,9 @@ Ahora que conocemos algunas ideas generales sobre cartografía Web, veamos algo m
 
 En primer lugar, veamos algunas ideas básicas sobre la arquitectura cliente--servidor. De modo gráfico, la relación entre ambos elementos puede representarse según la figura \ref{Fig:Servidores_y_clientes}. En ella, un número variable de clientes se <<conectan>> a un servidor, del cual obtienen una serie de datos cuando este responde a las peticiones formuladas por cada uno de los clientes. En la arquitectura cliente--servidor, este último es el que posee la información a compartir a través de los servicios, mientras que en cada uno de los clientes se almacena tan solo la información personal de estos.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
-\includegraphics[width=0.75\mycolumnwidth]{Cliente_servidor/Servidores_y_clientes.pdf}
+\includegraphics[width=0.55\mycolumnwidth]{Cliente_servidor/Servidores_y_clientes.pdf}
 \caption{\small Relación entre clientes y servidores.}
 \label{Fig:Servidores_y_clientes} 
 \end{figure*}
@@ -248,9 +235,9 @@ Aunque las posibilidades son mayores en este caso, se requieren por parte del cl
 
 Las posibilidades que estos servicios brindan son muy numerosas. Por una parte, pueden añadirse funcionalidades avanzadas a interfaces Web, llevando a estas las capacidades propias de los SIG de escritorio. Por otra, la difusión de algoritmos de análisis geográfico resulta más sencilla, pudiendo ofrecerse estos a todo tipo de usuarios sin necesidad de ningún software especializado. Y por último, en ciertos casos pueden rebajarse los tiempos de proceso, ya que, en el caso de operaciones complejas, la mayor potencia del servidor respecto al cliente puede resultar en un mayor rendimiento. El reparto de tareas entre varios servidores (computación distribuida) es otra de las posibilidades que pueden a su vez ampliar la eficiencia de los procesos.\index{Computación distribuida}
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
-\includegraphics[width=0.75\textwidth]{Cliente_servidor/Datos_y_procesos_remotos.pdf}
+\includegraphics[width=0.60\textwidth]{Cliente_servidor/Datos_y_procesos_remotos.pdf}
 \caption{\small Esquema de acceso a un servicio de procesos remotos, el cual a su vez utiliza datos de un segundo servidor. El encadenamiento de procesos permite ampliar notablemente la utilidad de estos.}
 \label{Fig:Datos_y_procesos_remotos} 
 \end{figure*}
@@ -313,9 +300,9 @@ El \emph{cacheo}, por su parte, es una técnica no exclusiva del ámbito SIG, sino
 
 El uso conjunto de \emph{tiling} y \emph{cacheo} puede disminuir sensiblemente el volumen de datos a transmitir para, por ejemplo, modificar el encuadre de un mapa en una aplicación SIG Web. La figura \ref{Fig:Tiling} muestra un ejemplo sencillo que servirá para comprender el ahorro de datos que puede conseguirse con el uso conjunto de estas técnicas.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
-\includegraphics[width=.8\textwidth]{Cliente_servidor/Tiling.pdf}
+\includegraphics[width=.9\textwidth]{Cliente_servidor/Tiling.pdf}
 \caption{\small Esquema del uso de \emph{tiling} y \emph{cacheo} para optimizar la transmisión de datos en una aplicación SIG Web}
 \label{Fig:Tiling} 
 \end{figure*}
@@ -392,7 +379,7 @@ Los principios fundamentales de los estándares abiertos son los siguientes:
 
 Para tener una noción de lo que en la práctica realmente significa el uso de estándares abiertos en el campo de los SIG, podemos ver la figura \ref{Fig:Esquema_no_interoperable}, donde se representa el esquema de una arquitectura no interoperable. Es decir, una arquitectura que no se basa en este tipo de estándares.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Cliente_servidor/Esquema_no_interoperable.pdf}
 \caption{\small Esquema de una arquitectura no interoperable.}
@@ -412,7 +399,7 @@ Entre los principales inconvenientes de una arquitectura no interoperable como l
 
 En contraste con lo anterior, tenemos una situación de plena interoperabilidad basada en estándares abiertos como la representada en el esquema de la figura \ref{Fig:Esquema_interoperable}.
 
-\begin{figure*}[!hbt]   
+\begin{figure*}[t]   
 \centering
 \includegraphics[width=.5\mycolumnwidth]{Cliente_servidor/Esquema_interoperable.pdf}
 \caption{\small Esquema de una arquitectura interoperable.}
@@ -693,4 +680,5 @@ Asimismo, conocemos ya las funcionalidades principales que debe presentar un ser
 
 Con el fin de garantizar la fluidez en las operaciones dentro del sistema cliente--servidor, aparecen los estándares, los cuales permiten que los elementos de este sistema sean interoperables.
 
+\end{multicols}
 \pagestyle{empty}

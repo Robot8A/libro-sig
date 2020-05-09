@@ -76,7 +76,7 @@ La clasificación supervisada es una forma de clasificación que requiere por part
 
 La figura \ref{Fig:Esquema_clasificacion_supervisada} muestra un esquema de este proceso.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Esquema_clasificacion_supervisada.png}
 \caption{\small Esquema del proceso de clasificación supervisada}
@@ -125,9 +125,9 @@ El método de clasificación por paralelepípedos establece regiones, una por cada 
 
 Los distintos lados de los paralelepípedos vienen definidos por la media de cada variable en la clase y su desviación típica. La longitud de los lados es igual a dos veces la desviación típica, y se encuentran centrados en la media. Un esquema de esto puede verse en la figura \ref{Fig:Paralelepipedos}. Los puntos representados son elementos que se quieren clasificar, que en el caso de una capa ráster serán mucho más numerosos, uno por cada celda. Por simplicidad de representación y visualización, se supone en dicha figura, así como en las siguientes correspondientes a otros métodos, que se utilizan dos variables para efectuar la clasificación (por tanto, es un gráfico bidimensional), y se definen tres únicas clases. El mismo tipo de análisis puede, no obstante, aplicarse a cualquier numero $n$ de variables (resultaría un espacio de atributos n--dimensional) y, por supuesto, cualquier número de clases.\index{Clasificación!por paralelepípedos}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Paralelepipedos.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_avanzada/Paralelepipedos.pdf}
 \caption{\small Método de clasificación por paralelepípedos}
 \label{Fig:Paralelepipedos}
 \end{figure*}
@@ -154,9 +154,9 @@ En lugar de emplear distancia euclídea puede utilizarse la distancia de Manhatta
 
 Puede verse que esta metodología guarda similitud conceptual con la interpolación por vecindad, en la que asignábamos el valor del punto más cercano. En la figura \ref{Fig:Minima_distancia} puede verse un gráfico explicativo de este método de clasificación.\index{Interpolación}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Minima_distancia.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_avanzada/Minima_distancia.pdf}
 \caption{\small Método de clasificación por mínima distancia}
 \label{Fig:Minima_distancia}
 \end{figure*}
@@ -205,9 +205,9 @@ Este método comparte con el de distancia mínima el hecho de que todos los elemen
 
 Puede verse un gráfico relativo a este método en la figura \ref{Fig:Maxima_verosimilitud}, considerando la aplicación de un umbral inferior de probabilidad.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Maxima_verosimilitud.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_avanzada/Maxima_verosimilitud.pdf}
 \caption{\small Método de clasificación por máxima verosimilitud.}
 \label{Fig:Maxima_verosimilitud}
 \end{figure*}
@@ -250,9 +250,9 @@ Como es fácil intuir, los valores iniciales de las medias de clase condicionan e
 
 En la figura \ref{Fig:Clases_iniciales_isoclusters} puede verse gráficamente la forma de definir estas clases iniciales. Sobre la diagonal que atraviesa el espacio de atributos se establecen tantos puntos como clases quieran definirse. Estos serán los valores medios a los que se calculen las distancias desde cada elemento en la primera iteración.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Clases_iniciales_isoclusters.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_avanzada/Clases_iniciales_isoclusters.pdf}
 \caption{\small Definición de clases iniciales para el proceso de clasificación no supervisada, estableciendo los centros de clases equiespaciados en el espacio de atributos.}
 \label{Fig:Clases_iniciales_isoclusters}
 \end{figure*}
@@ -261,7 +261,7 @@ Como puede verse, los centros de las clases no se corresponden con los centros d
 
 En la figura \ref{Fig:Etapas_clustering} pueden verse algunas etapas de un proceso de clasificación no supervisada por el método de distancia mínima iterativa, en el que se aprecian los cambios que las clases van sufriendo a lo largo de las sucesivas iteraciones.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.9\textwidth]{Estadistica_avanzada/Etapas_clustering.png}
 \caption{\small Distintas etapas de un proceso de clasificación no supervisada por distancia mínima iterativa.}
@@ -283,7 +283,7 @@ Con todo lo anterior, además de especificarse un número de clases a crear se est
 
 Como conclusión de esta sección dedicada a la clasificación y los métodos existentes, en la figura \ref{Fig:Comparacion_metodos_clasificacion} se muestra un ejemplo de clasificación de usos de suelo en un área de estudio, en base a imágenes de satélite y parámetros fisiográficos, llevada a cabo por algunos de los métodos descritos anteriormente.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{Estadistica_avanzada/Comparacion_clasificacion.png}
 \caption{\small Comparación de la clasificación en clases de uso de suelo generada partir de una imagen de satélite y parámetros fisiográficos mediante los métodos de a) mínima distancia b) máxima verosimilitud y c) mínima distancia iterativa (no supervisada)}
@@ -294,9 +294,9 @@ Como conclusión de esta sección dedicada a la clasificación y los métodos existe
 
 Un algoritmo habitual en clasificación de objetos es la utilización de árboles jerárquicos. El proceso se basa en la creación de un árbol en el cual se disponen en sus extremos todos los objetos a clasificar, y las ramas que estos conforman se van unificando, agrupándose por similitud hasta llegar a formar una única (Figura \ref{Fig:Clustering_jerarquico})\index{Clustering!jerárquico}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.65\mycolumnwidth]{Estadistica_avanzada/Cluster_jerarquico.pdf}
+\includegraphics[width=.60\mycolumnwidth]{Estadistica_avanzada/Cluster_jerarquico.pdf}
 \caption{\small Dendrograma resultante de un proceso de clustering jerárquico}
 \label{Fig:Clustering_jerarquico}
 \end{figure*}
@@ -378,7 +378,7 @@ Uno de los elementos habituales en estudio de las diferencias entre dos capas ca
 
 La tabla \ref{Tabla:Matriz_contingencias} muestra una posible matriz de contingencias para el caso de dos capas con un total de 4 clases.
 
-\begin{table}
+\begin{table*}[t]
 \begin{center}
 \begin{tabular}{lllll}\toprule
 Clase & A & B & C & D \\ \midrule
@@ -390,7 +390,7 @@ D & 3 & 457 &  272 & 7018\\ \bottomrule
 \end{center}
 \caption{\small Matriz de confusión.}
 \label{Tabla:Matriz_contingencias}
-\end{table} 
+\end{table*} 
 
 Con los valores anteriores puede comprobarse entre qué clases se dan los mayores cambios (los mayores errores de clasificación) o cuáles son las que presentan una clasificación  más robusta. Por ejemplo, las clases D y B parecen ser difíciles de clasificar, ya que el numero de celdas de la primera asignados a la segunda es elevado, y también al contrario. Por el contrario, la clase A parece no presentar problemas, ya que tanto su fila como su columna correspondiente presentan ambas valores bajos fuera de la celda $(1,1)$, que es la que representa las celdas correctamente clasificados.
 
@@ -466,10 +466,10 @@ El modelo anterior supone igualmente que a lo largo de la zona estudiada no exis
 
 De existir esta variación, debe entenderse como parte del error. Adaptar las formulaciones habituales para el cálculo de regresiones al ámbito espacial en el que trabajamos, requiere superar de uno u otro modo las anteriores circunstancias, y buscar la manera en que la variación no forme parte del residuo. De las soluciones existentes, una de ellas, construida sobre las anteriores ideas, es la conocida como \emph{Geographically Weighted Regression}\footnote{Regresión Ponderada Geográficamente}(GWR)\cite{Fotheringam2002Wiley}. En este modelo de regresión, la ecuación \ref{Eq:Regresion_multiple} se expresa de modo más genérico como \index{Geographically Weighted Regression}
 
-\begin{equation}
+\begin{eqnarray}
 \label{Eq:GWR}
-\widehat{z}(u,v) = h_0(u,v) + h_1(u,v)x_1 + \ldots, h_n(u,v)x_n + e(u,v)
-\end{equation}
+\widehat{z}(u,v) &=& h_0(u,v) + h_1(u,v)x_1 \nonumber\\&&+ \ldots, h_n(u,v)x_n + e(u,v)
+\end{eqnarray}
 
 En este caso, también los parámetros estimados dependen la localización, que viene expresada a través de las coordenadas $u$ y $v$
 
@@ -495,9 +495,9 @@ w_i(u,v)= e^{\left({\frac{-d}{h}}\right)^2}
 
 \noindent donde $d$ es la distancia entre las coordenadas de la observación y $(u,v)$, y $h$ es la \emph{anchura}. Este parámetro es el equivalente al radio máximo de influencia que veíamos para el cálculo de densidad empleando un núcleo gaussiano. La figura \ref{Fig:Ponderacion_GWR} muestra el empleo de una función como la anterior.\index{Nucleo@Núcleo!gaussiano}
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Estadistica_avanzada/Ponderacion_GWR.pdf}
+\includegraphics[width=.6\mycolumnwidth]{Estadistica_avanzada/Ponderacion_GWR.pdf}
 \caption{\small Funcion de ponderación para la estimación de parámetros en el método de Regresión Ponderada Geográficamente (GWR).}
 \label{Fig:Ponderacion_GWR}
 \end{figure*}
@@ -562,9 +562,9 @@ Un elemento clave en la lógica difusa son las funciones que nos permiten calcula
 
 Por ejemplo, para el supuesto de utilizar la distancia a una ciudad como variable base, una posible función de miembro es la mostrada en la figura \ref{Fig:Funcion_de_miembro}.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.85\mycolumnwidth]{Estadistica_avanzada/Funcion_de_miembro.pdf}
+\includegraphics[width=.75\mycolumnwidth]{Estadistica_avanzada/Funcion_de_miembro.pdf}
 \caption{\small Un ejemplo de función de miembro. En trazo punteado, aspecto de una función de miembro que asignara tan solo valores \emph{verdadero} y \emph{falso}}.
 \label{Fig:Funcion_de_miembro}
 \end{figure*}
@@ -575,7 +575,7 @@ Junto con la gráfica de la función de miembro anterior, se muestra la forma que 
 
 La diferencia entre los resultados que se obtienen al aplicar una función de miembro como la anterior y aplicando una mera clasificación en dos clases de distancia pueden apreciarse en las capas de la figura \ref{Fig:Capas_logica_difusa}. Junto con una capa de distancia a un punto dado, se muestran las resultantes de, en base a dicha capa, aplicar un criterio en forma de restricción con dos clases posible (zonas dentro del intervalo óptimo \emph{vs.} zonas fuera del intervalo) o bien creando una variable que refleje la certidumbre de pertenencia a cada una de las clases anteriores.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Capas_logica_difusa.png}
 \caption{\small a) Capa de distancias a un punto. b) Separación en dos clases  de viabilidad en función de la pertenencia a un intervalo óptimo de distancia (en blanco zonas viables, en negro zonas inviables). c) Certidumbre de pertenencia a la clase viable aplicando la función de miembro de la figura \ref{Fig:Funcion_de_miembro}}.
@@ -615,7 +615,7 @@ f(x) = \left\{ \begin{array}{ll}
 1 & \textrm{si $b < x < c$}\\
 \frac{1}{2} \left(1 + \cos \left(\pi \frac{d-x}{d-c}\right)\right) & \textrm{si $c \leq x \leq d$}\\
 0 & \textrm{si $x > d$}
-  \end{array} \right. 
+  \end{array} \right.\nonumber\\
 \end{eqnarray}
 
 Un función de distribución de probabilidad gaussiana (esto es, una campana de Gauss), también puede utilizarse como función de miembro. En este caso, el óptimo sería el punto que coincide con la media de dicha distribución.\index{Función!de distribución de probabilidad}\index{Función!Sigmoidal}
@@ -647,33 +647,11 @@ La regla de Dempster esta basada en la denominada \emph{Teoría de la Evidencia},
 
 El elemento básico para agregar las distintas evidencias dentro de esta teoría es la regla de Dempster. La característica principal de esta regla es que, al contrario que el producto de las probabilidades, no disminuye a medida que se agregan más y más factores (en el producto, por ser la probabilidad siempre menor que 1, sí sucede así). En particular, si se agregan dos valores mayores que 0,5 el resultado es mayor que ambos. Si se agregan dos valores menores que 0,5 el resultado es menor que ambos. Si uno es mayor y otro menor, el resultado es intermedio entre ambos.
 
-La expresión de la regla de Dempster es la siguiente:
-
-\begin{equation}
-\label{Eq:Dempster}
-m(Z)=\frac{\sum m_1(X)m_2(Y)}{1-\sum m_1(X)m_2(Y)}\frac{\mathrm{cuando } (X \cap Y) = Z} {\mathrm{cuando } (X \cap Y) = \emptyset}
-\end{equation}
-
 Las probabilidades se denotan con la letra $m$ (de \emph{masa}) y se conocen como \emph{Asignación de Probabilidad Básica}.
 
 \index{Asignación de probabilidad básica}
 
-Veamos un ejemplo concreto. Supongamos que en base a la altitud sabemos que existe una probabilidad igual a 0,6 de que aparezca una especie en una zona dada, y que en función del suelo dicha probabilidad es de 0,8. Se tiene así que
-
-\begin{itemize}
-	\item $m_1(X) = 0,6$ (posibilidad de que aparezca según la altitud)
-	\item $m_1(Y) = 0,4$ (posibilidad de que no aparezca según la altitud)
-	\item $m_2(X) = 0,8$ (posibilidad de que aparezca según las características del suelo)
-	\item $m_2(Y) = 0,2$ (posibilidad de que no aparezca según las características del suelo)
-\end{itemize}
-
-Aplicando la ecuación \ref{Eq:Dempster}, se tiene
-
-\begin{eqnarray}
-m(Z) &=& \frac{m_1(X)m_2(X)}{1- (m_1(X)m_2(Y) + m_2(X)m_1(Y))} \nonumber \\&=& \frac{0,48}{1-(0,12 + 0,36)} = 0,92
-\end{eqnarray}
-
-La Teoría de la Evidencia es mucho más compleja que lo mostrado aquí, y admite casos mucho más elaborados que el presentado. Simplemente se ha mostrado un ejemplo para comprender las propiedades de la regla de Dempster, pero el lector interesado en profundizar en el tema puede encontrar en \cite{Shafer1976Princeton, Gordon1985AI} exposiciones más detalladas al respecto. Más ejemplos de la regla de Dempster y de numerosas variantes de la misma pueden encontrarse en \cite{Sentz2002Sandia}.
+El lector interesado en profundizar en el tema puede encontrar en \cite{Shafer1976Princeton, Gordon1985AI} exposiciones más detalladas al respecto. Más ejemplos de la regla de Dempster y de numerosas variantes de la misma pueden encontrarse en \cite{Sentz2002Sandia}.
 
 \subsubsection{Jerarquías Analíticas} \label{AHP}
 
@@ -685,7 +663,7 @@ Los pesos de las distintas parejas de factores se colocan en una matriz de dimen
 
 Existen estudios psicológicos que muestran que no se puede comparar simultáneamente más de $7\pm2$ elementos, y en base a este hecho los autores de esta metodología recomiendan utilizar valores entre 1 y 9, según lo mostrado en el cuadro \ref{Tabla:AHP}.
 
-\begin{table}
+\begin{table*}[ht]
 \label{Tabla:AHP}
 \begin{center}
 \begin{tabular}{cp{.5\mycolumnwidth}} \toprule
@@ -700,7 +678,7 @@ Valores recíprocos & Valores para comparación inversa \\ \bottomrule
 \end{tabular}
 \caption{Valores de comparación en la metodología de jerarquías analíticas}
 \end{center}
-\end{table}
+\end{table*}
 
 Una vez creada la matriz de comparaciones, el autovector principal de la misma contiene los distintos pesos a asignar a cada uno de los factores.\index{Matriz!de comparaciones}\index{Autovector}
 
@@ -722,9 +700,6 @@ c & 1/5 & 2 & 1 \\ \hline
 
 Según la tabla, el factor $a$ es cinco veces más relevante que el $c$ y, consecuentemente, $c$ tiene un quinto de la importancia de $a$. 
 
-El autovector principal de esta matriz es $[0.95018, 0.17502, 0.25791]$.
-
-
 \subsubsection{Factores y restricciones}
 
 A la hora de combinar una serie de capas, el papel que estas juegan en el modelo puede ser bien distinto en función de la variable que contengan. Por ejemplo, existiendo una limitación legal a la construcción cerca de un cauce, trabajar con una capa de distancia al cauce con las herramientas que acabamos de ver para preparar y combinar capas no aporta ninguna ventaja adicional. La distancia no es en este caso un factor cuya influencia pueda graduarse, sino una restricción que simplemente nos servirá para saber si es posible o no construir en un emplazamiento dado.
@@ -737,7 +712,7 @@ Esta distinción entre factores y restricciones es importante para una correcta i
 
 Las operaciones lógicas pueden evaluarse como operaciones aritméticas, aplicando el operador multiplicación y codificando con valores 0 y 1 los valores lógicos \emph{verdadero} y \emph{falso}. El ejemplo de la figura \ref{Fig:Factores_restricciones} muestra un supuesto de combinación de dos factores y una restricción en un modelo sencillo.
 
-\begin{figure*}[!ht]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.85\textwidth]{Estadistica_avanzada/Factores_restricciones.png}
 \caption{\small Combinación de factores y restricciones en un modelo sencillo. Los factores a) y b) se combinan para obtener un resultado ponderado d). A este se le aplica después la restricción c) para obtener el mapa final e).}.

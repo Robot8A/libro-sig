@@ -2,8 +2,6 @@
 \chapter{El mapa y la comunicación cartográfica}
 \label{El_Mapa}
 
-
-
 \bigskip
 
 \begin{intro}
@@ -12,6 +10,7 @@ Dentro o fuera del SIG, el mapa es el medio por excelencia para transmitir la in
 Para seguir este capítulo es necesario haber estudiado el capítulo anterior, ya que haremos uso de las ideas entonces presentadas acerca de las variables visuales. Algunos conceptos relativos al diseño cartográfico han aparecido ya en capítulos previos, por lo que no se repetirán en este. En particular, el capítulo \ref{Fundamentos_cartograficos} dedicado a los fundamentos cartográficos y geográficos contiene materia que debe conocerse antes de abordar la lectura del presente.
 \end{intro}
 
+\begin{multicols}{2}
 
 \section{Introducción}
 \pagestyle{fancy}
@@ -42,7 +41,7 @@ Al crear un mapa nunca debemos olvidar quién y para qué va a usar ese mapa, y en
 
 La figura \ref{Fig:PropositoMapa} muestra un ejemplo claro de lo anterior a través de sendos mapas con predicciones meteorológicas, proporcionados por la Agencia Estatal de Meteorología de España. El primero es un mapa de probabilidad de precipitación, mostrada esta mediante isolíneas. El segundo es un clásico mapa del tiempo (conocido como \emph{mapa significativo}) en el que sobre el mismo territorio se sitúan símbolos indicando el tiempo previsto (soleado, chubascos, lluvias, tormentas, etc.). Ambos mapas son correctos desde el punto de vista de la labor cartográfica y se han creado a partir de una misma información, pero la forma de mostrar esta es bien distinta. Para un uso científico, este último mapa resulta claramente insuficiente, mientras que el primero es adecuado. Sin embargo, si la audiencia es no especializada, tal como los lectores de un periódico que deseen saber si mañana podrán o no salir al campo a disfrutar de un día soleado, el segundo mapa es mucho mejor, ya que el primero, aunque también proporciona esa información  e incluso lo hace con más detalle, puede resultar excesivamente complejo y difícil de entender si no se tienen ciertos conocimientos. Es decir, el usuario es en última instancia, y por encima del propio diseño cartográfico, quien hace que el mapa sea o no un elemento útil.\index{Mapa!significativo}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\mycolumnwidth]{Mapas/PropositoMapa.png}
 \caption{\small Dos formas distintas de mostrar una información a través de un mapa. En función del propósito de este y el publico al que va dirigido, cada una de ellas podrá ser adecuada o no. (Imágenes cortesía de AEMET)}
@@ -82,14 +81,15 @@ Según el tipo de información que contenga, la cartografía temática se divide en 
 
 \section{Los tipos de información y su representación}
 
-Como vimos en el apartado \ref{ComponenteInformacionGeografica}, la componente temática de la información geográfica puede ser de tipo numérico o alfanumérico, y la primera se divide en los tipos nominal, ordinal, intervalos y razones. Nominal y alfanumérico representan información cualitativa, mientras que los restantes representan información cuantitativa. Esta división tiene una enorme importancia a la hora de visualizar la información temática, ya que simbolizar esta es distinto en función de sus propias características, y el uso de un esquema erróneo dará como resultado un mapa en el que no se produce una adecuada transmisión de la información. Escoger la forma adecuada de efectuar esa simbolización garantizará que los elementos visuales comunican de la mejor forma posible toda la información a la que hacen referencia. Esto puede verse claramente en el ejemplo mostrado en la figura \ref{Fig:LeerVer}.
-
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=0.95\mycolumnwidth]{Mapas/LeerVer.png}
+\includegraphics[width=\mycolumnwidth]{Mapas/LeerVer.png}
 \caption{\small Comparación entre una representación incorrecta de la información por no emplear un esquema adecuado al tipo de esta (a) y una representación correcta utilizando un esquema coherente (b).}
 \label{Fig:LeerVer} 
 \end{figure*}
+
+Como vimos en el apartado \ref{ComponenteInformacionGeografica}, la componente temática de la información geográfica puede ser de tipo numérico o alfanumérico, y la primera se divide en los tipos nominal, ordinal, intervalos y razones. Nominal y alfanumérico representan información cualitativa, mientras que los restantes representan información cuantitativa. Esta división tiene una enorme importancia a la hora de visualizar la información temática, ya que simbolizar esta es distinto en función de sus propias características, y el uso de un esquema erróneo dará como resultado un mapa en el que no se produce una adecuada transmisión de la información. Escoger la forma adecuada de efectuar esa simbolización garantizará que los elementos visuales comunican de la mejor forma posible toda la información a la que hacen referencia. Esto puede verse claramente en el ejemplo mostrado en la figura \ref{Fig:LeerVer}.
+
 
 Los mapas de la figura representan en ambos casos la población de los distintos estados de México, pero en cada uno de ellos se emplea una forma distinta de simbolizar los valores de población. En el primero de ellos (caso a) se ha dividido la población en cinco clases, cada una de las cuales se identifica mediante un símbolo. Los símbolos han sido escogidos de forma arbitraria, y no existe una relación entre ellos. Por su parte, el ejemplo b) también emplea símbolos y presenta igualmente cinco clases, pero en este caso tienen todos las misma forma, y lo que varía es el tamaño. Se puede establecer una relación entre los símbolos, ya que estos pueden ordenarse en función de su tamaño.
 
@@ -107,9 +107,9 @@ Las siguientes son algunas ideas básicas a este respecto referidas a los distint
 	
 	La información alfanumérica se trata a efectos de representación del mismo modo que la de tipo nominal.
 	
-\begin{figure*}[!hbt]
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=0.90\mycolumnwidth]{Mapas/RepresentacionInfoNominal.pdf}
+\includegraphics[width=0.75\mycolumnwidth]{Mapas/RepresentacionInfoNominal.pdf}
 \caption{\small Representación de la información nominal para los distintos tipos de elementos geométricos.}
 \label{Fig:RepresentacionInfoNominal} 
 \end{figure*}
@@ -129,9 +129,9 @@ En resumen, podemos condensar este apartado con una rápida <<receta>> de aplicac
 En la figura \ref{Fig:ResumenRepresentacionTiposInformacion} se muestra un cuadro con estas breves ideas.
 
 
-\begin{figure*}[!hbt]
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=0.6\mycolumnwidth]{Mapas/ResumenRepresentacionTiposInformacion.pdf}
+\includegraphics[width=\mycolumnwidth]{Mapas/ResumenRepresentacionTiposInformacion.pdf}
 \caption{\small Utilización de las variables visuales según el tipo de información.}
 \label{Fig:ResumenRepresentacionTiposInformacion} 
 \end{figure*}
@@ -141,9 +141,9 @@ Por último, es de interés señalar que, aunque los niveles de organización de las
 Razonamientos similares se pueden aplicar para el caso particular de capas con variables de tipo verdadero/falso. En estas, deben emplearse colores de similares características, de forma que no exista posibilidad de interpretarlos erróneamente y asociar a alguna de las opciones la idea de ser <<mejor>> que la contraria. Transmitir la información no es lo único que se busca, sino también hacerlo sin que aparezcan posibles sesgos a la hora de interpretarla.
 
 
-\begin{figure*}[!hbt]
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=0.6\mycolumnwidth]{Mapas/MalUsoValor.pdf}
+\includegraphics[width=0.65\mycolumnwidth]{Mapas/MalUsoValor.png}
 \caption{\small Uso incorrecto de la variable visual valor para representar información cualitativa. Puede transmitirse una falsa sensación de que existe un orden en las clases representadas.}
 \label{Fig:MalUsoValor} 
 \end{figure*}
@@ -175,9 +175,9 @@ De entre los métodos que se emplean frecuentemente para la creación de clases de
 
 Una comparación visual del resultado de aplicar algunos de los métodos anteriores se muestra en la figura \ref{Fig:TiposIntervalosClases}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.7\mycolumnwidth]{Mapas/TiposIntervalosClases.pdf}
+\includegraphics[width=\mycolumnwidth]{Mapas/TiposIntervalosClases.pdf}
 \caption{\small Comparación entre distintos esquemas para la creación de intervalos de clase.}
 \label{Fig:TiposIntervalosClases} 
 \end{figure*}
@@ -187,9 +187,9 @@ Junto a lo anterior, pueden utilizarse transformaciones de los valores previas a
 
 Aunque resulta práctico definir las clases utilizando alguna de las metodologías anteriores, pueden igualmente establecerse límites de clase arbitrariamente según se considere oportuno en función de la distribución de los valores. Por ejemplo, si existen saltos importantes en esta y quiere reseñarse este hecho, pueden incluirse explícitamente como límites de los intervalos. Asimismo, pueden incorporarse valores particulares que sean de importancia para la variable representada. Esto puede verse claramente en el ejemplo de la figura \ref{Fig:TintasElevacion}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.9\mycolumnwidth]{Mapas/TintasElevacion.png}
+\includegraphics[width=.75\mycolumnwidth]{Mapas/TintasElevacion.png}
 \caption{\small Los intervalos pueden incorporar valores de importancia para una determinada variable. En este caso, para la variable elevación resulta particularmente relevante el valor cero, que delimita el comienzo de las clases representadas en azul.}
 \label{Fig:TintasElevacion} 
 \end{figure*}
@@ -214,9 +214,9 @@ Igual de importante que simbolizar correctamente la información geográfica es si
 
 Los siguientes son los elementos fundamentales que podemos emplear para componer un mapa (Figura \ref{Fig:ElementosMapa}):
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\mycolumnwidth]{Mapas/ElementosMapa.png}
+\includegraphics[width=.75\mycolumnwidth]{Mapas/ElementosMapa.png}
 \caption{\small Ejemplo de mapa mostrando sus elementos más habituales.}
 \label{Fig:ElementosMapa} 
 \end{figure*}
@@ -244,9 +244,9 @@ La escala es adecuado mostrarla de forma numérica, pero no en su versión gráfica
 
 En lo que respecta a la forma de disponer los elementos sobre el lienzo que un mapa conforma, la premisa fundamental es maximizar la claridad y aprovechar de la mejor forma posible el espacio disponible. La figura \ref{Fig:AprovechamientoEspacioMapa} muestra un claro ejemplo de cómo un adecuado uso del espacio en el mapa, evitando que existan zonas en blanco que no comunican ninguna información, mejora notablemente la calidad del mapa.
 
-\begin{figure*}[!hbt]
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.9\mycolumnwidth]{Mapas/AprovechamientoEspacioMapa.png}
+\includegraphics[width=\mycolumnwidth]{Mapas/AprovechamientoEspacioMapa.png}
 \caption{\small Ejemplo de un aprovechamiento óptimo del espacio de un mapa (a) y un aprovechamiento incorrecto de este (b).}
 \label{Fig:AprovechamientoEspacioMapa} 
 \end{figure*}
@@ -305,12 +305,23 @@ Tanto las barras como los círculos pueden sectorizarse, mostrando una división e
 
 Aunque la variable visual tamaño presenta la propiedad cuantitativa, la percepción de la relación de tamaño no es perfecta y existe una cierta imprecisión. Esta se debe a muchos factores, como por ejemplo el hecho de que los símbolos situados alrededor de uno dado pueden afectar a la percepción de su tamaño. Por esta razón, es importante para facilitar la correcta interpretación de un mapa de símbolos graduados el mostrar en la leyenda la relación entre los distintos tamaños de los símbolos y sus valores. Para el caso habitual de emplear círculos, esto puede llevarse a cabo mediante elementos gráficos como los mostrados en la figura \ref{Fig:EjemplosLeyendaSimbolosProporcionales}
 
-\begin{figure*}[!hbt]
+
+\begin{figure*}[t]
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.5\mycolumnwidth]{Mapas/EjemplosLeyendaSimbolosProporcionales.pdf}
+\includegraphics[width=\mycolumnwidth]{Mapas/EjemplosLeyendaSimbolosProporcionales.pdf}
 \caption{\small Dos ejemplos de leyendas para un mapa de símbolos proporcionales.}
-\label{Fig:EjemplosLeyendaSimbolosProporcionales} 
+\label{Fig:EjemplosLeyendaSimbolosProporcionales}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Mapas/MapaPuntos.png}
+\caption{\small Mapa de puntos.}
+\label{Fig:MapaPuntos} 
+\end{minipage}
 \end{figure*}
+
 
 El uso de un escalado lineal en el que se conserve la propiedad cuantitativa resulta en ocasiones inapropiado debido a la distribución de los valores. Por ejemplo, para representar el mapa de la figura \ref{Fig:TiposIntervalosClases}, este esquema no es adecuado, ya que una de las zonas presenta un valor de la variable muy superior a la del resto (puede verse esto claramente en la representación por intervalos iguales), lo cual requeriría el uso de un símbolo desproporcionadamente grande. Si se usan clases iguales, la mayoría de los valores entrarían en una de ellas, por lo que no se transmitiría bien la distribución de estos. En este caso, se debe emplear un esquema de clases distinto, aunque así la proporción de tamaños no permita visualmente estimar las cantidades. Es decir, los tamaños de los símbolos nos indican que hay más cantidad en una zona que en otra, pero no podemos solo con ellos saber \emph{cuánto} más hay.  Los mapas elaborados de esta forma se conocen como mapa de \emph{símbolos graduados}. En estos mapas, la importancia de la leyenda es aún mayor si cabe, ya que es la encargada de explicar el significado de cada tamaño, y sin ella la información de la que disponemos es mucho menor.\index{Mapa!de símbolos graduados}
 
@@ -339,14 +350,6 @@ En los dos casos anteriores va a resultar necesario <<mover>> los puntos a su lo
 La imagen \ref{Fig:MapaPuntos} muestra un ejemplo de un mapa de puntos.
 
 
-\begin{figure*}[!hbt]
-\centering
-\includegraphics[width=.8\mycolumnwidth]{Mapas/MapaPuntos.png}
-\caption{\small Mapa de puntos.}
-\label{Fig:MapaPuntos} 
-\end{figure*}
-
-
 \subsection{Mapas de isolíneas}
 \label{MapasIsolineas}\index{Mapa!de isolíneas}\index{Isolíneas}
 
@@ -366,9 +369,9 @@ En caso de que dentro de la unidad exista una distribución homogénea, podemos as
 
 A la hora de simbolizar las isolíneas, y con independencia de su tipo, la variable visual tamaño es la única que suele emplearse, en particular para señalar aquellas líneas que representan un valor múltiplo de una determinada cantidad y hacer así más fácil la lectura del mapa. Estas líneas son lo que se conoce como \emph{curvas directrices}. Por ejemplo, en un mapa topográfico con curvas de nivel con una equidistancia de 100 metros, es habitual establecer curvas directrices cada 500 metros. Todas aquellas curvas cuyo valor asociado sea múltiplo de 500 se representan con un trazo más grueso para que puedan localizarse rápidamente.\index{Curva!directriz}
 
-\begin{figure*}[!hbt]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=.8\mycolumnwidth]{Mapas/Isolineas.png}
+\includegraphics[width=.6\mycolumnwidth]{Mapas/Isolineas.png}
 \caption{\small Mapa de isolíneas. Se ha empleado para su representación tanto las líneas como el coloreado de las franjas entre estas.}
 \label{Fig:Isolineas} 
 \end{figure*}
@@ -394,6 +397,13 @@ Precisamente por esta generalización que se da al representar mediante un único 
 	\item \textbf{Homogeneidad dentro de cada área}. La variación dentro de cada área no se recoge, con lo que se pierde una parte de la información. El uso de unidades menores soluciona en parte este problema, aunque puede hacer el mapa más complejo de interpretar y puede desvirtuar la información (recordemos aquí todo lo que vimos en el capítulo \ref{Analisis_espacial} y los conceptos tales como el Problema de la Unidad de Área Modificable)\index{Problema de la Unidad de Área Modificable}. Al mismo tiempo, las unidades pueden tener su significado particular, como por ejemplo tratarse de divisiones administrativas, con lo que el uso de otras distintas altera la información que se pretende transmitir. 	
 \end{itemize}
 
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=\mycolumnwidth]{Mapas/MapaFlujo.png}
+\caption{\small Mapa de flujo de Charles Joseph Minard sobre la campaña de Napoleón en Rusia.}
+\label{Fig:MapaFlujo} 
+\end{figure*}
+
 Igualmente, debe considerarse que, en el caso de valores no normalizados, las coropletas pueden transmitir una información equivocada. Por ejemplo, si una variable representa un conteo, tal y como la población de un conjunto de estados, el uso de coropletas no tiene en cuenta la superficie de cada una de las áreas representadas. Un mismo valor en dos unidades, una de ellas con una superficie mucho mayor a la otra, puede dar la sensación de que poblacionalmente ambas zonas son similares, mientras que puede ser que una tenga una gran densidad de población y la otra esté prácticamente despoblada. El valor que simbolizamos sí está relacionado con el área (a mayor área, encontraremos más habitantes), y sería más adecuado representar esa densidad de población, ya que resulta menos proclive a inducir una interpretación errónea. En general, el uso de coropletas es correcto cuando la variable ha sido normalizada, por ejemplo dividiendo el valor numérico de cada unidad entre la superficie de esta.
 
 En los mapas de coropletas cobra especial importancia la correcta división de clases según hemos detallado dentro de este mismo capítulo. De entre las variables visuales, el color es la usada en la gran mayoría de casos, en particular utilizando su componente valor, y las propias características de las coropletas, en particular las desventajas que ya hemos mencionado, han de considerarse a la hora establecer cómo hacemos uso de esta variable visual para la simbolización de cada unidad. 
@@ -404,6 +414,13 @@ De igual modo el uso del tono queda más restringido, al poder dar lugar a situac
 
 Por todo lo anterior, el uso de la componente valor es preferible frente al uso del tono a la hora de crear un mapa de coropletas para representar información cuantitativa.
 
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=.45\mycolumnwidth]{Mapas/Cartograma.png}
+\caption{\small Un ejemplo de cartograma (Adaptado de Wikipedia).}
+\label{Fig:Cartograma} 
+\end{figure*}
+
 \subsection{Otros tipos de mapas}
 
 Existen muchos otros tipos de mapas, adecuados para representar tipos particulares de información. A pesar de su utilidad, son mucho menos frecuentes, especialmente dentro del ámbito SIG, ya que su implementación no es habitual y no resulta común crearlos con las herramientas usuales de estos. Algunos de estos tipos de mapas que resulta de interés reseñar son los siguientes:
@@ -412,21 +429,8 @@ Existen muchos otros tipos de mapas, adecuados para representar tipos particular
 	\item \textbf{Mapas dasimétricos}. Los mapas dasimétricos tratan de evitar las deficiencias de los mapas de coropletas, en los que los límites de las distintas áreas representadas no tienen relación con la variable con la que se trabaja, siendo limites arbitrarios tales como divisiones administrativas o territoriales. En los mapas dasimétricos las divisiones obedecen a la propia geografía de la variable. El principal inconveniente de estos mapas es el mayor esfuerzo que su preparación exige, así como el mayor conocimiento de la variable que resulta necesario para poder definir las distintas zonas del mapa. Tradicionalmente se han empleado para representar la densidad de población, siendo poco usados para otras variables.\index{Mapa!dasimétrico}
 	\item \textbf{Mapas de flujo}. Los mapas de flujos representan movimientos de algún tipo de elemento, como por ejemplo las exportaciones de un producto o los desplazamientos de tropas en una campaña militar. El mapa de flujo aporta información sobre cómo se produce la distribución del elemento que se desplaza, la proporción o magnitud en que lo hace, así como también la ruta seguida, aunque este último factor no es habitualmente prioritario y suele representar más con carácter esquemático (indicando la relación entre los puntos de partida y destino del movimiento) que como verdadera información geográfica sobre el trayecto en cuestión. Algunos de los mejores ejemplos de mapas de flujo son los creados por Charles Joseph Minard (1781--1870), ingeniero francés pionero en su creación. Uno de esos mapas puede verse en la figura \ref{Fig:MapaFlujo}.\index{Mapa!de flujo}
 	
-\begin{figure*}[!hbt]
-\centering
-\includegraphics[width=\mycolumnwidth]{Mapas/MapaFlujo.png}
-\caption{\small Mapa de flujo de Charles Joseph Minard sobre la campaña de Napoleón en Rusia.}
-\label{Fig:MapaFlujo} 
-\end{figure*}
 
 \item \textbf{Cartogramas}. En los cartogramas, la información cualitativa se transmite mediante la modificación de las unidades de superficie, que se distorsionan para representar con su tamaño la magnitud de la variable en cuestión. Es decir, la variable visual tamaño se aplica directamente sobre las distintas unidades de superficie. En la figura \ref{Fig:Cartograma} puede verse un ejemplo de cartograma en el que los países de la unión europea se representan de tal modo que su tamaño es proporcional a su población. La densidad de población se incorpora mediante el tono en que se representa cada uno de esos países. Aquellos países con una mayor densidad de población son los que sufren más distorsión en la representación de sus contornos.\index{Cartograma} 
-
-\begin{figure*}[!hbt]
-\centering
-\includegraphics[width=.6\mycolumnwidth]{Mapas/Cartograma.png}
-\caption{\small Un ejemplo de cartograma (Adaptado de Wikipedia).}
-\label{Fig:Cartograma} 
-\end{figure*}
 
 \end{itemize}
 
@@ -441,5 +445,5 @@ Dentro de los tipos de mapas temáticos más importantes encontramos los mapas de 
 A la hora de componer un mapa existen diversos elementos que deben añadirse para facilitar su interpretación. Además de conocer la función de cada uno, es importante saber cómo situar estos sobre el lienzo del mapa, aprovechando correctamente el espacio e integrándolos adecuadamente.
 
 
-
+\end{multicols}
 \pagestyle{empty}
