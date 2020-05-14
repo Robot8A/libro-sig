@@ -237,12 +237,22 @@ Se puede pensar que podemos obtener una representación plana de la superficie de
 
 La figura \ref{Fig:Proyeccion} muestra un esquema del concepto de proyección, esbozando la idea de cómo puede establecerse la correspondencia entre puntos de la esfera y del plano.
 
-\begin{figure}[H]
+\begin{figure*}
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.4\mycolumnwidth]{Fundamentos_cartograficos/Proyeccion.pdf}
+\includegraphics[width=.8\mycolumnwidth]{Fundamentos_cartograficos/Proyeccion.pdf}
 \caption{\small Esquema del concepto de proyección. A los puntos $A, B$ y $C$ sobre la superficie del elipsoide les asocian equivalentes $a, b$ y $c$ sobre un plano.}
-\label{Fig:Proyeccion} 
-\end{figure}
+\label{Fig:Proyeccion}  
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Fundamentos_cartograficos/Proyeccion_conica_cilindrica.pdf}
+\caption{\small Esquema de una proyección cónica (izda.) y cilíndrica(dcha.)}
+\label{Fig:Proyeccion_conica_cilindrica} 
+\end{minipage}
+\end{figure*}
+
 
 En ella vemos cómo el concepto de proyección se asemeja a la generación de sombras, ya que a partir de un foco se trazan las trayectorias de una serie de rayos que unen dicho foco con los puntos a proyectar, y después se determina el punto de contacto de esos rayos con la superficie plana. Aunque no todas las proyecciones siguen necesariamente este esquema, una parte de ellas sí que se fundamentan en un razonamiento similar a este, y el esquema mostrado sirve bien para entender el concepto y el paso de coordenadas de una superficie tridimensional a una bidimensional.
 
@@ -268,13 +278,6 @@ Las superficies más habituales son el cono y el cilindro (junto con, por supuest
 En su concepción más simple, el cilindro se sitúa de forma tangente al ecuador (proyección normal o simple), aunque puede situarse secante y hacerlo a los meridianos (proyección transversa) o a otros puntos (proyección oblicua).
 
 La proyección de Mercator, la transversa de Mercator, la cilíndrica de Miller\index{Proyección geográfica!cilíndrica de Miller} o la cilíndrica equiárea de Lambert\index{Proyección geográfica!cilíndrica de Miller} son ejemplos relativamente comunes de este tipo de proyecciones.
-
-\begin{figure*}
-\centering
-\includegraphics[width=.65\mycolumnwidth]{Fundamentos_cartograficos/Proyeccion_conica_cilindrica.pdf}
-\caption{\small Esquema de una proyección cónica (izda.) y cilíndrica(dcha.)}
-\label{Fig:Proyeccion_conica_cilindrica} 
-\end{figure*}
 
 \item \textbf{Planas o azimutales}. \index{Proyección geográfica!plana}La superficie desarrollable es directamente un plano. Según el esquema de la figura \ref{Fig:Proyeccion}, tenemos distintos tipos en función de la posición del punto de fuga.
 
