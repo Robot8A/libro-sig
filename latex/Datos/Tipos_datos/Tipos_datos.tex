@@ -636,17 +636,18 @@ Muchos de los procesos que veremos en la parte dedicada al análisis necesitan es
 
 Como ya hemos dicho, el objetivo de este tipo de estructuras para representar los datos espaciales no es disminuir el tamaño, sino mejorar el rendimiento de las operaciones sobre ellos. De hecho, y al contrario que en el caso de los modelos de representación ráster, en este caso no disminuye el espacio que ocupan los datos, sino todo lo contrario, ya que este aumenta. Un índice espacial es información adicional que incrementa la utilidad de dichos datos. Exactamente del mismo modo que el índice de este libro, que no sustituye al texto que ahora mismo estas leyendo, sino que se añade a este y te ayuda a manejarte a través de él y sacarle más partido.
 
+\begin{figure*}[!ht]   
+\centering
+\includegraphics[width=.6\mycolumnwidth]{Tipos_datos/Tipos_indices_espaciales.pdf}
+\caption{\small Aproximación continua (a) y discreta (b) para un índice espacial.}
+\label{Fig:Tipos_indices_espaciales} 
+\end{figure*}
+
 La creación del índice espacial supone la creación de una estructura espacial en la cual se contienen objetos más simples que las propias entidades geométricas, estructuradas a su vez de forma también más sencilla que recogiendo sus coordenadas, y con un orden característico. Como hemos dicho, este índice espacial no sustituye al dato espacial, sino que lo complementa, optimizando la búsqueda de información dentro de este.
 
 Existen dos enfoques principales para los índices espaciales: continuos y discretos \cite{Guting1994VLDB}. Los continuos utilizan las coordenadas mismas de las entidades, simplificando la forma de estas, mientras que en los discretos la simplificación se aplica al espacio, discretizando este. En ambos, las entidades que se emplean son rectangulares en la mayoría de los casos. La figura \ref{Fig:Tipos_indices_espaciales} muestra la aproximación de una geometría poligonal que se obtiene en ambos tipos de modelos. 
 \index{Indice@Índice!espacial!tipos}
 
-\begin{figure*}[ht]   
-\centering
-\includegraphics[width=.7\mycolumnwidth]{Tipos_datos/Tipos_indices_espaciales.pdf}
-\caption{\small Aproximación continua (a) y discreta (b) para un índice espacial.}
-\label{Fig:Tipos_indices_espaciales} 
-\end{figure*}
 
 En el caso continuo, se sustituye toda la complejidad del polígono por simplemente cuatro puntos: aquellos que conforman el rectángulo dentro del que este se inscribe. En el caso discreto, se reduce el polígono a unas cuantas celdas de una malla. Realizar comprobaciones sobre estas estructuras resulta mucho más sencillo, y por ello se emplean para realizar aproximaciones que simplifican las operaciones\footnote{Este proceso, conocido como \emph{filtrado y refinamiento}, lo veremos en detalle en el capítulo \ref{Consultas}}.\index{Filtrado y refinamiento}
 

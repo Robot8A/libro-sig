@@ -7,7 +7,7 @@
 \begin{intro}
 Todo dato espacial contiene algún tipo de error, en mayor o menor medida. Conocer las razones por las cuales aparecen esos errores es importante para poder evaluar correctamente la validez del trabajo que realizamos con los datos y los resultados que obtenemos a partir de ellos. En este capítulo se estudiaran los principales errores que pueden afectar a los distintos tipos de datos espaciales, las fuentes principales de dichos errores y las maneras en que estos pueden gestionarse dentro de un proyecto SIG.
 
-Puesto que los datos son la materia prima para obtención de nuevos datos a través de los procesos y operaciones que dentro de un SIG realizamos con ellos, trataremos también la forma en que los errores en los datos de partida afectan a los resultados que derivemos de ellos.
+Puesto que los datos son la materia prima para obtención de nuevos datos a través de procesos y operaciones, trataremos también la forma en que los errores en los datos de partida afectan a los resultados que derivemos de ellos.
 \end{intro}
 
 \begin{multicols}{2}
@@ -34,7 +34,7 @@ Será sobre estas distintas fases sobre las que trataremos en las próximas seccio
 
 \section{La importancia de la calidad de los datos}
 
-A pesar de su gran importancia, la calidad de los datos espaciales no ha sido una preocupación hasta hace relativamente poco tiempo. Los textos sobre Sistemas de Información Geográfica tales como este mismo libro apenas trataban el tema en sus inicios \cite{Foote2000, Oort2005NGC}, y solo en la actualidad aparece una concienciación acerca de la importancia que la calidad de los datos espaciales tiene sobre el desarrollo de cualquier trabajo basado en ellos.
+A pesar de su gran importancia, la calidad de los datos espaciales no ha sido una preocupación hasta hace relativamente poco tiempo. Los textos sobre Sistemas de Información Geográfica apenas trataban el tema en sus inicios \cite{Foote2000, Oort2005NGC}, y solo en la actualidad aparece una concienciación acerca de la importancia que la calidad de los datos espaciales tiene sobre el desarrollo de cualquier trabajo basado en ellos.
 
 Las razones por las que la calidad de los datos empieza a considerarse como un elemento de gran relevancia en el ámbito geográfico son principalmente dos \cite{Oort2005NGC}:
 
@@ -45,20 +45,19 @@ Las razones por las que la calidad de los datos empieza a considerarse como un e
 
 Estos dos factores, inevitablemente unidos, han favorecido que el volumen de trabajo sobre datos espaciales sea mayor y que además se use un número más elevado de datos distintos. Es lógico pensar que, a raíz de esto, haya surgido el interés por evaluar y tratar de forma rigurosa las condiciones en las que estos trabajos se están llevando a cabo.
 
-La preocupación por la calidad de los datos es básica por el simple hecho de que datos de mala calidad generan invariablemente resultados de mala calidad. Utilizar un dato de mala calidad es equivalente a utilizar un modelo equivocado. Si el modelo no es cierto, no importa la buena calidad de los datos, ya que los resultados que arrojará tampoco lo serán. Del mismo modo, un dato con un error superior al que puede resultar tolerable para una determinada tarea hace que la calidad de este sea insuficiente, y los resultados obtenidos carecen de valor.
+La preocupación por la calidad de los datos es básica por el simple hecho de que datos de mala calidad generan inevitablemente resultados de mala calidad. Utilizar un dato de mala calidad es equivalente a utilizar un modelo equivocado. Si el modelo no es cierto, no importa la buena calidad de los datos, ya que los resultados que arrojará tampoco lo serán. Del mismo modo, un dato con un error superior al que puede resultar tolerable para una determinada tarea hace que la calidad de este sea insuficiente, y los resultados obtenidos carecen de valor.
 
-A pesar de que la aparición de los SIG ha sido una de las razones principales para que se tenga en consideración la calidad de los datos y se especifique formalmente el modo de tratarla y gestionarla, los SIG en sí no disponen apenas de herramientas para asistir en estas tareas. Aunque la ciencia de la información geográfica ha avanzado mucho en ese sentido, y el conocimiento relativo a la calidad de los datos espaciales es mucho mayor, los SIG no han incorporado ese conocimiento, y carecen de funcionalidades al respecto. Dicho de otro modo, existen las formulaciones y los elementos teóricos, pero estos aún no se han visto materializados (o lo han hecho de forma prácticamente anecdótica) en los SIG de uso habitual. Por esta razón, la mayoría de usuarios de SIG no tienen en cuenta rigurosa y formalmente la calidad de los datos a la hora de desarrollar su trabajo, quedando aún mucho por avanzar en este sentido.
+A pesar de que la aparición de los SIG ha sido una de las razones principales para que se tenga en consideración la calidad de los datos y se especifique formalmente el modo de tratarla y gestionarla, los SIG en sí no disponen apenas de herramientas para asistir en estas tareas. Aunque la ciencia de la información geográfica ha avanzado mucho en ese sentido, y el conocimiento relativo a la calidad de los datos espaciales es mucho mayor, los SIG no han incorporado ese conocimiento y carecen de funcionalidades al respecto. Dicho de otro modo, existen las formulaciones y los elementos teóricos, pero estos aún no se han visto materializados (o lo han hecho de forma prácticamente anecdótica) en los SIG de uso habitual. Por esta razón, la mayoría de usuarios de SIG no tienen en cuenta rigurosa y formalmente la calidad de los datos a la hora de desarrollar su trabajo, quedando aún mucho por avanzar en este sentido.
 
 Un elemento clave para el control de la calidad es la existencia de metadatos,\index{Metadatos} que informan acerca de dichos datos sobre una serie de aspectos relativos a estos, entre ellos aquellos que afectan a la calidad. Los metadatos se tratan con gran profundidad dentro de este libro en el capítulo \ref{Metadatos}.
-
 
 \section{Conceptos y definiciones sobre calidad de datos}
 
 Antes de entrar en el estudio directo de la calidad de los datos espaciales y el estudio de los errores que pueden presentarse en un dato espacial, es necesario definir algunos conceptos básicos y alguna terminología al respecto.
 
-El concepto básico es el \emph{error}, que no es sino la discrepancia existente entre el valor real (puede ser un valor de posición, de un atributo, o cualquier otro), y el valor recogido en una capa. El error puede ser de dos tipos: \emph{sistemático} y \emph{aleatorio}. \index{Error}
+El concepto básico es el \emph{error}, que no es sino la discrepancia existente entre el valor real (puede ser un valor de posición, de un atributo, o cualquier otro), y el valor recogido en una capa. El error puede ser de dos tipos: \emph{sistemático} o \emph{aleatorio}. \index{Error}
 
-Dos términos importantes en el estudio de la calidad son la \emph{precisión} y \emph{exactitud}. La precisión indica el nivel de detalle con el que se recoge la información. Un capa en la que las posiciones se han medido con 5 valores decimales es más precisa que una en la que se han medido con un único decimal. \index{Precisión}\index{Exactitud}
+Dos términos importantes en el estudio de la calidad son la \emph{precisión} y \emph{exactitud}. La precisión indica el nivel de detalle con el que se recoge la información. Una capa en la que las posiciones se han medido con 5 valores decimales es más precisa que una en la que se han medido con un único decimal. \index{Precisión}\index{Exactitud}
 
 \begin{figure*}[t]
 \centering
@@ -75,15 +74,13 @@ La exactitud se calcula con el error sistemático, mientras que la precisión se c
 
 Es posible, no obstante, que un dato sea muy preciso pero poco exacto, ya que las magnitudes de los distintos tipos de errores pueden ser muy distintas. Este hecho puede verse claramente en la figura \ref{Fig:Imprecision_exactitud}.
 
-
-
 Por último, un parámetro relativo al error es la \emph{incertidumbre}. Habitualmente, el valor real es desconocido, por lo que el error no puede conocerse. La incertidumbre refleja la medida en que no podemos tener certeza de la validez de nuestros datos. La incertidumbre es un concepto más amplio que el error, y auna tres componentes \cite{Fisher1999Wiley}:\index{Incertidumbre}
 
 \begin{itemize}
 	\item \textbf{Error}
 	\item \textbf{Vaguedad}. Aparece como consecuencia de definiciones pobres o incompletas, así como cuando los objetos que se modelizan en los datos no presentan límites bien definidos. Por ejemplo, en una capa de clases de vegetación, la transición entre una clase y otra se produce normalmente de forma gradual, por lo que el establecimiento de una frontera brusca es un hecho artificial que aumenta la incertidumbre, y el significado de que un punto en concreto se asigne a una clase dada es más vago cuanto más cerca de esa frontera nos encontramos.
 	\item \textbf{Ambigüedad}. Cuando no existen definiciones inequívocas de los conceptos fundamentales, aparecen ambigüedades que añaden igualmente incertidumbre al dato creado en función de estos. 
-\end{itemize}\index{Vaguedad}\index{Ambigüedad}
+\end{itemize}
 
 Tradicionalmente se ha trabajado con el error y no con el concepto de incertidumbre, pero conocer esta es igualmente importante a la hora de evaluar la calidad de los datos, y la modelización de la incertidumbre es una alternativa a la modelización del error.
 
