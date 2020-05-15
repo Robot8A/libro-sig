@@ -527,7 +527,7 @@ Para cada documento existe una resolución óptima de escaneo en función de las ca
 El parámetro base es la relación entre el tamaño de píxel (la longitud real que representa el ancho de un píxel sobre el terreno) y el tamaño de este píxel en la imagen (lo que mide esa longitud en el mapa). Las resoluciones habituales utilizadas para el escaneo de fotografías aéreas varían entre los 100 dpi ($\approx 250 \mu m$ cada punto sobre el mapa) y 2500 dpi (($\approx 10 \mu m$ cada punto sobre el mapa) \cite{Welch1996Onward}. Por ejemplo para una resolución de 300 dpi, se tiene:
 
 \begin{eqnarray}
-300 \mathrm{dpi} &=& \frac{300\mathrm{filas}}{2,54 \mathrm{cm\; de\; mapa}} \nonumber\\  &=& 118,11 \mathrm{filas/cm}
+300\; \mathrm{dpi} &=& \frac{300\;\mathrm{filas}}{2,54\; \mathrm{cm\; de\; mapa}} \nonumber\\  &=& 118,11\; \mathrm{filas/cm}
 \end{eqnarray}
 
 En un centímetro cuadrado se tienen $118,11^2\approx13950$ puntos.
@@ -535,7 +535,7 @@ En un centímetro cuadrado se tienen $118,11^2\approx13950$ puntos.
 Si trabajamos, por ejemplo, con un mapa a una escala 1:50000, tenemos que la distancia real que representa el alto de cada fila es
 
 \begin{equation}
-\frac{50000 \mathrm{cm}}{118,11 \mathrm{filas}} = 4,24 \mathrm{metros}/\mathrm{fila}
+\frac{50000\; \mathrm{cm}}{118,11 \mathrm{filas}} = 4,24\; \mathrm{metros}/\mathrm{fila}
 \end{equation}
 
 Es decir, cada píxel del mapa representa sobre el terreno un cuadrado de lado 4,24 metros.\index{Pixel}
@@ -677,14 +677,16 @@ Además de los errores que puedan incorporarse en las distintas fases del proceso
 
 La información contenida en el documento cartográfico puede también contener elementos problemáticos de cara a obtener un producto de calidad, que pueden ir desde líneas borradas total o parcialmente a manchas en el propio mapa derivadas de su uso habitual \cite{Heywood1998Longman}.
 
+
 Dentro de los errores que aparecen como consecuencia de la digitalización en sí, un tipo importante de ellos son las discrepancias y coincidencias imperfectas entre las distintas entidades, tal como las que se muestran en la figura \ref{Fig:Imprecisiones_digitalizacion}
 
-\begin{figure*}[t]   
+\begin{figure*}[ht]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Imprecisiones_digitalizacion.pdf}
 \caption{\small Errores derivados del proceso de digitalización. a) Versión correcta, con nodos coincidentes. b) y c) Versiones con errores que causan una falsa desconexión entre las líneas.}
 \label{Fig:Imprecisiones_digitalizacion} 
 \end{figure*}
+
 
 Estas imprecisiones son causantes de numerosos problemas, tales como la aparición de polígonos espúreos en las operaciones de solape entre capas vectoriales, que veremos en el capítulo \ref{Operaciones_geometricas}.\index{Polígono!espureo}
 
@@ -692,7 +694,7 @@ Debido a esto, las capacidades de edición de los SIG incorporan funcionalidades 
 
 De este modo, polígonos adyacentes o líneas que se cortan en un punto dado lo hacen con total exactitud. Dichos polígonos comparten exactamente el mismo lado con las mismas coordenadas exactas, o se cruzan en el mismo e idéntico punto, y no únicamente pasan por un punto cercano (pero distinto) definido con la precisión con la que el operador haya podido ajustar ambas entidades visualmente. La coincidencia no es solo visual, sino numérica. La figura \ref{Fig:Snapping} muestra un ejemplo de la utilización de \emph{snapping} en un proceso de digitalización.
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=.4\textwidth]{Fuentes_datos/Snapping.pdf}
 \caption{\small Ajuste automático mediante tolerancia(\emph{snapping}). El nodo azul representa el nodo en edición. La tolerancia de enlace queda marcada por el circulo punteado. Puesto que el nodo rojo de la línea preexistente se encuentra dentro de esa tolerancia, al añadir el nuevo nodo (azul), este automáticamente se situará en las coordenadas del nodo rojo, garantizándose así la coincidencia.}
@@ -755,19 +757,23 @@ El cálculo de la distancia puede realizarse utilizando la información de las señ
 
 En el caso de emplear la portadora, se mide el desfase entre esta y una señal generada por el receptor, lo cual permite calcular una parte de la distancia (la que es menor que la longitud de onda de la señal). La distancia total es igual a esta parte calculada más un numero entero de veces la longitud de onda. El valor de este numero entero es, no obstante, desconocido. Su cálculo se conoce como \emph{resolución de la ambigüedad} (AR), y requiere escuchar la señal del satélite durante un cierto tiempo para recopilar datos suficientes que permitan el cálculo del valor antedicho.\index{Resolución!de la ambigüedad}
 
+
+
 Así, la resolución de la ambigüedad es la que hace necesario un tiempo de \emph{inicialización} de la unidad, con objeto de conocer esa constante en el desfase. Si la unidad pierde contacto con el satélite, es necesario de nuevo proceder a la resolución de las ambigüedades, quedando el receptor inoperativo durante ese periodo de tiempo. Más detalles sobre la resolución de la ambigüedad en el sistema GPS puede encontrarse en \cite{Torrecillas1998Mapping}.
 
 Puesto que la velocidad a la que la señal se desplaza es muy elevada, se requieren relojes muy precisos para poder medir con precisión los tiempos tan cortos que tarda dicha señal en recorrer la distancia entre satélite y receptor. A bordo de los satélites se montan relojes atómicos de muy alta precisión, pero las unidades receptoras no disponen de relojes tan precisos. Es por este motivo que, como veremos, han de introducirse correcciones y cálculos adicionales con el fin de obtener mayores precisiones en la medida del tiempo.
+
 
 Si el receptor es capaz de establecer comunicación con tres satélites, dispone ya de información suficiente para conocer su posición $(x,y)$ como intersección de las esferas centradas en cada uno de dichos satélites y con radio la distancia existente entre este y el receptor. Con cuatro satélites se puede ya obtener la posición $(x,y,z)$.
 
 Un número mayor de satélites (cuatro al menos) es necesario, no obstante, para eliminar las imprecisiones debidas a los distintos elementos implicados, y se emplean habitualmente modelos más complejos que utilizan los datos de múltiples satélites y efectúan correcciones en función de ellos. Las deficiencias de los relojes que emplean los receptores pueden corregirse mediante la utilización de nuevos satélites, que permiten calcular con exactitud el tiempo, variable de gran importancia en el proceso y sin la cual no se pueden obtener precisiones elevadas.
 
+
 Los receptores actuales están preparados para trabajar con un número máximo de satélites habitualmente igual a 12, por lo que en todas circunstancias tratan de localizar el mayor número posible de satélites con objeto de lograr una mayor precisión.
 
 El diseño de la red de satélites está pensado para garantizar que en cualquier punto de la superficie terrestre y en cualquier momento, un receptor puede localizar el número necesario de satélites para obtener con exactitud su precisión. La localización en la que se disponen los satélites con los que se establece comunicación no es irrelevante, ya que condiciona la precisión del posicionamiento, afectando a lo que se conoce como \emph{dilución de la precisión} (DOP\footnote{Dilution of Precision}). Si los ángulos de los satélites son grandes, la precisión que se obtiene es mayor que si estos son menores (Figura \ref{Fig:DOP}).\index{Dilution of Precision}
 
-\begin{figure*}[t]
+\begin{figure*}[ht]
 \centering
 \includegraphics[width=\textwidth]{Fuentes_datos/DOP.pdf}
 \caption{\small Dilución de la precisión. La geometría de los satélites en el ejemplo a) da una mayor precisión en el cálculo de la posición del receptor que la del ejemplo b).}
