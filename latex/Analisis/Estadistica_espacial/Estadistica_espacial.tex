@@ -18,7 +18,7 @@ Unos conocimientos básicos de estadística descriptiva son necesarios para seguir
 \section{Introducción}
 \pagestyle{fancy}
 
-La información espacial es susceptible de ser analizada estadísticamente como cualquier otro tipo de información. Una serie de $n$ datos recogidos en otros tantos puntos no deja de ser una serie de datos sobre la que pueden aplicarse las técnicas estadísticas habituales. No obstante, cada uno de estos datos tiene asociada una coordenada, y esta aporta una información adicional que puede emplearse igualmente para obtener resultados estadísticos de diversa índole. Más aún, como ya vimos, el análisis en exclusiva de los valores sin considerar la componente espacial asociada a estos puede no ser adecuado por no cumplir algunos de los supuestos de la estadística clásica.
+La información espacial es susceptible de ser analizada estadísticamente como cualquier otro tipo de información. Una serie de $n$ datos recogidos en otros tantos puntos no deja de ser una serie de datos sobre la que pueden aplicarse las técnicas estadísticas habituales. Junto a ello, cada uno de estos datos tiene asociada una coordenada, y esta aporta una información adicional que puede emplearse igualmente para obtener resultados estadísticos de diversa índole. 
 
 Si trabajamos en el plano cartesiano, en lugar de una serie de valores de una variable $a$ disponemos de una serie de ternas $(x,y,a)$. Extendiendo la posibilidad de analizar estadísticamente los valores $a$ recogidos en esa serie de localizaciones, encontramos otras dos formas de analizar este conjunto.
 
@@ -27,9 +27,9 @@ Si trabajamos en el plano cartesiano, en lugar de una serie de valores de una va
 \item Analizar la disposición espacial y los valores recogidos. Es decir, estudiar el conjunto de ternas $(x,y,a)$
 \end{itemize}
 
-	Por la concepción anterior, este tipo de análisis se lleva a cabo preferentemente sobre capas de tipo punto. No obstante, algunos de estas formulaciones pueden igualmente aplicarse a capas ráster, considerando que cada celda conforma de igual modo una terna de valores, pues su localización espacial está perfectamente definida. 
+Este tipo de análisis se lleva a cabo preferentemente sobre capas de tipo punto, aunque algunas de estas formulaciones pueden igualmente aplicarse a capas ráster, considerando que cada celda conforma de igual modo una terna de valores. 
 
-El análisis estadístico espacial incluye procedimientos muy diversos. Dentro de este capítulo analizaremos algunos de los más básicos, como son los siguientes:
+Dentro de este capítulo analizaremos algunos de los analisis estadísticos espaciales más básicos, como son los siguientes:
 
 \begin{itemize}
  \item \textbf{Medidas centrográficas}. El equivalente espacial de las medidas de tendencia central como el momento de primer orden (media) o la mediana, así como de las de dispersión tales como el momento de segundo orden (desviación típica).
@@ -38,9 +38,7 @@ El análisis estadístico espacial incluye procedimientos muy diversos. Dentro de 
 \item \textbf{Autocorrelación espacial}. Los puntos cercanos tienden a tener valores más similares entre sí que los puntos alejados. Este fenómeno puede cuantificarse y estudiarse con una serie de índices, así como mediante elementos tales como variogramas o correlogramas.
 \end{itemize}
 
-
-
-Debido a su entidad, otro grupo de procedimientos con componente estadística, los relativos a las técnicas de interpolación, se verán en un capítulo independiente (Capítulo \ref{Creacion_capas_raster}). De igual modo, aquellas que permiten el calculo de densidades se recogen también en dicho capítulo.
+Otro grupo de procedimientos con componente estadística, los relativos a las técnicas de interpolación, se verán en un capítulo independiente (Capítulo \ref{Creacion_capas_raster}). De igual modo, aquellos que permiten el calculo de densidades se recogen también en dicho capítulo.
 
 Un capítulo dedicado a la aplicación de otras técnicas estadísticas más complejas tales como técnicas de agrupación o regresiones espaciales (Capitulo \ref{Estadistica_avanzada}) completa este grupo de secciones dedicadas a los elementos estadísticos.
 
@@ -55,7 +53,7 @@ La principal medida de tendencia central espacial es el \emph{centro medio}. El 
 \overline{y}= \frac{\sum_{i=1}^n y_i}{N} \nonumber
 \end{eqnarray}
 
-Cada uno de los puntos puede ponderarse según el valor recogido en el mismo, de forma que lo anterior quedaría como
+Cada uno de los puntos puede ponderarse según el valor recogido en él, de forma que lo anterior quedaría como
 
 \begin{eqnarray}
  \overline{x} = \frac{\sum_{i=1}^N a_i x_i}{\sum_{i=1}^N a_i} \\
@@ -101,7 +99,7 @@ x = \frac{\sum_{i=1}^N \frac{d_i}{a_i}x_i}{\sum_{i=1}^N \frac{d_i}{a_i}}  \\
 y = \frac{\sum_{i=1}^N \frac{d_i}{a_i}y_i}{\sum_{i=1}^N \frac{d_i}{a_i}} \nonumber \\
 \end{eqnarray}
 
-\noindent donde $d_i$ es la distancia del punto i--ésimo a la localización del centro mediano en la iteración actual. Como primera coordenada para iterar, una buena elección es el propio centro medio. El proceso se detiene cuando la distancia entre el nuevo centro mediano y el de la iteración anterior es menor que un determinado umbral establecido de antemano.
+\noindent donde $d_i$ es la distancia del punto i-ésimo a la localización del centro mediano en la iteración actual. Como primera coordenada para iterar, una buena elección es el propio centro medio. El proceso se detiene cuando la distancia entre el nuevo centro mediano y el de la iteración anterior es menor que un determinado umbral establecido de antemano.
 
 Respecto a las medidas de dispersión, el equivalente a la desviación típica es la denominada \emph{distancia típica}, cuya expresión es la siguiente \cite{Bachi1963RSA}\index{Distancia!típica}
 
@@ -176,7 +174,7 @@ En la figura \ref{Fig:Distancia_relativa} puede verse cómo distribuciones espaci
 
 Dentro de los objetos geográficos, las líneas merecen algunos comentarios aparte en lo que a su análisis respecta. Tanto las líneas como los polígonos pueden ser reducidos en ultima instancia a puntos (los polígonos bien por sus puntos constituyentes o bien por el centroide, el cual coincide con el centro medio), y analizados estos con algunas de las fórmulas antes vistas o las que se verán más adelante. La particularidad de las lineas estriba en que, además de valores puntuales o de área (como los de los polígonos), definen igualmente direcciones y ángulos de giro entre sus segmentos. El análisis estadístico de variables circulares como estas presenta sus propias particularidades, que deben conocerse para poder extraer resultados correctos a partir de datos de esta índole.
 
-Un ejemplo del uso de variables direccionales lo encontramos, por ejemplo, en el estudio de desplazamientos de animales cuyas rutas hayan sido monitorizadas y se encuentren dentro de un SIG como capas de líneas. Un situación similar se da en el caso de elementos que no representen un movimiento pero tengan dirección, tales como fallas u otros elementos geológicos. No obstante, los conceptos relativos a este tipo de variables también tienen aplicación para cualquier información similar, con independencia de su formato de almacenamiento. Así, son de aplicación, entre otros, para el estudio de orientaciones dentro del análisis geomorfométrico (Capítulo \ref{Geomorfometria}), el cual se lleva a cabo fundamentalmente sobre capas ráster.
+Un ejemplo del uso de variables direccionales lo encontramos, por ejemplo, en el estudio de desplazamientos de animales cuyas rutas hayan sido monitorizadas y se encuentren dentro de un SIG como capas de líneas. Un situación similar se da en el caso de elementos que no representen un movimiento pero tengan dirección, tales como fallas u otros elementos geológicos. Más alla de casos como estos, los conceptos relativos a este tipo de variables también tienen aplicación para cualquier información similar, con independencia de su formato de almacenamiento. Así, son de aplicación, entre otros, para el estudio de orientaciones dentro del análisis geomorfométrico (Capítulo \ref{Geomorfometria}), el cual se lleva a cabo fundamentalmente sobre capas ráster.
 
 En el caso que nos ocupa del estudio de líneas, pueden considerarse todos y cada uno de los segmentos de estas como líneas en sí, o bien la linea ficticia que une el inicio del primer segmento con el final del último.
 
