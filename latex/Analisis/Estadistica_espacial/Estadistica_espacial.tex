@@ -66,11 +66,11 @@ El centro medio es el centro de gravedad del conjunto de puntos, tomando como ma
 \sum_{i=1}^N d_{ic} = \sum_{i=1}^N (\overline{x} - x_i)^2 + (\overline{y} - y_i)^2
 \end{equation}
 
-Un uso habitual del centro medio lo encontramos en los estudios demográficos, que pueden analizar la evolución de las poblaciones sobre el territorio estudiando cómo se ha desplazado el centro medio a través del tiempo
+Un uso habitual del centro medio lo encontramos en los estudios demográficos, que pueden analizar la evolución de las poblaciones sobre el territorio estudiando cómo se ha desplazado su centro medio a través del tiempo.
 
 El equivalente espacial de la mediana es el \emph{centro mediano}. Al igual que el centro medio, el centro mediano es también un punto. En este caso sus coordenadas son las medianas de las de los puntos analizados en cada eje \cite{Cole1968Wiley}.\index{Centro!mediano}
 
-Puede ser interesante también analizar el centro mediano como una linea en lugar de un punto. Por ejemplo, una linea vertical que pasa por la componente en $x$ del centro mediano. Si trabajamos con una serie de puntos que representan poblaciones y estos se ponderan según su número de habitantes, esta línea divide el territorio en dos zonas igualmente pobladas. La mitad de los habitantes viven a un lado de ella, y la otra mitad al otro lado. 
+Puede ser interesante también analizar el centro mediano como una línea en lugar de un punto. Por ejemplo, una línea vertical que pasa por la componente en $x$ del centro mediano. Si trabajamos con una serie de puntos que representan poblaciones y estos se ponderan según su número de habitantes, esta línea divide el territorio en dos zonas igualmente pobladas. La mitad de los habitantes viven a un lado de ella, y la otra mitad al otro lado. 
 
 En la figura \ref{Fig:Centro_mediano} puede verse una representación de lo anterior.
 
@@ -107,7 +107,7 @@ Respecto a las medidas de dispersión, el equivalente a la desviación típica es l
 s_d = \sqrt{\frac{\sum_{i=1}^n d^2_i}{n}}
 \end{equation}
 
-\noindent siendo $d_i$ la distancia entre el punto i--ésimo y el centro medio.
+\noindent siendo $d_i$ la distancia entre el punto i-ésimo y el centro medio.
 
 También puede escribirse lo anterior como
 
@@ -176,7 +176,7 @@ Dentro de los objetos geográficos, las líneas merecen algunos comentarios aparte
 
 Un ejemplo del uso de variables direccionales lo encontramos, por ejemplo, en el estudio de desplazamientos de animales cuyas rutas hayan sido monitorizadas y se encuentren dentro de un SIG como capas de líneas. Un situación similar se da en el caso de elementos que no representen un movimiento pero tengan dirección, tales como fallas u otros elementos geológicos. Más alla de casos como estos, los conceptos relativos a este tipo de variables también tienen aplicación para cualquier información similar, con independencia de su formato de almacenamiento. Así, son de aplicación, entre otros, para el estudio de orientaciones dentro del análisis geomorfométrico (Capítulo \ref{Geomorfometria}), el cual se lleva a cabo fundamentalmente sobre capas ráster.
 
-En el caso que nos ocupa del estudio de líneas, pueden considerarse todos y cada uno de los segmentos de estas como líneas en sí, o bien la linea ficticia que une el inicio del primer segmento con el final del último.
+En el caso que nos ocupa del estudio de líneas, pueden considerarse todos y cada uno de los segmentos de estas como líneas en sí, o bien la línea ficticia que une el inicio del primer segmento con el final del último.
 
 A continuación se mostrarán brevemente los estadísticos más frecuentes para datos circulares, con especial énfasis en su aplicación al análisis de líneas dentro de un SIG. Descripciones más detalladas de estos y otros elementos de estadística circular, junto a sus aplicaciones en áreas donde el empleo de SIG es habitual, pueden consultarse en \cite{Batchelet1981Academic} o \cite{Fisher1993Cambridge}.
 
@@ -215,9 +215,9 @@ El módulo $\overline{R}$ se conoce también como \emph{concentración angular} y e
 
 Cuando se trabaja con direcciones en lugar de orientaciones, es frecuente multiplicar por dos los valores angulares y posteriormente simplificar el ángulo aplicando módulo 360\degree. Es decir, aplicar la transformación $\alpha' = 2\alpha \mod 360\degree$.
 
-La forma en que las distintas orientaciones se congregan en torno a la media, relacionada directamente con la dispersión, puede servir para inferir la existencia de una dirección predominante o bien que los valores angulares se hallan uniformemente distribuidos. La comprobación de que existe una tendencia direccional es de interés para el estudio de muchos procesos tales como el estudio de movimiento de individuos de una especie, que puede denotar la existencia de una linea migratoria preferida o revelar la presencia de algún factor que causa dicha predominancia en las direcciones.
+La forma en que las distintas orientaciones se congregan en torno a la media, relacionada directamente con la dispersión, puede servir para inferir la existencia de una dirección predominante o bien que los valores angulares se hallan uniformemente distribuidos. La comprobación de que existe una tendencia direccional es de interés para el estudio de muchos procesos tales como el estudio de movimiento de individuos de una especie, que puede denotar la existencia de una línea migratoria preferida o revelar la presencia de algún factor que causa dicha predominancia en las direcciones.
 
-Existen diversos test que permiten aceptar o rechazar la hipótesis de existencia de uniformidad entre los cuales destacan el test de Rayleigh,  el test V de Kuiper \cite{Kuiper1960Akad} o el test de espaciamiento de Rao \cite{Rao1969PhD} \index{Raleygh, test de}\index{V de Kuiper, test} \index{Rao, test de espacialmiento de}
+Existen diversos test que permiten aceptar o rechazar la hipótesis de existencia de uniformidad, entre los cuales destacan el test de Rayleigh,  el test V de Kuiper \cite{Kuiper1960Akad} o el test de espaciamiento de Rao \cite{Rao1969PhD} \index{Raleygh, test de}\index{V de Kuiper, test} \index{Rao, test de espacialmiento de}
 
 Para este último, se tiene un estadístico $U$ según
 
@@ -249,7 +249,7 @@ Para un numero de puntos dado y un intervalo de confianza establecido, los valor
 \section{Análisis de patrones de puntos}
 \label{Analisis_patrones_puntos}
 
-Las coordenadas de un conjunto de puntos no solo representan una información individual de cada uno de ellos, sino de igual modo para todo el conjunto a través de las relaciones entre ellas. La disposición de una serie de puntos en el espacio conforma lo que se conoce como un \emph{patrón de puntos}, el cual puede aportar información muy valiosa acerca de las variables y procesos recogidos en dichos puntos. Por ejemplo, si estos representan lugares donde se han observado individuos de una especie, su distribución espacial puede, por ejemplo, servir como indicador de la interacción entre dichos individuos o con el medio.
+Las coordenadas de un conjunto de puntos no solo representan una información individual de cada uno de ellos, sino de igual modo para todo el conjunto a través de las relaciones entre ellas. La disposición de una serie de puntos en el espacio conforma lo que se conoce como un \emph{patrón de puntos}, el cual puede aportar información muy valiosa acerca de las variables y procesos recogidos en dichos puntos. Por ejemplo, si estos representan lugares donde se han observado individuos de una especie, su distribución espacial puede servir como indicador de la interacción entre dichos individuos o con el medio.
 
 La caracterización de un patrón de puntos es, por tanto, de interés para la descripción de estos, y se realiza a través de análisis estadísticos y descriptores que definen la estructura del mismo.
 
@@ -273,12 +273,12 @@ Como se puede observar en la figura \ref{Fig:Patrones_puntos}, existen tres tipo
 \label{Fig:Patrones_puntos} 
 \end{figure*}
 
-El análisis de patrones de puntos se fundamenta básicamente en la comparación entre las propiedades de una distribución teórica aleatoria (distribución de Poisson) y las de la distribución observada. Esta distribución teórica aleatoria cumple que se da \emph{aleatoriedad espacial completa} (CSR, \emph{Complete Spatial Randomness}, en inglés). De este modo, se puede decidir si esta última es también aleatoria en caso de existir similitud, o bien es de alguno de los dos tipos restantes, según sea la discrepancia existente.\index{Aleatoriedad espacial completa}\index{Complete Spatial Randomness (CSR)}\index{Poisson, distribución}
+El análisis de patrones de puntos se fundamenta básicamente en la comparación entre las propiedades de una distribución teórica aleatoria (distribución de Poisson) y las de la distribución observada. La distribución teórica aleatoria cumple que se da \emph{aleatoriedad espacial completa} (CSR, \emph{Complete Spatial Randomness}, en inglés). De este modo, se puede decidir si la distribución observada es también aleatoria en caso de existir similitud, o bien es de alguno de los dos tipos restantes, según sea la discrepancia existente.\index{Aleatoriedad espacial completa}\index{Complete Spatial Randomness (CSR)}\index{Poisson, distribución}
 
 Las propiedades a comparar pueden ser:
 
 \begin{itemize}
- \item\textbf{ Propiedades de primer orden}. La intensidad del proceso $\lambda(h)$, definida como la densidad (número de puntos por unidad de área). En general, se asume que es una propiedad estacionaria, esto es, constante a lo largo de la zona de estudio. Existen distribuciones como la \emph{distribución no homogénea de Poisson} que asumen una variabilidad de la intensidad a lo largo de la zona de estudio. En el apartado \ref{Densidad} veremos cómo crear capas continuas de esta intensidad $\lambda(h)$.
+ \item\textbf{Propiedades de primer orden}. La intensidad del proceso $\lambda(h)$, definida como la densidad (número de puntos por unidad de área). En general, se asume que es una propiedad estacionaria, esto es, constante a lo largo de la zona de estudio. Existen distribuciones como la \emph{distribución no homogénea de Poisson} que asumen una variabilidad de la intensidad a lo largo de la zona de estudio. En el apartado \ref{Densidad} veremos cómo crear capas continuas de esta intensidad $\lambda(h)$.
 \item \textbf{Distancia entre puntos}. Relaciones entre cada punto con los de su entorno. Basado en las denominadas \emph{propiedades de segundo orden}.
 \end{itemize}
 
@@ -293,8 +293,6 @@ La forma de estas unidades puede ser cualquiera, aunque lo habitual es emplear u
 \end{equation}
 
 \noindent siendo $N$ el número de puntos y $A$ el área de la zona de estudio.
-
-Suponiendo un área de 1 km$^2$, el lado del cuadrante para analizar los ejemplos de la figura \ref{Fig:Debilidad_cuadrantes} será de 353 metros.
 
 Con la serie de datos que indica el conteo de puntos en cada cuadrante, se procede al análisis estadístico. Este puede hacerse comparando los conteos en los cuadrantes o según la relación entre la media y la varianza de la serie. En este segundo caso, partimos de que en una distribución aleatoria es de esperar una varianza igual a la media \cite{Cressie1991Wiley}. Por tanto, el cociente entre la varianza y la media debe ser cercano a 1. Si en la distribución analizada este cociente está próximo a ese valor, se tratará de una distribución aleatoria. En una distribución uniforme, la varianza (y por tanto el cociente con la media) será cercana a 0. En las distribución agrupadas, la varianza sera mayor, y el cociente por tanto superior a 1.
 
@@ -347,7 +345,7 @@ $E(\overline{d}_{mc})$ es la media esperada en una distribución de Poisson, y se
 
 \noindent donde $B$ es la longitud del perímetro del área estudiada.
 
-El índice de vecino más cercano tiene un valor de 1 en una distribución aleatoria, menor de 1 en una distribución agregada y mayor en una regular.
+El índice de vecino más cercano tiene un valor de 1 en una distribución aleatoria, menor de 1 en una distribución agregada, y mayor en una regular.
 
 La desviación típica de las distancias se estima según
 
@@ -458,7 +456,6 @@ Al igual que los métodos restantes, el empleo de funciones K se realiza con cará
 \hat{K}(h) = \frac{1}{\lambda^2 A}\sum_{j=1, j\neq i}^N \frac{I_h(d_{ij})}{w_{ij}}
 \end{equation}
 
-Junto con los anteriores métodos de análisis de patrones de puntos, existen muchos otros en la bibliografía, siendo esta un área con un desarrollo notable en la actualidad.
 
 \section{Autocorrelación espacial}\index{Autocorrelación espacial}
 
@@ -532,7 +529,7 @@ Ambos parámetros son parte de una familia de estadísticos denotadas como $\Gamma
 
 Con este esquema pueden expresarse otros indicadores tales como los denominados \emph{índices de conteo conjunto} (\emph{joint count}) \cite{Cliff1973Pion} u otros más específicos.\index{Indice@Índice!de conteo conjunto}
 
-Todo estos parámetros caracterizan la autocorrelación espacial para el conjunto completo de puntos, es decir, para todo el área de estudio. Junto a estos, existen otros parámetros que miden la autocorrelación espacial a nivel local.
+Todos estos parámetros caracterizan la autocorrelación espacial para el conjunto completo de puntos, es decir, para todo el área de estudio. Junto a estos, existen otros parámetros que miden la autocorrelación espacial a nivel local.
 
 \cite{Getis1992GeoAnal} proponen dos nuevos parámetros $G_i(d)$ y $G^*_i(d)$ que cuantifican si un punto dado $i$ se encuentra rodeado por agrupaciones de puntos con valores altos o bajos. En el caso de $G_i(d)$ no se tiene en cuenta el valor del punto $i$ mientras que en el caso de $G^*_i(d)$ sí se emplea este.
 
@@ -573,7 +570,7 @@ Esta nube aporta en principio poca información, pero puede resumirse agrupando l
 
 En la práctica se establecen una serie de valores de distancia equiespaciados, cada uno de los cuales define un intervalo centrado en dicho valor. La función $m(h)$ representa el número de puntos en cada bloque. Es importante que este número de puntos en cada bloque sea significativo, especialmente para dar validez al posterior ajuste sobre estos valores medios, como más adelante veremos.
 
-La función $\gamma(h)$ es lo que se conoce como \emph{variograma experimental}\footnote{Por emplear semivarianzas, es habitual también el uso del término \emph{semivariograma}, aunque en general este se simplifica y se entiende que \emph{variograma} hace referencia al elemento derivado de las semivarianzas. Será así como se emplee dentro de este texto.}
+La función $\gamma(h)$ es lo que se conoce como \emph{variograma experimental}\footnote{Por emplear semivarianzas, es habitual también el uso del término \emph{semivariograma}, aunque en general este se simplifica y se entiende que \emph{variograma} hace referencia al elemento derivado de las semivarianzas. Será así como se emplee dentro de este texto.}.
 
 La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variograma de la figura \ref{Fig:Variograma}.
 
@@ -586,7 +583,7 @@ La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variogr
 
 La elección de un tamaño óptimo para los intervalos es importante para obtener un variograma fiable. Si en el variograma aparecen ondulaciones, esto puede ser señal de que existe un comportamiento cíclico de la variable, pero más probablemente de que la distancia del intervalo no ha sido bien escogida.
 
-Como puede verse en dicha figura, la curva que los puntos del variograma experimental describen implícitamente da lugar a la definición de unos elementos básicos que lo caracterizan.
+Como puede verse en la figura, la curva que los puntos del variograma experimental describen implícitamente da lugar a la definición de unos elementos básicos que lo caracterizan.
 
 \begin{itemize}
  \item \emph{Rango}. El rango representa la máxima distancia a partir de la cual existe dependencia espacial. Es el valor en el que se alcanza la máxima varianza, o a partir del cual ya presenta una tendencia asintótica.
@@ -604,9 +601,9 @@ Puesto que existen procesos para los cuales la variación de valores no se da igu
 
 Una forma de visualizar cómo la variación es distinta en función de la dirección considerada es a través de una \emph{superficie variográficas} . Estas superficies no son mapas como tales (la superficie variográfica a partir de una capa ráster no tiene las mismas coordenadas que esta. De hecho, no tiene coordenadas absolutas en el espacio), sino que, respecto a un punto central en el cual la variación es lógicamente cero, expresan en cada celda el valor medio que se da a la distancia y dirección que dicha celda define respecto al punto central. \index{Superficie!variográfica}
 
-Si se traza un perfil de valores de esta superficie desde el punto central hasta un extremo de esta y en una dirección dada, el conjunto de dichos valores conforma el variograma particular de esa dirección
+Si se traza un perfil de valores de esta superficie desde el punto central hasta un extremo de esta y en una dirección dada, el conjunto de dichos valores conforma el variograma particular de esa dirección.
 
-A partir de los puntos que forman el variograma experimental, puede definirse un modelo que aporta información sobre el proceso subyacente, a partir de su forma y sus parámetros. La definición de este modelo implica el ajuste de una curva a los puntos del variograma experimental, y tiene como resultado la obtención de un \emph{variograma teórico}. En la figura \ref{Fig:Variograma} puede verse junto a los puntos del variograma experimental una curva ajustada a estos que define el variograma teórico.   Sobre este último se pueden conocer las semivarianzas para cualquier distancia $h$, no solo para las definidas por los intervalos como en el caso del variograma experimental.
+A partir de los puntos que forman el variograma experimental, puede definirse un modelo que aporta información sobre el proceso subyacente, a partir de su forma y sus parámetros. La definición de este modelo implica el ajuste de una curva a los puntos del variograma experimental, y tiene como resultado la obtención de un \emph{variograma teórico}. En la figura \ref{Fig:Variograma} puede verse junto a los puntos del variograma experimental una curva ajustada a estos que define el variograma teórico. Sobre este último se pueden conocer las semivarianzas para cualquier distancia $h$, no solo para las definidas por los intervalos como en el caso del variograma experimental.
 
 Existen muchas alternativas para elegir una función para el variograma teórico. Una función apta para este propósito debe cumplir los siguientes requisitos:
 
@@ -623,7 +620,6 @@ Sobre la base anterior, se pueden establecer familias principales de funciones a
 \begin{equation}
  \gamma(h) =C_0 \qquad; \qquad \forall h \gt 0
 \end{equation}
-En este caso, la aplicación del kriging no resulta posible, y el valor estimado en un punto es la media de los valores muestreados.
 \item Funciones que alcanzan el valor del \emph{sill} $(c)$ para un rango concreto $(a)$. Son funciones de la forma
 \begin{equation}
 \gamma(h) = \left\{ \begin{array}{ll}
@@ -684,7 +680,7 @@ Una solución para incorporar lo anterior es, en lugar de minimizar el error cuad
 
 La inspección visual del ajuste es también importante y resulta conveniente llevarla a cabo.
 
-Por último es importante señalar que el número total de puntos considerados debe tenerse en cuenta para saber si el variograma teórico calculado es fiable o no. Aunque resulta imposible establecer fórmulas exactas al respecto, se acepta generalmente que con menos de 50 puntos la fiabilidad del variograma será dudosa. Valores entre 100 y 150 son adecuados, y mayores de 250 puntos garantizan un variograma fiable.
+Por último, es importante señalar que el número total de puntos considerados debe tenerse en cuenta para saber si el variograma teórico calculado es fiable o no. Aunque resulta imposible establecer fórmulas exactas al respecto, se acepta generalmente que con menos de 50 puntos la fiabilidad del variograma será dudosa. Valores entre 100 y 150 son adecuados, y mayores de 250 puntos garantizan un variograma fiable.
 
 En el caso de tratarse de variogramas anisotrópicos, estos números son mayores.
 
@@ -703,8 +699,6 @@ S_{ij} =  (x_i - \overline{x}) (x_j - \overline{y})
 \end{equation}
 
 El conjunto de valores de covarianza y distancias entre puntos da lugar a una nube de valores que, al igual que ocurría con las semivarianzas, puede emplearse para crear una curva experimental y a partir de esta una curva teórica. Con dicha curva teórica se tiene conocimiento de la covarianza a cualquier distancia, y recibe el nombre de \emph{correlograma}.
-
-
 
 Existe una relación directa entre el variograma y el correlagrama, como puede verse en la figura \ref{Fig:Variograma_correlograma}. Con la notación de la figura, se tiene para el caso del variograma que
 
@@ -728,7 +722,7 @@ En la práctica, se emplea el variograma porque resulta más sencillo modelizar la
 
 \section{Resumen}
 
-Los datos espaciales presentan particularidades que deben considerarse a la hora de realizar cálculos estadísticos sobre ellos.Teniendo esto en cuenta, existen muy diversas formas llevar a cabo el análisis estadístico de datos espaciales, de las cuales hemos visto algunas de las más importantes
+Los datos espaciales presentan particularidades que deben considerarse a la hora de realizar cálculos estadísticos sobre ellos.Teniendo esto en cuenta, existen muy diversas formas llevar a cabo el análisis estadístico de datos espaciales, de las cuales hemos visto algunas de las más importantes.
 
 Los elementos básicos de estadística descriptiva para datos espaciales son el centro medio, el centro mediano y la distancia típica. La elipse de variación permite representar gráficamente la dispersión, considerando que esta no se da igual en todas direcciones.
 
