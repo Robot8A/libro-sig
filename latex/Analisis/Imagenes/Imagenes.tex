@@ -18,34 +18,35 @@ Al final de este capítulo se tendrá una visión genérica de la potencialidad que 
 \section{Introducción}
 \pagestyle{fancy}
 
-Las imágenes como tipo de dato son parte de los SIG desde prácticamente su origen, y las formulaciones dedicadas al análisis de estas existen también desde entonces y son un campo muy desarrollado.  Este análisis representa una de las áreas más ricas, combinando aquellas formulaciones que consideran la naturaleza del tipo particular de imágenes que se usan en un SIG ---esto es, el hecho de que son imágenes de la superficie terrestre--- junto con las que existen para el análisis y proceso de imágenes digitales en general. Estas últimas constituyen por sí  solas un amplio grupo de técnicas que, en conjunto con las dedicadas al análisis de datos espaciales, forman una serie de herramientas de gran utilidad para el uso genérico de los SIG.
+Las imágenes como tipo de dato son parte de los SIG desde prácticamente su origen, y las formulaciones dedicadas al análisis de estas existen también desde entonces y son un campo muy desarrollado.  Este análisis representa una de las áreas más ricas del SIG, ya que combina las formulaciones que consideran la naturaleza de esta clase particular de imágenes ---esto es, el hecho de que son imágenes de la superficie terrestre--- junto con las que existen para el análisis y proceso de imágenes digitales en general. Estas últimas constituyen por sí solas un amplio grupo de técnicas que, en conjunto con las dedicadas al análisis de datos espaciales, forman una serie de herramientas de gran utilidad para el uso genérico de los SIG.
 
 Si la consideramos simplemente como una estructura de datos, una imagen no es sino una capa ráster más. Tiene la estructura regular de una capa ráster y contiene en cada celda (cada píxel de la imagen) el valor asociado a una variable dada. Particularmente, esta variable es la intensidad de la reflectancia en una longitud de onda dada.\index{Reflectancia}
 
 No existe diferencia <<formal>> entre un MDE creado a partir de la información recogida por un sensor remoto tal como los utilizados, por ejemplo, para la Shuttle Radar Topographic Mision (SRTM), y una imagen de satélite tal como las que proporciona el satélite LANDSAT (salvo el hecho de que esta última contiene varias bandas en lugar de una única). No obstante, la naturaleza de la variable recogida en la imagen y la componente visual intrínseca a la misma hacen que el campo del análisis de imágenes presente sus particularidades, que serán las que veremos a lo largo de este capítulo.\index{Shuttle Radar Topographic Mission}	
 
-En conjunto, estudiaremos los elementos básicos del análisis de imágenes digitales, así como las formulaciones específicas para el caso de imágenes aéreas o procedentes de teledetección, es decir, las formulaciones específicas para el tipo de análisis que se realiza en un SIG. Algunas formulaciones más particulares se verán en la parte dedicada a las aplicaciones.
+En conjunto, estudiaremos los elementos básicos del análisis de imágenes digitales, así como las formulaciones específicas para el caso de imágenes aéreas o procedentes de teledetección, es decir, las formulaciones específicas para el tipo de análisis que se realiza en un SIG. 
 
-Tanto uno como otro de estos grupos son muy extensos, y en el espacio de este capítulo no pueden recogerse sino las formulaciones más habituales y útiles de ambos. La teledetección queda en muchas ocasiones fuera de los textos al uso sobre SIG, como una disciplina con entidad propia, relegándose también junto a ella al procesado de imágenes. No obstante, los SIG no pueden entenderse hoy día sin el concurso de imágenes, ya sea como elementos visuales o como objetos de análisis, y las metodologías dedicadas a su procesado deben recogerse al menos en cierta medida en un libro como este.
+Tanto uno como otro de estos grupos son muy extensos, y en el espacio de este capítulo no pueden recogerse sino las formulaciones más habituales y útiles de ambos. La teledetección queda en muchas ocasiones fuera de los textos al uso sobre SIG, como una disciplina con entidad propia, relegándose también junto a ella al procesado de imágenes. Aun así, los SIG no pueden entenderse hoy día sin el concurso de imágenes, ya sea como elementos visuales o como objetos de análisis, y las metodologías dedicadas a su procesado deben recogerse al menos en cierta medida en un libro como este.
 
 Debido a lo extenso de la materia a tratar y a la fuerte componente matemática con la que puede presentarse, se ha simplificado la exposición, incluyendo estos elementos matemáticos en limitadas ocasiones y dando más peso al aspecto práctico. En caso de que el lector esté interesado, las referencias indicadas a lo largo del capítulo contienen descripciones detalladas de las fórmulas y procesos que definen cada una de las operaciones sobre imágenes que veremos a continuación
 
 \subsection{La utilidad de las imágenes en un SIG}
 
-Antes de estudiar las técnicas de procesado de imágenes, debemos conocer la utilidad que estas tienen cuando son incorporadas a un SIG. Debemos tener en cuenta que no se trata de un dato tan genérico como, por ejemplo, una capa ráster. En esta podríamos almacenar tanto variables continuas como categóricas, y ya sean de un tipo o de otro, pueden ser variables de naturaleza muy variada, desde un valor de temperatura a uno de presión, pasando por el tipo de suelo o el número de individuos presentes en una celda de la capa. Las imágenes presentan una amplitud menor en cuanto a la información que pueden contener, y aunque como ya vimos existe gran variabilidad en los contenidos dependiendo de la forma de recogida de dicha información, esto restringe y condiciona los resultados que pueden perseguirse a través del análisis de estas imágenes.
+Antes de estudiar las técnicas de procesado de imágenes, debemos conocer la utilidad que estas tienen cuando son incorporadas a un SIG. 
 
 En líneas generales, podemos identificar los siguientes procesos, que serán a los que se adapten las técnicas que veremos a lo largo del capítulo.
 
 \begin{itemize}
- \item \textbf{Representación}. Las imágenes son, ante todo, elementos visuales, y en muchos casos no se utilizan más que para conformar una base sobre la que emplazar otras capas. En este sentido, las imágenes son utilizadas para proveer un contexto visual en el entorno de trabajo de un SIG.
+ 
+\item \textbf{Representación}. Las imágenes son, ante todo, elementos visuales, y en muchos casos no se utilizan más que para conformar una base sobre la que emplazar otras capas. En este sentido, las imágenes son utilizadas para proveer un contexto visual en el entorno de trabajo de un SIG.
 
-Este libro contiene una parte entera dedicada a la generación cartográfica, en la cual se tratan aspectos relativos a la representación de todo tipo de capas de datos espaciales, entre ellas las imágenes. No obstante, la literatura es abundante en algoritmos que permiten mejorar las capacidades que una imagen tiene de transmitir su información o de establecer ese citado contexto visual, y estos algoritmos se detallarán en este capítulo.
+Este libro contiene una parte entera dedicada a la generación cartográfica, en la cual se tratan aspectos relativos a la representación de todo tipo de capas de datos espaciales, entre ellas las imágenes. Junto a ello, la literatura es abundante en algoritmos que permiten mejorar las capacidades que una imagen tiene de transmitir su información o de establecer ese citado contexto visual, y estos algoritmos se detallarán en este capítulo.
 
-\item \textbf{Identificación de elementos}. La realidad que se refleja en una imagen esta compuesta por los objetos presentes sobre la superficie terrestre. Arboles, carreteras, zonas de distinta vegetación, así como otros muchos elementos de pequeño o gran tamaño son los que constituyen esa realidad. Conocemos ya fórmulas para tratar con esos elementos y estudiarlos dentro de un SIG. Obtener a partir de las imágenes nuevas capas que los contengan es una tarea habitual que pone de manifiesto la gran utilidad de estas.
+\item \textbf{Identificación de elementos}. La realidad que se refleja en una imagen esta compuesta por los objetos presentes sobre la superficie terrestre. Arboles, carreteras, zonas de distinta vegetación, así como otros muchos elementos de pequeño o gran tamaño son los que constituyen esa realidad. Conocemos ya fórmulas para tratar con esos elementos y estudiarlos dentro de un SIG. Obtener a partir de las imágenes nuevas capas que los contengan es una tarea habitual.
 
 La identificación y delineación de estos elementos puede implicar la creación de nuevas capas vectoriales o bien de capas ráster, así como las transformaciones encaminadas a que dichas operaciones de identificación se realicen de manera lo más precisa posible.
 
-\item \textbf{Identificación de características}. Si tomamos una imagen, podemos identificar por sus formas una carretera, y decir si es ancha o estrecha, larga o corta, o bien si es sinuosa o rectilínea. Estos parámetros geométricos son los que nos ayudan a identificar el elemento en sí, según lo comentado en el punto anterior, pero no es solo lo referente a la geometría lo que una imagen puede contener acerca de esa carretera. Mirando esa misma imagen, es probable que podamos decir por su color si el firme es asfaltado o, por el contrario, es de tierra y se trata de un camino. Esta identificación de las propiedades de un elemento, o bien de una simple celda aislada, es otra de las funciones básicas que se llevan a cabo a partir de imágenes.
+\item \textbf{Identificación de características}. Si tomamos una imagen, podemos identificar por sus formas una carretera y decir si es ancha o estrecha, larga o corta, o bien si es sinuosa o rectilínea. Estos parámetros geométricos son los que nos ayudan a identificar el elemento en sí, según lo comentado en el punto anterior, pero no es solo lo referente a la geometría lo que una imagen puede contener acerca de esa carretera. Mirando esa misma imagen, es probable que podamos decir por su color si el firme es asfaltado o, por el contrario, es de tierra y se trata de un camino. Esta identificación de las propiedades de un elemento, o bien de una simple celda aislada, es otra de las funciones básicas que se llevan a cabo a partir de imágenes.
 
 Dentro de este grupo merecen especial mención aquellas formulaciones que estiman propiedades físicas de los elementos recogidos en la imagen. Con los valores de una imagen puede estimarse desde el vigor vegetativo de una masa arbórea hasta la turbidez del agua de un embalse, entre otros muchos parámetros físicos de diversa índole.
 
@@ -53,17 +54,19 @@ Dentro de este grupo merecen especial mención aquellas formulaciones que estiman
 
 \subsection{Tipos de procesos con imágenes}
 
-Teniendo en consideración las anteriores utilidades básicas de las imágenes en un SIG, las operaciones sobre estas imágenes pueden dividirse en tres grupos principales:
+Teniendo en consideración las anteriores utilidades básicas de las imágenes en un SIG, las operaciones sobre estas pueden dividirse en tres grupos principales:
 
 \begin{itemize}
- \item \textbf{Corrección}. Los equipos empleados para recoger las imágenes pueden incorporar errores, ruido, o distorsiones. Eliminar o tratar estas para que su efecto sea menor es un proceso previo que en la mayoría de los casos es un requerimiento imprescindible antes del análisis.
-\item \textbf{Mejora}. La mejora es el paso siguiente a la corrección. Una vez que las imágenes han sido corregidas, la información que contienen puede hacerse más explícita a través de distintos tipos de modificaciones. En el análisis visual, la mejora de una imagen hace que sea más sencillo percibir el contenido de esta y darle un uso directo. Las características de esa carretera o su propia forma, pueden verse más claramente. Cuando estos procesos de identificación de elementos y características se realizan de forma automática mediante algoritmos y no manualmente, también es importante una preparación de las imágenes para mejorarlas de cara a este proceso. Mejorando una imagen, mejoramos también la capacidad de esos algoritmos de <<ver>> la información que pretendemos obtener, de un modo muy similar a como sucede con un observador humano.
+\item \textbf{Corrección}. Los equipos empleados para recoger las imágenes pueden incorporar errores, ruido, o distorsiones. Eliminar o tratar estas para que su efecto sea menor es un proceso previo que en la mayoría de los casos es un requerimiento imprescindible antes del análisis.
+
+\item \textbf{Mejora}. La mejora es el paso siguiente a la corrección. Una vez que las imágenes se han corregido, la información que contienen puede hacerse más explícita a través de distintos tipos de modificaciones. En el análisis visual, la mejora de una imagen hace que sea más sencillo percibir el contenido de esta y darle un uso directo. Las características o la forma de esa carretera de la que hablábamos pueden verse más claramente. Cuando estos procesos de identificación de elementos y características se realizan no de forma manual, sino automática, también es importante una preparación de las imágenes para mejorarlas de cara a este proceso. Mejorando una imagen, mejoramos también la capacidad de esos algoritmos de <<ver>> la información que pretendemos obtener, de un modo muy similar a como sucede con un observador humano.
+
 \item \textbf{Extracción de información}. Los valores de las distintas bandas de una imagen pueden emplearse para derivar otros nuevos, tales como variables de tipo físico o pertenencia a clases predefinidas que pueden identificar los elementos presentes sobre el terreno. Estos procesos implican una \emph{interpretación} de la imagen en cuestión.
 \end{itemize}
 
 \subsection{Análisis visual y análisis automático}
 
-Las tareas de corrección y mejora van a implicar necesariamente la utilización de algoritmos, los cuales veremos en las siguientes secciones. Estas operaciones, como hemos dicho, favorecen el buen desarrollo de la extracción de información posterior, y mejoran los resultados obtenidos. Las operaciones de extracción de información, al contrario que las anteriores, pueden llevarse a cabo tanto manualmente y de forma visual(por ejemplo, digitalizando directamente en pantalla), como de forma automatizada (veremos algoritmos para ello en este capítulo, así como en otros posteriores). Existe, pues, un análisis manual que requiere un operario visualizando y tratando una imagen, y otro automático en el que se deja al propio SIG realizar esta tarea.
+Las tareas de corrección y mejora van a implicar necesariamente la utilización de algoritmos, los cuales veremos en las siguientes secciones. Estas operaciones, como hemos dicho, favorecen el buen desarrollo posterior de la extracción de información, y mejoran los resultados obtenidos. Las operaciones de extracción de información, al contrario que las anteriores, pueden llevarse a cabo tanto manualmente y de forma visual(por ejemplo, digitalizando directamente en pantalla), como de forma automatizada (veremos algoritmos para ello en este capítulo, así como en otros posteriores). Existe, pues, un análisis manual que requiere un operario visualizando y tratando una imagen, y otro automático en el que se deja al propio SIG realizar esta tarea.
 
 Algunas de las principales diferencias entre el análisis visual y el automático se enuncian a continuación. Estas condicionan la utilización de una u otra solución en función de las necesidades.
 
@@ -71,7 +74,9 @@ Algunas de las principales diferencias entre el análisis visual y el automático 
 \begin{itemize}
 	\item El análisis visual requiere conocimientos más sencillos e intuitivos, mientras que el automático requiere conocimientos técnicos para ajustar los algoritmos que realizan el proceso.
 	\item Mientras que el análisis visual se basa tanto en las propiedades espaciales como en las tonalidades de la imagen, en el caso de un análisis automático, este se basa fundamentalmente en los valores de reflectancia, incorporando en ocasiones cierta componente espacial. Las propiedades de forma, tamaño u orientación, aunque importantes como vimos en el apartado anterior, resultan más difíciles de ser reconocidas y empleadas por los algoritmos correspondientes que las basadas en el análisis de los Niveles Digitales.
-	\item El ojo humano puede analizar imágenes en blanco y negro o en color, pero es difícil que pueda trabajar con imágenes con más bandas, que pueden llegar incluso a cientos. Por ello, las imágenes multi e hiperespectrales se analizan de forma habitual mediante algoritmos y procesos automatizados, mientras que el análisis visual queda limitado para las imágenes más sencillas. Como veremos más adelante, pueden crearse representaciones en color de las imágenes con elevado número de bandas, acercando de ese modo la posibilidad de un análisis visual de las mismas, aunque en ningún caso de la totalidad de bandas, sino solo de un subconjunto muy reducido de ellas. De igual modo, una banda aislada puede analizarse visualmente, pero ello no permite acceder a toda la información que el conjunto de bandas de la imagen puede aportar, mientras que el análisis no visual no se encuentra restringido por las limitaciones propias de la visión humana. 
+	\item El ojo humano puede analizar imágenes en blanco y negro o en color, pero es difícil que pueda trabajar con imágenes con más bandas, que pueden llegar incluso a cientos. Por ello, las imágenes multi e hiperespectrales se analizan de forma habitual mediante algoritmos y procesos automatizados, mientras que el análisis visual queda limitado para las imágenes más sencillas. 
+
+	Como veremos más adelante, pueden crearse representaciones en color de las imágenes con elevado número de bandas, acercando de ese modo la posibilidad de un análisis visual de estas, aunque en ningún caso de la totalidad de bandas, sino solo de un subconjunto muy reducido de ellas. De igual modo, una banda aislada puede analizarse visualmente, pero ello no permite acceder a toda la información que el conjunto de bandas de la imagen puede aportar, mientras que el análisis no visual no se encuentra restringido por las limitaciones propias de la visión humana. 
 	\item La naturaleza del análisis automatizado es fundamentalmente cuantitativa, incorporando formulaciones estadísticas o análisis matemáticos basados en los valores que se recogen en cada píxel. Por el contrario, el análisis visual se basa en propiedades cualitativas de los elementos de la imagen, más sencillas de percibir e interpretar por quién desarrolla dicho análisis.
 \end{itemize}
 
@@ -80,15 +85,17 @@ Es importante tener en cuenta estas diferencias, ya que las circunstancias en la
 \section{Correcciones y preparación de imágenes}
 \label{Correccion_imagenes}
 
-Del mismo modo que un MDE contiene depresiones irreales (véase capítulo \ref{Geomorfometria}) que deben ser corregidas antes de proceder a su análisis hidrológico, las imágenes presentan también otros elementos que hacen necesaria una preparación antes de pasar al uso propiamente dicho. Estos elementos están relacionados con la forma en que los sensores capturan la información y las imprecisiones que en este proceso pueden aparecer, y tratan de eliminar estas imprecisiones para que los Niveles Digitales de las distintas celdas reflejen fielmente la realidad presente en el momento de capturar dicha imagen.
+Del mismo modo que un MDE contiene depresiones irreales (véase capítulo \ref{Geomorfometria}) que deben ser corregidas antes de proceder a su análisis hidrológico, las imágenes presentan también otros elementos que hacen necesaria una preparación antes de pasar al uso propiamente dicho. Estos elementos están relacionados con la forma en que los sensores capturan la información y las imprecisiones que pueden aparecer en este proceso, y tratan de eliminar estas imprecisiones para que los Niveles Digitales de las distintas celdas reflejen fielmente la realidad presente en el momento de capturar dicha imagen.
 
-Independientemente del número de bandas de la imagen, las correcciones se realizan de forma individual para cada una de las bandas, ya que algunos de los errores pueden aparecer solo en parte de dichas bandas, y no necesariamente sobre todas ellas de forma simultanea para un mismo píxel.\index{Pixel|(}
+Independientemente del número de bandas de la imagen, las correcciones se realizan de forma individual para cada una de las bandas, ya que algunos de los errores pueden aparecer solo en parte ellas, y no necesariamente sobre todas de forma simultanea para un mismo píxel.\index{Pixel|(}
 
 Los tipos principales de deficiencias que puede contener una imagen son los siguientes:
 
 \begin{itemize}
 \item \textbf{Geométricas}. Distorsiones de forma provocadas por los movimientos y oscilaciones del sensor, o por el relieve del terreno, entre otros factores.
+
 Con una base conceptual relacionada con las técnicas de corrección de estas deficiencias, existe un paso básico que debemos llevar a cabo en muchos casos: la georreferenciación de la imagen. Para incorporar dicha imagen dentro del ámbito de un SIG, es necesario que le asignemos una referencia geográfica ya que, como bien sabemos, todos los datos espaciales han de tener definida su posición en el espacio. Cuando esta referencia no existe, es necesario llevar a cabo un proceso que la defina. 
+
 \item \textbf{Radiométricas}. Valores incorrectamente recogidos por el sensor. Pueden ser debidas a errores del sensor o introducidos en el proceso de almacenamiento o transmisión, o bien a distorsiones debidas al efecto que la atmósfera ejerce sobre la radiación (y por tanto sobre los valores recogidos).
 \end{itemize}
 
@@ -104,22 +111,16 @@ Por la propia naturaleza del proceso de toma de imágenes, estas presentan habitu
 	\item Las variaciones en la velocidad y altura de la plataforma de registro.
 \end{itemize}
 
-Para disminuir estos efectos existen una serie de métodos cuya finalidad es corregir y distorsionar la imagen original con objeto de que esta constituya una representación más fiable de la escena original \cite{Lillesand1997Wiley}. Dos son los métodos más utilizados para la corrección geométrica de las imágenes: la \emph{rectificación} y la \emph{ortorectificación}.\index{Rectificación}
+Para disminuir estos efectos, existen una serie de métodos cuya finalidad es corregir y distorsionar la imagen original con objeto de que esta constituya una representación más fiable de la escena original \cite{Lillesand1997Wiley}. Dos son los métodos más utilizados para la corrección geométrica de las imágenes: la \emph{rectificación} y la \emph{ortorectificación}.\index{Rectificación}
 
 \subsubsection{Rectificación}
 \label{Rectificacion}
 
-El proceso de rectificación se fundamenta en el establecimiento de una correspondencia entre las coordenadas de los píxeles de la imagen y las coordenadas reales sobre el terreno de los objetos que estos píxeles representan. Por medio de una función de transformación de la forma 
-
-\begin{equation}
-(x', y') = f(x,y)
-\end{equation}
-
-\noindent se establece la anterior correspondencia, que permite modificar la imagen original y obtener una nueva. Esta, como resultado de las distorsiones y modificaciones que se introducen, refleja más fielmente el terreno y corrige los errores geométricos que han aparecido durante la toma de la imagen. 
+El proceso de rectificación se fundamenta en el establecimiento de una correspondencia entre las coordenadas de los píxeles de la imagen y las coordenadas reales sobre el terreno de los objetos que estos píxeles representan. Por medio de una función de transformación se establece una correspondencia que permite modificar la imagen original y obtener una nueva, la cual refleja más fielmente el terreno y corrige los errores geométricos que han aparecido durante la toma de la imagen. 
 
 El proceso de rectificación implica el cálculo de la función de transformación, para lo cual se emplea  un conjunto de \emph{puntos de referencia} o \emph{puntos de control}\footnote{Estos puntos de control son similares a los que veíamos en el caso de utilizar una tableta digitalizadora, cuyo uso explicamos en el capítulo \ref{Fuentes_datos}}. Estos son elementos puntuales de los cuales se conoce con exactitud sus coordenadas reales (bien habiéndolas tomado sobre el terreno o bien con una imagen ya corregida cuya georreferencia pueda emplearse como dato fiable), y pueden localizarse en la imagen. Identificando estos puntos y localizándolos sobre la imagen a corregir se puede calcular la transformación de tal forma que al aplicar dicha transformación sobre los puntos de control, pasen a tener las coordenadas que realmente les corresponden con un error mínimo.\index{Puntos!de referencia}\index{Puntos!de control}
 
-Los puntos de control deben buscarse en elementos del terreno que sean fácilmente localizables y que puedan definirse con la mayor precisión posible. Cruces de caminos u otros puntos singulares son habitualmente empleados para este fin. Lógicamente, la elección de estos puntos depende de la resolución de la imagen, ya que elementos tales como vértices geodésicos, muy aptos para ser puntos de control, pueden verse en las imágenes de gran resolución pero no en las de menor resolución.
+Los puntos de control deben buscarse en elementos del terreno que sean fácilmente localizables y que puedan definirse con la mayor precisión posible. Cruces de caminos u otros puntos singulares se emplean habitualmente para este fin. Lógicamente, la elección de estos puntos depende de la resolución de la imagen, ya que elementos tales como vértices geodésicos, muy aptos para ser puntos de control, pueden verse en las imágenes de gran resolución pero no en las de menor detalle.
 
 Con los puntos de control determinados, debe elegirse un tipo de función para ajustar. Una transformación afín puede ser una opción inicial, pero las modificaciones que permite (rotación, traslación y cambio de escala) no son suficientes para la corrección de las distorsiones geométricas habituales, ya que estas son de una naturaleza más compleja. Funciones de segundo o tercer grado son las opciones más habituales que cumplan los requisitos necesarios, ajustándose estas mediante mínimos cuadrados. 
 
@@ -152,7 +153,7 @@ La imagen \ref{Fig:Rectificacion} muestra un ejemplo gráfico de este proceso. Se
 
 La ortorrectificación persigue un objetivo similar a la rectificación, pero incluye un factor adicional: la elevación. En lugar de darse una transformación plana, esta es de tipo espacial, ya que utiliza los valores de elevación correspondientes a los distintos píxeles para proceder al ajuste.
 
-Esta elevación provoca un desplazamiento aparente de los píxeles y, según el caso, puede ser tan necesario corregir este efecto como lo es el hacerlo para las distorsiones del plano. En la figura \ref{Fig:Ortorrectificacion} se muestra una fotografía aérea antes y después del proceso de ortorrecificacion. A esta segunda se la denomina \emph{ortofotografía}.\index{Ortofotografía}
+Esta elevación provoca un desplazamiento aparente de los píxeles y, según el caso, puede ser tan necesario corregir este efecto como lo es el hacerlo para las distorsiones del plano. En la figura \ref{Fig:Ortorrectificacion} se muestra una fotografía aérea antes y después del proceso de ortorrectificacion. A esta segunda se la denomina \emph{ortofotografía}.\index{Ortofotografía}
 
 \begin{figure*}[t]   
 \centering
@@ -182,37 +183,47 @@ La corrección radiométrica corrige valores erróneamente registrados o ruido pres
 
 En algunos casos el valor que aparece en el píxel es un valor erróneo del cual no puede extraerse información alguna. Este caso se presenta, por ejemplo, si en el proceso de almacenamiento se ha producido una mala transmisión y algunos píxeles se han <<perdido>>. La información necesaria para establecer un valor correcto en dichos píxeles no puede tomarse del propio píxel, sino que es necesario recurrir a los píxeles circundantes o a otros elementos tales como el histograma de la imagen.
 
-En otros casos, no obstante, el Nivel Digital del píxel sí contiene información valiosa, y lo que es necesario es transformar este, ya que, debido a la influencia de factores externos, no es exactamente el que debiera corresponderle. El conocimiento de esos factores externos es necesario para poder realizar esta transformación.
+En otros casos, el Nivel Digital del píxel sí contiene información, y lo que es necesario es transformar este, ya que, debido a la influencia de factores externos, no es exactamente el que debiera corresponderle. El conocimiento de esos factores externos es necesario para poder realizar esta transformación.
 
 En función de la causa que los ha originado, distinguimos los siguientes tipos de errores:
 
 \begin{itemize}
 	\item \textbf{Errores debidos a los sensores}. Los sensores pueden introducir errores en las imágenes tanto en forma de distorsión como en forma de ruido, ya sea este regular o aleatorio.		
+
 	Por ejemplo, los sensores ópticos pueden presentar distorsiones achacables a las lentes, que con frecuencia se manifiesta en áreas más oscuras en el borde de las imágenes en comparación con las celdas centrales. En el caso de sensores electro-ópticos, deben emplearse datos auxiliares para la calibración de estos y así garantizar el registro correcto de los valores correspondientes.
+
 	Errores habituales dentro de este grupo son igualmente los píxeles o líneas perdidas, apareciendo píxeles aislados o líneas completas cuyos valores deben descartarse. La estimación de valores para dichos píxeles o líneas se realiza empleando los valores de píxeles circundantes, pues existe una relación clara entre ellos. El empleo de filtros (ver más adelante el apartado \ref{Filtros}), es una técnica habitual para realizar esta corrección.
+
 	Existe también correlación entre las distintas bandas de una imagen, por lo que no solo pueden utilizarse los píxeles de la misma banda, sino también los propios píxeles perdidos, pero en otras bandas. En general, los sensores que recogen las distintas longitudes de onda (las distintas bandas) son independientes, por lo que el error no debe aparecer en todas ellas.\index{Filtro}
-	\item \textbf{Errores debidos a la topografía}. Además de producir distorsiones geométricas como ya hemos visto, las formas del relieve condicionan la forma en que la radiación es reflejada, ya que dicha reflexión esta condicionada por el ángulo de incidencia. El uso de Modelos Digitales de Elevaciones e información sobre las condiciones de iluminación en las que se ha tomado la imagen permite plantear modelos de iluminación que pueden corregir estos efectos.
+
+	\item \textbf{Errores debidos a la topografía}. Además de producir distorsiones geométricas como ya hemos visto, las formas del relieve condicionan la forma en que la radiación se refleja, ya que dicha reflexión esta condicionada por el ángulo de incidencia. El uso de Modelos Digitales de Elevaciones e información sobre las condiciones de iluminación en las que se ha tomado la imagen permite plantear modelos de iluminación que pueden corregir estos efectos.
+
 	Existen diversas formas de aplicar una corrección a una imagen y eliminar el efecto de la topografía, algunas de ellas relativamente simples. Una formulación simple es la siguiente:
 		\begin{itemize}
-		\item A partir de un Modelo Digital del Elevaciones se calcula una capa de relieve sombreado. Los parámetros empleados para su creación (azimut y elevación) deben coincidir en la medida de lo posible con las existentes en el momento en que la imagen fue recogida.
+		\item A partir de un Modelo Digital del Elevaciones se calcula una capa de relieve sombreado. Los parámetros empleados para su creación (azimut y elevación) deben coincidir en la medida de lo posible con las condiciones existentes en el momento en que la imagen fue recogida.
 		\item Se realiza una regresión entre esta capa de relieve sombreado y la imagen a corregir, de forma que se tenga una función de la forma $y=ax + b$.
 		\item Se aplica la transformación definida por la anterior ecuación a los valores de la capa de relieve sombreado.\index{Relieve sombreado}
 		\item Se resta la capa resultante a la imagen a corregir.
 		\item Se suma a la capa resultante del paso anterior el valor de reflectancia media de la imagen original.\index{Reflectancia}
 		\end{itemize}
 
-	\item \textbf{Errores debidos al efecto de la atmósfera en la radiación}. Los errores debidos a la atmósfera son de los más importantes dentro de los que provocan alteraciones radiométricas en la imagen, y son estudiados en ocasiones de forma independiente, en lugar de como un subtipo de error radiométrico. 
+	\item \textbf{Errores debidos al efecto de la atmósfera en la radiación}. Los errores debidos a la atmósfera son de los más importantes dentro de los que provocan alteraciones radiométricas en la imagen, y se estudian en ocasiones de forma independiente, en lugar de como un subtipo de error radiométrico. 
+
 	Para comprender la necesidad de esta corrección debe tenerse en cuenta que en algunos casos lo que interesa de la imagen no son los Niveles Digitales, sino una variable con sentido físico como la radiancia correspondiente a cada longitud de onda. Será esta radiancia la que luego se analice para la obtención de otros parámetros físicos derivados, y su obtención se realiza a partir de los Niveles Digitales aplicando ecuaciones lineales con parámetros dependientes del sensor.\index{Niveles Digitales}
+
 	El problema estriba en que la radiancia que se obtiene al aplicar este proceso es la que ha alcanzado el sensor, que no ha de corresponderse necesariamente con la que se tiene sobre el terreno o la que recibiría el sensor si estuviera a una distancia mínima del objeto. La atmósfera afecta a la radiación en su camino desde el suelo hasta el sensor, y distorsiona la información recogida.
+
 	Los efectos atmosféricos son principalmente de dos clases: \emph{difusión} y \emph{absorción}. La difusión es causada por las partículas de pequeño tamaño de la atmósfera, que desvían una parte de la energía radiante, alterando su dirección. La modificación que se produce depende del tamaño de las partículas implicadas en relación con la longitud de onda de la radiación \cite{Liou2002Academic}. La absorción, por su parte, se produce cuando los elementos constituyentes de la atmósfera absorben parte de la radiación para emitirla posteriormente en una longitud de onda distinta. La intensidad de la radiación disminuye con el efecto de la difusión.\index{Difusión}\index{Absorción}
-	Ambos efectos conjuntos producen un efecto de <<neblina>> en la imagen, restándole contraste. La difusión, asimismo, tiene un efecto adicional de adyacencia, ya que cada píxeles recoge parcialmente la radiación que en realidad debería corresponder a otros píxeles contiguos.
+
+	Ambos efectos conjuntos producen un efecto de <<neblina>> en la imagen, restándo contraste. La difusión, asimismo, tiene un efecto adicional de adyacencia, ya que cada píxel recoge parcialmente la radiación que en realidad debería corresponder a otros píxeles contiguos.
+
 	La corrección de los efectos atmosféricos es compleja y existen muchas formulaciones distintas que escapan al alcance de este texto. Para saber más, una buena descripción de estos métodos puede encontrarse en \cite{Kaufman1989Wiley}
 
 \end{itemize}
 
 \section{Mejoras}
 
-Una vez las imágenes están corregidas, puede procederse a su análisis. Este, no obstante, en especial el de tipo visual, puede proporcionar mejores resultados si se tratan los valores de la imagen con anterioridad, efectuando ajustes encaminados a mejorar las imágenes como datos de partida. Este tipo de tratamiento no es imprescindible, pero sí interesante de cara a preparar las imágenes, y existen numerosos métodos para ello.
+Una vez las imágenes están corregidas, puede procederse a su análisis. Este, en especial el de tipo visual, puede proporcionar mejores resultados si se tratan los valores de la imagen con anterioridad, efectuando ajustes encaminados a mejorar las imágenes como datos de partida. 
 
 Podemos comprender mejor esto si pensamos en el tratamiento de imágenes fotográficas habituales. Los métodos que se aplican para realzar el color de estas, enfocar zonas borrosas, o ajustar el brillo o el contraste, entre otros, se pueden aplicar de idéntica forma a imágenes aéreas o de satélite. El efecto que tienen sobre estas es similar, mejorando la forma en que las percibimos, y también la forma en que sus valores pueden ser analizados en otros procesos posteriores.
 
@@ -243,7 +254,7 @@ A la hora de definir estas funciones de transformación, un elemento de utilidad 
 
 La primera operación que veremos es la \emph{segmentación}, cuyo objetivo es particionar una imagen en diversas regiones en base a criterios de homogeneidad o heterogeneidad \cite{Haralick1992Addison}.\index{Segmentación}
 
-Aunque veremos que existen muchas formas de segmentación, en su forma más básica se trata de una operación píxel a píxel cuyo resultado es lo que conocemos como una imagen \emph{binaria}. Esto quiere decir que dicha imagen tiene únicamente dos valores: uno de ellos representa lo que se conocen como \emph{objetos} (que se representan habitualmente en negro), y otros representan el \emph{fondo} de la imagen (habitualmente blanco).
+Aunque veremos que existen muchas formas de segmentación, en su forma más básica se trata de una operación píxel a píxel cuyo resultado es lo que conocemos como una imagen \emph{binaria}. Esto quiere decir que dicha imagen tiene únicamente dos valores: uno de ellos representa lo que se conoce como \emph{objetos} (que se representan habitualmente en negro), y el otro representan el \emph{fondo} de la imagen (habitualmente blanco).
 
 Este procedimiento nos sirve para separar partes de la imagen en función de sus valores. Muy frecuentemente, encontraremos en una imagen algunos elementos que nos resultarán de interés (por ejemplo, una carretera a lo largo de una zona desierta, claramente diferenciable), y resultará de interés separar esos elementos del resto de la imagen. Esto permitirá que sea más sencillo operar con esos elementos en posteriores operaciones. La segmentación simplifica los elementos de la imagen, y la imagen resultante tiene menor complejidad pero resulta más útil a la hora de realizar tales operaciones.
 
@@ -255,8 +266,6 @@ La figura \ref{Fig:Segmentacion} nos muestra el resultado de una operación de se
 \caption{\small Imagen original (a) y resultado de un proceso de segmentación (b)}
 \label{Fig:Segmentacion} 
 \end{figure*}
-
-
 
 Como vemos, la función de transformación simplemente establece un valor umbral, a partir del cual se asocia el valor 255, mientras que por debajo se asocia el valor 0 (es habitual también emplear los valores 1 y 0 en lugar de los anteriores). Suponemos en este caso que los valores que resultan de interés y queremos aislar son aquellos que presentan valores superiores al umbral, mientras que todos los restantes los consideramos parte del fondo. La operación puede realizarse también al contrario, en caso de que los objetos a separar vengan caracterizados por valores bajos. En este caso, se asignaría 255 a los valores por debajo del umbral y 0 a los restantes.
 
@@ -276,7 +285,7 @@ Este tipo de segmentación es, como se ha dicho, la forma más sencilla de esta cl
 
 Para el lector interesado, en \cite{Gonzales1993Addison} o \cite{Haralick1992Addison} pueden encontrarse tratados en profundidad todos estos distintos grupos de metodologías.
 
-Desde el punto de vista de las operaciones del álgebra de mapas que conocemos, la segmentación es una reclasificación de valores lo más sencilla posible, ya que únicamente se crean dos clases (la de valores por debajo del umbral y la de valores por encima de él). Un proceso algo más complejo es la definición de varios umbrales, de forma que aparezcan más clases, siendo este también equivalente a la reclasificación según la vimos en su momento. No obstante, en el ámbito del análisis de imágenes esta operación se conoce habitualmente con el nombre de \emph{Density slicing}.\index{Density Slicing}
+Desde el punto de vista de las operaciones del álgebra de mapas que conocemos, la segmentación es una reclasificación de valores lo más sencilla posible, ya que únicamente se crean dos clases (la de valores por debajo del umbral y la de valores por encima de él). Un proceso algo más complejo es la definición de varios umbrales, de forma que aparezcan más clases, siendo este también equivalente a la reclasificación según la vimos en su momento. En el ámbito del análisis de imágenes esta operación se conoce habitualmente con el nombre de \emph{Density slicing}.\index{Density Slicing}
 
 \begin{figure*}[t]
 \begin{minipage}{0.49\linewidth}
@@ -300,7 +309,7 @@ El proceso de expansión de contraste (también conocido como \emph{normalización}
 
 Este efecto se consigue escalando el histograma, <<estirándolo>> horizontalmente para que cubra todo el rango de valores. En imágenes cuyos Niveles Digitales se sitúan mayoritariamente en un intervalo reducido, la representación presenta tonalidades homogéneas que no aprovechan todo el contraste que puede lograrse con el rango completo de intensidades. Aplicando una transformación conveniente, se consigue que el histograma gane amplitud y la imagen gane en contraste.
 
-A partir de una imagen con sus valores mínimo ($x$) y máximo($X$) respectivos, se trata de obtener una imagen que mantenga una distribución similar en su histograma, pero de tal forma que los valores mínimo y máximo pasen a ser otros distintos, en particular 0 y 255 como valores límites del rango habitual de Niveles Digitales. Para lograr esto la forma más simple es aplicar una fórmula como la siguiente.
+A partir de una imagen con sus valores mínimo ($x$) y máximo($X$) respectivos, se trata de obtener una imagen que mantenga una distribución similar en su histograma, pero de tal forma que los valores mínimo y máximo pasen a ser otros distintos, en particular 0 y 255 como valores límites del rango habitual de Niveles Digitales. Para lograr esto, la forma más simple es aplicar una fórmula como la siguiente.
 
 \begin{equation}
 \label{Eq:Normalizar_imagen}
@@ -315,7 +324,7 @@ En el tratamiento de imágenes es habitual no aplicar directamente la expresión \
 
 Una solución es acudir al histograma y tomar como valores de $x$ y $X$ no los extremos absolutos, sino los correspondientes a los percentiles del 5\% y el 95\%. Al operar con estos valores límite, aparecerán valores resultantes fuera del rango de destino (0--255 en el caso más habitual que citamos), que se igualan a los valores mínimo o máximo de dicho rango en función de si se encuentran fuera por el lado negativo o el positivo.
 
-Otra solución frecuente para la selección de $x$ y $X$ consiste en tomar la frecuencia del pico del histograma (es decir, el número del píxel que representa el valor máximo de este), y definir un umbral utilizando un porcentaje de dicha frecuencia. El valor mínimo $x$ corresponde al valor del primer Nivel Digital que, empezando desde 0 y en sentido creciente (de izquierda a derecha del histograma), supera dicha frecuencia. De modo similar, el valor máximo $X$ se calcula recorriendo el histograma en sentido negativo (de derecha a izquierda) y tomando el primer Nivel Digital cuya banda de frecuencia en el histograma sea superior a la establecida por el umbral.\index{Histograma}
+Otra solución frecuente para la selección de $x$ y $X$ consiste en tomar la frecuencia del pico del histograma (es decir, el número del píxeles que presentan el valor máximo), y definir un umbral utilizando un porcentaje de dicha frecuencia. El valor mínimo $x$ corresponde al valor del primer Nivel Digital que, empezando desde 0 y en sentido creciente (de izquierda a derecha del histograma), supera dicha frecuencia. De modo similar, el valor máximo $X$ se calcula recorriendo el histograma en sentido negativo (de derecha a izquierda) y tomando el primer Nivel Digital cuya banda de frecuencia en el histograma sea superior a la establecida por el umbral.\index{Histograma}
 
 Si se aplica la normalización a una imagen multibanda, es importante tener en cuenta que las relaciones entre los Niveles Digitales de estas han de preservarse. Cuando se aplica normalización sobre un conjunto de capas ráster, el objetivo es escalar las distintas variables para que ocupen un rango homogéneo, y esta relación no es relevante. En el caso de imágenes, y trabajando con bandas en lugar de capas, sí lo es, ya que de ella dependen, por ejemplo, los colores obtenidos al componerlas para formar imágenes en falso color según veremos más adelante. 
 
@@ -434,7 +443,7 @@ El filtro de mediana no es una convolución, y no puede por tanto expresarse medi
 \label{Fig:Suavizado} 
 \end{figure*}
 
-La aplicación de un filtro de suavizado no solo tiene como efecto el desenfoque de la imagen, sino que también elimina el ruido de la misma. Por ello, estos filtros son una buena herramienta para tratar algunas de las deficiencias de las imágenes, que como vimos pueden presentar píxeles con Niveles Digitales muy distintos de los de su entorno.
+La aplicación de un filtro de suavizado no solo tiene como efecto el desenfoque de la imagen, sino que también elimina el ruido de esta. Por ello, estos filtros son una buena herramienta para tratar algunas de las deficiencias de las imágenes, que como vimos pueden presentar píxeles con Niveles Digitales muy distintos de los de su entorno.
 
 En la figura \ref{Fig:Filtro_mediana} puede observarse como la presencia de una línea errónea introducida en una imagen se corrige parcialmente con un filtro de mediana.
 
@@ -562,7 +571,7 @@ Aplicando este filtro se obtiene una imagen que mantiene un aspecto similar a la
 
 La fusión de imágenes engloba a una serie de procesos que permiten integrar la información procedente de varias fuentes de datos distintas en una única imagen. Esta imagen resultante facilita la interpretación y análisis de la información de partida, englobando las características más destacables de las imágenes originales. 
 
-Por medio de la fusión pueden crearse imágenes sintéticas que combinen imágenes con alta resolución espacial y otras con alta resolución espectral, y que presenten alta resolución en ambas componentes. Esta operación es muy útil teniendo en cuenta que existen sensores con gran precisión espectral pero que no se caracterizan por una elevada definición (no dan imágenes con tamaños de píxel bajos), mientras que en otros sucede justamente lo contrario. Unir estas mediante un proceso de fusión es una forma de obtener imágenes de mejor calidad con las que lograr mejores resultados.
+Por medio de la fusión pueden crearse imágenes sintéticas que combinen imágenes con alta resolución espacial y otras con alta resolución espectral, y que presenten alta resolución en ambas componentes. Esta operación es muy útil teniendo en cuenta que existen sensores con gran precisión espectral, pero que no se caracterizan por una elevada definición (no dan imágenes con tamaños de píxel bajos), mientras que en otros sucede justamente lo contrario. Unir estas mediante un proceso de fusión es una forma de obtener imágenes de mejor calidad con las que lograr mejores resultados.
 
 El uso combinado de imágenes pancromáticas e imágenes multiespectrales como las del satélite LANDSAT es una práctica habitual a la hora de aplicar este método de fusión.\index{Fusión de imágenes}\index{LANDSAT}
 

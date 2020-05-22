@@ -23,6 +23,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[all]{nowidow}
 \usepackage{etoolbox}
+\usepackage{comment}
 
 \makeatletter
 \patchcmd{\@verbatim}
@@ -31,6 +32,7 @@
   {}{}
 \makeatother
 
+\newcommand{\setttsize}[1]{\def\ttsize{#1}}%
 \setttsize{\small}
 
 \renewcommand*\ttdefault{txtt}
@@ -93,9 +95,11 @@
   }}
 
 \renewcommand{\v}[1]{\ensuremath{\overline{\mathbf{#1}}}}
-\newcommand{\chapterauthor}[1]{\begin{center}\sffamily{#1}\end{center}}
+\newcommand{\chapterauthor}[1]{\begin{center}\sffamily{#1}\end{center}\vspace*{.5cm}}
 \newcommand{\degree}{\ensuremath{^\circ}}
-\newenvironment{intro}{\small\itshape}{\normalsize\par\nobreak\noindent\rule{\textwidth}{0.5pt}}
+\newenvironment{intro}{}{}
+\excludecomment{intro}
+
 
 \definecolor{urlcolor}{rgb}{0,0,0.5}
 

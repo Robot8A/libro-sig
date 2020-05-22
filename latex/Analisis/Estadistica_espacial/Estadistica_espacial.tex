@@ -89,8 +89,7 @@ En la figura \ref{Fig:Centro_mediano} puede verse una representación de lo anter
 \label{Fig:Centro_medio_y_desviacion} 
 \end{minipage}
 \end{figure*}
-\begin{figure*}
-\end{figure*}
+
 
 El inconveniente del centro mediano es que depende de los ejes escogidos y no es por tanto invariante ante rotaciones. Para solucionar esto suele emplearse como definición alternativa la de aquel punto del espacio que hace mínima la suma de distancias a todos los puntos de datos\cite{King1962Prentice}. El cálculo de este punto requiere de un proceso iterativo \cite{Rogerson2001Sage} en el cual se tiene que 
 
@@ -593,8 +592,6 @@ Como puede verse en la figura, la curva que los puntos del variograma experiment
 
 \index{Rango}\index{Sill}\index{Nugget}
 
-El valor de la función ha de ser, lógicamente, cero en el origen.
-
 Por ejemplo, para el caso de la figura propuesta estos valores pueden estimarse aproximadamente a primera vista como rango $\simeq$ 3000, \emph{sill} $\simeq$ 700 y \emph{nugget} $\simeq$ 300.
 
 Puesto que existen procesos para los cuales la variación de valores no se da igual en todas las direcciones, existen también \emph{variogramas anisotrópicos} que no solo indican la variación media dentro de un intervalo de distancia, sino que caracterizan esa variación para una distancia y una dirección concreta.
@@ -706,7 +703,7 @@ Existe una relación directa entre el variograma y el correlagrama, como puede ve
 \gamma(h) = \left\{ \begin{array}{ll}
 0 & \textrm{si $\|h\| = 0$}\\
 C_0 + C_1\left(1-e^{h/a}\right) & \textrm{si $\|h\| > a$}
-  \end{array} \right. \nonumber\\
+  \end{array} \right. \nonumber
 \end{eqnarray}
 
 Para el correlograma, se tiene que

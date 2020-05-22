@@ -43,7 +43,7 @@ Como veremos más en detalle en las siguientes secciones, las consultas pueden ha
 
 \begin{figure*}[t]   
 \centering
-\includegraphics[width=\textwidth]{Consultas/Seleccion.pdf}
+\includegraphics[width=\textwidth]{Consultas/Seleccion.png}
 \caption{\small El resultado de una consulta temática en un SIG es una selección de entidades, que implica tanto a la componente temática como a la espacial de cada una de ellas. En ambos casos, el color amarillo indica los elementos seleccionados.}
 \label{Fig:Seleccion} 
 \end{figure*}
@@ -135,8 +135,9 @@ Lógicamente, si la información se encuentra disponible en una serie de tablas, p
 
 Veamos un ejemplo de una unión entre tablas para comprender el significado de esta operación. En el cuadro \ref{Tabla:Tablas_base_union} se muestran dos tablas. En la primera de ellas, que supondremos que se encuentra asociada a una capa de polígonos, encontramos un valor numérico que identifica cada entidad (\texttt{ID}) y es distinto para cada una de ellas, y otro valor numérico también entero (\texttt{TIPO\_SUELO}) que nos indica el grupo de tipo de suelo de dicho polígono. Es decir, es la tabla de una capa de usos de suelo. En la segunda tabla, que es una tabla no asociada a ninguna capa, encontramos la equivalencia entre los valores de tipo de suelo y el nombre de dicho tipo de suelo (\texttt{NOMBRE\_SUELO}), así como en el campo denominado \texttt{APTITUD}, que, en una escala de 1 a 10, clasifica la aptitud del suelo para el crecimiento de una determinada especie vegetal.
 
-\begin{table}
-\begin{center}
+\begin{table*}[t]
+\begin{minipage}{0.49\linewidth}
+\centering
 \begin{tabular}{cc}\toprule
 \texttt{ID} & \texttt{TIPO\_SUELO}\\ \midrule
 1 & 3 \\ 
@@ -145,19 +146,21 @@ Veamos un ejemplo de una unión entre tablas para comprender el significado de es
 4 & 3 \\
 5 & 2 \\ \bottomrule
 \end{tabular}
-\\
-\vspace*{0.5cm}
-
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
 \begin{tabular}{ccc}\toprule
 \texttt{TIPO\_SUELO} & \texttt{NOMBRE\_SUELO} & \texttt{APTITUD} \\ \midrule
 1 & Fluvisol & 5 \\ 
 2 & Cambisol & 7 \\ 
 3 & Leptosol & 4 \\ \bottomrule
 \end{tabular}
-\end{center}
+\end{minipage}
 \caption{\small Unas sencillas tablas para efectuar una unión en función de su campo común \texttt{TIPO\_SUELO}.}
 \label{Tabla:Tablas_base_union}
-\end{table}
+\end{table*}
+
 
 En estas tablas existe un campo común, que es el que contiene el código numérico del tipo de suelo (en el ejemplo tiene el mismo nombre en ambas tablas, pero esto no ha de ser necesariamente así, basta con que la variable que contengan ambos campos sea la misma), y que podemos emplear para establecer la relación entre las dos tablas. Si un polígono tiene asociado un suelo de tipo 1, y gracias a la tabla adicional sabemos que el suelo de tipo 1 es un fluvisol y que su aptitud es 5, entonces podemos decir que dentro de ese polígono el suelo es de tipo fluvisol y tiene dicha aptitud, aunque en la tabla asociada no se encuentre directamente esta información. Esta forma de proceder debe resultar ya familiar, pues la unión se basa en el uso de un atributo clave, que ya vimos en el capítulo \ref{Bases_datos} dedicado a las bases de datos.
 
@@ -212,41 +215,49 @@ En principio, es la segunda componente ---el lenguaje de manipulación de datos--
 
 La forma en que se realizan consultas a una base de datos empleando el lenguaje SQL es a través de \emph{sentencias} en dicho lenguaje. Una sentencia SQL de consulta tendrá habitualmente una forma como la siguiente:
 
+\vbox{
 \begin{verbatim}
 SELECT lista_de_columnas
 FROM nombre_de_tabla
 WHERE expresión_condicional
 \end{verbatim}
+}
 
 \noindent \texttt{Lista\_de\_columnas} es una lista con los nombres de los campos que nos interesa incluir en la tabla resultante de la consulta, \texttt{nombre\_de\_tabla} es el nombre que identifica la tabla de la que queremos tomar los datos, y \texttt{expresión\_condicional} un predicado que establece la condición que han de cumplir los registros a tomar.
 
 Como vemos, no es muy distinto de lo que hemos visto hasta ahora, y simplemente es otra forma de plantear consultas, de modo similar a lo que conocemos. La flexibilidad del lenguaje y la adición de funciones y nuevas ordenes permiten, no obstante, expresar prácticamente cualquier consulta, por compleja que esta sea, y extraer todo el potencial de la base de datos.
 
-Sin animo de resultar un repaso exhaustivo a todos los elementos del lenguaje (ello requeriría mucha más extensión que todo este capítulo), a continuación se muestran algunos ejemplos de expresiones SQL explicados después en lenguaje natural, para dar una idea de la forma y capacidades del lenguaje. Una vez más, se anima al lector interesado a consultar las referencias propuestas para mayores detalles. Para estos ejemplos utilizaremos la tabla de países cuya estructura ya hemos introducido al comienzo de este capítulo.
+Sin animo de resultar un repaso exhaustivo a todos los elementos del lenguaje (ello requeriría mucha más extensión que todo este capítulo), a continuación se muestran algunos ejemplos de expresiones SQL explicados después en lenguaje natural, para dar una idea de la forma y capacidades del lenguaje. Una vez más, se anima al lector interesado a consultar las referencias propuestas para mayores detalles. Para estos ejemplos utilizaremos la tabla de países cuya estructura ya hemos presentado al comienzo de este capítulo.
 
+\vbox{
 \begin{verbatim}
 SELECT *
 FROM Paises
 WHERE Moneda = 'Euro' 
 AND Poblacion_actual > 40000000 
 \end{verbatim}
+}
 
 Esta consulta recupera todos aquellos registros en los que la población actual supera los 40 millones y la moneda es el euro. El asterisco indica que, para cada uno de estos registros, deben recuperarse todos los campos existentes. Se podría formar una nueva tabla solo con los nombres de los países que cumplen la condición establecida, mediante la siguiente sentencia:
 
+\vbox{
 \begin{verbatim}
 SELECT Nombre
 FROM Paises
 WHERE Moneda = 'Euro' 
 AND Poblacion_actual > 40000000 
 \end{verbatim}
+}
 
 Las consultas pueden ser mucho más complejas, y las sentencias \texttt{SELECT} pueden usarse como parámetros dentro de un predicado lógico. Por ejemplo, supongamos que disponemos de una tabla denominada \texttt{Capitales} con datos de todas las capitales del mundo, y que cuenta con los siguientes campos:
 
-\begin{itemize}
-\item \texttt{NOMBRE}
-\item \texttt{POBLACION\_HOMBRES}
-\item \texttt{POBLACION\_MUJERES}
-\end{itemize}
+\vbox{
+\begin{verbatim}
+- Nombre
+- Poblacion_hombres
+- Poblacion_mujeres
+\end{verbatim}
+}
 
 La sentencia siguiente recupera en una nueva tabla todos los países cuyas capitales tienen una población de hombres mayor que de mujeres.
 
@@ -265,22 +276,26 @@ La subconsulta entre paréntesis crea una tabla con los nombres de las capitales 
 
 Los campos \texttt{Capital} en la tabla \texttt{Países} y \texttt{Nombre} en la tabla \texttt{Capitales} son los que establecen la relación entre ambas tablas, permitiendo unir la información de estas. No obstante, el resultado de la expresión anterior no es una unión tal y como la hemos visto. Para realizar una unión mediante SQL podemos utilizar una expresión como la siguiente:
 
+\vbox{
 \begin{verbatim}
 SELECT *
 FROM Paises, Capitales
 WHERE Paises.Capital = Capitales.Nombre
 \end{verbatim}
+}
 
 Como se dijo, las uniones no se limitan un tipo particular de unión como el que vimos. SQL incluye el comando \texttt{JOIN}, el cual permite trabajar con todo ese abanico de distintas uniones.
 
 Además de lo anterior, pueden emplearse operadores para que la tabla que constituye la respuesta a la consulta contenga campos adicionales calculados en función de los existentes en la tabla origen. Por ejemplo:
 
+\vbox{
 \begin{verbatim}
 SELECT Nombre, Poblacion / Area 
 AS Densidad
 FROM Paises
 WHERE Moneda = 'Euro'
 \end{verbatim}
+}
 
 Esta consulta recupera todos los países donde la moneda utilizada es el Euro, y para cada uno de ellos define dos atributos: el nombre (directamente obtenido de la propia tabla de países) y la densidad (en un campo denominado \texttt{DENSIDAD}, calculado como el cociente entre la población y el área).
 

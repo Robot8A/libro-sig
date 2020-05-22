@@ -101,21 +101,6 @@ Además de las denominaciones habituales de \emph{tabla}, \emph{fila} y \emph{col
 
 El \emph{esquema de la relación} está formado por los nombres de los atributos y un \emph{dominio} asociado a estos, que delimita el rango de valores posibles para cada atributo. El dominio especifica el tipo de dato a contener en cada columna. Por ejemplo, si se recoge un nombre el atributo será de tipo alfanumérico, mientras que si el atributo es un conteo deberá ser de tipo entero. Además de los tipos habituales (fechas, cadenas de texto, valores reales\footnote{Entiéndase el adjetivo \emph{real} aquí en su sentido matemático, es decir, un número $n$ tal que $n \in \mathbb{R}$. Puede emplearse también la denominación menos formal de \emph{número decimal} o bien \emph{valor de coma flotante}, esta última más común en el ámbito informático y referida a la forma de almacenamiento de este tipo de valores.}, valores enteros, etc.) pueden emplearse en ciertas bases de datos valores más complejos. Esto es de especial interés en el caso de los SIG, ya que permite utilizar geometrías como un tipo de datos más, con la utilidad que esto tiene a la hora de almacenar datos espaciales. El esquema de la relación se recoge en la primera fila de la tabla, conocida como \emph{cabecera}. El número de filas de la tabla sin contar la cabecera (es decir, el número de tuplas) se conoce como \emph{cardinalidad}.\index{Cabecera}\index{Cardinalidad}
 
-\begin{table*}
-\centering 
-\begin{tabular}{cc} \toprule
-\textbf{Terminología habitual} & \textbf{Modelo relacional}  \\ \midrule
-Tabla & Relación \\
-Fila & Tupla \\
-Columna & Atributo \\
-Número de filas & Cardinalidad \\
-Valores posibles & Dominio \\
-Identificador único & Clave primaria \\ \bottomrule
-\end{tabular}
-\caption{\small Terminología del modelo relacional (Adaptado de \cite{Date1986BBDD}).}
-\label{Tabla:TerminologiaModeloRelacional}
-\end{table*}
-
 \begin{figure*}
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/ElementosModeloRelacional.pdf}
@@ -125,7 +110,7 @@ Identificador único & Clave primaria \\ \bottomrule
 
 Las relaciones son, por tanto, un conjunto de tuplas asociadas a un esquema. En una relación, tanto el orden de las filas como el de las columnas son irrelevantes (exceptuando la cabecera, que no es un tupla como tal, sino que define el esquema como hemos visto), pero es importante que cada atributo sea del tipo correspondiente a la columna a la que pertenece. Es decir, que sea coherente con el esquema.
 
-El cuadro \ref{Tabla:TerminologiaModeloRelacional} muestra un resumen de algunas de las equivalencias entre la terminología habitual y la específica del modelo relacional. En la figura \ref{Fig:ElementosModeloRelacional} puede verse un esquema de los elementos fundamentales del modelo relacional.
+En la figura \ref{Fig:ElementosModeloRelacional} puede verse un esquema de los elementos fundamentales del modelo relacional.
 
 Una forma abreviada de definir las relaciones que forman parte de una base de datos es mediante su nombre y su esquema expresado como una lista de los atributos que lo constituyen. Por ejemplo, podemos definir una relación denominada \texttt{PERSONAS} como
 
@@ -135,11 +120,13 @@ Una forma abreviada de definir las relaciones que forman parte de una base de da
 
 Una base de datos contiene normalmente más de una tabla, ya que suelen ser muchos los tipos de datos a almacenar y resulta conveniente dividirlos en distintas tablas.  Además de las relaciones que la tabla en sí implica, es necesario definir relaciones entre las distintas tablas, y para ello se emplean los denominados atributos \emph{clave}. Un atributo clave es aquel que tiene valor único para cada tupla, pudiendo servir para representar a esta plenamente. Por ejemplo, en una tabla  con nombres de personas e información adicional sobre ellas según el esquema anterior, los nombres no pueden ser la clave primaria, ya que puede haber dos personas con un mismo nombre. El número de su Documento Nacional de Identidad, sin embargo, sí que puede servir como atributo clave. Además de su unicidad, una clave debe ser invariable, identificando la misma tupla a lo largo del tiempo. Un esquema de relación puede contener varios atributos clave, que se conocen como \emph{claves candidatas}. Normalmente, de estas se elige una como representante principal de las tuplas, y se conoce como \emph{clave primaria}\index{Clave}
 
+\vbox{
 Por convención, las claves se escriben subrayadas al definir el esquema de la tabla, de tal modo que el de la tabla \texttt{PERSONAS} quedaría de la siguiente forma:
 
 \begin{quotation}
 \texttt{PERSONAS(\underline{DNI}, Nombre, Altura, Edad, Ciudad)}
 \end{quotation}
+}
 
 Si no existe ningún atributo que cumpla los requisitos para ser utilizado como clave, este puede incorporarse al esquema de la relación, añadiendo por ejemplo un nuevo atributo con un código arbitrario. Un ejemplo de esto lo podemos encontrar en el cuadro \ref{Tabla:clavePrimaria}, donde se incorpora un atributo que hace la función de clave a una tabla con información sobre personas pero que no contiene el DNI de estas entre esa información y, por tanto, carece de un atributo adecuado para servir de clave. 
 
@@ -147,7 +134,7 @@ En la definición de clave cabe también la presencia de claves compuestas, es dec
 
 Cuando trabajamos con datos espaciales, es habitual emplear la componente espacial como clave, ya que esta suele ser única. En el caso de almacenar información sobre ciudades, con los nombres sucede de forma similar a lo visto para el caso de personas, ya que existen ciudades con el mismo nombre en distintos lugares. La localización de estas, sin embargo, es única, ya que no puede haber dos ciudades simultáneamente en el mismo lugar.
 
-\begin{table*}[t]
+\begin{table*}[ht]
 \textbf{a)}
 
 \begin{center}
@@ -177,10 +164,10 @@ ID & Nombre & Altura & Edad & Ciudad \\ \midrule
 
 El empleo de estas claves permite relacionar tablas entre sí, siempre que estas compartan algún atributo común. Por ejemplo, pensemos en una base de datos que contenga la tabla anterior y junto a esta la tabla mostrada en el cuadro \ref{Tabla:TablaModeloRelacional2}. Es decir, la base de datos contiene información sobre personas y sobre ciudades.
 
-\begin{table}[!h]
+\begin{table*}[ht]
 \begin{center}
 \begin{tabular}{ccc}\toprule
-Nombre & Habitantes & Superficie($km^2$) \\ \midrule
+Nombre & Habitantes & Superficie\\ \midrule
 Madrid & 6386932 & 607	 \\ 
 Valencia & 1564145 & 134 \\ 
 Toledo & 80810 & 232 \\  \bottomrule
@@ -188,7 +175,7 @@ Toledo & 80810 & 232 \\  \bottomrule
 \end{center}
 \caption{\small Tabla \texttt{CIUDADES}}
 \label{Tabla:TablaModeloRelacional2}
-\end{table}
+\end{table*}
 
 Es sencillo ver que puede vincularse una tabla a la otra a través del atributo que contiene el nombre de la ciudad. Nótese que este atributo no tiene el mismo nombre en ambas tablas, y que, mientras que en una de ellas representa la clave primaria\footnote{Pese a que se ha comentado que el nombre de la ciudad puede no ser adecuado como clave, en este caso sí puede serlo debido a las pocas filas que contiene la tabla, por lo que, en aras de la simplicidad, lo utilizaremos asumiendo que no van a existir en la tabla dos ciudades con el mismo nombre.}, en la otra no puede serlo pues existen nombres de ciudades repetidos. Pese a ello, este atributo nos permite establecer una relación entre las tablas\footnote{Nótese que estamos empleando aquí el término \emph{relación} para referirnos al vínculo entre tablas, pero que este término también se emplea para referirse a las propias tablas, lo cual puede dar lugar a confusiones. Para evitarlo, emplearemos el término \emph{tabla} para referirnos a estas, y mediante los términos \emph{relación} o \emph{interrelación} haremos a partir de ahora únicamente referencia a esos vínculos que permiten enlazar varias de dichas tablas.}, que podríamos denominar <<nacido en>>. A cada tupla de la primera tabla, que representa a una persona dada, podemos vincularla con una de la segunda tabla, que representa una ciudad en particular, ya que toda persona ha nacido en una ciudad y gracias al atributo \texttt{CIUDAD} podemos saber exactamente cuál es dicha ciudad.
 
@@ -293,7 +280,7 @@ Como ejemplo de lo anterior, la información sobre personas y ciudades que venimo
 El modelo E-R presenta algunas limitaciones semánticas, y no es suficiente para expresar con detalle la estructura de algunos tipos de información. Por esta razón, surge el conocido como \emph{modelo E-R extendido}, que amplía el modelo E-R añadiendo nuevos elementos. Con su mayor potencia, el modelo E-R extendido acerca el diseño conceptual a los conceptos de la programación orientada a objetos, incorporando por ejemplo mecanismos de herencia. El enfoque orientado a objetos recoge no solo la estructura del sistema de información, sino también su comportamiento dinámico.
 
 
-\begin{table*}[t]
+\begin{table*}[ht]
 \centering
 \resizebox{.8\textwidth}{!}{
 \begin{tabular}{ccccccc}\toprule
@@ -304,7 +291,7 @@ DNI & Nombre & Altura & Edad & Ciudad & Población & Superficie \\ \midrule
 38941882 & Juan Gomez & 1, 71 & 55 & Valencia &  1564145 & 134 \\ \bottomrule
 \end{tabular}
 }
-\caption{\small La información de las tablas \texttt{PERSONAS} y \texttt{CIUDADES} puede recogerse en una única tabla como la mostrada.}
+\caption{\small La información de las tablas \texttt{PERSONAS} y \texttt{CIUDADES} puede recogerse en una única tabla}
 \label{Tabla:TablaConjunta}
 \end{table*}
 
