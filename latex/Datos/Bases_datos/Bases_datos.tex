@@ -114,18 +114,20 @@ En la figura \ref{Fig:ElementosModeloRelacional} puede verse un esquema de los e
 
 Una forma abreviada de definir las relaciones que forman parte de una base de datos es mediante su nombre y su esquema expresado como una lista de los atributos que lo constituyen. Por ejemplo, podemos definir una relación denominada \texttt{PERSONAS} como
 
-\begin{quotation}
-\texttt{PERSONAS(DNI, Nombre, Altura, Edad, Ciudad)}	
-\end{quotation}
+\begin{center}
+\tt
+PERSONAS(DNI, Nombre, Altura, Edad, Ciudad)
+\end{center}
 
 Una base de datos contiene normalmente más de una tabla, ya que suelen ser muchos los tipos de datos a almacenar y resulta conveniente dividirlos en distintas tablas.  Además de las relaciones que la tabla en sí implica, es necesario definir relaciones entre las distintas tablas, y para ello se emplean los denominados atributos \emph{clave}. Un atributo clave es aquel que tiene valor único para cada tupla, pudiendo servir para representar a esta plenamente. Por ejemplo, en una tabla  con nombres de personas e información adicional sobre ellas según el esquema anterior, los nombres no pueden ser la clave primaria, ya que puede haber dos personas con un mismo nombre. El número de su Documento Nacional de Identidad, sin embargo, sí que puede servir como atributo clave. Además de su unicidad, una clave debe ser invariable, identificando la misma tupla a lo largo del tiempo. Un esquema de relación puede contener varios atributos clave, que se conocen como \emph{claves candidatas}. Normalmente, de estas se elige una como representante principal de las tuplas, y se conoce como \emph{clave primaria}\index{Clave}
 
 \vbox{
 Por convención, las claves se escriben subrayadas al definir el esquema de la tabla, de tal modo que el de la tabla \texttt{PERSONAS} quedaría de la siguiente forma:
 
-\begin{quotation}
-\texttt{PERSONAS(\underline{DNI}, Nombre, Altura, Edad, Ciudad)}
-\end{quotation}
+\begin{center}
+\tt
+PERSONAS(\underline{DNI}, Nombre, Altura, Edad, Ciudad)
+\end{center}
 }
 
 Si no existe ningún atributo que cumpla los requisitos para ser utilizado como clave, este puede incorporarse al esquema de la relación, añadiendo por ejemplo un nuevo atributo con un código arbitrario. Un ejemplo de esto lo podemos encontrar en el cuadro \ref{Tabla:clavePrimaria}, donde se incorpora un atributo que hace la función de clave a una tabla con información sobre personas pero que no contiene el DNI de estas entre esa información y, por tanto, carece de un atributo adecuado para servir de clave. 
@@ -162,20 +164,15 @@ ID & Nombre & Altura & Edad & Ciudad \\ \midrule
 \label{Tabla:clavePrimaria}
 \end{table*}
 
-El empleo de estas claves permite relacionar tablas entre sí, siempre que estas compartan algún atributo común. Por ejemplo, pensemos en una base de datos que contenga la tabla anterior y junto a esta la tabla mostrada en el cuadro \ref{Tabla:TablaModeloRelacional2}. Es decir, la base de datos contiene información sobre personas y sobre ciudades.
+El empleo de estas claves permite relacionar tablas entre sí, siempre que estas compartan algún atributo común. Por ejemplo, pensemos en una base de datos que contenga la tabla anterior y junto a esta otra tabla con el siguiente esquema:
 
-\begin{table*}[ht]
 \begin{center}
-\begin{tabular}{ccc}\toprule
-Nombre & Habitantes & Superficie\\ \midrule
-Madrid & 6386932 & 607	 \\ 
-Valencia & 1564145 & 134 \\ 
-Toledo & 80810 & 232 \\  \bottomrule
-\end{tabular}
+\tt
+CIUDADES(\underline{Nombre}, Población, Superficie)
 \end{center}
-\caption{\small Tabla \texttt{CIUDADES}}
-\label{Tabla:TablaModeloRelacional2}
-\end{table*}
+
+
+Es decir, la base de datos contiene información sobre personas y sobre ciudades.
 
 Es sencillo ver que puede vincularse una tabla a la otra a través del atributo que contiene el nombre de la ciudad. Nótese que este atributo no tiene el mismo nombre en ambas tablas, y que, mientras que en una de ellas representa la clave primaria\footnote{Pese a que se ha comentado que el nombre de la ciudad puede no ser adecuado como clave, en este caso sí puede serlo debido a las pocas filas que contiene la tabla, por lo que, en aras de la simplicidad, lo utilizaremos asumiendo que no van a existir en la tabla dos ciudades con el mismo nombre.}, en la otra no puede serlo pues existen nombres de ciudades repetidos. Pese a ello, este atributo nos permite establecer una relación entre las tablas\footnote{Nótese que estamos empleando aquí el término \emph{relación} para referirnos al vínculo entre tablas, pero que este término también se emplea para referirse a las propias tablas, lo cual puede dar lugar a confusiones. Para evitarlo, emplearemos el término \emph{tabla} para referirnos a estas, y mediante los términos \emph{relación} o \emph{interrelación} haremos a partir de ahora únicamente referencia a esos vínculos que permiten enlazar varias de dichas tablas.}, que podríamos denominar <<nacido en>>. A cada tupla de la primera tabla, que representa a una persona dada, podemos vincularla con una de la segunda tabla, que representa una ciudad en particular, ya que toda persona ha nacido en una ciudad y gracias al atributo \texttt{CIUDAD} podemos saber exactamente cuál es dicha ciudad.
 
@@ -256,24 +253,23 @@ Para desarrollar el diseño conceptual de una base de datos siguiendo el modelo E
 \end{itemize}
 
 
-
-El modelo así creado se expresa mediante un diagrama en el que las entidades se representan como cajas rectangulares, las relaciones mediante rombos y los atributos en círculos o elipses, todos ellos con sus correspondientes nombres en el interior. Cuando un atributo es un identificador, se representa con su nombre subrayado, del mismo modo que en la definición de esquemas que ya vimos anteriormente (Figura \ref{Fig:SimbolosER}). 
-
-\begin{figure}[H]   
+\begin{figure*}[!ht]   
 \centering
-\includegraphics[width=.5\textwidth]{Bases_datos/SimbolosER.pdf}
+\includegraphics[width=\textwidth]{Bases_datos/SimbolosER.pdf}
 \caption{\small Simbología empleada en el modelo entidad--relación.}
 \label{Fig:SimbolosER} 
-\end{figure}
+\end{figure*}
 
-Si el número de atributos es elevado o el diagrama es complejo por existir gran cantidad de tablas e interrelaciones, pueden omitirse los atributos para una mayor legibilidad, describiéndose en un documento adicional.
-
-\begin{figure*}[t]   
+\begin{figure*}[ht]   
 \centering
 \includegraphics[width=.9\textwidth]{Bases_datos/EjemploDiagramaER.pdf}
 \caption{\small Ejemplo de diagrama E-R.}
 \label{Fig:EjemploDiagramaER} 
 \end{figure*}
+
+El modelo así creado se expresa mediante un diagrama en el que las entidades se representan como cajas rectangulares, las relaciones mediante rombos y los atributos en círculos o elipses, todos ellos con sus correspondientes nombres en el interior. Cuando un atributo es un identificador, se representa con su nombre subrayado, del mismo modo que en la definición de esquemas que ya vimos anteriormente (Figura \ref{Fig:SimbolosER}). 
+
+Si el número de atributos es elevado o el diagrama es complejo por existir gran cantidad de tablas e interrelaciones, pueden omitirse los atributos para una mayor legibilidad, describiéndose en un documento adicional.
 
 Como ejemplo de lo anterior, la información sobre personas y ciudades que venimos manejando, así como la relación <<nacido en>> existente entre ambas, se expresarían según el modelo entidad-relación con un diagrama tal como el mostrado en la figura \ref{Fig:EjemploDiagramaER}.
 

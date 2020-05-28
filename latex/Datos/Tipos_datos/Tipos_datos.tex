@@ -546,6 +546,13 @@ Como veremos en el capítulo \ref{Analisis_espacial}, las zonas próximas entre sí
 
 Podemos ver dos ejemplos claros de esto en las figuras \ref{Fig:Vias_modelos_representacion} y \ref{Fig:Malla_raster_rotada}. En la primera, existen únicamente dos valores: los correspondientes a las celdas sobre las que se sitúa una vía, o los correspondientes a las celdas donde estas no aparecen. Estos últimos ocupan la gran mayor parte de la capa, y lo hacen en bloque, de tal forma que almacenándolos individualmente se acaba teniendo una matriz de datos donde la practica totalidad de ellos son idénticos. Como es fácil de entender, este forma de proceder no es la más adecuada, al menos en términos de volumen de almacenamiento.
 
+\begin{figure*}[!ht]   
+\centering
+\includegraphics[width=.75\mycolumnwidth]{Tipos_datos/Ordenes_escaneo.pdf}
+\caption{\small Ordenes de escaneo. a) fila a fila sin retorno, b) fila a fila con retorno.}
+\label{Fig:Orden_escaneo} 
+\end{figure*}
+ 
 En la segunda imagen, las zonas que aparecen como consecuencia de la rotación de la imagen no contienen datos (esto es, contendrán el valor arbitrario que codifica la falta de datos). Estas zonas también constituyen grandes bloques de celdas contiguas, con lo que el almacenamiento de todos los valores también es una solución altamente redundante, especialmente en estas zonas fuera de la imagen como tal.
 
 La solución más habitual para considerar la redundancia de valores y lograr una compresión eficaz de los datos es la técnica denominada \emph{Run--Length Encoding}. Esta técnica sencilla codifica una serie de $n$ valores idénticos como un par de valores, el primero de los cuales representa el valor que se repite $n$ veces, y el segundo es el número de veces que se repite, esto es, $n$. 
@@ -554,24 +561,27 @@ Así, si la primera fila de la capa de vías en formato ráster no aparece ninguna 
 
 A la hora de tratar el conjunto de todas las celdas, se define un orden en el que recorrerla, denominado \emph{orden de barrido} o \emph{de escaneo} (Figura \ref{Fig:Orden_escaneo}), de tal modo que la matriz bidimensional queda reducida a una cadena de valores, es decir, a un vector unidimensional. Los distintos \emph{trozos} de esa cadena se van codificando según el esquema anterior, de tal modo que cuando aparecen muchos valores iguales consecutivos, estos pueden sustituirse ventajosamente por un único par de valores.\index{Orden!de barrido}\index{Orden!de escaneo}
 
-\begin{figure*}[ht]   
-\centering
-\includegraphics[width=.75\mycolumnwidth]{Tipos_datos/Ordenes_escaneo.pdf}
-\caption{\small Ordenes de escaneo. a) fila a fila sin retorno, b) fila a fila con retorno.}
-\label{Fig:Orden_escaneo} 
-\end{figure*}
- 
 La forma más sencilla de recorrer la imagen es hacerlo por filas, empezando por la fila superior y desplazándose de derecha a izquierda (Figura \ref{Fig:Orden_escaneo}a). No obstante, el salto que se produce al final de cada fila suele implicar una discontinuidad en los valores. Invirtiendo la dirección del recorrido en cada fila, se tiene el orden mostrado en la figura \ref{Fig:Orden_escaneo}b, el cual suele tener como resultado mayores niveles de compresión de datos, ya que la cadena resultante de recorrer la imagen contiene \emph{trozos} generalmente de mayor tamaño.
 
 Un esquema de barrido más complejo es el basado en el denominado \emph{orden de Morton} \cite{Morton1966IBM}. El orden de Morton (también conocido como \emph{orden Z}), se basa en una curva de carácter recursivo que recorre las celdas de la matriz siguiendo tramos en forma de Z, de ahí el nombre. En la primera iteración se divide el conjunto de celdas en cuatro bloques, los cuales se recorren siguiendo el antedicho recorrido en Z. Si los bloques contienen a su vez más de una celda, se siguen subdividiendo a su vez de forma idéntica, y así hasta que no pueda continuarse este proceso.\index{Orden!Z}
 
 La matriz que contiene los valores de orden de Morton (el orden en que se visita cada celda según el esquema anterior), se conoce como \emph{Matriz de Morton}, la cual ya citamos por su importancia histórica en el capítulo \ref{Historia}.\index{Matriz!de Morton}\index{Orden!de Morton}\index{Morton!matriz de}\index{Morton!orden de}
 
-\begin{figure*}[ht]   
+
+\begin{figure*}[ht]
+\begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Orden_Morton.pdf}
+\includegraphics[width=.9\mycolumnwidth]{Tipos_datos/Orden_Morton.pdf}
 \caption{\small Un ejemplo sencillo de barrido de una capa ráster según órdenes de Morton. Los valores en las celdas no indican los valores de la variable, sino el orden en que se visita dicha celda según este esquema de barrido}
-\label{Fig:Orden_Morton} 
+\label{Fig:Orden_Morton}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=.7\mycolumnwidth]{Tipos_datos/Quadtree.pdf}
+\caption{\small Ejemplo de un árbol cuaternario. En las zonas con más variabilidad (mayor densidad de puntos), los cuadrantes se subdividen hasta una profundidad mayor. La estructura es tal que cada cuadrante tiene dentro a lo sumo un punto. (Tomado de Wikipedia)}
+\label{Fig:Quadtree} 
+\end{minipage}
 \end{figure*}
 
 Un ejemplo de este orden de barrido aplicado a una pequeña matriz puede verse en la figura \ref{Fig:Orden_Morton}.
@@ -582,13 +592,6 @@ Una estructura más avanzada son los denominados \emph{Quadtrees} o árboles cuate
 Un ejemplo gráfico de un árbol cuaternario puede encontrarse en la figura \ref{Fig:Quadtree}. Los arboles cuaternarios son empleados también en los \emph{índices espaciales}, asociados a representaciones vectoriales, que veremos en \ref{Indices_espaciales} (de hecho, puede apreciarse que la figura anterior representa la aplicación de un árbol cuaternario a un conjunto de puntos, no a una capa ráster, aunque el concepto es el mismo y su aplicación a este segundo caso se realiza como ya se ha mencionado previamente).
 
 Los quadtrees son estructuras complejas, y no profundizaremos más en su descripción dentro de este capítulo. Para el lector interesado, la definición original de esta estructura de datos puede encontrarse en \cite{Finkel1974Acta}. 
-
-\begin{figure*}[ht]   
-\centering
-\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Quadtree.pdf}
-\caption{\small Ejemplo de un árbol cuaternario. En las zonas con más variabilidad (mayor densidad de puntos), los cuadrantes se subdividen hasta una profundidad mayor. La estructura es tal que cada cuadrante tiene dentro a lo sumo un punto. (Tomado de Wikipedia)}
-\label{Fig:Quadtree} 
-\end{figure*}
 
 Es importante reseñar que cuando la capa ráster contiene una información tal como una red viaria, la cual es susceptible de presentar valores idénticos en celdas contiguas, la codificación de tipo \emph{Run--Length} ---con cualquiera de los esquemas de barrido anteriores--- es ventajosa. Sin embargo, no lo es tanto cuando se trabaja con otro tipo de variables. 
 
