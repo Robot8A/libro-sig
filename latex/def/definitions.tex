@@ -1,18 +1,17 @@
 \usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
 \usepackage{libertine}
 \usepackage{latexsym}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage[pdftex]{graphicx}
-\usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
-\usepackage{makeidx}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{xspace}
 \usepackage{color}
-\usepackage{booktabs}
 \usepackage{paralist}
 \usepackage{fancyhdr}
 \usepackage{geometry}
@@ -21,9 +20,10 @@
 \usepackage{float}
 \usepackage[raggedright]{titlesec}
 \usepackage[protrusion=true,expansion=true]{microtype}
-\usepackage[all]{nowidow}
 \usepackage{etoolbox}
 \usepackage{comment}
+\usepackage{shapepar}
+\usepackage[all]{nowidow}
 
 \makeatletter
 \patchcmd{\@verbatim}
@@ -36,9 +36,6 @@
 \setttsize{\small}
 
 \renewcommand*\ttdefault{txtt}
-
-\makeindex
-\widowpenalty=9999
 
 \renewcommand{\baselinestretch}{1}
 \renewcommand{\enumerate}{\compactenum}
@@ -100,9 +97,8 @@
 \newenvironment{intro}{}{}
 \excludecomment{intro}
 
-\definecolor{urlcolor}{rgb}{0,0,0.5}
+\definecolor{urlcolor}{rgb}{0,0,0}
 
-\newcommand{\footurl}[1]{\footnote{\url{#1}\xspace}}
 \newcommand{\lt}{<}
 \newcommand{\gt}{>}
 

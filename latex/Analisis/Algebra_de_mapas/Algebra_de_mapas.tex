@@ -378,7 +378,7 @@ Por ejemplo, los valores máximo y mínimo de la capa que son necesarios para norm
 
 \begin{figure*}[t]   
 \centering
-\includegraphics[width=.8\textwidth]{Algebra_de_mapas/Perfil.png}
+\includegraphics[width=.9\textwidth]{Algebra_de_mapas/Perfil.png}
 \caption{\small Dada una ruta y una capa, podemos obtener un perfil de valores a lo largo de la ruta mediante una función global.}
 \label{Fig:Perfil} 
 \end{figure*}
@@ -389,7 +389,7 @@ Puesto que los operadores globales operan sobre la totalidad de la capa, a veces
 
 Considérese, por ejemplo, que una curva hipsográfica que representa la distribución de alturas dentro de un área dada (habitualmente una unidad hidrológica), no tiene mucho sentido si se aplica a una región delimitada de forma <<artificial>> por los límites rectangulares de la capa. Resulta más lógico aplicar una máscara sobre la capa a analizar, de modo que la función global ignore las celdas que, aun estando en la capa, no están en la unidad de interés. Estas celdas tendrán asociado un valor de sin datos tras la aplicación de dicha máscara.\index{Mascara!Máscara}\index{Curva!hipsográfica}\index{Sin datos!valor de}
 
-\section{Las variables del álgebra de mapas y su preparación}
+\section{Preparación de capas}
 \label{Variables_algebra_mapas}
 
 Las variables que manejamos en el álgebra de mapas son, como hemos visto en los ejemplos precedentes, capas ráster y valores escalares que podemos combinar con los anteriores. Para algunas de las funciones resulta necesaria únicamente una capa, mientras que para otras son necesarias varias. 
@@ -446,16 +446,17 @@ x^m & \textrm{ si } x > 0 \\
 
 Los métodos de remuestreo son un área muy desarrollada en el tratamiento de imágenes digitales, aunque, en la práctica, la mayoría de algoritmos existentes no presentan una diferencia notable con los anteriores (excepto con el remuestreo por vecindad) a la hora de aplicarlos sobre capas ráster de variables continuas en lugar de imágenes. Es por ello que su implementación y uso no es habitual en el caso de los SIG. En \cite{Turkowski1990Gems} puede encontrarse una buena introducción a otro tipo de funciones utilizadas para el remuestreo de imágenes.
 
-A la hora de elegir uno u otro de los métodos anteriores, debe tenerse en cuenta, fundamentalmente, el tipo de información que contenga la capa. Una diferencia fundamental que debe tenerse siempre presente es que, de entre los métodos anteriores, el de vecino más cercano es el único que garantiza que los valores resultante existen como tales en la capa origen. Ello hace que este sea el único método que puede utilizarse a la hora de remuestrear capas de información categórica. Podemos ver claramente esto en la figura \ref{Fig:Tipos_remuestreo}. Se aprecia que en la capa remuestreada mediante interpolación bicúbica aparece un valor no entero producto de las operaciones matemáticas aplicadas, frente a los valores enteros que representan las categorías en la capa original. Los valores no enteros carecen de sentido, y hacen así que la capa remuestreada no sea válida. 
-
-Incluso si no apareciesen valores decimales, el remuestreo de capas categóricas por métodos distintos del vecino más cercano es conceptualmente incorrecto, ya que la realización de operaciones aritméticas con valores arbitrariamente asignados a las distintas categorías carece por completo de sentido.
-
-\begin{figure*}[t]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Algebra_de_mapas/Tipos_remuestreo.pdf}
 \caption{\small El remuestreo de capas categóricas solo puede llevarse a cabo por vecindad. a) capa original, b) remuestreo por vecindad, c) remuestreo mediante splines (incorrecto, con valores incoherentes)}
 \label{Fig:Tipos_remuestreo}
 \end{figure*}
+
+
+A la hora de elegir uno u otro de los métodos anteriores, debe tenerse en cuenta, fundamentalmente, el tipo de información que contenga la capa. Una diferencia fundamental que debe tenerse siempre presente es que, de entre los métodos anteriores, el de vecino más cercano es el único que garantiza que los valores resultante existen como tales en la capa origen. Ello hace que este sea el único método que puede utilizarse a la hora de remuestrear capas de información categórica. Podemos ver claramente esto en la figura \ref{Fig:Tipos_remuestreo}. Se aprecia que en la capa remuestreada mediante interpolación bicúbica aparece un valor no entero producto de las operaciones matemáticas aplicadas, frente a los valores enteros que representan las categorías en la capa original. Los valores no enteros carecen de sentido, y hacen así que la capa remuestreada no sea válida. 
+
+Incluso si no apareciesen valores decimales, el remuestreo de capas categóricas por métodos distintos del vecino más cercano es conceptualmente incorrecto, ya que la realización de operaciones aritméticas con valores arbitrariamente asignados a las distintas categorías carece por completo de sentido.
 
 Cuando se trabaje con imágenes directamente, es de interés el considerar esta misma circunstancia referente a los métodos de remuestreo aplicables en relación con la interpretación de la imagen que vaya a llevarse a cabo. La aplicación del remuestreo por vecindad es en la mayoría de los casos la opción a elegir, en especial cuando se va a proceder a un análisis de la imagen con posterioridad.
 
@@ -471,7 +472,7 @@ La capa original contiene información sobre el número de individuos de una espec
 
 \end{figure*}
 
-\section{Formalización y extensión del álgebra de mapas}
+\section{Extensión del álgebra de mapas}
 
 Aunque en la práctica los conceptos definidos por Tomlin son la base para la implementación genérica de algoritmos, diversos autores han intentado extender estos conceptos y formalizarlos de una forma más general. Aunque tratar estos sistemas escapa al alcance de este texto, resulta de interés mencionar algunas de las propuestas.
 

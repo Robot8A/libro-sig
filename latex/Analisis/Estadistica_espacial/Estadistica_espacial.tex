@@ -77,14 +77,14 @@ En la figura \ref{Fig:Centro_mediano} puede verse una representación de lo anter
 \begin{figure*}
 \begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.8\mycolumnwidth]{Estadistica_espacial/Centro_mediano.png}
+\includegraphics[width=.9\mycolumnwidth]{Estadistica_espacial/Centro_mediano.png}
 \caption{\small Centro mediano y lineas de división pasando por este, las cuales dividen el conjunto de puntos en dos partes iguales a Este y Oeste, y Norte y Sur, respectivamente.}
 \label{Fig:Centro_mediano} 
 \end{minipage}
 \hfill
 \begin{minipage}{0.49\linewidth}
 \centering
-\includegraphics[width=.8\mycolumnwidth]{Estadistica_espacial/Centro_medio_y_desviacion.png}
+\includegraphics[width=.9\mycolumnwidth]{Estadistica_espacial/Centro_medio_y_desviacion.png}
 \caption{\small Circulo de radio igual a la distancia típica centrado en el centro medio del conjunto.}
 \label{Fig:Centro_medio_y_desviacion} 
 \end{minipage}
@@ -125,7 +125,9 @@ La distancia típica puede, igualmente, calcularse ponderando los distintos punto
 s_d = \sqrt{\frac{\sum_{i=1}^n a_i d_i^2}{\sum_{i=1}^N a_i}}
 \end{equation}
 
-Mediante esta representación se asume, no obstante, que la dispersión es la misma en todas direcciones. Esta simplificación raramente es cierta, y es más correcto definir en lugar de un círculo una \emph{elipse de desviación}\index{Elipse de desviación}. Esta elipse de desviación viene definida por sus semiejes mayor y menor, en los cuales se dan, respectivamente, la mayor y menor dispersión. El ángulo $\alpha$ que define al semieje mayor $x'$ viene expresado según
+Mediante esta representación se asume, no obstante, que la dispersión es la misma en todas direcciones. Esta simplificación raramente es cierta, y es más correcto definir en lugar de un círculo una \emph{elipse de desviación}\index{Elipse de desviación}. Esta elipse de desviación viene definida por sus semiejes mayor y menor, en los cuales se dan, respectivamente, la mayor y menor dispersión. 
+
+El ángulo $\alpha$ que define al semieje mayor $x'$ viene expresado según
 
 \begin{eqnarray}
  \tan{\alpha} = \frac{\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i}{2\sum_{i=1}^N dx_i dy_i} \nonumber \\  + \frac{\sqrt{\left(\sum_{i=1}^N dx_i - \sum_{i=1}^N dy_i \right)^2 +4\sum_{i=1}^N dx_i dy_i}}{2\sum_{i=1}^N dx_i dy_i} \nonumber
@@ -576,7 +578,7 @@ La nube de puntos de la figura \ref{Fig:Nube_variograma} se resume en el variogr
 \begin{figure*}[t]
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Estadistica_espacial/Variograma.png}
-\caption{\small Resumen de la nube del variograma en un variograma experimental con sus elementos definitorios.}
+\caption{\small Resumen de la nube del variograma en un variograma experimental.}
 \label{Fig:Variograma} 
 \end{figure*}
 
@@ -640,25 +642,19 @@ Sobre la base anterior, se pueden establecer familias principales de funciones a
 \end{equation}
 \end{itemize}
 
-Algunos autores como \cite{Goovaerts1997Oxford} usan $h$ directamente en lugar de $3h$, en cuyo caso el rango no es igual a $a$, sino a $\frac{a}3$
-
-El empleo de uno u otro modelo dependerá del conocimiento que tengamos acerca del proceso modelizado.
-
-La figura \ref{Fig:Variogramas} muestra las gráficas de los tipos de variogramas anteriores.
-
-\begin{figure*}[t]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.7\mycolumnwidth]{Estadistica_espacial/Variogramas.png}
 \caption{\small Distintos modelos de variograma teórico con los mismos parámetros de forma.}
 \label{Fig:Variogramas} 
 \end{figure*}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.95\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
-\caption{\small Relación entre correlograma (a) y variograma (b)}
-\label{Fig:Variograma_correlograma} 
-\end{figure*}
+Algunos autores como \cite{Goovaerts1997Oxford} usan $h$ directamente en lugar de $3h$, en cuyo caso el rango no es igual a $a$, sino a $\frac{a}3$
+
+El empleo de uno u otro modelo dependerá del conocimiento que tengamos acerca del proceso modelizado.
+
+La figura \ref{Fig:Variogramas} muestra las gráficas de los tipos de variogramas anteriores.
+
 
 Llevar a cabo el ajuste del variograma teórico no es en absoluto un proceso trivial. Lo más sencillo es tratar de minimizar el error cuadrático. No obstante, deben tenerse en cuenta algunas consideraciones adicionales como las siguientes:
 
@@ -696,6 +692,13 @@ S_{ij} =  (x_i - \overline{x}) (x_j - \overline{y})
 \end{equation}
 
 El conjunto de valores de covarianza y distancias entre puntos da lugar a una nube de valores que, al igual que ocurría con las semivarianzas, puede emplearse para crear una curva experimental y a partir de esta una curva teórica. Con dicha curva teórica se tiene conocimiento de la covarianza a cualquier distancia, y recibe el nombre de \emph{correlograma}.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=.95\textwidth]{Estadistica_espacial/Variograma_correlograma.pdf}
+\caption{\small Relación entre correlograma (a) y variograma (b)}
+\label{Fig:Variograma_correlograma} 
+\end{figure*}
 
 Existe una relación directa entre el variograma y el correlagrama, como puede verse en la figura \ref{Fig:Variograma_correlograma}. Con la notación de la figura, se tiene para el caso del variograma que
 

@@ -216,7 +216,7 @@ Con un criterio distinto, atendiendo a la forma en que se produce el movimiento,
 	
 	\index{Orbita@Órbita!Heliosíncrona}
 	
-\begin{figure*}[t]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Orbita_landsat.png}
 \caption{\small Esquema de barrido de un satélite con órbita heliosíncrona}
@@ -295,14 +295,6 @@ Uno de los parámetros principales que definen las propiedades de un sistema de t
 	\item \textbf{Resolución radiométrica}. Para cada una de las bandas que produce un sensor (asociada esta a una determinada región del espectro según su resolución espectral), el dato recogido, que constituye su Nivel Digital, indica la intensidad correspondiente a esa región. El nivel de detalle con el que puede medirse esa intensidad es el que define la resolución radiométrica del sensor.\index{Resolución!radiométrica}
 	
 	El número de Niveles Digitales\index{Niveles Digitales} distintos que pueden recogerse es la medida de la resolución espacial, y habitualmente es una potencia de dos (de la forma $2^n$). Tanto las imágenes en blanco y negro como las imágenes en color trabajan con 256 ($2^8$) niveles, ya que este es el valor más cercano al número de diferentes intensidades que el ojo humano puede diferenciar\footnote{En el ámbito del tratamiento de imágenes esto se conoce como \emph{profundidad de color}. Una mayor profundidad de color indica mayor número de colores posibles. Una pantalla normal de ordenador puede mostrar un total de 16.7 millones de colores distintos, que corresponden a las combinaciones entre los 256 posibles niveles de cada una de las tres bandas ($256 ^3 = 16,777,216$)}. No obstante, los sensores de teledetección pueden tener una mayor resolución radiométrica (hasta 1024 o 2048 niveles), que si bien no se aprecia en la representación visual, sí que supone una diferencia en el tratamiento analítico de esos Niveles Digitales.
-	En la figura \ref{Fig:Resolucion_radiometrica} puede apreciarse la diferencia entre dos imágenes, cada una de las cuales tiene una resolución radiométrica distinta.
-
-\begin{figure*}[t]   
-\centering
-\includegraphics[width=.8\textwidth]{Fuentes_datos/Resolucion_radiometrica.png}
-\caption{\small Dos imagenes con distinta resolución radiométrica (de izquierda a derecha, 8 y 256 niveles, respectivamente).}
-\label{Fig:Resolucion_radiometrica} 
-\end{figure*}
 
 	\item \textbf{Resolución temporal}. Indica el tiempo que tarda el sensor en volver a tomar una imagen de una misma zona.  Tiene sentido en el caso de sensores orbitales, que funcionan por ciclos, y que tras concluir este vuelven a comenzar la toma de imágenes en el mismo punto. En cada ciclo, el sensor cubre toda la superficie terrestre <<barriendo>> esta en franjas sucesivas.
 	
@@ -394,6 +386,13 @@ En el modelo de representación ráster, los elementos básicos son las celdas, que
 Por el contrario, se puede realizar con cierta sencillez la digitalización de una entidad vectorial, trazando la forma de esta o, en caso de ser una entidad de tipo punto, sencillamente indicando su localización. Cuando el número de entidades es elevado, el proceso puede llevar tiempo y ser tedioso, pero en todo caso sigue resultando una forma sencilla y accesible de crear una capa vectorial a partir de otra fuente de datos.
 
 Para llevar a cabo ese trazado de la entidad, se necesita emplear algún equipo que recoja la información introducida por el operador. Existen dos alternativas principales: utilizar un equipo especializado diseñado específicamente para la digitalización, o bien digitalizar utilizando las funciones de edición de un SIG, realizando todo el proceso dentro de este y sin más herramientas que el propio ordenador y un dispositivo señalador como el ratón.
+\begin{figure*}[!ht]
+
+\centering
+\includegraphics[width=.8\textwidth]{Fuentes_datos/Tableta_digitalizadora.pdf}
+\caption{\small Esquema de una tableta digitalizadora y los elementos del proceso de digitalización.}
+\label{Fig:Tableta_digitalizadora} 
+\end{figure*}
 
 \subsubsection{Con equipo especializado (\emph{heads--down})} \label{heads-down}
 
@@ -401,12 +400,7 @@ Para llevar a cabo ese trazado de la entidad, se necesita emplear algún equipo q
 
 La forma tradicional de proceder a la digitalización manual de entidades es utilizando equipos y periféricos expresamente diseñados para llevar a cabo esta tarea. La \emph{tableta digitalizadora} (Figura \ref{Fig:Tableta_digitalizadora}) es la herramienta fundamental para este trabajo.\index{Tableta digitalizadora}
 
-\begin{figure*}[t]   
-\centering
-\includegraphics[width=.8\textwidth]{Fuentes_datos/Tableta_digitalizadora.pdf}
-\caption{\small Esquema de una tableta digitalizadora y los elementos del proceso de digitalización.}
-\label{Fig:Tableta_digitalizadora} 
-\end{figure*}
+
 
 Se trata de una superficie plana a modo de atril, sobre la cual se sitúa el documento cartográfico a digitalizar, y sobre este se van trazando las distintas entidades con un cursor. Este cursor registra los movimientos del operario, convirtiendo las posiciones del cursor en coordenadas reales, que son las que van a constituir la entidad digitalizada. El trabajo del operario consiste en seguir con el cursor las formas de las distintas entidades, como si las estuviera calcando, de modo que indique al sistema las geometrías que se quieren definir.
 
@@ -430,8 +424,6 @@ Se distinguen dos formas principales de registro de puntos:
 
 Las tabletas digitalizadoras son elementos caros, motivo por el cual se tiende a favorecer en la actualidad la digitalización en pantalla, que presenta además otra serie de ventajas adicionales, como seguidamente veremos.
  
-\subsubsection{En pantalla (\emph{heads--up})}
-
 \begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Digitalizacion_en_pantalla.png}
@@ -439,15 +431,15 @@ Las tabletas digitalizadoras son elementos caros, motivo por el cual se tiende a
 \label{Fig:Digitalizacion_en_pantalla} 
 \end{figure*}
 
+\subsubsection{En pantalla (\emph{heads--up})}
+
 La otra forma de digitalizar elementos es utilizando las capacidades de edición de un SIG. Estas capacidades son heredadas de las aplicaciones de diseño asistido por ordenador (CAD)\index{CAD}, y permiten <<dibujar>> en la pantalla del ordenador entidades y formas tales como los puntos, líneas y rectas que constituyen los objetos en el modelo de representación vectorial.
 
 En este proceso se parte igualmente de una capa base, generalmente una imagen, y basándose en ella se van definiendo los objetos, <<dibujándolos>> sobre la pantalla, una vez más como si se calcara aquello que puede visualizarse en dicha imagen. El hecho de que un SIG nos permita tener varias capas simultáneamente y visualizarlas a voluntad facilita el proceso de digitalización. También lo facilita el poder tener varias imágenes sobre el fondo (cada una de ellas como una capa individual), de modo que podemos cubrir un área más amplia que la de una simple hoja de mapa o una única imagen.
 
 En este proceso, no partimos en realidad de un documento cartográfico analógico, pues ya ha sido necesario digitalizarlo de alguna forma para incorporarlo en un SIG. El proceso es una digitalización de las entidades como tales, pero la información ya ha de estar en formato digital, aunque no en el modelo de representación vectorial, sino en el modelo ráster. Por ello, puede utilizarse como capa de partida una imagen originalmente en formato digital o bien una imagen originalmente en formato impreso. En este ultimo caso, la imagen ha debido digitalizarse previamente mediante un proceso de \emph{escaneo}, el cual se tratará en la siguiente sección.
 
-En la figura \ref{Fig:Digitalizacion_en_pantalla} puede verse un ejemplo de la digitalización de una imagen en pantalla.
-
-En la figura, sobre una imagen aérea en color se digitalizan las distintas parcelas que pueden distinguirse en esta. Del mismo modo, pueden digitalizarse curvas de nivel en un mapa escaneado, u otras entidades tales como ríos, lagos o vías de comunicación sobre una fotografía aérea, entre muchas otras.
+En la figura \ref{Fig:Digitalizacion_en_pantalla} puede verse un ejemplo de la digitalización de una imagen en pantalla. Sobre una imagen aérea en color, se digitalizan las distintas parcelas que pueden distinguirse en esta. Del mismo modo, pueden digitalizarse curvas de nivel en un mapa escaneado, u otras entidades tales como ríos, lagos o vías de comunicación sobre una fotografía aérea, entre muchas otras.
 
 La digitalización en pantalla se conoce también como digitalización <<cabeza arriba>> (\emph{heads--up}), ya que el operador centra su atención en la pantalla, con una postura bien distinta a la que se tiene al trabajar con una tableta digitalizadora.
 
@@ -463,15 +455,15 @@ Frente a dicho trabajo con tableta digitalizadora, la digitalización en pantalla
 	\item \textbf{Mayor comodidad para el operario}. La postura del operario es más adecuada cuando se digitaliza sobre la pantalla, permitiendo unas mejores condiciones. Esto que se traduce en menor cansancio y ello indirectamente comporta resultados más precisos.
 \end{itemize}
 
-
-Para conocer con más detalle las capacidades básicas de edición de un SIG, así como las restantes capacidades que contribuyen a su vez a facilitar la labor de edición, consúltese el capitulo \ref{SIGs_escritorio}.
-
-\begin{figure*}[t]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Correccion_digitalizacion.png}
 \caption{\small Corrección de entidades con las funciones de edición de un SIG. El polígono de la derecha se encuentra en edición, siendo modificado uno de sus vértices.}
 \label{Fig:Correccion_digitalizacion} 
 \end{figure*}
+
+Para conocer con más detalle las capacidades básicas de edición de un SIG, así como las restantes capacidades que contribuyen a su vez a facilitar la labor de edición, consúltese el capitulo \ref{SIGs_escritorio}.
+
 
 \subsection{Digitalización automática}\index{Digitalización!automática}
 
@@ -492,6 +484,16 @@ Este proceso de \emph{barrido} se realiza en una única ocasión, aunque dispositi
 
 Existen escáneres específicamente diseñados para el trabajo con documentos cartográficos, pero son dispositivos muy especializados y de coste elevado. Los escáneres más genéricos, pensados para el trabajo con todo tipo de imágenes y para todo tipo de usos, pueden no obstante emplearse de igual modo para escanear tanto mapas como imágenes aéreas con resultados aceptables, utilizándose con frecuencia.
 
+
+Existen tres tipos principales de escáneres:
+
+\begin{itemize}
+	\item \textbf{De sobremesa} (\emph{flat--bed}). Los habituales para el uso doméstico o el escaneo de imágenes de pequeño formato, aunque también existen de mayor tamaño. El documento a escanear se sitúa sobre una placa de cristal bajo la que se desplaza la cabeza con el sensor. Puede verse uno de estos escáneres en la figura \ref{Fig:Escaner_sobremesa}.\index{Flat--bed}
+	\item \textbf{De tambor}. El mapa se sitúa sobre un tambor que rota, mientras que la cabeza se mantiene fija. La figura \ref{Fig:Escaner_tambor} muestra uno de estos escáneres.
+	\item \textbf{Alimentados}. El sensor se mantiene fijo y el documento se desplaza mediante un mecanismo de arrastre, de forma similar a como avanza el papel en una impresora doméstica. Salvo que dispongan de mecanismos específicos para corregir esta circunstancia, suelen presentar importantes distorsiones geométricas causadas por un desplazamiento impreciso del papel.
+\end{itemize}
+
+
 \begin{figure*}[!ht]
 \begin{minipage}{0.49\linewidth}
 \includegraphics[width=\textwidth]{Fuentes_datos/Escaner_sobremesa.png}
@@ -506,15 +508,6 @@ Existen escáneres específicamente diseñados para el trabajo con documentos carto
 \label{Fig:Escaner_tambor} 
 \end{minipage}
 \end{figure*}
-
-Existen tres tipos principales de escáneres:
-
-\begin{itemize}
-	\item \textbf{De sobremesa} (\emph{flat--bed}). Los habituales para el uso doméstico o el escaneo de imágenes de pequeño formato, aunque también existen de mayor tamaño. El documento a escanear se sitúa sobre una placa de cristal bajo la que se desplaza la cabeza con el sensor. Puede verse uno de estos escáneres en la figura \ref{Fig:Escaner_sobremesa}.\index{Flat--bed}
-	\item \textbf{De tambor}. El mapa se sitúa sobre un tambor que rota, mientras que la cabeza se mantiene fija. La figura \ref{Fig:Escaner_tambor} muestra uno de estos escáneres.
-	\item \textbf{Alimentados}. El sensor se mantiene fijo y el documento se desplaza mediante un mecanismo de arrastre, de forma similar a como avanza el papel en una impresora doméstica. Salvo que dispongan de mecanismos específicos para corregir esta circunstancia, suelen presentar importantes distorsiones geométricas causadas por un desplazamiento impreciso del papel.
-\end{itemize}
-
 
 Los parámetros básicos que definen las características de un escáner son la resolución espacial y la resolución radiométrica. La primera de estas se mide habitualmente en \emph{puntos por pulgada}\footnote{\emph{Dots per inch}(dpi)} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos.\index{Dots per inch}\index{Resolución!espacial}\index{Resolución!radiométrica}
 
@@ -651,7 +644,7 @@ La visión tridimensional en el ser humano se basa en el hecho de que la imagen q
 
 Cuando se emplean imágenes de satélite, los pares se pueden obtener con aquellas plataformas y sensores que permiten variar el ángulo de visión, de modo que en la misma pasada del satélite se toman imágenes de una zona desde distintos puntos. El sensor toma una imagen cenital y posteriormente, una vez ha superado la zona en su recorrido, toma una segunda imagen mirando <<hacia atrás>>, la cual, combinada con la primera, permite el levantamiento del terreno y la realización de los procesos fotogramétricos (Figura \ref{Fig:Par_estereo_satelite}).
 
-\begin{figure*}[t]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.85\textwidth]{Fuentes_datos/Par_estereo_satelite.pdf}
 \caption{\small Toma de pares de imágenes estereosópicas desde un satélite, mediante variación del ángulo de visión.}
@@ -680,7 +673,7 @@ La información contenida en el documento cartográfico puede también contener ele
 
 Dentro de los errores que aparecen como consecuencia de la digitalización en sí, un tipo importante de ellos son las discrepancias y coincidencias imperfectas entre las distintas entidades, tal como las que se muestran en la figura \ref{Fig:Imprecisiones_digitalizacion}
 
-\begin{figure*}[ht]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.8\textwidth]{Fuentes_datos/Imprecisiones_digitalizacion.pdf}
 \caption{\small Errores derivados del proceso de digitalización. a) Versión correcta, con nodos coincidentes. b) y c) Versiones con errores que causan una falsa desconexión entre las líneas.}
@@ -694,7 +687,7 @@ Debido a esto, las capacidades de edición de los SIG incorporan funcionalidades 
 
 De este modo, polígonos adyacentes o líneas que se cortan en un punto dado lo hacen con total exactitud. Dichos polígonos comparten exactamente el mismo lado con las mismas coordenadas exactas, o se cruzan en el mismo e idéntico punto, y no únicamente pasan por un punto cercano (pero distinto) definido con la precisión con la que el operador haya podido ajustar ambas entidades visualmente. La coincidencia no es solo visual, sino numérica. La figura \ref{Fig:Snapping} muestra un ejemplo de la utilización de \emph{snapping} en un proceso de digitalización.
 
-\begin{figure*}[t]
+\begin{figure*}[!ht]
 \centering
 \includegraphics[width=.4\textwidth]{Fuentes_datos/Snapping.pdf}
 \caption{\small Ajuste automático mediante tolerancia(\emph{snapping}). El nodo azul representa el nodo en edición. La tolerancia de enlace queda marcada por el circulo punteado. Puesto que el nodo rojo de la línea preexistente se encuentra dentro de esa tolerancia, al añadir el nuevo nodo (azul), este automáticamente se situará en las coordenadas del nodo rojo, garantizándose así la coincidencia.}
@@ -714,7 +707,7 @@ La digitalización de entidades en caso de querer recoger su topología\index{Topo
 	\item Las áreas deben ser cerradas (el primer punto ha de coincidir exactamente con el último). Las funciones de \emph{snapping} o el cierre automático de líneas (asignar sistemáticamente al último punto del contorno del polígono las coordenadas del primero) deben emplearse para ello.
 \end{itemize}
 
-Todos aspectos relativos a la calidad de datos, entre los cuales se incluyen las aspectos relativos a los errores del proceso de digitalización, se tratan con mayor profundidad en el capítulo \ref{Calidad_datos}.\index{Datos!calidad}
+Todos los aspectos relativos a la calidad de datos, entre los cuales se incluyen los relacionados con los errores del proceso de digitalización, se tratan con mayor profundidad en el capítulo \ref{Calidad_datos}.\index{Datos!calidad}
 
 
 \section{GPS}
@@ -757,21 +750,9 @@ El cálculo de la distancia puede realizarse utilizando la información de las señ
 
 En el caso de emplear la portadora, se mide el desfase entre esta y una señal generada por el receptor, lo cual permite calcular una parte de la distancia (la que es menor que la longitud de onda de la señal). La distancia total es igual a esta parte calculada más un numero entero de veces la longitud de onda. El valor de este numero entero es, no obstante, desconocido. Su cálculo se conoce como \emph{resolución de la ambigüedad} (AR), y requiere escuchar la señal del satélite durante un cierto tiempo para recopilar datos suficientes que permitan el cálculo del valor antedicho.\index{Resolución!de la ambigüedad}
 
-
-
 Así, la resolución de la ambigüedad es la que hace necesario un tiempo de \emph{inicialización} de la unidad, con objeto de conocer esa constante en el desfase. Si la unidad pierde contacto con el satélite, es necesario de nuevo proceder a la resolución de las ambigüedades, quedando el receptor inoperativo durante ese periodo de tiempo. Más detalles sobre la resolución de la ambigüedad en el sistema GPS puede encontrarse en \cite{Torrecillas1998Mapping}.
 
 Puesto que la velocidad a la que la señal se desplaza es muy elevada, se requieren relojes muy precisos para poder medir con precisión los tiempos tan cortos que tarda dicha señal en recorrer la distancia entre satélite y receptor. A bordo de los satélites se montan relojes atómicos de muy alta precisión, pero las unidades receptoras no disponen de relojes tan precisos. Es por este motivo que, como veremos, han de introducirse correcciones y cálculos adicionales con el fin de obtener mayores precisiones en la medida del tiempo.
-
-
-Si el receptor es capaz de establecer comunicación con tres satélites, dispone ya de información suficiente para conocer su posición $(x,y)$ como intersección de las esferas centradas en cada uno de dichos satélites y con radio la distancia existente entre este y el receptor. Con cuatro satélites se puede ya obtener la posición $(x,y,z)$.
-
-Un número mayor de satélites (cuatro al menos) es necesario, no obstante, para eliminar las imprecisiones debidas a los distintos elementos implicados, y se emplean habitualmente modelos más complejos que utilizan los datos de múltiples satélites y efectúan correcciones en función de ellos. Las deficiencias de los relojes que emplean los receptores pueden corregirse mediante la utilización de nuevos satélites, que permiten calcular con exactitud el tiempo, variable de gran importancia en el proceso y sin la cual no se pueden obtener precisiones elevadas.
-
-
-Los receptores actuales están preparados para trabajar con un número máximo de satélites habitualmente igual a 12, por lo que en todas circunstancias tratan de localizar el mayor número posible de satélites con objeto de lograr una mayor precisión.
-
-El diseño de la red de satélites está pensado para garantizar que en cualquier punto de la superficie terrestre y en cualquier momento, un receptor puede localizar el número necesario de satélites para obtener con exactitud su precisión. La localización en la que se disponen los satélites con los que se establece comunicación no es irrelevante, ya que condiciona la precisión del posicionamiento, afectando a lo que se conoce como \emph{dilución de la precisión} (DOP\footnote{Dilution of Precision}). Si los ángulos de los satélites son grandes, la precisión que se obtiene es mayor que si estos son menores (Figura \ref{Fig:DOP}).\index{Dilution of Precision}
 
 \begin{figure*}[ht]
 \centering
@@ -780,7 +761,23 @@ El diseño de la red de satélites está pensado para garantizar que en cualquier p
 \label{Fig:DOP} 
 \end{figure*}
 
+Si el receptor es capaz de establecer comunicación con tres satélites, dispone ya de información suficiente para conocer su posición $(x,y)$ como intersección de las esferas centradas en cada uno de dichos satélites y con radio la distancia existente entre este y el receptor. Con cuatro satélites se puede ya obtener la posición $(x,y,z)$.
+
+Un número mayor de satélites (cuatro al menos) es necesario, no obstante, para eliminar las imprecisiones debidas a los distintos elementos implicados, y se emplean habitualmente modelos más complejos que utilizan los datos de múltiples satélites y efectúan correcciones en función de ellos. Las deficiencias de los relojes que emplean los receptores pueden corregirse mediante la utilización de nuevos satélites, que permiten calcular con exactitud el tiempo, variable de gran importancia en el proceso y sin la cual no se pueden obtener precisiones elevadas.
+
+Los receptores actuales están preparados para trabajar con un número máximo de satélites habitualmente igual a 12, por lo que en todas circunstancias tratan de localizar el mayor número posible de satélites con objeto de lograr una mayor precisión.
+
+El diseño de la red de satélites está pensado para garantizar que en cualquier punto de la superficie terrestre y en cualquier momento, un receptor puede localizar el número necesario de satélites para obtener con exactitud su precisión. La localización en la que se disponen los satélites con los que se establece comunicación no es irrelevante, ya que condiciona la precisión del posicionamiento, afectando a lo que se conoce como \emph{dilución de la precisión} (DOP\footnote{Dilution of Precision}). Si los ángulos de los satélites son grandes, la precisión que se obtiene es mayor que si estos son menores (Figura \ref{Fig:DOP}).\index{Dilution of Precision}
+
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=.5\textwidth]{Fuentes_datos/DGPS.pdf}
+\caption{\small Esquema de funcionamiento del GPS diferencial}
+\label{Fig:DGPS} 
+\end{figure*}
+
 Junto a esto, existen otras muchas fuentes de error en el sistema GPS, cada una de las cuales afecta a la precisión del mismo. Entre ellas, cabe destacar las siguientes:
+
 
 \begin{itemize}
 	\item Errores en la posición de los satélites.
@@ -806,14 +803,6 @@ En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS pue
 
 La figura \ref{Fig:DGPS} muestra un esquema del funcionamiento del GPS diferencial.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.5\textwidth]{Fuentes_datos/DGPS.pdf}
-\caption{\small Esquema de funcionamiento del GPS diferencial}
-\label{Fig:DGPS} 
-\end{figure*}
-
-
 \subsection{Tipos de receptores}
 
 La precisión del sistema global GPS depende del tipo de receptor GPS (o, en el lenguaje común, GPS a secas) que se emplee, obteniéndose mayores precisiones con receptores más avanzados, siempre dentro de las posibilidades del propio sistema.
@@ -836,21 +825,22 @@ Los más sencillos únicamente basan sus cálculos en el código C/A, mientras que l
 
 Por último, y teniendo en cuenta que el sistema GPS mide las coordenadas $(x,y,z)$ y el tiempo, y que existen diferentes precisiones en función de la tecnología que los receptores utilicen, encontramos una gran variedad de unidades receptoras, según estas se adapten para uno u otro uso principal. En líneas muy generales, los siguientes son algunos de los tipos principales en función de dicho uso.
 
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=.6\mycolumnwidth]{Fuentes_datos/gps.pdf}
+\caption{\small Receptor GPS de bajo coste para uso general (a) y receptor GPS de alta precisión con antena externa (b)}
+\label{Fig:gps_1} 
+\end{figure*}
+
 \begin{itemize}
 	\item GPS para uso general. Unidades pequeñas y portátiles, de bajo coste, para actividades al aire libre, donde no se requiere una precisión elevada sino simplemente un conocimiento de la posición aproximada. Se emplean, por ejemplo, para recoger rutas en senderismo o navegación. Estas unidades, además de informar de la posición y ser capaces de almacenar esta, suelen disponer de capacidades de representación de mapas en pantalla, de forma que la información sobre la posición sea más útil para el usuario. Otros, como los navegadores GPS para coche, son capaces de calcular rutas óptimas, combinando la posición calculada con una cartografía de vías previamente incorporada al dispositivo.
-		La figura \ref{Fig:gps_1}a muestra un receptor GPS de uso general.
+	La figura \ref{Fig:gps_1}a muestra un receptor GPS de uso general.
 	\item GPS para la medición topográfica. Unidades de medio tamaño, generalmente con una antena independiente que se conecta a la unidad y que el propio operario carga a la espalda. La antena garantiza mayor precisión y una mejor localización de satélites en condiciones tales como zonas bajo arbolado. Están pensados para un uso profesional en levantamientos o replanteos, ofreciendo buena precisión en todas las coordenadas. 
 	En la figura \ref{Fig:gps_1}b puede verse unos de estos receptores.
 	Estos son los GPS de mayor interés para el uso dentro de un SIG, ya que ofrecen datos de campo precisos que cumplen con las necesidades que habitualmente se tienen en un proyecto SIG. Los datos recogidos por estas unidades pueden ser sencillamente incorporados a un ordenador, y en ocasiones la propia unidad dispone de aplicaciones propias, más allá de la mera visualización de cartografía asociada, como en el caso anterior.
 	\item GPS para la medición del tiempo. Estos GPS no resultan de tanto interés para su uso en un SIG, ya que se encuentran fijos en un punto y no conceden importancia a la localización espacial, sino tan solo al tiempo. Se utilizan en estudios que requieran una medición muy precisa del tiempo, ya que la referencia temporal que ofrece el sistema GPS es muy precisa y estable.
 \end{itemize}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.6\mycolumnwidth]{Fuentes_datos/gps.pdf}
-\caption{\small Receptor GPS de bajo coste para uso general (a) y receptor GPS de alta precisión con antena externa (b)}
-\label{Fig:gps_1} 
-\end{figure*}
 
 \subsection{Operaciones con la unidad GPS}
 
@@ -962,8 +952,6 @@ No debe olvidarse, no obstante, que la Web 2.0 también tiene sus mecanismos de r
 
 Por otra parte, el hecho de que se use equipo de bajo coste y los usuarios no sean técnicos especializados no es necesariamente un problema. Un usuario sin formación no está capacitado para efectuar un levantamiento topográfico preciso, pero sí para situarse delante de la puerta de una tienda y marcar su posición, añadiendo esta a un proyecto que catalogue los comercios de la zona y su localización. Este tipo de información geográfica, de puntos de interés muchas veces no recogidos en cartografía más especializada, constituye una gran parte de la VGI, y las metodologías e instrumental con que se crea son más que suficientes para otorgarle validez y precisión adecuada al uso del que posteriormente va a ser objeto.
 
-En resumen, la neogeografía es en la actualidad un fenómeno que no debe dejarse de lado, ya que los proyectos que aglutina se están convirtiendo paulatinamente en proveedores fundamentales de datos cuya calidad en muchos casos es excelente.
-
 \section{Sobre cartografía de elevaciones}
 
 La cartografía de elevaciones es probablemente la de mayor importancia de entre todas las que se emplean de forma habitual dentro de cualquier proyecto SIG. Su relevancia deriva del hecho fundamental de que la practica totalidad de procesos que se estudian en un SIG tienen algún tipo de componente relacionada con el terreno y su relieve, y por tanto puede obtenerse amplia información sobre dichos procesos a partir de una capa con datos de elevación.
@@ -1027,29 +1015,13 @@ Otro problema es la presencia de celdas sin datos. La existencia de celdas sin d
 
 Otra carencia de la mayoría de formatos de imágenes es que no pueden recoger la referencia geográfica de la imagen. Salvo que las imágenes sean utilizadas en un SIG, no hay necesidad de que estas contengan información tal como el tamaño de píxel (los metros que cada píxel representa en la realidad) o las coordenadas de la zona que recogen. Por ello, las definiciones de los formatos de imagen, al estar pensadas para recoger meras imágenes digitales (y no imágenes de satélite o aéreas destinadas a un análisis espacial), no tienen en cuenta estas necesidades.
 
-Una forma habitual de resolver esto es acompañar cada fichero de imagen con un pequeño fichero de texto plano donde se contengan los datos geográficos correspondiente a la imagen. Este fichero se denomina \emph{World File}, y tiene una forma como la siguiente:\index{World file}
+Una forma habitual de resolver esto es acompañar cada fichero de imagen con un pequeño fichero de texto plano donde se contengan los datos geográficos correspondientes a la imagen. Este fichero se denomina \emph{World File}, y contiene los siguientes valores:
 
-\vspace{.5cm}
-
-\begin{minipage}{\linewidth}
-\begin{verbatim}
-1.0
-0.0
-0.0
--1.0
-691200.0
-4576000.0
-\end{verbatim}
-\end{minipage}
-
-\vspace{.5cm}
-
-El significado de las anteriores líneas es el siguiente:
 \begin{itemize}
-\item Línea 1. Tamaño de celda en la dirección Este--Oeste
-\item Líneas 2 y 3. Ángulos de rotación del plano respecto a los ejes X e Y. Estos valores son siempre iguales a cero.
-\item Línea 5. Tamaño de celda en la dirección Norte--Sur, con signo negativo
-\item Líneas 6 y 7. Coordenadas \emph{x} e \emph{y} del píxel superior izquierdo de la imagen.
+\item Tamaño de celda en la dirección Este--Oeste
+\item Ángulos de rotación del plano respecto a los ejes X e Y. Estos valores son siempre iguales a cero.
+\item Tamaño de celda en la dirección Norte--Sur, con signo negativo
+\item Coordenadas \emph{x} e \emph{y} del píxel superior izquierdo de la imagen.
 \end{itemize}
 
 Este \emph{World File} tiene el mismo nombre que el archivo de imagen, y su extensión se forma con la primera y la última letra de la extensión de dicho archivo, y la letra \texttt{w}. Así, para un archivo \texttt{imagen.tif}, se tendrá un archivo \texttt{imagen.tfw}. Cuando el SIG abre la imagen, busca dicho fichero y, en caso de existir este, toma de él la información que necesita para poder incorporar la imagen al SIG de forma completa, de tal modo que sobre ella puedan llevarse a cabo análisis espaciales u operaciones como la digitalización en pantalla (heads--up) que hemos visto anteriormente.
@@ -1067,10 +1039,10 @@ Algunos formatos de imagen que emplean compresión con pérdidas son altamente pop
 
 En la imagen \ref{Fig:Compresion_con_perdidas} puede verse el efecto de la utilización de compresión con pérdidas.
 
-\begin{figure*}[t]
+\begin{figure*}[!ht]
 \centering
-\includegraphics[width=.9\textwidth]{Fuentes_datos/Compresion_con_perdidas.png}
-\caption{\small Efectos de la utilización de algoritmos de compresión con pérdidas. a) Imagen original. b) Imagen almacenada mediante compresión con pérdidas. c) Imagen tras diez procesos de lectura y almacenamiento en un formato de archivo con compresión con pérdidas. El efecto de la degradación sucesiva que la imagen sufre es claramente apreciable.}
+\includegraphics[width=\textwidth]{Fuentes_datos/Compresion_con_perdidas.png}
+\caption{\small Efectos de la utilización de algoritmos de compresión con pérdidas. a) Imagen original. b) Imagen almacenada mediante compresión con pérdidas. c) Imagen tras diez procesos de lectura y almacenamiento en un formato de archivo con compresión con pérdidas.}
 \label{Fig:Compresion_con_perdidas} 
 \end{figure*}
 
