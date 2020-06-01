@@ -139,7 +139,7 @@ Las funciones más habituales son las de tipo cuadrático, que garantizan en mayor
 
 \begin{eqnarray}
 \label{Eq:Cuadratica}
-f(x,y)&=&a x^2  y^2+b  x^2  y+c  x  y^2\nonumber\\&&+d  x^2+e  y^2+f  x  y+g  x+h  y+k
+f(x,y)&=&a x^2  y^2+b  x^2  y+c  x  y^2\nonumber\\&&+d  x^2+e  y^2\nonumber\\&&+f  x  y+g  x+h  y+k\nonumber\\
 \end{eqnarray}
 
 \cite{Evans1972Harper} propone el caso particular
@@ -151,15 +151,17 @@ z = \frac{{r  x^2 }}{2} + s  x  y + \frac{{t  y^2
 Con seis parámetros que calcular, la ventana habitual $3\times3$, con nueve valores, es suficiente para llevar a cabo un ajuste por mínimos cuadrados. Empleando la notación introducida en \ref{Funciones_focales} para dicha ventana, los valores de los parámetros quedan determinados de la siguiente forma:
 
 \begin{eqnarray}
-\label{Eq:Parametros_Evans}
   p &=& \frac{{z_3  + z_6  + z_9  - z_1  - z_4  - z_7 }}{{6  \Delta s}} \nonumber  \\
   q &=& \frac{{z_1  + z_2  + z_3  - z_7  - z_8  - z_9 }}{{6  \Delta s}} \nonumber \\
   r &=& (z_1  + z_3  + z_4  + z_6  + z_7  + z_9 \nonumber\\ && -2(z_2  + z_5  + z_8 )) / 3 
-{\Delta s}^2  \nonumber  \\
+{\Delta s}^2  \nonumber  
+\end{eqnarray}
+\begin{eqnarray}
   s &=& \frac{{ - z_1  + z_3  + z_7  - z_9 }}{{4  {\Delta s}^2 }} \nonumber \\
   t &=& (z_1  + z_2  + z_3  + z_7  + z_8  + z_9  \nonumber\\ && -2(z_4  + z_5  + z_6 ) / 3 
 {\Delta s}^2  \nonumber \\
-  z_0 &=& (5  z_5  + 2  (z_2  + z_4  + z_6  + z_8 ) \nonumber\\ && - (z_1  + z_3  + z_7 + z_9 )) /9 \nonumber 
+  z_0 &=& (5  z_5  + 2  (z_2  + z_4  + z_6  + z_8 ) \nonumber\\ && - (z_1  + z_3  + z_7 + z_9 )) /9 
+ \label{Eq:Parametros_Evans}
 \end{eqnarray}
 
 \noindent siendo ${\Delta s}$ el tamaño de celda.
@@ -177,15 +179,17 @@ En este caso, los valores de los coeficientes son los siguientes:
 
 \begin{eqnarray}
 \label{Eq:Parametros_Zevenbergen}
-  p &=& \frac{{z_6  - z_4 }}{{2  \Delta s}} \\
+  p &=& \frac{{z_6  - z_4 }}{{2  \Delta s}} \nonumber \\
   q &=& \frac{{z_2  - z_8 }}{{2  \Delta s}} \nonumber \\
   r &=& \frac{{z_4  + z_6  - 2 \cdot z_5 }}{{{\Delta s}^2 }} \nonumber \\
   s &=& \frac{{ - z_1  + z_3  + z_7  - z_9 }}{{4  {\Delta s}^2 }} \nonumber \\
   t &=& \frac{{z_2  + z_8  - 2  z_5 }}{{{\Delta s}^2 }} \nonumber \\
-  A &=& ((z_1  + z_3  + z_7  + z_9 ) \nonumber\\ && -2  (z_2  + z_4  + z_6  + z_8 ) + 4 \cdot z_5 / 4)  {\Delta s}^4  \nonumber \\
+  A &=& ((z_1  + z_3  + z_7  + z_9 ) \nonumber\\ && -2  (z_2  + z_4  + z_6  + z_8 ) + 4 \cdot z_5 / 4)  {\Delta s}^4  \nonumber
+\end{eqnarray}
+\begin{eqnarray}  
   B &=& \frac{{(z_1  + z_3  - z_7  - z_9 ) - 2  (z_2  - z_8 )}}{{4  {\Delta s}^3 }} \nonumber \\
   C &=& \frac{{( - z_1  + z_3  - z_7  + z_9 ) - 2  (z_6  - z_4 )}}{{4  {\Delta s}^3 }} \nonumber \\
-  D &=& z_5 \nonumber 
+  D &=& z_5
 \end{eqnarray}
 
 Junto a las anteriores, probablemente las más habituales, encontramos otras como  \cite{Shary1995MG}, idéntica a la de \cite{Evans1972Harper} salvo por el hecho de que obliga a la función a pasar por la celda central, o \cite{Horn1981IEEE}, así como funciones de orden superior o bien ajustes de planos en lugar de superficies cuadráticas \cite{Beasley1982EPA}. Igualmente, puede generalizarse lo anterior al empleo de polinomios de grado $n$ \cite{Wood1996PhD}.
@@ -600,20 +604,12 @@ R = \frac{{\sqrt {\left( {\sum\limits_{i = 1}^n {{\rm X}_i } } \right)^2  + \lef
 
 \noindent siendo $n$ el número de celdas en la ventana de análisis y ${\rm X}_i, {\rm Y}_i$ y ${\rm Z}_i$ las componentes del vector unitario normal a la superficie en cada una de dichas celdas. Estas pueden calcularse a partir de la pendiente y la orientación según las expresiones:
 
-\begin{equation}
+\begin{eqnarray}
 \label{Eq:RugosidadHobson1}
-{\rm X}_i=\sin (s) \cdot \cos (a)
-\end{equation}
-
-\begin{equation}
-\label{Eq:RugosidadHobson2}
-{\rm Y}_i=\sin (s) \cdot \sin (a)
-\end{equation}
-
-\begin{equation}
-\label{Eq:RugosidadHobson3}
-{\rm Z}_i=\cos (s)
-\end{equation}
+{\rm X}_i&=&\sin (s) \cdot \cos (a)\nonumber\\
+{\rm Y}_i&=&\sin (s) \cdot \sin (a)\nonumber\\
+{\rm Z}_i&=&\cos (s)
+\end{eqnarray}
 
 Acerca de la rugosidad, y puesto que representa la complejidad del relieve, debe mencionarse la influencia que tiene en la creación del MDE. Relieves rugosos implican una mayor complejidad y son más difíciles de registrar de forma precisa, con lo que la exactitud de las técnicas de interpolación al generar un MDE depende directamente de la rugosidad del relieve a interpolar.
 
@@ -673,13 +669,10 @@ Partiendo de la base conceptual del D8, se han elaborado modelos que tratan de s
 
 En lugar de calcular la dirección de flujo según la máxima pendiente con las celdas circundantes, se calcula la orientación de la celda y en función de esta se asigna hacia una de las dos celdas que definen una dirección más similar. Por ejemplo, para una celda con orientación 15\degree, la dirección asignada puede ser hacia la celda superior (0\degree) o la superior derecha (45\degree). La asignación de una u otra dirección se produce con una probabilidad $p$ establecida en función de la diferencia entre la orientación de la celda y la de cada dirección posible. Así, para el ejemplo mencionado, se tendría
 
-\begin{equation}
-d_1=15-0=15 \qquad , \qquad d_2=45 - 15= 30
-\end{equation} 
-
-\begin{equation}
-p_1= 1 - \frac{15}{45}=\frac{2}{3} \qquad , \qquad p_2=1 - \frac{30}{45}=\frac{1}{3}
-\end{equation}
+\begin{eqnarray}
+d_1=15-0=15 \quad &,& \quad d_2=45 - 15= 30 \nonumber \\
+p_1= 1 - \frac{15}{45}=\frac{2}{3} \quad &,& \quad p_2=1 - \frac{30}{45}=\frac{1}{3} \nonumber\\
+\end{eqnarray}
 
 Aunque mejora al D8, este método presenta el inconveniente de su aleatoriedad, y se encuentra raramente implementado.
 
@@ -835,7 +828,7 @@ La figura \ref{Fig:Llenado_depresiones} presenta un esquema comparativo de los d
 \begin{figure*}[t]   
 \centering
 \includegraphics[width=.85\textwidth]{Geomorfometria/Llenado_depresiones.png}
-\caption{\small De derecha a izquierda, elevaciones originales, eliminación de la depresión usando llenado y eliminación de la depresión mediante llenado y modificación de celdas obstáculo. En negro, celda de desagüe. En gris, celdas modificadas.}
+\caption{\small De derecha a izquierda, elevaciones originales, eliminación de la depresión mediante llenado, y eliminación de la depresión mediante llenado y modificación de celdas obstáculo. En negro, celda de desagüe. En gris, celdas modificadas.}
 \label{Fig:Llenado_depresiones} 
 \end{figure*}
 

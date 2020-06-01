@@ -174,7 +174,7 @@ De las operaciones morfológicas que conocemos, la erosión nos da una idea de la 
 El proceso de erosión se aplica en este caso con un elemento estructural como el siguiente, en lugar del que vimos en el apartado \ref{Operaciones_morfologicas}.
 
 \begin{center}
-\includegraphics[width=.15\mycolumnwidth]{Creacion_capas_vectoriales/Kernel.pdf}
+\includegraphics[width=.13\mycolumnwidth]{Creacion_capas_vectoriales/Kernel.pdf}
 \end{center}
 
 Esto no es estrictamente necesario ya que, de aplicar el que vimos entonces, y aunque el contorno resultante sería distinto, el resultado sería igualmente vectorizable\footnote{Otra forma de ver esto es la siguiente. A la hora de ir recorriendo el contorno podemos hacerlo desplazándonos solo en horizontal y vertical (como lo haría la torre en un tablero de ajedrez), o bien en todas direcciones (como lo haría la reina). Con el elemento estructural que vimos en la sección \ref{Operaciones_morfologicas} el contorno resultante puede ser recorrido haciendo movimientos de torre, mientras que con el que hemos aplicado en este caso (y como puede apreciarse en la figura) recorrer el contorno exige movimientos en diagonal.\\ En la jerga del tratamiento de imágenes se dice que existe \emph{conectividad-4} en el primer caso y \emph{conectividad-8} en el segundo, haciendo referencia al numero de celdas circundantes a las que uno puede desplazarse según cada uno de estos esquemas de movimiento\\Otra forma habitual de referirse a estos conceptos es hablar de \emph{vecindad de Von Neumann} para el caso de 4 posibles conexiones o \emph{vecindad de Moore} para el caso de 8.}.\index{Vecindad!de Von Neumann}\index{Vecindad!de Moore}\index{Conectividad--4}\index{Conectividad--8}
@@ -265,16 +265,17 @@ No todas las celdas de la capa ráster son igual de interesantes a efectos de cre
 
 Si se debe tomar un número de puntos menor, es necesario un método para eliminar aquellos que aportan menos valor al TIN resultante, de forma que, con los puntos que se consideren, este sea lo más preciso posible\footnote{Elegir un número de puntos dado y obtener el mejor TIN posible con ese número no es una tarea en absoluto sencilla. Se trata de un problema matemático de los conocidos como \emph{NP--Hard}.}.\index{NP--Hard}
 
-La selección de las celdas que deben considerarse como vértices de la red puede llevarse a cabo mediante diversos algoritmos. El algoritmo conocido como VIP(\emph{Very Important Points}\footnote{Puntos Muy Importantes})\cite{Chen1987Autocarto} es uno de los más habituales. Se basa en evaluar la significancia de cada celda y después eliminar aquellas menos relevantes hasta quedarse con un número $n$ de celdas, que serán las más adecuadas para formar el TIN. El criterio de eliminación de celdas menos significativas puede también basarse en un umbral de significancia, de forma que solo se consideren como vértices las celdas que lo superen.\index{Very Important Points (VIP)}
-
-La significancia de una celda se obtiene mediante un análisis local con una ventana $3\times 3$, estudiando las cuatro posibles direcciones que pasan por la celda central (Figura \ref{Fig:Significancia_TIN}).
-
-\begin{figure*}[t]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=.75\mycolumnwidth]{Creacion_capas_vectoriales/Significancia_TIN.pdf}
 \caption{\small La significancia de una celda es la media de las significancias según las cuatro direcciones definidas. Para una dirección definida (en rojo), la significancia es la distancia $d$ entre la celda central y la recta que une las celdas de los extremos}
 \label{Fig:Significancia_TIN}. 
 \end{figure*}
+
+La selección de las celdas que deben considerarse como vértices de la red puede llevarse a cabo mediante diversos algoritmos. El algoritmo conocido como VIP(\emph{Very Important Points}\footnote{Puntos Muy Importantes})\cite{Chen1987Autocarto} es uno de los más habituales. Se basa en evaluar la significancia de cada celda y después eliminar aquellas menos relevantes hasta quedarse con un número $n$ de celdas, que serán las más adecuadas para formar el TIN. El criterio de eliminación de celdas menos significativas puede también basarse en un umbral de significancia, de forma que solo se consideren como vértices las celdas que lo superen.\index{Very Important Points (VIP)}
+
+La significancia de una celda se obtiene mediante un análisis local con una ventana $3\times 3$, estudiando las cuatro posibles direcciones que pasan por la celda central (Figura \ref{Fig:Significancia_TIN}).
+
 
 En cada dirección se traza una recta que pasa por dos puntos extremos, teniendo en cuenta la elevación de los mismos. La distancia entre la celda central y dicha recta es la que define la significancia. La media de las cuatro significancias calculadas según todas las direcciones posible es la significancia global de la celda.\index{Significancia}
 
@@ -284,9 +285,25 @@ Un enfoque distinto a los anteriores es el propuesto por \cite{Lee89ACSM}, denom
 
 \subsection{Triangulación}
 
-Una vez se tiene el conjunto de puntos significativos, es necesario conectar estos para formar la red de triángulos como tal, existiendo para ello existen diversas metodologías.
+Una vez que se tiene el conjunto de puntos significativos, es necesario conectar estos para formar la red de triángulos como tal, existiendo para ello existen diversas metodologías.
 
-Para una conjunto de puntos $V$, una triangulación es una conjunto de triángulos que cumple las siguientes propiedades\cite{Dyn1990IMA}:
+Para un conjunto de puntos $V$, una triangulación es una conjunto de triángulos que cumple las siguientes propiedades\cite{Dyn1990IMA}:
+
+\begin{figure*}[!ht]
+\begin{minipage}{0.49\linewidth}
+ \centering
+\includegraphics[width=.9\mycolumnwidth]{Creacion_capas_vectoriales/Delaunay_voronoi.pdf}
+\caption{\small Teselación de Voronoi (en trazo discontinuo) y Triangulación de Delaunay (en trazo continuo) a partir de un conjunto de puntos (en azul)}
+\label{Fig:Delaunay_Voronoi}. 
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\mycolumnwidth]{Creacion_capas_vectoriales/Simplificacion_triangulacion.pdf}
+\caption{\small Esquema de la eliminación de un vértice (en rojo) en una triangulación}
+\label{Fig:Simplificacion_triangulacion}.
+\end{minipage}
+\end{figure*}
 
 \begin{itemize}
 	\item El conjunto de todos los vértices de esos triángulos es igual a $V$.
@@ -310,36 +327,17 @@ Esta ultima propiedad es de especial interés para garantizar que los triángulos 
 
 La triangulación de Delaunay es el dual de otra estructura denominada \emph{Teselación de Voronoi}, como puede verse en la figura \ref{Fig:Delaunay_Voronoi}. La teselación de Voronoi asocia a cada punto un polígono que representa el lugar geométrico de las coordenadas que tienen a dicho punto como punto más cercano de todos los del conjunto. Esto es similar a lo que veíamos para el método de interpolación por vecino más cercano, el cual genera, de hecho, una teselación de Voronoi\footnote{Aunque en aquel momento lo analizábamos desde un punto de vista ráster.}.\index{Teselación de Voronoi}
 
-Los algoritmos para crear una triangulación de Delaunay son abundantes, y existe mucha literatura al respecto. Comparaciones entre los más habituales y descripciones de estos pueden encontrarse en  \cite{Su1995ACM} y \cite{Fortune1992WC}, donde se tratan con detalle los más importantes.
-
-Aunque este tipo de triangulaciones son las más recomendables, la propia naturaleza de un TIN puede aprovecharse para crear otras triangulaciones derivadas que, aun no cumpliendo las condiciones de la triangulación de Delaunay, representan de forma más fiel el relieve. La incorporación de las denominadas \emph{líneas de ruptura}\footnote{\emph{Breaklines}, en inglés} o \emph{líneas de falla} es una de las modificaciones de mayor interés.
-\index{Linea@Línea!de ruptura}\index{Breaklines}
-
-
-\begin{figure*}[t]
-\begin{minipage}{0.49\linewidth}
- \centering
-\includegraphics[width=.9\mycolumnwidth]{Creacion_capas_vectoriales/Delaunay_voronoi.pdf}
-\caption{\small Teselación de Voronoi (en trazo discontinuo) y Triangulación de Delaunay (en trazo continuo) a partir de un conjunto de puntos (en azul)}
-\label{Fig:Delaunay_Voronoi}. 
-\end{minipage}
-\hfill
-\begin{minipage}{0.49\linewidth}
-\centering
-\includegraphics[width=\mycolumnwidth]{Creacion_capas_vectoriales/Simplificacion_triangulacion.pdf}
-\caption{\small Esquema de la eliminación de un vértice (en rojo) en una triangulación}
-\label{Fig:Simplificacion_triangulacion}.
-\end{minipage}
-\end{figure*}
-
-
-\begin{figure*}[t]   
+\begin{figure*}[!ht]   
 \centering
 \includegraphics[width=\textwidth]{Creacion_capas_vectoriales/TIN_Simplificado.png}
 \caption{\small TIN original (a) y dos simplificaciones (b, c) en base al anterior.}
 \label{Fig:TIN_Simplificado}. 
 \end{figure*}
 
+Los algoritmos para crear una triangulación de Delaunay son abundantes, y existe mucha literatura al respecto. Comparaciones entre los más habituales y descripciones de estos pueden encontrarse en  \cite{Su1995ACM} y \cite{Fortune1992WC}, donde se tratan con detalle los más importantes.
+
+Aunque este tipo de triangulaciones son las más recomendables, la propia naturaleza de un TIN puede aprovecharse para crear otras triangulaciones derivadas que, aun no cumpliendo las condiciones de la triangulación de Delaunay, representan de forma más fiel el relieve. La incorporación de las denominadas \emph{líneas de ruptura}\footnote{\emph{Breaklines}, en inglés} o \emph{líneas de falla} es una de las modificaciones de mayor interés.
+\index{Linea@Línea!de ruptura}\index{Breaklines}
 
 Dentro de un triángulo se asume que la pendiente y la orientación son constantes, y dicho triángulo define un plano en el espacio. Al pasar de un triángulo a otro, el cambio se produce justo en el lado que comparten dichos triángulos, representando dicho lado una línea de cambio. Si estas líneas de cambio coinciden con las lineas naturales en las que el relieve real que se quiere modelizar sufre un cambio brusco, el modelo obtenido será más fiel a la realidad.
 
